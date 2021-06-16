@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "gid",
+    "idi",
+    "rig"
+  ],
+  "key": {
+    "g": {
+      "tag": "c:glowstone_dusts"
+    },
+    "i": {
+      "tag": "c:iron_ingots"
+    },
+    "d": {
+      "tag": "c:diamonds"
+    },
+    "r": {
+      "tag": "c:redstone_dusts"
+    }
+  },
+  "result": {
+    "item": "tolaserblade:laser_blade"
+  }
+}
