@@ -9,8 +9,9 @@
     "Iunius118"
   ],
   "contact": {
-    "homepage": "https://github.com/Iunius118/ToLaserBlade-Fabric",
-    "sources": "https://github.com/Iunius118/ToLaserBlade-Fabric"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/tolaserblade-fabric",
+    "sources": "https://github.com/Iunius118/ToLaserBlade-Fabric",
+    "issues": "https://github.com/Iunius118/ToLaserBlade-Fabric/issues"
   },
 
   "license": "All rights reserved",
