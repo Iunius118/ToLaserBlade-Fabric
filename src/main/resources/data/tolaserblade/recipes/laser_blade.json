@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "gid",
-    "idi",
-    "rig"
+    " id",
+    "igi",
+    "ri "
   ],
   "key": {
     "g": {
