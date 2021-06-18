@@ -1,8 +1,6 @@
 package com.github.iunius118.tolaserblade.item;
 
-import com.github.iunius118.tolaserblade.laserblade.LaserBladeTextKey;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -58,8 +56,6 @@ public class LBSwordItem extends SwordItem implements LaserBladeItemBase {
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag) {
         super.appendHoverText(itemStack, level, list, tooltipFlag);
-        if (isFireResistant()) {
-            list.add(LaserBladeTextKey.KEY_TOOLTIP_FIRE_RESISTANT.translate().withStyle(ChatFormatting.GOLD));
-        }
+        LaserBladeItemUtil.addLaserBladeInformation(itemStack, level, list, tooltipFlag);
     }
 }

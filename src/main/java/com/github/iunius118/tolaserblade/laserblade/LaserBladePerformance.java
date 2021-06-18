@@ -5,19 +5,19 @@ import net.minecraft.util.Mth;
 
 public class LaserBladePerformance {
     private final AttackPerformance attackPerformance;
-    private final boolean isFireproof;
+    private final boolean isFireResistant;
 
-    public LaserBladePerformance(CompoundTag compoundTag, boolean isFireproofIn) {
+    public LaserBladePerformance(CompoundTag compoundTag, boolean isFireResistantIn) {
         attackPerformance = new AttackPerformance(compoundTag);
-        isFireproof = isFireproofIn;
+        isFireResistant = isFireResistantIn;
     }
 
     public AttackPerformance getAttackPerformance() {
         return attackPerformance;
     }
 
-    public boolean isFireproof() {
-        return isFireproof;
+    public boolean isFireResistant() {
+        return isFireResistant;
     }
 
     public void write(CompoundTag compoundTag) {

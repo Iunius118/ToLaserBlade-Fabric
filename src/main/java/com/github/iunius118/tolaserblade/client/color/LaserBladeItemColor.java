@@ -7,7 +7,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.ItemStack;
 
 public class LaserBladeItemColor {
-    // public final boolean isBroken;
+    public final boolean isBroken;
     public final int rawGripColor;
     public final int gripColor;
     public final int rawInnerColor;
@@ -21,7 +21,7 @@ public class LaserBladeItemColor {
 
     public LaserBladeItemColor(ItemStack itemStack) {
         if (itemStack == null || itemStack.isEmpty()) {
-            // isBroken = false;
+            isBroken = false;
 
             gripColor = -1;
             rawGripColor = -1;
@@ -41,6 +41,7 @@ public class LaserBladeItemColor {
 
         // var item = itemStack.getItem();
         // isBroken = (item instanceof LBBrokenItem|| item instanceof LBBrandNewItem);
+        isBroken = false;
 
         LaserBladeVisual visual = LaserBlade.visualOf(itemStack);
 

@@ -35,8 +35,8 @@ public class LaserBlade {
         return performance.getAttackPerformance();
     }
 
-    public boolean isFireproof() {
-        return performance.isFireproof();
+    public boolean isFireResistant() {
+        return performance.isFireResistant();
     }
 
     public LaserBladeVisual getVisual() {
