@@ -1,0 +1,13 @@
+{
+  "type": "tolaserblade:color",
+  "base": {
+    "item": "tolaserblade:laser_blade_fp"
+  },
+  "addition": {
+    "item": "red_stained_glass"
+  },
+  "result": {
+    "part": "outer_blade",
+    "color": -65536
+  }
+}

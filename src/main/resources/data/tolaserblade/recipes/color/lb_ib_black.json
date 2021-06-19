@@ -1,0 +1,13 @@
+{
+  "type": "tolaserblade:color",
+  "base": {
+    "item": "tolaserblade:laser_blade"
+  },
+  "addition": {
+    "item": "black_stained_glass_pane"
+  },
+  "result": {
+    "part": "inner_blade",
+    "color": -16645630
+  }
+}
