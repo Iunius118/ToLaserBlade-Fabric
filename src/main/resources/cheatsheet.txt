@@ -1,0 +1,42 @@
+ToLaserBlade-Fabric
+v0.2.0.0 cheatsheet
+
+* Items
+
+** Laser Blade
+
+ID: tolaserblade:laser_blade
+
+Crafting Table:
+
+   , I, D;
+  I, G, I;
+  R, I,  ; -> Laser Blade
+
+  I = Iron Ingot; D = Diamond; G = Glowstone Dust; R = Redstone
+
+Tool Type: Sword
+Durability: Infinity
+Attack Damage: 7
+Attack Speed: 2.8
+Enchanting: Available on Enchanting Table or Anvil
+Mining Speed: 12
+Mining Level: 3
+
+Smithing Table:
+
+  Laser Blade + Stained Glass -> Laser Blade (outer blade color changed)
+  Laser Blade + Stained Glass Pane -> Laser Blade (inner blade color changed)
+  Laser Blade + Carpet -> Laser Blade (grip color changed)
+
+** Laser Blade (fireproof)
+
+ID: tolaserblade:laser_blade_fp
+
+Smithing Table:
+
+  Laser Blade + Netherite Ingot -> Laser Blade (fireproof)
+
+Attack Damage: 8
+Mining Level: 4
+
