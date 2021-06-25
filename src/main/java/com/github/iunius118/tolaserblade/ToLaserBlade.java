@@ -13,7 +13,9 @@ public class ToLaserBlade implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        CommonRegister.registerEventListeners();
         CommonRegister.registerRecipeSerializers();
         CommonRegister.registerItems();
+        CommonRegister.registerDispenseItemBehaviors();
     }
 }
