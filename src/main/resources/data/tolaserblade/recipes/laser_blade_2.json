@@ -3,7 +3,7 @@
   "group": "tolaserblade:laser_blade",
   "pattern": [
     " id",
-    "igi",
+    "idi",
     "ri "
   ],
   "key": {
@@ -12,9 +12,6 @@
     },
     "d": {
       "tag": "c:diamonds"
-    },
-    "g": {
-      "tag": "c:glowstone_dusts"
     },
     "r": {
       "tag": "c:redstone_dusts"
