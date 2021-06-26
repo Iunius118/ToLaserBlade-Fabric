@@ -1,0 +1,6 @@
+# Credits
+
+ToLaserBlade (Fabric)
+Copyright (c) 2016 Iunius118
+https://github.com/Iunius118/ToLaserBlade-Fabric
+

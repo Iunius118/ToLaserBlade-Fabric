@@ -1,0 +1,44 @@
+# Cheatsheet
+ToLaserBlade-Fabric v0.2.0.0
+
+## Items
+### Laser Blade
+- ID: tolaserblade:laser_blade
+- Tool Type: Sword
+- Durability: Infinity
+- Attack Damage: 7
+- Attack Speed: 2.8
+- Enchanting: Available on Enchanting Table or Anvil
+- Mining Speed: 12
+- Mining Level: 3
+
+Crafting Table:
+
+- I = Iron Ingot; D = Diamond; G = Glowstone Dust; R = Redstone
+  - x, I, D;
+  - I, G, I;
+  - R, I, x; -> Laser Blade
+- I = Iron Ingot; D = Diamond; R = Redstone
+  - x, I, D;
+  - I, D, I;
+  - R, I, x; -> Laser Blade
+
+Smithing Table:
+
+- Laser Blade + Stained Glass -> Laser Blade (outer blade color changed)
+- Laser Blade + Stained Glass Pane -> Laser Blade (inner blade color changed)
+- Laser Blade + Carpet -> Laser Blade (grip color changed)
+
+#### Laser Trap
+- When you put a Laser Blade in a Dispenser and activate it, you can attack mobs in front of the Dispenser with the Laser Blade
+- In a multiplayer game with PvP allowed, laser traps can attack players
+
+### Laser Blade (fireproof)
+- ID: tolaserblade:laser_blade_fp
+- Attack Damage: 8
+- Mining Level: 4
+
+Smithing Table:
+
+- Laser Blade + Netherite Ingot -> Laser Blade (fireproof)
+

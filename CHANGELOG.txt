@@ -1,0 +1,17 @@
+# Change Log
+
+[ToLaserBlade (Fabric)](https://www.curseforge.com/minecraft/mc-mods/tolaserblade-fabric).
+[Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
+
+## [1.17-0.2.0.0] - 2021-06-20
+### Added
+- Recipes to change color of Laser Blade.
+  In a multiplayer game, the client-side mod has to be the same version as the server-side.
+
+## [1.17-0.1.0.0] - 2021-06-18
+### Added
+- Laser Blade item.
+- Laser Blade (fireproof) item.
+- Laser Blade model.
+- Laser Blade renderer.
+
