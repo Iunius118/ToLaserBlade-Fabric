@@ -41,4 +41,3 @@ Smithing Table:
 Smithing Table:
 
 - Laser Blade + Netherite Ingot -> Laser Blade (fireproof)
-
