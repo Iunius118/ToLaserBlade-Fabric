@@ -17,5 +17,6 @@ public class ToLaserBlade implements ModInitializer {
         CommonRegister.registerRecipeSerializers();
         CommonRegister.registerItems();
         CommonRegister.registerDispenseItemBehaviors();
+        CommonRegister.registerParticleTypes();
     }
 }

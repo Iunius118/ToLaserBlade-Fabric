@@ -30,8 +30,7 @@ Smithing Table:
 - Laser Blade + Carpet -> Laser Blade (grip color changed)
 
 #### Laser Trap
-- When you put a Laser Blade in a Dispenser and activate it, you can attack mobs in front of the Dispenser with the Laser Blade
-- In a multiplayer game with PvP allowed, laser traps can attack players
+When you put a Laser Blade in a Dispenser and activate it, you can attack mobs (of course, players included) in front of the Dispenser with the Laser Blade.
 
 ### Laser Blade (fireproof)
 - ID: tolaserblade:laser_blade_fp

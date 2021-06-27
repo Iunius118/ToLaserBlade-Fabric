@@ -8,5 +8,6 @@ public class ToLaserBladeClient implements ClientModInitializer {
         ClientRegister.registerColorProvider();
         ClientRegister.registerResourceProvider();
         ClientRegister.registerItemRenderer();
+        ClientRegister.registerParticleProviders();
     }
 }

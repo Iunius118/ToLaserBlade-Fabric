@@ -1,9 +1,10 @@
 package com.github.iunius118.tolaserblade.common;
 
 import com.github.iunius118.tolaserblade.ToLaserBlade;
-import com.github.iunius118.tolaserblade.dispenser.DispenseLBSwordBehavior;
-import com.github.iunius118.tolaserblade.item.ModItems;
-import com.github.iunius118.tolaserblade.item.crafting.ModRecipeSerializers;
+import com.github.iunius118.tolaserblade.core.dispenser.DispenseLBSwordBehavior;
+import com.github.iunius118.tolaserblade.core.particle.ModParticleTypes;
+import com.github.iunius118.tolaserblade.world.item.ModItems;
+import com.github.iunius118.tolaserblade.world.item.crafting.ModRecipeSerializers;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.DispenserBlock;
@@ -25,6 +26,12 @@ public class CommonRegister {
     public static void registerDispenseItemBehaviors() {
         DispenserBlock.registerBehavior(ModItems.LASER_BLADE, new DispenseLBSwordBehavior());
         DispenserBlock.registerBehavior(ModItems.LASER_BLADE_FP, new DispenseLBSwordBehavior());
+    }
+
+    public static void registerParticleTypes() {
+        Registry.register(Registry.PARTICLE_TYPE, new ResourceLocation(ToLaserBlade.MOD_ID, "laser_trap_x"), ModParticleTypes.LASER_TRAP_X);
+        Registry.register(Registry.PARTICLE_TYPE, new ResourceLocation(ToLaserBlade.MOD_ID, "laser_trap_y"), ModParticleTypes.LASER_TRAP_Y);
+        Registry.register(Registry.PARTICLE_TYPE, new ResourceLocation(ToLaserBlade.MOD_ID, "laser_trap_z"), ModParticleTypes.LASER_TRAP_Z);
     }
 
     private CommonRegister() {}
