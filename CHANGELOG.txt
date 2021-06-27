@@ -3,16 +3,18 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+
+## [1.17-0.2.1.0]
 ### Added
 - Laser Trap.
 - Another Laser Blade recipe.
 
-## [1.17-0.2.0.0] - 2021-06-20
+## [1.17-0.2.0.0]
 ### Added
 - Recipes to change color of Laser Blade.
   - In a multiplayer game, the client-side mod has to be the same version as the server-side.
 
-## [1.17-0.1.0.0] - 2021-06-18
+## [1.17-0.1.0.0]
 ### Added
 - Laser Blade item.
 - Laser Blade (fireproof) item.
