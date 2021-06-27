@@ -1,13 +1,13 @@
 # License
-All rights reserved.
 Copyright © 2016 Iunius118
 
 ## Permissions
-- You can use this mod within the scope of the Mojang's Minecraft EULA and guidelines
-- You can redistribute the unedited .jar file of this mod or include it in a modpack
+- You may use this mod within the scope of the Mojang's Minecraft EULA and guidelines.
+- You may redistribute this .jar file or include it in a modpack.
 
-## Condition
-- You cannot charge for the mod files.
+## Limitations
+- You may not charge for this .jar file.
+- You may not distribute any modified versions of this .jar file.
 
 ## Disclaimer
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
