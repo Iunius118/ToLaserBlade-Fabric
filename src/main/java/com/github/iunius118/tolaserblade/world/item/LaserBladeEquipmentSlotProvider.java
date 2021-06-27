@@ -1,4 +1,4 @@
-package com.github.iunius118.tolaserblade.item;
+package com.github.iunius118.tolaserblade.world.item;
 
 import net.fabricmc.fabric.api.item.v1.EquipmentSlotProvider;
 import net.minecraft.world.entity.EquipmentSlot;

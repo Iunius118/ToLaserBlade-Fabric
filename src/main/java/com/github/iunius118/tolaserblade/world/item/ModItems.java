@@ -1,4 +1,4 @@
-package com.github.iunius118.tolaserblade.item;
+package com.github.iunius118.tolaserblade.world.item;
 
 public class ModItems {
     // Laser Blade

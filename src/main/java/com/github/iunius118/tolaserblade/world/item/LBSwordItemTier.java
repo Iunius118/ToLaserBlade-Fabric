@@ -1,4 +1,4 @@
-package com.github.iunius118.tolaserblade.item;
+package com.github.iunius118.tolaserblade.world.item;
 
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;

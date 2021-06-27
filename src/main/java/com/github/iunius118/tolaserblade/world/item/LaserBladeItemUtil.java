@@ -1,7 +1,7 @@
-package com.github.iunius118.tolaserblade.item;
+package com.github.iunius118.tolaserblade.world.item;
 
-import com.github.iunius118.tolaserblade.laserblade.LaserBlade;
-import com.github.iunius118.tolaserblade.laserblade.LaserBladeTextKey;
+import com.github.iunius118.tolaserblade.core.laserblade.LaserBlade;
+import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeTextKey;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;

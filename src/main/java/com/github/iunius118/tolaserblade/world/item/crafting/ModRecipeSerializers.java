@@ -1,4 +1,4 @@
-package com.github.iunius118.tolaserblade.item.crafting;
+package com.github.iunius118.tolaserblade.world.item.crafting;
 
 import net.minecraft.world.item.crafting.RecipeSerializer;
 

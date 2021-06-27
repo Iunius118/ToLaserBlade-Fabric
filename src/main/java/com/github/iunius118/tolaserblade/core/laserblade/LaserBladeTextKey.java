@@ -1,4 +1,4 @@
-package com.github.iunius118.tolaserblade.laserblade;
+package com.github.iunius118.tolaserblade.core.laserblade;
 
 import net.minecraft.network.chat.TranslatableComponent;
 

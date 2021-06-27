@@ -1,4 +1,4 @@
-package com.github.iunius118.tolaserblade.item;
+package com.github.iunius118.tolaserblade.world.item;
 
 import com.github.iunius118.tolaserblade.ToLaserBlade;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;

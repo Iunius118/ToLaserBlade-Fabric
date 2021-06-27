@@ -1,8 +1,8 @@
 package com.github.iunius118.tolaserblade.client.color;
 
-import com.github.iunius118.tolaserblade.laserblade.LaserBlade;
-import com.github.iunius118.tolaserblade.laserblade.LaserBladeColor;
-import com.github.iunius118.tolaserblade.laserblade.LaserBladeVisual;
+import com.github.iunius118.tolaserblade.core.laserblade.LaserBlade;
+import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeColor;
+import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeVisual;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.ItemStack;
 

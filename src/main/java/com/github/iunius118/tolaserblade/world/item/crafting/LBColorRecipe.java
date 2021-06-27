@@ -1,8 +1,8 @@
-package com.github.iunius118.tolaserblade.item.crafting;
+package com.github.iunius118.tolaserblade.world.item.crafting;
 
-import com.github.iunius118.tolaserblade.laserblade.LaserBlade;
-import com.github.iunius118.tolaserblade.laserblade.LaserBladeColorPart;
-import com.github.iunius118.tolaserblade.laserblade.LaserBladeVisual;
+import com.github.iunius118.tolaserblade.core.laserblade.LaserBlade;
+import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeColorPart;
+import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeVisual;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.network.FriendlyByteBuf;

@@ -1,4 +1,4 @@
-package com.github.iunius118.tolaserblade.dispenser;
+package com.github.iunius118.tolaserblade.core.dispenser;
 
 import com.github.iunius118.tolaserblade.common.util.LaserTrapPlayer;
 import net.minecraft.core.BlockPos;
