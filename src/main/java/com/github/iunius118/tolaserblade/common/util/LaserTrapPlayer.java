@@ -61,7 +61,7 @@ public class LaserTrapPlayer extends FakePlayer {
 
         for (var targetEntity : targetEntities) {
             float totalDamage = attackDamage + getDamageBonus(itemStack, targetEntity);
-            if (canBurn(targetEntity, fireLevel)) targetEntity.setSecondsOnFire(1);
+            if (canBurn(targetEntity, fireLevel)) targetEntity.setSecondsOnFire(Math.min(fireLevel, 2));
             targetEntity.hurt(DamageSource.playerAttack(this), totalDamage);
             EnchantmentHelper.doPostDamageEffects(this, targetEntity);
         }
@@ -89,7 +89,7 @@ public class LaserTrapPlayer extends FakePlayer {
     }
 
     private boolean canBurn(Entity entity, int fireAspectLevel) {
-        return fireAspectLevel > 0 && (entity instanceof Mob || entity instanceof Player) && !entity.isOnFire();
+        return fireAspectLevel > 0 && (entity instanceof Mob || entity instanceof Player);
     }
 
     private void spawnParticle(Direction dir, BlockPos effectPos, ItemStack itemStack) {
