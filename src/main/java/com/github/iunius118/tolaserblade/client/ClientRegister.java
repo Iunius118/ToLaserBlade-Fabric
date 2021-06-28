@@ -1,6 +1,6 @@
 package com.github.iunius118.tolaserblade.client;
 
-import com.github.iunius118.tolaserblade.client.color.LBSwordItemColor;
+import com.github.iunius118.tolaserblade.client.color.item.LBSwordItemColor;
 import com.github.iunius118.tolaserblade.client.particle.LaserTrapParticle;
 import com.github.iunius118.tolaserblade.client.renderer.item.LBSwordItemRenderer;
 import com.github.iunius118.tolaserblade.client.renderer.item.model.LaserBladeModelProvider;

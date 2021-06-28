@@ -1,6 +1,5 @@
 package com.github.iunius118.tolaserblade.common.util;
 
-import com.github.iunius118.tolaserblade.client.color.Color4F;
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBlade;
 import com.github.iunius118.tolaserblade.core.particle.ModParticleTypes;
 import com.mojang.authlib.GameProfile;

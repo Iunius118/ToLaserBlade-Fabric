@@ -1,4 +1,4 @@
-package com.github.iunius118.tolaserblade.client.color;
+package com.github.iunius118.tolaserblade.client.color.item;
 
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBlade;
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeColor;

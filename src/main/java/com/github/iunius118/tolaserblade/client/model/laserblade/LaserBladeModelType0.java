@@ -1,7 +1,7 @@
 package com.github.iunius118.tolaserblade.client.model.laserblade;
 
 import com.github.iunius118.tolaserblade.ToLaserBlade;
-import com.github.iunius118.tolaserblade.client.color.LaserBladeItemColor;
+import com.github.iunius118.tolaserblade.client.color.item.LaserBladeItemColor;
 import com.github.iunius118.tolaserblade.client.model.SimpleLaserBladeModel;
 import com.github.iunius118.tolaserblade.client.model.Vector2f;
 import com.google.common.collect.ImmutableList;

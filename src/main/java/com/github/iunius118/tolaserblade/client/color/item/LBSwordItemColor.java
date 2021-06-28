@@ -1,4 +1,4 @@
-package com.github.iunius118.tolaserblade.client.color;
+package com.github.iunius118.tolaserblade.client.color.item;
 
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.world.item.ItemStack;

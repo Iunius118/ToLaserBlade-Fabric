@@ -1,4 +1,4 @@
-package com.github.iunius118.tolaserblade.client.color;
+package com.github.iunius118.tolaserblade.common.util;
 
 public record Color4F(float a, float r, float g, float b) {
     public static Color4F of(int color) {
