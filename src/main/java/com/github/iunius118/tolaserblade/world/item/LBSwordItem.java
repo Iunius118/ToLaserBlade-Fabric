@@ -30,6 +30,12 @@ public class LBSwordItem extends SwordItem implements LaserBladeItemBase {
     }
 
     @Override
+    public boolean canUpgrade(Upgrade.Type type) {
+        // Allow all upgrades
+        return true;
+    }
+
+    @Override
     public float getDamage() {
         return super.getDamage();
     }

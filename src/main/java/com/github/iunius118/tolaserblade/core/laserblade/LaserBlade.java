@@ -26,7 +26,6 @@ public class LaserBlade {
     }
 
     public static LaserBladeVisual visualOf(ItemStack stack) {
-        Item item = stack.getItem();
         CompoundTag compoundTag = stack.getOrCreateTag();
         return new LaserBladeVisual(compoundTag);
     }
