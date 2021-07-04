@@ -16,6 +16,7 @@ public class ToLaserBlade implements ModInitializer {
         CommonRegister.registerEventListeners();
         CommonRegister.registerRecipeSerializers();
         CommonRegister.registerItems();
+        CommonRegister.registerEnchantments();
         CommonRegister.registerDispenseItemBehaviors();
         CommonRegister.registerParticleTypes();
     }
