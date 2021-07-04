@@ -4,6 +4,14 @@
 
 ## [Unreleased]
 
+## [1.17-0.3.0.0]
+### Added
+- Light Element enchantment.
+- Recipes to upgrade Laser Blade.
+  - Enchanting with Light Element, enchanting with Silk Touch, and increasing attack speed.
+  - In a multiplayer game, the client-side mod has to be the same version as the server-side.
+- Item tags to specify the ingredients of each upgrade.
+
 ## [1.17-0.2.1.0]
 ### Added
 - Laser Trap.

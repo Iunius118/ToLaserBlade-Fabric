@@ -1,16 +1,16 @@
 # Cheatsheet
-ToLaserBlade-Fabric v0.2.1.0
+ToLaserBlade-Fabric v0.3.0.0
 
 ## Items
 ### Laser Blade
 - ID: tolaserblade:laser_blade
-- Tool Type: Sword
+- Tool type: Sword
 - Durability: Infinity
-- Attack Damage: 7
-- Attack Speed: 2.8
-- Enchanting: Available on Enchanting Table or Anvil
-- Mining Speed: 12
-- Mining Level: 3
+- Basic attack damage: 7
+- Basic attack speed: 2.8
+- Enchanting: Available on Enchanting Table, Anvil, or Smithing Table (upgrade)
+- Mining speed: 12
+- Mining level: 3
 
 Crafting Table:
 
@@ -23,20 +23,35 @@ Crafting Table:
   - I, D, I;
   - R, I, x; -> Laser Blade
 
+### Laser Blade (fireproof)
+- ID: tolaserblade:laser_blade_fp
+- Basic attack damage: 8
+- Mining level: 4
+- Recipe: See Upgrading Laser Blades
+
+## Features
+### Changing Laser Blade colors
 Smithing Table:
 
 - Laser Blade + Stained Glass -> Laser Blade (outer blade color changed)
 - Laser Blade + Stained Glass Pane -> Laser Blade (inner blade color changed)
 - Laser Blade + Carpet -> Laser Blade (grip color changed)
 
-#### Laser Trap
-When you put a Laser Blade in a Dispenser and activate it, you can attack the mobs (of course, players included) in front of the Dispenser with the Laser Blade.
-
-### Laser Blade (fireproof)
-- ID: tolaserblade:laser_blade_fp
-- Attack Damage: 8
-- Mining Level: 4
-
+### Upgrading Laser Blades
 Smithing Table:
 
+- Laser Blade + Gold Ingot -> Laser Blade (attack speed increased)
+- Laser Blade + Glowstone -> Laser Blade (enchanted with Light Element or increased its level)
+- Laser Blade + Prismarine Crystals / Amethyst Shard -> Laser Blade (enchanted with Silk Touch)
 - Laser Blade + Netherite Ingot -> Laser Blade (fireproof)
+
+### Enchantment: Light Element
+- ID: tolaserblade:light_element
+- Enchanting: See Upgrading Laser Blades
+- Max level: 10
+- Not compatible with: Sharpness, Smite, and Bane of Arthropods
+
+Light Element increases the damage of the Laser Blade, and deals additional damage to undead mobs and illagers.
+
+### Laser Trap
+When you put a Laser Blade in a Dispenser and activate it, you can attack the mobs (of course, players included) in front of the Dispenser with the Laser Blade.
