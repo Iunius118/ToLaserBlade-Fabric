@@ -1,10 +1,16 @@
 package com.github.iunius118.tolaserblade.world.item;
 
+import com.github.iunius118.tolaserblade.core.laserblade.upgrade.Upgrade;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
@@ -16,6 +22,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class LBSwordItem extends SwordItem implements LaserBladeItemBase {
+    public static final float DEFAULT_DAMAGE = 3F;
+    public static final float DEFAULT_SPEED = -1.2F;
+
     private final Tier tier;
 
     public static final FabricItemSettings properties = (FabricItemSettings) new FabricItemSettings()
@@ -24,7 +33,7 @@ public class LBSwordItem extends SwordItem implements LaserBladeItemBase {
             .tab(ModCreativeModeTabs.TAB_LASER_BLADE);
 
     public LBSwordItem(boolean isFireResistant) {
-        super(new LBSwordItemTier(isFireResistant), 3, -1.2F, LaserBladeItemBase.setFireResistant(properties, isFireResistant));
+        super(new LBSwordItemTier(isFireResistant), (int) DEFAULT_DAMAGE, DEFAULT_SPEED, LaserBladeItemBase.setFireResistant(properties, isFireResistant));
 
         tier = getTier();
     }
@@ -57,6 +66,13 @@ public class LBSwordItem extends SwordItem implements LaserBladeItemBase {
     @Override
     public boolean isCorrectToolForDrops(BlockState blockState) {
         return true;
+    }
+
+    public Multimap<Attribute, AttributeModifier> getAttributeModifiers(double attackDamage, double attackSpeed) {
+        ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
+        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Weapon modifier", attackDamage + getDamage(), AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Weapon modifier", attackSpeed + DEFAULT_SPEED, AttributeModifier.Operation.ADDITION));
+        return builder.build();
     }
 
     @Override
