@@ -3,6 +3,8 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+### Added
+- Recipes to switch blend mode of blade color
 
 ## [1.17-0.3.0.0]
 ### Added
