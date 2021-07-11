@@ -60,7 +60,7 @@ public class LaserTrapPlayer extends FakePlayer {
 
         for (var targetEntity : targetEntities) {
             float totalDamage = attackDamage + getDamageBonus(itemStack, targetEntity);
-            if (canBurn(targetEntity, fireLevel)) targetEntity.setSecondsOnFire(Math.min(fireLevel, 2));
+            if (canBurn(targetEntity, fireLevel)) targetEntity.setSecondsOnFire(Math.min(fireLevel, 1));
             targetEntity.hurt(DamageSource.playerAttack(this), totalDamage);
             EnchantmentHelper.doPostDamageEffects(this, targetEntity);
         }
