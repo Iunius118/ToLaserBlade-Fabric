@@ -64,6 +64,6 @@ public class FakePlayer extends ServerPlayer {
         @Override public void disconnect(Component component) {}
         @Override public void setEncryptionKey(Cipher cipher, Cipher cipher2) {}
         @Override public void setReadOnly() {}
-        @Override public void setupCompression(int i) {}
+        @Override public void setupCompression(int i, boolean bl) {}
     }
 }

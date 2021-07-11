@@ -6,6 +6,9 @@
 ### Added
 - Recipes to switch blend mode of blade color
 
+### Changed
+- Update to Minecraft 1.17.1.
+
 ## [1.17-0.3.0.0]
 ### Added
 - Light Element enchantment.
