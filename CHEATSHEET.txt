@@ -1,5 +1,5 @@
 # Cheatsheet
-ToLaserBlade-Fabric v0.3.0.0
+ToLaserBlade-Fabric v0.4.0.0
 
 ## Items
 ### Laser Blade
@@ -36,11 +36,13 @@ Smithing Table:
 - Laser Blade + Stained Glass -> Laser Blade (outer blade color changed)
 - Laser Blade + Stained Glass Pane -> Laser Blade (inner blade color changed)
 - Laser Blade + Carpet -> Laser Blade (grip color changed)
+- Laser Blade + Tinted Glass -> Laser Blade (switched blend mode of outer blade color)
+- Laser Blade + Block of Amethyst -> Laser Blade (switched blend mode of inner blade color)
 
 ### Upgrading Laser Blades
 Smithing Table:
 
-- Laser Blade + Gold Ingot -> Laser Blade (attack speed increased)
+- Laser Blade + Gold Ingot -> Laser Blade (attack speed increased by 0.4, up to 4.0)
 - Laser Blade + Glowstone -> Laser Blade (enchanted with Light Element or increased its level)
 - Laser Blade + Prismarine Crystals / Amethyst Shard -> Laser Blade (enchanted with Silk Touch)
 - Laser Blade + Netherite Ingot -> Laser Blade (fireproof)
@@ -49,7 +51,7 @@ Smithing Table:
 - ID: tolaserblade:light_element
 - Enchanting: See Upgrading Laser Blades
 - Max level: 10
-- Not compatible with: Sharpness, Smite, and Bane of Arthropods
+- Incompatible with Sharpness, Smite, and Bane of Arthropods
 
 Light Element increases the damage of the Laser Blade, and deals additional damage to undead mobs and illagers.
 

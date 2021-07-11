@@ -3,11 +3,14 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+
+## [1.17.1-0.4.0.0]
 ### Added
-- Recipes to switch blend mode of blade color
+- Recipes to switch blend mode of blade color.
 
 ### Changed
 - Update to Minecraft 1.17.1.
+- Change burn time of Fire Aspect in Laser Trap to 1 second.
 
 ## [1.17-0.3.0.0]
 ### Added
