@@ -1,5 +1,5 @@
 # License
-Copyright © 2016 Iunius118
+Copyright (c) 2016 Iunius118
 
 ## Permissions
 - You may use this mod within the scope of the Mojang's Minecraft EULA and guidelines.

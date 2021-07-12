@@ -59,9 +59,6 @@ java {
 }
 
 jar {
-	from("LICENSE_OF_JAR.txt") {
-		rename {"LICENSE.txt"}
-	}
 	from("CHANGELOG.txt", "CHEATSHEET.txt", "CREDITS.txt")
 }
 
