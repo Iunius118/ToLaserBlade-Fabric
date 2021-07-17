@@ -26,6 +26,7 @@ public class MixinGameRenderer {
     private void onReloadShadersEnd(ResourceManager resourceManager, CallbackInfo ci) {
         ShaderInstance shaderInstance = GameRenderer.getRendertypeEntityTranslucentCullShader();
 
+        // Register laser blade shader
         try {
             shaderInstance = new ShaderInstance(resourceManager, LaserBladeRenderType.FLAT_SHADER_INSTANCE_NAME, DefaultVertexFormat.NEW_ENTITY);
             ToLaserBlade.LOGGER.info("Created: shader " + LaserBladeRenderType.FLAT_SHADER_INSTANCE_NAME);

@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(ItemStack.class)
 public abstract class MixinItemStack {
     @Inject(method = "getAttributeModifiers", at = @At("HEAD"), cancellable = true)
-    public void getAttributeModifiers(EquipmentSlot equipmentSlot, CallbackInfoReturnable<Multimap<Attribute, AttributeModifier>> cir) {
+    public void onGetAttributeModifiersHead(EquipmentSlot equipmentSlot, CallbackInfoReturnable<Multimap<Attribute, AttributeModifier>> cir) {
         if (equipmentSlot != EquipmentSlot.MAINHAND) return;
         ItemStack stack = (ItemStack) (Object) this;
         if (!(stack.getItem() instanceof LBSwordItem lbSwordItem)) return;
