@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+## [1.17.1-0.4.1.0]
+### Added
+- Laser Furnace function to Laser Trap.
+
 ## [1.17.1-0.4.0.0]
 ### Added
 - Recipes to switch blend mode of blade color.

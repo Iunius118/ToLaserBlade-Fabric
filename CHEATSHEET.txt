@@ -1,5 +1,5 @@
 # Cheatsheet
-ToLaserBlade-Fabric v0.4.0.0
+ToLaserBlade-Fabric v0.4.1.0
 
 ## Items
 ### Laser Blade
@@ -8,7 +8,7 @@ ToLaserBlade-Fabric v0.4.0.0
 - Durability: Infinity
 - Basic attack damage: 7
 - Basic attack speed: 2.8
-- Enchanting: Available on Enchanting Table, Anvil, or Smithing Table (upgrade)
+- Enchanting: Available on Enchanting Table, Anvil, or Smithing Table
 - Mining speed: 12
 - Mining level: 3
 
@@ -33,19 +33,20 @@ Crafting Table:
 ### Changing Laser Blade colors
 Smithing Table:
 
-- Laser Blade + Stained Glass -> Laser Blade (outer blade color changed)
-- Laser Blade + Stained Glass Pane -> Laser Blade (inner blade color changed)
-- Laser Blade + Carpet -> Laser Blade (grip color changed)
-- Laser Blade + Tinted Glass -> Laser Blade (switched blend mode of outer blade color)
-- Laser Blade + Block of Amethyst -> Laser Blade (switched blend mode of inner blade color)
+- Outer Blade: Laser Blade + Stained Glass
+- Inner blade: Laser Blade + Stained Glass Pane
+- Grip: Laser Blade + Carpet
+
+- Switching Blend Mode of Outer Blade: Laser Blade + Tinted Glass
+- Switching Blend Mode of Inner Blade: Laser Blade + Block of Amethyst
 
 ### Upgrading Laser Blades
 Smithing Table:
 
-- Laser Blade + Gold Ingot -> Laser Blade (attack speed increased by 0.4, up to 4.0)
-- Laser Blade + Glowstone -> Laser Blade (enchanted with Light Element or increased its level)
-- Laser Blade + Prismarine Crystals / Amethyst Shard -> Laser Blade (enchanted with Silk Touch)
-- Laser Blade + Netherite Ingot -> Laser Blade (fireproof)
+- Attack Speed (up to 4.0): Laser Blade + Gold Ingot
+- Light Element: Laser Blade + Glowstone
+- Silk Touch: Laser Blade + Prismarine Crystals / Amethyst Shard
+- Fireproof: Laser Blade + Netherite Ingot
 
 ### Enchantment: Light Element
 - ID: tolaserblade:light_element
@@ -53,7 +54,10 @@ Smithing Table:
 - Max level: 10
 - Incompatible with Sharpness, Smite, and Bane of Arthropods
 
-Light Element increases the damage of the Laser Blade, and deals additional damage to undead mobs and illagers.
+Light element increases the damage of the laser blade, and deals additional damage to undead mobs and illagers.
 
 ### Laser Trap
-When you put a Laser Blade in a Dispenser and activate it, you can attack the mobs (of course, players included) in front of the Dispenser with the Laser Blade.
+When you put a laser blade in a dispenser and activate it, you can attack the mobs (of course, players included) in front of the dispenser with the laser blade.
+
+### Laser Furnace
+When a laser trap is fired at a furnace, it will light the furnace.
