@@ -1,0 +1,5 @@
+accessWidener v1 named
+
+# Using in DispenseLBSwordBehavior for Laser Furnace
+accessible field net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity litTime I
+accessible field net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity litDuration I

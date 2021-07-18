@@ -29,6 +29,7 @@
   "mixins": [
     "tolaserblade.mixins.json"
   ],
+  "accessWidener": "tolaserblade.accesswidener",
 
   "depends": {
     "fabricloader": ">=0.11.3",
