@@ -4,7 +4,8 @@
   "package": "com.github.iunius118.tolaserblade.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "MixinItemStack"
+    "MixinItemStack",
+    "MixinLivingEntity"
   ],
   "client": [
     "MixinGameRenderer"

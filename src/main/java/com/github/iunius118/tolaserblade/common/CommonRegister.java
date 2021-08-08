@@ -1,6 +1,7 @@
 package com.github.iunius118.tolaserblade.common;
 
 import com.github.iunius118.tolaserblade.ToLaserBlade;
+import com.github.iunius118.tolaserblade.common.util.ModSoundEvents;
 import com.github.iunius118.tolaserblade.core.dispenser.DispenseLBSwordBehavior;
 import com.github.iunius118.tolaserblade.core.particle.ModParticleTypes;
 import com.github.iunius118.tolaserblade.world.item.ModItems;
@@ -38,6 +39,11 @@ public class CommonRegister {
         Registry.register(Registry.PARTICLE_TYPE, new ResourceLocation(ToLaserBlade.MOD_ID, "laser_trap_x"), ModParticleTypes.LASER_TRAP_X);
         Registry.register(Registry.PARTICLE_TYPE, new ResourceLocation(ToLaserBlade.MOD_ID, "laser_trap_y"), ModParticleTypes.LASER_TRAP_Y);
         Registry.register(Registry.PARTICLE_TYPE, new ResourceLocation(ToLaserBlade.MOD_ID, "laser_trap_z"), ModParticleTypes.LASER_TRAP_Z);
+    }
+
+    public static void registerSoundEvents() {
+        Registry.register(Registry.SOUND_EVENT, new ResourceLocation(ToLaserBlade.MOD_ID, "item_laser_blade_swing"), ModSoundEvents.ITEM_LASER_BLADE_SWING);
+        Registry.register(Registry.SOUND_EVENT, new ResourceLocation(ToLaserBlade.MOD_ID, "item_laser_blade_fp_swing"), ModSoundEvents.ITEM_LASER_BLADE_FP_SWING);
     }
 
     private CommonRegister() {}
