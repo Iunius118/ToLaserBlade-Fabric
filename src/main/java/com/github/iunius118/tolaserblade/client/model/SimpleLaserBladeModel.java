@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.RenderType;
 
 public abstract class SimpleLaserBladeModel extends SimpleModel implements LaserBladeModel {
     private RenderType typeHilt;
-    private RenderType typeFlat;
+    private RenderType typeUnlit;
     private RenderType typeAdd;
     private RenderType typeSubInner;
     private RenderType typeSub;
@@ -20,18 +20,18 @@ public abstract class SimpleLaserBladeModel extends SimpleModel implements Laser
         return typeHilt;
     }
 
-    public RenderType getFlatRenderType() {
-        if (typeFlat == null) {
-            var renderTypeOpt = LaserBladeRenderType.getRenderType("flat", LaserBladeRenderType.getFlatRenderState(getTexture()));
-            typeFlat = renderTypeOpt.orElse(RenderType.entityTranslucent(getTexture()));
+    public RenderType getUnlitRenderType() {
+        if (typeUnlit == null) {
+            var renderTypeOpt = LaserBladeRenderType.getRenderType("laser_unlit", LaserBladeRenderType.getUnlitRenderState(getTexture()));
+            typeUnlit = renderTypeOpt.orElse(RenderType.entityTranslucent(getTexture()));
         }
 
-        return typeFlat;
+        return typeUnlit;
     }
 
     public RenderType getAddRenderType() {
         if (typeAdd == null) {
-            var renderTypeOpt = LaserBladeRenderType.getRenderType("add", LaserBladeRenderType.getAddRenderState(getTexture()));
+            var renderTypeOpt = LaserBladeRenderType.getRenderType("laser_add", LaserBladeRenderType.getAddRenderState(getTexture()));
             typeAdd = renderTypeOpt.orElse(RenderType.entityTranslucent(getTexture()));
         }
 
@@ -40,7 +40,7 @@ public abstract class SimpleLaserBladeModel extends SimpleModel implements Laser
 
     public RenderType getSubInnerRenderType() {
         if (typeSubInner == null) {
-            var renderTypeOpt = LaserBladeRenderType.getRenderType("sub_in", LaserBladeRenderType.getSubRenderState(getTexture()));
+            var renderTypeOpt = LaserBladeRenderType.getRenderType("laser_sub_in", LaserBladeRenderType.getSubRenderState(getTexture()));
             typeSubInner = renderTypeOpt.orElse(RenderType.entityTranslucent(getTexture()));
         }
 
@@ -49,7 +49,7 @@ public abstract class SimpleLaserBladeModel extends SimpleModel implements Laser
 
     public RenderType getSubRenderType() {
         if (typeSub == null) {
-            var renderTypeOpt = LaserBladeRenderType.getRenderType("sub", LaserBladeRenderType.getSubRenderState(getTexture()));
+            var renderTypeOpt = LaserBladeRenderType.getRenderType("laser_sub", LaserBladeRenderType.getSubRenderState(getTexture()));
             typeSub = renderTypeOpt.orElse(RenderType.entityTranslucent(getTexture()));
         }
 

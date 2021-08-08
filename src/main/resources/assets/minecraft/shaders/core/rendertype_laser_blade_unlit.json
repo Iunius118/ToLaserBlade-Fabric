@@ -4,8 +4,8 @@
     "srcrgb": "srcalpha",
     "dstrgb": "1-srcalpha"
   },
-  "vertex": "rendertype_laser_blade_flat",
-  "fragment": "rendertype_laser_blade_flat",
+  "vertex": "rendertype_laser_blade_unlit",
+  "fragment": "rendertype_laser_blade_unlit",
   "attributes": [
     "Position",
     "Color",

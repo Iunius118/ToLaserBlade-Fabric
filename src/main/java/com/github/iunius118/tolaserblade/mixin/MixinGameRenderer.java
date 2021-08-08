@@ -28,12 +28,12 @@ public class MixinGameRenderer {
 
         // Register laser blade shader
         try {
-            shaderInstance = new ShaderInstance(resourceManager, LaserBladeRenderType.FLAT_SHADER_INSTANCE_NAME, DefaultVertexFormat.NEW_ENTITY);
-            ToLaserBlade.LOGGER.info("Created: shader " + LaserBladeRenderType.FLAT_SHADER_INSTANCE_NAME);
+            shaderInstance = new ShaderInstance(resourceManager, LaserBladeRenderType.UNLIT_SHADER_INSTANCE_NAME, DefaultVertexFormat.NEW_ENTITY);
+            ToLaserBlade.LOGGER.info("Created: shader " + LaserBladeRenderType.UNLIT_SHADER_INSTANCE_NAME);
         } catch (IOException ignored) {
         }
 
-        shaders.put(LaserBladeRenderType.FLAT_SHADER_INSTANCE_NAME, shaderInstance);
-        LaserBladeRenderType.flatShader = shaderInstance;
+        shaders.put(LaserBladeRenderType.UNLIT_SHADER_INSTANCE_NAME, shaderInstance);
+        LaserBladeRenderType.setUnlitShaderInstance(shaderInstance);
     }
 }

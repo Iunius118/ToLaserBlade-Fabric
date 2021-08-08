@@ -16,10 +16,20 @@ import java.lang.reflect.Method;
 import java.util.Optional;
 
 public class LaserBladeRenderType extends RenderType {
-    public static final String FLAT_SHADER_INSTANCE_NAME = "rendertype_laser_blade_flat";
+    public static final String UNLIT_SHADER_INSTANCE_NAME = "rendertype_laser_blade_unlit";
+
+    private static ShaderInstance laserBladeUnlitShader;
+    private static final ShaderStateShard LASER_BLADE_UNLIT_SHADER_STATE = new ShaderStateShard(() -> laserBladeUnlitShader);
 
     public LaserBladeRenderType(String string, VertexFormat vertexFormat, VertexFormat.Mode mode, int i, boolean bl, boolean bl2, Runnable runnable, Runnable runnable2) {
         super(string, vertexFormat, mode, i, bl, bl2, runnable, runnable2);
+    }
+
+    public static void setUnlitShaderInstance(ShaderInstance shader) {
+        if (shader != null) {
+            laserBladeUnlitShader = shader;
+        }
+
     }
 
     public static CompositeState getHiltRenderState(ResourceLocation texture) {
@@ -32,9 +42,9 @@ public class LaserBladeRenderType extends RenderType {
                 .createCompositeState(true);
     }
 
-    public static CompositeState getFlatRenderState(ResourceLocation texture) {
+    public static CompositeState getUnlitRenderState(ResourceLocation texture) {
         return CompositeState.builder()
-                .setShaderState(getFlatShaderState())
+                .setShaderState(LASER_BLADE_UNLIT_SHADER_STATE)
                 .setTextureState(new TextureStateShard(texture, false, false))
                 .setTransparencyState(TRANSLUCENT_TRANSPARENCY)
                 .setLightmapState(LIGHTMAP)
@@ -44,7 +54,7 @@ public class LaserBladeRenderType extends RenderType {
 
     public static CompositeState getAddRenderState(ResourceLocation texture) {
         return CompositeState.builder()
-                .setShaderState(getFlatShaderState())
+                .setShaderState(LASER_BLADE_UNLIT_SHADER_STATE)
                 .setTextureState(new TextureStateShard(texture, false, false))
                 .setTransparencyState(LIGHTNING_TRANSPARENCY)
                 .setLightmapState(LIGHTMAP)
@@ -66,18 +76,12 @@ public class LaserBladeRenderType extends RenderType {
                 });
 
         return CompositeState.builder()
-                .setShaderState(getFlatShaderState())
+                .setShaderState(LASER_BLADE_UNLIT_SHADER_STATE)
                 .setTextureState(new TextureStateShard(texture, false, false))
                 .setTransparencyState(transparencyState)
                 .setLightmapState(LIGHTMAP)
                 .setOverlayState(OVERLAY)
                 .createCompositeState(true);
-    }
-
-    public static ShaderInstance flatShader;
-
-    private static RenderStateShard.ShaderStateShard getFlatShaderState() {
-        return new RenderStateShard.ShaderStateShard(() -> flatShader);
     }
 
     public static Optional<RenderType> getRenderType(String name, CompositeState compositeState) {
