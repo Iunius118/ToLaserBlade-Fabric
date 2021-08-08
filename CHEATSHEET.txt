@@ -1,9 +1,9 @@
 # Cheatsheet
-ToLaserBlade-Fabric v0.4.1.0
+ToLaserBlade-Fabric v0.4.2.0
 
 ## Items
 ### Laser Blade
-- ID: tolaserblade:laser_blade
+- ID: `tolaserblade:laser_blade`
 - Tool type: Sword
 - Durability: Infinity
 - Basic attack damage: 7
@@ -24,7 +24,7 @@ Crafting Table:
   - R, I, x; -> Laser Blade
 
 ### Laser Blade (fireproof)
-- ID: tolaserblade:laser_blade_fp
+- ID: `tolaserblade:laser_blade_fp`
 - Basic attack damage: 8
 - Mining level: 4
 - Recipe: See Upgrading Laser Blades
@@ -36,7 +36,6 @@ Smithing Table:
 - Outer Blade: Laser Blade + Stained Glass
 - Inner blade: Laser Blade + Stained Glass Pane
 - Grip: Laser Blade + Carpet
-
 - Switching Blend Mode of Outer Blade: Laser Blade + Tinted Glass
 - Switching Blend Mode of Inner Blade: Laser Blade + Block of Amethyst
 
@@ -49,7 +48,7 @@ Smithing Table:
 - Fireproof: Laser Blade + Netherite Ingot
 
 ### Enchantment: Light Element
-- ID: tolaserblade:light_element
+- ID: `tolaserblade:light_element`
 - Enchanting: See Upgrading Laser Blades
 - Max level: 10
 - Incompatible with Sharpness, Smite, and Bane of Arthropods
@@ -61,3 +60,9 @@ When you put a laser blade in a dispenser and activate it, you can attack the mo
 
 ### Laser Furnace
 When a laser trap is fired at a furnace, it will light the furnace.
+
+### Laser Blade Sound Events
+You can add audio files that will be played when laser blades are swung.
+
+- `(resource_pack_root_dir)/assets/tolaserblade/sounds/item/laser_blade/swing.ogg`
+- `(resource_pack_root_dir)/assets/tolaserblade/sounds/item/laser_blade_fp/swing.ogg`

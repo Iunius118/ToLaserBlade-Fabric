@@ -4,6 +4,14 @@
 
 ## [Unreleased]
 
+## [1.17.1-0.4.2.0]
+### Added
+- Sound events that will be fired when Laser Blades are swung.
+
+### Changed
+- Update Fabric API to 0.37.1.
+- Rename shader `rendertype_laser_blade_flat` to `rendertype_laser_blade_unlit`.
+
 ## [1.17.1-0.4.1.0]
 ### Added
 - Laser Furnace function to Laser Trap.
