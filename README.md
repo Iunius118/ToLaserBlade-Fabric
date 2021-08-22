@@ -5,7 +5,7 @@ Simple sword with a laser blade for Minecraft with Fabric
 
 ## Licenses
 - The MIT license  
-- [LICENSE.txt](./src/main/resources/LICENSE.txt) in resources applies only to the .jar files built by Iunius118
+- [LICENSE.txt](./src/main/resources/LICENSE.txt) in `src/main/resources` applies only to the .jar files built by Iunius118
 
 ----
-Copyright &copy; 2016 Iunius118
+&copy; 2016 Iunius118
