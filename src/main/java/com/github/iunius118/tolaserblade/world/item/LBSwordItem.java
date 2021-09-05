@@ -33,7 +33,7 @@ public class LBSwordItem extends SwordItem implements LaserBladeItemBase {
             .tab(ModCreativeModeTabs.TAB_LASER_BLADE);
 
     public LBSwordItem(boolean isFireResistant) {
-        super(new LBSwordItemTier(isFireResistant), (int) DEFAULT_DAMAGE, DEFAULT_SPEED, LaserBladeItemBase.setFireResistant(properties, isFireResistant));
+        super(ModItemTiers.getLBSwordTier(isFireResistant), (int) DEFAULT_DAMAGE, DEFAULT_SPEED, LaserBladeItemBase.setFireResistant(properties, isFireResistant));
 
         tier = getTier();
     }
