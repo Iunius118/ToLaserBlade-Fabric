@@ -3,17 +3,10 @@ package com.github.iunius118.tolaserblade.core.laserblade.upgrade;
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBlade;
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBladePerformance;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 
-import java.util.function.Supplier;
-
-public class DamageUpgrade extends Upgrade {
-    public DamageUpgrade(Supplier<Ingredient> ingredientSupplier, String shortName) {
-        super(ingredientSupplier, shortName);
-    }
-
+public class DamageUpgrader implements Upgrader {
     @Override
-    public boolean test(ItemStack base, ItemStack addition) {
+    public boolean canApply(ItemStack base, ItemStack addition) {
         final LaserBlade laserBlade = LaserBlade.of(base);
         final LaserBladePerformance.AttackPerformance attack = laserBlade.getAttackPerformance();
         float maxUpgradeCount = getMaxUpgradeCount();

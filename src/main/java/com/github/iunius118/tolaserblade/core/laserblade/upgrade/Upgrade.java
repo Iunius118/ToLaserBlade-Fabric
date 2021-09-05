@@ -2,48 +2,31 @@ package com.github.iunius118.tolaserblade.core.laserblade.upgrade;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import org.jetbrains.annotations.Nullable;
 
-import java.lang.reflect.Constructor;
 import java.util.function.Supplier;
 
-public abstract class Upgrade {
-    public static final Upgrade NONE = new Upgrade(() -> Ingredient.EMPTY, "00") {
-        @Override
-        public boolean test(ItemStack base, ItemStack addition) {
-            return false;
-        }
-
-        @Override
-        public UpgradeResult apply(ItemStack base, int baseCost) {
-            return UpgradeResult.of(base, baseCost);
-        }
-    };
+public class Upgrade {
+    public static final Upgrade NONE = new Upgrade(
+            new Upgrader() {
+                @Override public boolean canApply(ItemStack base, ItemStack addition) { return false; }
+                @Override public UpgradeResult apply(ItemStack base, int baseCost) { return UpgradeResult.of(base, baseCost); }
+            }, () -> Ingredient.EMPTY, "00");
 
     // Supplier of upgrade ingredient
     // Lazy evaluation via the supplier can wait for the timing of sync of the tags from server to client
+    private final Upgrader upgrader;
     private final Supplier<Ingredient> ingredientSupplier;
     private Ingredient ingredient;
     private final String shortName;
 
-    public Upgrade(Supplier<Ingredient> ingredientSupplier, String shortName) {
+    public Upgrade(Upgrader upgrader, Supplier<Ingredient> ingredientSupplier, String shortName) {
+        this.upgrader = upgrader;
         this.ingredientSupplier = ingredientSupplier;
         this.shortName = shortName;
     }
 
-    @Nullable
-    public static Upgrade of(Class<? extends Upgrade> upgrade, Supplier<Ingredient> ingredientSupplier, String shortName) {
-        // Get upgrade instance from upgrade Class
-        Upgrade instance = NONE;
-
-        try {
-            Constructor<? extends Upgrade> constructor = upgrade.getConstructor(Supplier.class, String.class);
-            instance = constructor.newInstance(ingredientSupplier, shortName);
-        } catch (ReflectiveOperationException e) {
-            e.printStackTrace();
-        }
-
-        return instance;
+    public static Upgrade of(Upgrader upgrader, Supplier<Ingredient> ingredientSupplier, String shortName) {
+        return new Upgrade(upgrader, ingredientSupplier, shortName);
     }
 
     public Ingredient getIngredient() {
@@ -58,9 +41,13 @@ public abstract class Upgrade {
         return shortName;
     }
 
-    public abstract boolean test(ItemStack base, ItemStack addition);
+    public boolean canApply(ItemStack base, ItemStack addition) {
+        return upgrader.canApply(base, addition);
+    }
 
-    public abstract UpgradeResult apply(ItemStack base, int baseCost);
+    public UpgradeResult apply(ItemStack base, int baseCost) {
+        return upgrader.apply(base,baseCost);
+    }
 
     public enum Type {
         BATTERY,

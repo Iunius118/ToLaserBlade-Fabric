@@ -2,28 +2,25 @@ package com.github.iunius118.tolaserblade.core.laserblade.upgrade;
 
 import com.google.common.collect.Maps;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 
 import java.util.Map;
-import java.util.function.Supplier;
 
-public class EnchantmentUpgrade extends Upgrade {
+public class EnchantmentUpgrader implements Upgrader {
     private final Enchantment enchantment;
 
-    public EnchantmentUpgrade(Supplier<Ingredient> ingredientSupplier, Enchantment enchantment, String shortName) {
-        super(ingredientSupplier, shortName);
+    public EnchantmentUpgrader(Enchantment enchantment) {
         this.enchantment = enchantment;
     }
 
-    public static EnchantmentUpgrade of(Supplier<Ingredient> ingredientSupplier, Enchantment enchantment, String shortName) {
-        return new EnchantmentUpgrade(ingredientSupplier, enchantment, shortName);
+    public static EnchantmentUpgrader of(Enchantment enchantment) {
+        return new EnchantmentUpgrader(enchantment);
     }
 
     @Override
-    public boolean test(ItemStack base, ItemStack addition) {
+    public boolean canApply(ItemStack base, ItemStack addition) {
         int level = EnchantmentHelper.getItemEnchantmentLevel(enchantment, base);
         return level < enchantment.getMaxLevel();
     }
