@@ -4,6 +4,13 @@
 
 ## [Unreleased]
 
+## [1.17.1-0.4.3.0]
+### Add
+- Recipes to upgrade Laser Blades' attack damage.
+
+### Changed
+- Update Fabric API to 0.40.0.
+
 ## [1.17.1-0.4.2.0]
 ### Added
 - Sound events that will be fired when Laser Blades are swung.
