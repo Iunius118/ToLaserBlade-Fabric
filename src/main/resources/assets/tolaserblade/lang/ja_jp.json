@@ -1,0 +1,8 @@
+{
+  "enchantment.tolaserblade.light_element": "光属性",
+  "enchantment.tolaserblade.light_element.desc": "レーザーブレイドのダメージを増加させ、アンデッドMobや邪悪な村人に追加ダメージを与える",
+  "item.tolaserblade.laser_blade": "レーザーブレイド",
+  "item.tolaserblade.laser_blade_fp": "レーザーブレイド",
+  "itemGroup.tolaserblade.general": "ToLaserBlade",
+  "upgrade.tolaserblade.fireproof": "耐熱強化 8000"
+}
