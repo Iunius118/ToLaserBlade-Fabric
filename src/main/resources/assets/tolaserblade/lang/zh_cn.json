@@ -1,0 +1,8 @@
+{
+  "enchantment.tolaserblade.light_element": "光元素",
+  "enchantment.tolaserblade.light_element.desc": "在激光剑上稍微提升攻击伤害,并且对怪物和流浪者造成额外的伤害",
+  "item.tolaserblade.laser_blade": "激光剑",
+  "item.tolaserblade.laser_blade_fp": "激光剑",
+  "itemGroup.tolaserblade.general": "ToLaserBlade",
+  "upgrade.tolaserblade.fireproof": "耐高温 8000"
+}
