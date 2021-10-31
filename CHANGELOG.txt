@@ -4,6 +4,11 @@
 
 ## [Unreleased]
 
+## [1.17.1-0.4.4.0]
+### Add
+- Simplified Chinese (zh_cn) translation (thanks to tankyap).
+- Japanese (ja_jp) translation.
+
 ## [1.17.1-0.4.3.0]
 ### Add
 - Recipes to upgrade Laser Blades' attack damage.
