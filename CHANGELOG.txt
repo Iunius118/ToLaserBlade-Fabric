@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+## [1.18-0.4.4.0]
+### Changed
+- Update to Minecraft 1.18.
+
 ## [1.17.1-0.4.4.0]
 ### Add
 - Simplified Chinese (zh_cn) translation (thanks to tankyap).
