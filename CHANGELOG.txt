@@ -4,17 +4,21 @@
 
 ## [Unreleased]
 
+## [1.18-0.4.5.0]
+### Added
+- Support LambDynamicLights to make laser blades emit light.
+
 ## [1.18-0.4.4.0]
 ### Changed
 - Update to Minecraft 1.18.
 
 ## [1.17.1-0.4.4.0]
-### Add
+### Added
 - Simplified Chinese (zh_cn) translation (thanks to tankyap).
 - Japanese (ja_jp) translation.
 
 ## [1.17.1-0.4.3.0]
-### Add
+### Added
 - Recipes to upgrade Laser Blades' attack damage.
 
 ### Changed
