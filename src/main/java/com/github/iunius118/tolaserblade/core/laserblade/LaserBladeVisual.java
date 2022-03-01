@@ -1,6 +1,7 @@
 package com.github.iunius118.tolaserblade.core.laserblade;
 
 import net.fabricmc.fabric.api.util.NbtType;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
@@ -40,13 +41,13 @@ public class LaserBladeVisual {
         modelType.type = type;
     }
 
-    public void setColorsByBiome(Level level, Biome biome) {
+    public void setColorsByBiome(Level level, Holder<Biome> biome) {
         // Color by Biome type or Biome temperature
-        if (biome.getBiomeCategory() == Biome.BiomeCategory.NETHER) {
+        if (Biome.getBiomeCategory(biome) == Biome.BiomeCategory.NETHER) {
             // The Nether
-            setColorsByNetherBiome(level, biome);
+            setColorsByNetherBiome(level, biome.value());
 
-        } else if (biome.getBiomeCategory() == Biome.BiomeCategory.THEEND) {
+        } else if (Biome.getBiomeCategory(biome) == Biome.BiomeCategory.THEEND) {
             // The End
             getOuterColor().color = LaserBladeColor.WHITE.getBladeColor();
             getOuterColor().isSubtractColor = true;
@@ -54,7 +55,7 @@ public class LaserBladeVisual {
 
         } else {
             // Biomes on Over-world etc.
-            float temp = biome.getBaseTemperature();
+            float temp = biome.value().getBaseTemperature();
             setColorsByTemperature(temp);
         }
     }
