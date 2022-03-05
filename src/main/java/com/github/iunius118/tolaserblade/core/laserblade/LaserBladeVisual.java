@@ -41,30 +41,32 @@ public class LaserBladeVisual {
         modelType.type = type;
     }
 
-    public void setColorsByBiome(Level level, Holder<Biome> biome) {
+    public void setColorsByBiome(Level level, Holder<Biome> biomeHolder) {
         // Color by Biome type or Biome temperature
-        if (Biome.getBiomeCategory(biome) == Biome.BiomeCategory.NETHER) {
-            // The Nether
-            setColorsByNetherBiome(level, biome.value());
-
-        } else if (Biome.getBiomeCategory(biome) == Biome.BiomeCategory.THEEND) {
-            // The End
-            getOuterColor().color = LaserBladeColor.WHITE.getBladeColor();
-            getOuterColor().isSubtractColor = true;
-            getInnerColor().isSubtractColor = true;
-
-        } else {
-            // Biomes on Over-world etc.
-            float temp = biome.value().getBaseTemperature();
-            setColorsByTemperature(temp);
+        switch (Biome.getBiomeCategory(biomeHolder)) {
+            case NETHER -> {
+                // The Nether
+                setColorsByNetherBiome(level, biomeHolder);
+            }
+            case THEEND -> {
+                // The End
+                getOuterColor().color = LaserBladeColor.WHITE.getBladeColor();
+                getOuterColor().isSubtractColor = true;
+                getInnerColor().isSubtractColor = true;
+            }
+            default -> {
+                // Biomes on Over-level etc.
+                float temp = biomeHolder.value().getBaseTemperature();
+                setColorsByTemperature(temp);
+            }
         }
     }
 
-    public void setColorsByNetherBiome(Level level, Biome biome) {
+    public void setColorsByNetherBiome(Level level, Holder<Biome> biomeHolder) {
         getOuterColor().color = LaserBladeColor.WHITE.getBladeColor();
 
-        if (compareBiome(level, biome, Biomes.SOUL_SAND_VALLEY) ||
-                compareBiome(level, biome, Biomes.WARPED_FOREST)) {
+        if (compareBiome(level, biomeHolder, Biomes.SOUL_SAND_VALLEY) ||
+                compareBiome(level, biomeHolder, Biomes.WARPED_FOREST)) {
             getOuterColor().isSubtractColor = true;
 
         } else {
@@ -72,11 +74,12 @@ public class LaserBladeVisual {
         }
     }
 
-    private boolean compareBiome(Level lavel, Biome biome, ResourceKey<Biome> biomeKey) {
-        if (lavel == null || biome == null || biomeKey == null) return false;
+    private boolean compareBiome(Level level, Holder<Biome> biomeHolder, ResourceKey<Biome> biomeKey) {
+        if (level == null || biomeKey == null) return false;
 
-        RegistryAccess registries = lavel.registryAccess();
+        RegistryAccess registries = level.registryAccess();
         Registry<Biome> biomes = registries.registryOrThrow(Registry.BIOME_REGISTRY);
+        Biome biome = biomeHolder.value();
         ResourceLocation biome1 = biomes.getKey(biome);
         ResourceLocation biome2 = biomeKey.location();
 
