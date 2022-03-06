@@ -10,7 +10,8 @@ assignees: ''
 <!-- Thank you for reporting -->
 
 - Minecraft version:
-- Forge version:
+- Fabric Loader version:
+- Fabric API version:
 - ToLaserBlade version:
 
 <!-- Add list of the other mods you were using at the time -->
