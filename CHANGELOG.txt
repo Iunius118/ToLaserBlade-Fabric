@@ -4,6 +4,17 @@
 
 ## [Unreleased]
 
+## [1.18.2-0.6.0.0]
+### Added
+- Config file (tolaserblade.toml).
+  - enableLaserTrap: Enable laser trap.
+  - canLaserTrapAttackPlayer: Allow laser trap to attack player.
+  - canLaserTrapHeatUpFurnace: Allow laser trap to light furnace.
+
+### Changed
+- Require Cloth Config.
+- Update Fabric API to 0.51.0.
+
 ## [1.18.2-0.5.0.0]
 ### Changed
 - Update to Minecraft 1.18.2.

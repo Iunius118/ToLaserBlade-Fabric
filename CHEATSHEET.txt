@@ -1,5 +1,5 @@
 # Cheatsheet
-ToLaserBlade-Fabric v0.4.3.0
+ToLaserBlade-Fabric v0.6.0.0
 
 ## Items
 ### Laser Blade
@@ -67,3 +67,15 @@ You can add audio files that will be played when laser blades are swung.
 
 - `(resource_pack_root_dir)/assets/tolaserblade/sounds/item/laser_blade/swing.ogg`
 - `(resource_pack_root_dir)/assets/tolaserblade/sounds/item/laser_blade_fp/swing.ogg`
+
+## Config
+`(game_dir)/config/tolaserblade.toml`
+
+If you change it, you will need to restart the game. In multiplayer mode, server-side config will be used.
+
+- enableLaserTrap (boolean, default value is true)
+  - Enable to attack entities with the laser blade in a dispenser when the dispenser is activated
+- canLaserTrapAttackPlayer (boolean, default value is true)
+  - Whether to allow laser trap to attack player. This is only valid when enableLaserTrap is true
+- canLaserTrapHeatUpFurnace (boolean, default value is true)
+  - Whether to allow laser trap to light furnace. This is only valid when enableLaserTrap is true
