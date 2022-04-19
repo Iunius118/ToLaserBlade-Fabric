@@ -4,14 +4,21 @@ import com.github.iunius118.tolaserblade.ToLaserBlade;
 import com.github.iunius118.tolaserblade.common.util.ModSoundEvents;
 import com.github.iunius118.tolaserblade.core.dispenser.DispenseLBSwordBehavior;
 import com.github.iunius118.tolaserblade.core.particle.ModParticleTypes;
+import com.github.iunius118.tolaserblade.integration.autoconfig.ModConfig;
 import com.github.iunius118.tolaserblade.world.item.ModItems;
 import com.github.iunius118.tolaserblade.world.item.crafting.ModRecipeSerializers;
 import com.github.iunius118.tolaserblade.world.item.enchantment.ModEnchantments;
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.DispenserBlock;
 
 public class CommonRegister {
+    public static void registerConfig() {
+        AutoConfig.register(ModConfig.class, Toml4jConfigSerializer::new);
+    }
+
     public static void registerEventListeners() {
 
     }

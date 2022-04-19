@@ -1,6 +1,8 @@
 package com.github.iunius118.tolaserblade.core.dispenser;
 
 import com.github.iunius118.tolaserblade.common.util.LaserTrapPlayer;
+import com.github.iunius118.tolaserblade.integration.autoconfig.ModConfig;
+import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockSource;
 import net.minecraft.core.Direction;
@@ -20,13 +22,20 @@ public class DispenseLBSwordBehavior implements DispenseItemBehavior {
 
     @Override
     public ItemStack dispense(BlockSource blockSource, ItemStack itemStack) {
+        ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+
+        if (!config.enableLaserTrap()) {
+            return DEFAULT_ITEM_BEHAVIOR.dispense(blockSource, itemStack);
+        }
+
         var serverLevel = blockSource.getLevel();
         var pos = blockSource.getPos();
         var dir = blockSource.getBlockState().getValue(DispenserBlock.FACING);
         var targetBlockEntity = serverLevel.getBlockEntity(pos.relative(dir));
 
-        if (targetBlockEntity instanceof AbstractFurnaceBlockEntity furnace) {
-            litFurnace(furnace, itemStack);
+        if (config.canLaserTrapHeatUpFurnace() &&
+                targetBlockEntity instanceof AbstractFurnaceBlockEntity furnace) {
+            lightFurnace(furnace, itemStack);
         } else {
             attackEntities(serverLevel, pos, dir, itemStack);
         }
@@ -34,7 +43,7 @@ public class DispenseLBSwordBehavior implements DispenseItemBehavior {
         return itemStack;
     }
 
-    private void litFurnace(AbstractFurnaceBlockEntity furnace, ItemStack stack) {
+    private void lightFurnace(AbstractFurnaceBlockEntity furnace, ItemStack stack) {
         if (furnace.litTime < LASER_BURN_TIME + 1) {
             boolean isNotLit = furnace.litTime < 1;
 

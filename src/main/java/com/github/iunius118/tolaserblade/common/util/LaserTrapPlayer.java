@@ -2,10 +2,11 @@ package com.github.iunius118.tolaserblade.common.util;
 
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBlade;
 import com.github.iunius118.tolaserblade.core.particle.ModParticleTypes;
+import com.github.iunius118.tolaserblade.integration.autoconfig.ModConfig;
 import com.mojang.authlib.GameProfile;
+import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -70,10 +71,10 @@ public class LaserTrapPlayer extends FakePlayer {
 
     private boolean canHitEntity(Entity entity) {
         if (!entity.isSpectator() && entity.isAlive() && entity.isPickable()) {
-            MinecraftServer server = level.getServer();
+            ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
             // Check if the trap can attack players
-            boolean isPvpAllowed = (server != null && server.isPvpAllowed());
-            return isPvpAllowed || !(entity instanceof Player);
+            boolean canAttackPlayers = config.canLaserTrapAttackPlayer();
+            return canAttackPlayers || !(entity instanceof Player);
         } else {
             return false;
         }
