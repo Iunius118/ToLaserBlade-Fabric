@@ -30,7 +30,7 @@ public class FakePlayer extends ServerPlayer {
     }
 
     @Override public void displayClientMessage(Component component, boolean bl) {}
-    @Override public void sendMessage(Component component, ChatType chatType, UUID uUID) {}
+    @Override public void sendUnsignedMessageFrom(Component component, ChatType chatType, UUID uUID) {}
     @Override public void awardStat(Stat<?> stat, int i) {}
     @Override public boolean isInvulnerableTo(DamageSource damageSource) { return true; }
     @Override public boolean canHarmPlayer(Player player) { return false; }
