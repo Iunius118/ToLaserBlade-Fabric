@@ -4,6 +4,11 @@
 
 ## [Unreleased]
 
+## [22w17a-0.6.0.1]
+### Changed
+- Update to Minecraft 22w17a (1.19-snapshot).
+- Require Fabric Loader 0.14.3+, Fabric API 0.51.3+, and Cloth Config 7.0.61+.
+
 ## [1.18.2-0.6.0.0]
 ### Added
 - Config file (tolaserblade.toml).
