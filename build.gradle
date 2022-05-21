@@ -44,7 +44,7 @@ dependencies {
     }
 
     // Mod Menu
-    modApi("com.terraformersmc:modmenu:${project.modmenu_version}")
+    modApi("com.terraformersmc:modmenu:${project.mod_menu_version}")
 }
 
 loom {
