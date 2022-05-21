@@ -4,6 +4,12 @@
 
 ## [Unreleased]
 
+## [1.19-pre1-0.6.0.2]
+### Changed
+- Update to Minecraft 1.19-pre1.
+- Require Fabric Loader 0.14.6+, Fabric API 0.53.0+, and Cloth Config 7.0.65+.
+- Refactor laser blade upgrade.
+
 ## [22w17a-0.6.0.1]
 ### Changed
 - Update to Minecraft 22w17a (1.19-snapshot).
