@@ -5,13 +5,16 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 import net.minecraft.network.Connection;
+import net.minecraft.network.chat.ChatSender;
 import net.minecraft.network.chat.ChatType;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.PlayerChatMessage;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.protocol.game.ServerboundClientInformationPacket;
 import net.minecraft.network.protocol.game.ServerboundCommandSuggestionPacket;
 import net.minecraft.network.protocol.game.ServerboundMoveVehiclePacket;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
@@ -21,16 +24,16 @@ import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.Nullable;
 
 import javax.crypto.Cipher;
-import java.util.UUID;
 
 public class FakePlayer extends ServerPlayer {
     public FakePlayer(ServerLevel serverLevel, GameProfile gameProfile) {
-        super(serverLevel.getServer(), serverLevel, gameProfile);
+        super(serverLevel.getServer(), serverLevel, gameProfile, null);
         connection = new ServerGamePacketListener(this);
     }
 
     @Override public void displayClientMessage(Component component, boolean bl) {}
-    @Override public void sendUnsignedMessageFrom(Component component, ChatType chatType, UUID uUID) {}
+    @Override public void sendSystemMessage(Component component, ResourceKey<ChatType> resourceKey) {}
+    @Override public void sendChatMessage(PlayerChatMessage playerChatMessage, ChatSender chatSender, ResourceKey<ChatType> resourceKey) {}
     @Override public void awardStat(Stat<?> stat, int i) {}
     @Override public boolean isInvulnerableTo(DamageSource damageSource) { return true; }
     @Override public boolean canHarmPlayer(Player player) { return false; }
