@@ -3,21 +3,14 @@ package com.github.iunius118.tolaserblade.core.laserblade;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
 
-public class LaserBladePerformance {
-    private final AttackPerformance attackPerformance;
-    private final boolean isFireResistant;
-
-    public LaserBladePerformance(CompoundTag compoundTag, boolean isFireResistantIn) {
-        attackPerformance = new AttackPerformance(compoundTag);
-        isFireResistant = isFireResistantIn;
+public record LaserBladePerformance(AttackPerformance attackPerformance, boolean isFireResistant) {
+    public static LaserBladePerformance of(CompoundTag compoundTag, boolean isFireResistant) {
+        var attackPerformance = new AttackPerformance(compoundTag);
+        return new LaserBladePerformance(attackPerformance, isFireResistant);
     }
 
     public AttackPerformance getAttackPerformance() {
         return attackPerformance;
-    }
-
-    public boolean isFireResistant() {
-        return isFireResistant;
     }
 
     public void write(CompoundTag compoundTag) {

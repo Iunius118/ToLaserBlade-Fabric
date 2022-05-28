@@ -1,33 +1,25 @@
 package com.github.iunius118.tolaserblade.core.laserblade;
 
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
-public class LaserBlade {
-    private final LaserBladePerformance performance;
-    private final LaserBladeVisual visual;
-
-    public LaserBlade(ItemStack stack) {
-        Item item = stack.getItem();
-        CompoundTag compoundTag = stack.getOrCreateTag();
-        performance = new LaserBladePerformance(compoundTag, item.isFireResistant());
-        visual = new LaserBladeVisual(compoundTag);
-    }
-
+public record LaserBlade(LaserBladePerformance performance, LaserBladeVisual visual) {
     public static LaserBlade of(ItemStack stack) {
-        return new LaserBlade(stack);
+        var item = stack.getItem();
+        var compoundTag = stack.getOrCreateTag();
+        var performance = LaserBladePerformance.of(compoundTag, item.isFireResistant());
+        var visual = LaserBladeVisual.of(compoundTag);
+        return new LaserBlade(performance, visual);
     }
 
     public static LaserBladePerformance performanceOf(ItemStack stack) {
-        Item item = stack.getItem();
-        CompoundTag compoundTag = stack.getOrCreateTag();
-        return new LaserBladePerformance(compoundTag, item.isFireResistant());
+        var item = stack.getItem();
+        var compoundTag = stack.getOrCreateTag();
+        return LaserBladePerformance.of(compoundTag, item.isFireResistant());
     }
 
     public static LaserBladeVisual visualOf(ItemStack stack) {
-        CompoundTag compoundTag = stack.getOrCreateTag();
-        return new LaserBladeVisual(compoundTag);
+        var compoundTag = stack.getOrCreateTag();
+        return LaserBladeVisual.of(compoundTag);
     }
 
     public LaserBladePerformance.AttackPerformance getAttackPerformance() {
@@ -43,7 +35,7 @@ public class LaserBlade {
     }
 
     public void write(ItemStack stack) {
-        CompoundTag compoundTag = stack.getOrCreateTag();
+        var compoundTag = stack.getOrCreateTag();
         performance.write(compoundTag);
         visual.write(compoundTag);
     }

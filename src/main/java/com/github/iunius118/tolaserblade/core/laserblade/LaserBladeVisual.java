@@ -11,14 +11,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 
-public class LaserBladeVisual {
-    private final ModelType modelType;
-    private final Coloring coloring;
-
-
-    public LaserBladeVisual(CompoundTag compoundTag) {
-        modelType = new ModelType(compoundTag);
-        coloring = new Coloring(compoundTag);
+public record LaserBladeVisual(ModelType modelType, Coloring coloring) {
+    public static LaserBladeVisual of(CompoundTag compoundTag) {
+        var modelType = new ModelType(compoundTag);
+        var coloring = Coloring.of(compoundTag);
+        return new LaserBladeVisual(modelType, coloring);
     }
 
     public int getModelType() {
@@ -56,7 +53,8 @@ public class LaserBladeVisual {
         } else {
             // Over-world etc.
             float temp = biomeHolder.value().getBaseTemperature();
-            setColorsByTemperature(temp);
+            var laserBladeColor = LaserBladeColor.getColorByTemperature(temp);
+            getOuterColor().color = laserBladeColor.getBladeColor();
         }
     }
 
@@ -82,31 +80,6 @@ public class LaserBladeVisual {
         ResourceLocation biome2 = biomeKey.location();
 
         return biome2.equals(biome1);
-    }
-
-    public void setColorsByTemperature(float temp) {
-        if (temp > 1.5F) {
-            // t > 1.5
-            getOuterColor().color = LaserBladeColor.TEMP_DESERT.getBladeColor();
-        } else if (temp > 1.0F) {
-            // 1.5 >= t > 1.0
-            getOuterColor().color = LaserBladeColor.TEMP_SAVANNA.getBladeColor();
-        } else if (temp > 0.8F) {
-            // 1.0 >= t > 0.8
-            getOuterColor().color = LaserBladeColor.TEMP_JUNGLE.getBladeColor();
-        } else if (temp >= 0.5F) {
-            // 0.8 >= t >= 0.5
-            getOuterColor().color = LaserBladeColor.RED.getBladeColor();
-        } else if (temp >= 0.2F) {
-            // 0.5 > t >= 0.2
-            getOuterColor().color = LaserBladeColor.TEMP_TAIGA.getBladeColor();
-        } else if (temp >= -0.25F) {
-            // 0.2 > t >= -0.25
-            getOuterColor().color = LaserBladeColor.TEMP_ICE_PLAIN.getBladeColor();
-        } else {
-            // -0.25 > t
-            getOuterColor().color = LaserBladeColor.TEMP_SNOWY_TAIGA.getBladeColor();
-        }
     }
 
     public void write(CompoundTag compoundTag) {
@@ -135,13 +108,11 @@ public class LaserBladeVisual {
         }
     }
 
-    private static class Coloring {
-        private final BladeColor bladeColor;
-        private final GripColor gripColor;
-
-        public Coloring(CompoundTag compoundTag) {
-            bladeColor = new BladeColor(compoundTag);
-            gripColor = new GripColor(compoundTag);
+    private record Coloring(BladeColor bladeColor, GripColor gripColor) {
+        public static Coloring of(CompoundTag compoundTag) {
+            var bladeColor = BladeColor.of(compoundTag);
+            var gripColor = GripColor.of(compoundTag);
+            return new Coloring(bladeColor, gripColor);
         }
 
         public void write(CompoundTag compoundTag) {
@@ -150,18 +121,16 @@ public class LaserBladeVisual {
         }
     }
 
-    private static class BladeColor {
-        public PartColor innerColor;
-        public PartColor outerColor;
-
+    private record BladeColor(PartColor innerColor, PartColor outerColor) {
         private static final String KEY_INNER_COLOR = "colorC";
         private static final String KEY_OUTER_COLOR = "colorH";
         private static final String KEY_IS_INNER_SUB_COLOR = "isSubC";
         private static final String KEY_IS_OUTER_SUB_COLOR = "isSubH";
 
-        public BladeColor(CompoundTag compoundTag) {
-            innerColor = new PartColor(compoundTag, KEY_INNER_COLOR, KEY_IS_INNER_SUB_COLOR, LaserBladeColor.WHITE.getBladeColor());
-            outerColor = new PartColor(compoundTag, KEY_OUTER_COLOR, KEY_IS_OUTER_SUB_COLOR, LaserBladeColor.RED.getBladeColor());
+        public static BladeColor of(CompoundTag compoundTag) {
+            var innerColor = new PartColor(compoundTag, KEY_INNER_COLOR, KEY_IS_INNER_SUB_COLOR, LaserBladeColor.WHITE.getBladeColor());
+            var outerColor = new PartColor(compoundTag, KEY_OUTER_COLOR, KEY_IS_OUTER_SUB_COLOR, LaserBladeColor.RED.getBladeColor());
+            return new BladeColor(innerColor, outerColor);
         }
 
         public void write(CompoundTag compoundTag) {
@@ -172,13 +141,12 @@ public class LaserBladeVisual {
         }
     }
 
-    private static class GripColor {
-        private PartColor gripColor;
-
+    private record GripColor(PartColor gripColor) {
         private static final String KEY_GRIP_COLOR = "colorG";
 
-        public GripColor(CompoundTag compoundTag) {
-            gripColor = new PartColor(compoundTag, KEY_GRIP_COLOR, null, LaserBladeColor.WHITE.getBladeColor());
+        public static GripColor of(CompoundTag compoundTag) {
+            var gripColor = new PartColor(compoundTag, KEY_GRIP_COLOR, null, LaserBladeColor.WHITE.getBladeColor());
+            return new GripColor(gripColor);
         }
 
         public int getGripColor() {
