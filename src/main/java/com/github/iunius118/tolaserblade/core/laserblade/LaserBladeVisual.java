@@ -12,6 +12,8 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 
 public record LaserBladeVisual(ModelType modelType, Coloring coloring) {
+    public static final int MODEL_TYPE_NO_MODEL = -1;
+
     public static LaserBladeVisual of(CompoundTag compoundTag) {
         var modelType = new ModelType(compoundTag);
         var coloring = Coloring.of(compoundTag);
@@ -88,8 +90,9 @@ public record LaserBladeVisual(ModelType modelType, Coloring coloring) {
     }
 
     /* Inner classes */
-    public static class ModelType { // This is also used in laser blade renderer so be public
-        public int type = -1;
+    // This is also used in laser blade renderer so be public
+    public static class ModelType {
+        public int type = MODEL_TYPE_NO_MODEL;
 
         private static final String KEY_TYPE = "type";
 

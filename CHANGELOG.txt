@@ -3,6 +3,8 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+### Changed
+- Refactor laser blade classes.
 
 ## [1.19-pre1-0.6.0.2]
 ### Changed
