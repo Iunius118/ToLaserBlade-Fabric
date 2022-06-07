@@ -3,7 +3,11 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+
+## [1.19-0.6.0.3]
 ### Changed
+- Update to Minecraft 1.19.
+- Require API 0.55.1+.
 - Refactor laser blade classes.
 
 ## [1.19-pre1-0.6.0.2]
