@@ -1,5 +1,5 @@
 # Cheatsheet
-ToLaserBlade-Fabric v0.6.0.0
+ToLaserBlade-Fabric v0.6.1.0
 
 ## Items
 ### Laser Blade
@@ -45,7 +45,7 @@ Smithing Table:
 - Attack Speed (up to 4.0): Laser Blade + Gold Ingot
 - Attack Damage (up to 8): Laser Blade + Diamond
 - Light Element: Laser Blade + Glowstone
-- Silk Touch: Laser Blade + Prismarine Crystals / Amethyst Shard
+- Silk Touch: Laser Blade + Prismarine Crystals / Amethyst Shard / Echo Shard
 - Fireproof: Laser Blade + Netherite Ingot
 
 ### Enchantment: Light Element
