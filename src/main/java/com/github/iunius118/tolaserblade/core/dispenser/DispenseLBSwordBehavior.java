@@ -24,7 +24,7 @@ public class DispenseLBSwordBehavior implements DispenseItemBehavior {
     public ItemStack dispense(BlockSource blockSource, ItemStack itemStack) {
         ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
-        if (!config.enableLaserTrap()) {
+        if (!config.isLaserTrapEnabled()) {
             return DEFAULT_ITEM_BEHAVIOR.dispense(blockSource, itemStack);
         }
 

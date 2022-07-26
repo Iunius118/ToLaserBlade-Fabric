@@ -10,7 +10,7 @@ public class ModConfig implements ConfigData {
     boolean canLaserTrapAttackPlayer = true;
     boolean canLaserTrapHeatUpFurnace = true;
 
-    public boolean enableLaserTrap() {
+    public boolean isLaserTrapEnabled() {
         return enableLaserTrap;
     }
 
