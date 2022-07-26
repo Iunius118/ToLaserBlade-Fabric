@@ -4,6 +4,16 @@
 
 ## [Unreleased]
 
+## [1.19-0.6.2.0]
+### Added
+- Client-side config (`[client]`) to `tolaserblade.toml`.
+  - useOriginalShaderProgram: if you have trouble when using shader mod, try setting this to false.
+
+### Changed
+- Require Fabric Loader 0.14.8+.
+- Compatible with Fabric API 0.58.0.
+- Compatible with Cloth Config 7.0.73.
+
 ## [1.19-0.6.1.0]
 ### Changed
 - Add echo shard to ingredients of silk touch upgrade.
@@ -27,10 +37,10 @@
 
 ## [1.18.2-0.6.0.0]
 ### Added
-- Config file (tolaserblade.toml).
-  - enableLaserTrap: Enable laser trap.
-  - canLaserTrapAttackPlayer: Allow laser trap to attack player.
-  - canLaserTrapHeatUpFurnace: Allow laser trap to light furnace.
+- Config file (`tolaserblade.toml`).
+  - enableLaserTrap: enable laser trap.
+  - canLaserTrapAttackPlayer: allow laser trap to attack player.
+  - canLaserTrapHeatUpFurnace: allow laser trap to light furnace.
 
 ### Changed
 - Require Cloth Config.
