@@ -12,7 +12,7 @@ import java.util.Collections;
 
 public class LBSwordItemOverrides extends ItemOverrides {
     public LBSwordItemOverrides() {
-        super(null, null, null, Collections.emptyList());
+        super(null, null, Collections.emptyList());
     }
 
     @Nullable

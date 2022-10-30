@@ -44,13 +44,13 @@ public class LBSwordItemModel implements UnbakedModel, BakedModel {
     }
 
     @Override
-    public Collection<Material> getMaterials(Function<ResourceLocation, UnbakedModel> function, Set<Pair<String, String>> set) {
-        return Collections.emptySet();
+    public void resolveParents(Function<ResourceLocation, UnbakedModel> function) {
+
     }
 
     @Nullable
     @Override
-    public BakedModel bake(ModelBakery modelBakery, Function<Material, TextureAtlasSprite> function, ModelState modelState, ResourceLocation resourceLocation) {
+    public BakedModel bake(ModelBaker modelBaker, Function<Material, TextureAtlasSprite> function, ModelState modelState, ResourceLocation resourceLocation) {
         return this;
     }
 
