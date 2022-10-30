@@ -1,6 +1,7 @@
 package com.github.iunius118.tolaserblade;
 
 import com.github.iunius118.tolaserblade.common.CommonRegister;
+import com.github.iunius118.tolaserblade.world.item.ModCreativeModeTabs;
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,6 +18,7 @@ public class ToLaserBlade implements ModInitializer {
         CommonRegister.registerEventListeners();
         CommonRegister.registerRecipeSerializers();
         CommonRegister.registerItems();
+        ModCreativeModeTabs.initModCreativeModeTabs();
         CommonRegister.registerEnchantments();
         CommonRegister.registerDispenseItemBehaviors();
         CommonRegister.registerParticleTypes();

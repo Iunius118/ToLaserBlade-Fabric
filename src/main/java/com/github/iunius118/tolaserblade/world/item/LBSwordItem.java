@@ -29,8 +29,7 @@ public class LBSwordItem extends SwordItem implements LaserBladeItemBase {
 
     public static final FabricItemSettings properties = (FabricItemSettings) new FabricItemSettings()
             .customDamage(new LaserBladeCustomDamageHandler())
-            .equipmentSlot(new LaserBladeEquipmentSlotProvider())
-            .tab(ModCreativeModeTabs.TAB_LASER_BLADE);
+            .equipmentSlot(new LaserBladeEquipmentSlotProvider());
 
     public LBSwordItem(boolean isFireResistant) {
         super(ModItemTiers.getLBSwordTier(isFireResistant), (int) DEFAULT_DAMAGE, DEFAULT_SPEED, LaserBladeItemBase.setFireResistant(properties, isFireResistant));
