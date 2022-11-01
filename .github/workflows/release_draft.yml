@@ -1,0 +1,29 @@
+name: release_draft
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release_draft:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+      - name: validate gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
+      - name: setup jdk
+        uses: actions/setup-java@v1
+        with:
+          java-version: 17
+      - name: make gradle wrapper executable
+        run: chmod +x ./gradlew
+      - name: build
+        run: ./gradlew build
+      - name: create release
+        uses: softprops/action-gh-release@v1
+        with:
+          draft: true
+          files: build/libs/*.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
