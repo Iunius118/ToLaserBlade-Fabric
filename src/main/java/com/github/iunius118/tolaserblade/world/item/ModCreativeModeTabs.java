@@ -7,9 +7,15 @@ import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 public class ModCreativeModeTabs {
+    private static final List<ItemStack> generalItems = Stream.of(
+            ModItems.LASER_BLADE,
+            ModItems.LASER_BLADE_FP
+    ).map(ItemStack::new).toList();
+
     public static final CreativeModeTab TAB_LASER_BLADE = new FabricItemGroup(new ResourceLocation(ToLaserBlade.MOD_ID, "general")) {
         @Override
         public ItemStack makeIcon() {
@@ -18,13 +24,9 @@ public class ModCreativeModeTabs {
 
         @Override
         protected void generateDisplayItems(FeatureFlagSet featureFlagSet, Output output) {
-            output.acceptAll(
-                    Stream.of(ModItems.LASER_BLADE, ModItems.LASER_BLADE_FP)
-                            .map(ItemStack::new)
-                            .toList()
-            );
+            output.acceptAll(generalItems);
         }
     };
 
-    public static void initModCreativeModeTabs(){}
+    public static void initModCreativeModeTabs() {}
 }

@@ -5,6 +5,7 @@ import com.github.iunius118.tolaserblade.common.util.ModSoundEvents;
 import com.github.iunius118.tolaserblade.core.dispenser.DispenseLBSwordBehavior;
 import com.github.iunius118.tolaserblade.core.particle.ModParticleTypes;
 import com.github.iunius118.tolaserblade.integration.autoconfig.ModConfig;
+import com.github.iunius118.tolaserblade.world.item.ModCreativeModeTabs;
 import com.github.iunius118.tolaserblade.world.item.ModItems;
 import com.github.iunius118.tolaserblade.world.item.crafting.ModRecipeSerializers;
 import com.github.iunius118.tolaserblade.world.item.enchantment.ModEnchantments;
@@ -31,6 +32,10 @@ public class CommonRegister {
     public static void registerItems() {
         Registry.register(Registry.ITEM, new ResourceLocation(ToLaserBlade.MOD_ID, "laser_blade"), ModItems.LASER_BLADE);
         Registry.register(Registry.ITEM, new ResourceLocation(ToLaserBlade.MOD_ID, "laser_blade_fp"), ModItems.LASER_BLADE_FP);
+    }
+
+    public static void registerItemGroups() {
+        ModCreativeModeTabs.initModCreativeModeTabs();
     }
 
     public static void registerEnchantments() {
