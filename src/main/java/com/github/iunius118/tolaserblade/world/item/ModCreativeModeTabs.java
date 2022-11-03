@@ -23,7 +23,7 @@ public class ModCreativeModeTabs {
         }
 
         @Override
-        protected void generateDisplayItems(FeatureFlagSet featureFlagSet, Output output) {
+        protected void generateDisplayItems(FeatureFlagSet featureFlagSet, Output output, boolean bl) {
             output.acceptAll(generalItems);
         }
     };
