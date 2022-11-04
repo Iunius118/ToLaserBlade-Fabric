@@ -27,6 +27,7 @@ public class CommonRegister {
     public static void registerRecipeSerializers() {
         Registry.register(Registry.RECIPE_SERIALIZER, new ResourceLocation(ToLaserBlade.MOD_ID, "color"), ModRecipeSerializers.COLOR);
         Registry.register(Registry.RECIPE_SERIALIZER, new ResourceLocation(ToLaserBlade.MOD_ID, "upgrade"), ModRecipeSerializers.UPGRADE);
+        Registry.register(Registry.RECIPE_SERIALIZER, new ResourceLocation(ToLaserBlade.MOD_ID, "model_change"), ModRecipeSerializers.MODEL_CHANGE);
     }
 
     public static void registerItems() {

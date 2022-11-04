@@ -16,7 +16,6 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.UpgradeRecipe;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 public class LBColorRecipe extends UpgradeRecipe {
     private final Ingredient base;
@@ -164,7 +163,6 @@ public class LBColorRecipe extends UpgradeRecipe {
             return new LBColorRecipe(recipeId, base, addition, colorPart, colorValue);
         }
 
-        @Nullable
         @Override
         public LBColorRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
             Ingredient base = Ingredient.fromNetwork(buffer);

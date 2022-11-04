@@ -19,7 +19,6 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.UpgradeRecipe;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 public class LBUpgradeRecipe extends UpgradeRecipe {
     private final Ingredient base;
@@ -141,7 +140,6 @@ public class LBUpgradeRecipe extends UpgradeRecipe {
             return new LBUpgradeRecipe(recipeId, base, addition, upgradeId);
         }
 
-        @Nullable
         @Override
         public LBUpgradeRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer) {
             Ingredient base = Ingredient.fromNetwork(buffer);
