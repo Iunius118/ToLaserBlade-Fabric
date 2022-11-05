@@ -7,6 +7,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 public interface LaserBladeModel {
+    default int getID() {
+        return -1;
+    }
+
     void render(ItemStack itemStack,  ItemTransforms.TransformType mode, PoseStack matrices, MultiBufferSource vertexConsumers, int light, int overlay);
 
     ResourceLocation getTexture();

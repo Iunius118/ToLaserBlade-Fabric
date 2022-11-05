@@ -35,10 +35,17 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
     private static final ResourceLocation TEXTURE = new ResourceLocation(ToLaserBlade.MOD_ID, "textures/item/laser_blade_3d.png");
     private static final Logger LOGGER = LogManager.getFormatterLogger(ToLaserBlade.MOD_NAME + ".LaserBladeModelVersion1");
     private final List<ModelObject> modelObjects = new ArrayList<>();
-    public  final String name;
+    private final String name;
+    private final int id;
 
-    private LaserBladeModelV1(String modelName) {
+    private LaserBladeModelV1(String modelName, int modelID) {
         name = modelName;
+        id = modelID;
+    }
+
+    @Override
+    public int getID() {
+        return id;
     }
 
     @Override
