@@ -24,6 +24,7 @@ import org.joml.Matrix4f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -78,15 +79,15 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
         return TEXTURE;
     }
 
-    public static LaserBladeModel parseModel(String name, String json) {
-        JsonModel jsonModel = parseFromJson(name, json);
+    public static LaserBladeModel parseModel(String name, Reader reader) {
+        JsonModel jsonModel = parseFromJson(name, reader);
         return getLaserBladeModel(name, jsonModel);
     }
 
-    private static JsonModel parseFromJson(String name, String json) {
+    private static JsonModel parseFromJson(String name, Reader reader) {
         try {
             Gson gson = (new GsonBuilder()).create();
-            return GsonHelper.fromJson(gson, json, JsonModel.class);
+            return GsonHelper.fromJson(gson, reader, JsonModel.class);
         } catch(JsonParseException e) {
             LOGGER.warn("Failed to load model: " + name + "\n" + e);
         }
@@ -95,7 +96,7 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
     }
 
     private static LaserBladeModel getLaserBladeModel(String name, JsonModel jsonModel) {
-        if (jsonModel == null)
+        if (jsonModel == null || jsonModel.id < 0)
             return null;
 
         List<int[]> faces = new ArrayList<>();
@@ -127,7 +128,7 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
             normals.add(getVector3fFromArray(normal));
         }
 
-        LaserBladeModelV1 modelV1 = new LaserBladeModelV1(name);
+        LaserBladeModelV1 modelV1 = new LaserBladeModelV1(name, jsonModel.id);
 
         for (int oi = 0; oi < jsonModel.objects.size(); oi++) {
             var jsonModelObject = jsonModel.objects.get(oi);

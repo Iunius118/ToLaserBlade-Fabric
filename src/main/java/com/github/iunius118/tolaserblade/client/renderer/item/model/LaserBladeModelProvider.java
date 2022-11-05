@@ -1,5 +1,6 @@
 package com.github.iunius118.tolaserblade.client.renderer.item.model;
 
+import com.github.iunius118.tolaserblade.client.model.LaserBladeModelManager;
 import net.fabricmc.fabric.api.client.model.ModelProviderContext;
 import net.fabricmc.fabric.api.client.model.ModelProviderException;
 import net.fabricmc.fabric.api.client.model.ModelResourceProvider;
@@ -13,7 +14,11 @@ public class LaserBladeModelProvider implements ModelResourceProvider {
 
     @Override
     public @Nullable UnbakedModel loadModelResource(ResourceLocation resourceId, ModelProviderContext context) throws ModelProviderException {
-        if (resourceId.equals(LB_SWORD_MODEL) || resourceId.equals(LB_SWORD_FP_MODEL)) {
+        if (resourceId.equals(LB_SWORD_MODEL)) {
+            // Load/Reload laser blade json models
+            LaserBladeModelManager.renewInstance();
+            return new LBSwordItemModel();
+        } else if (resourceId.equals(LB_SWORD_FP_MODEL)) {
             return new LBSwordItemModel();
         }
 
