@@ -1,5 +1,5 @@
 # Cheatsheet
-ToLaserBlade-Fabric v0.6.2.0
+ToLaserBlade-Fabric v0.7.0.0
 
 ## Items
 ### Laser Blade
@@ -39,13 +39,22 @@ Smithing Table:
 - Switching Blend Mode of Outer Blade: Laser Blade + Tinted Glass
 - Switching Blend Mode of Inner Blade: Laser Blade + Block of Amethyst
 
+### Changing Laser Blade Shape
+Smithing Table:
+
+- Type 0 (Standard): Laser Blade + Glass
+- Type 1: Laser Blade + Sand
+- Type 2: Laser Blade + Sandstone
+- Type 526: Laser Blade + Dirt
+
 ### Upgrading Laser Blades
 Smithing Table:
 
 - Attack Speed (up to 4.0): Laser Blade + Gold Ingot
-- Attack Damage (up to 8): Laser Blade + Diamond
+- Attack Damage (up to 8): Laser Blade + Block of Diamond
 - Light Element: Laser Blade + Glowstone
 - Silk Touch: Laser Blade + Prismarine Crystals / Amethyst Shard / Echo Shard
+- Looting: Laser Blade + Nautilus Shell / Block of Emerald
 - Fireproof: Laser Blade + Netherite Ingot
 
 ### Enchantment: Light Element

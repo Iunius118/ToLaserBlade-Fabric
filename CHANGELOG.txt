@@ -4,6 +4,20 @@
 
 ## [Unreleased]
 
+## [22w44a-0.7.0.0-beta]
+### Added
+- Upgrade recipe of Looting enchantment: Laser Blade + Nautilus Shell/Block of Emerald.
+- Three new laser blade shapes.
+- New recipe type `tolaserblade:model_change` to change laser blade shape on Smithing Table.
+- Recipes to change laser blade shape: Laser Blade + Glass/Sand/Sandstone/Dirt.
+
+### Changed
+- Update to Minecraft 22w44a (1.19.3-snapshot).
+- Require Fabric Loader 0.14.10+.
+- Require Fabric API 0.65.3+1.19.3+.
+- Require Cloth Config 9.0.92+.
+- Attack damage upgrade recipe consumes Block of Diamond now.
+
 ## [1.19-0.6.2.0]
 ### Added
 - Client-side config (`[client]`) to `tolaserblade.toml`.
