@@ -3,6 +3,11 @@
   "enchantment.tolaserblade.light_element.desc": "Increases the damage of the Laser Blade, and deals additional damage to undead mobs and illagers.",
   "item.tolaserblade.laser_blade": "Laser Blade",
   "item.tolaserblade.laser_blade_fp": "Laser Blade",
+  "item.tolaserblade.lb_battery": "LB Energy Cell",
+  "item.tolaserblade.lb_blueprint": "Laser Blade Blueprint",
+  "item.tolaserblade.lb_casing": "Laser Blade Casing",
+  "item.tolaserblade.lb_emitter": "Laser Blade Emitter",
+  "item.tolaserblade.lb_medium": "Laser Medium",
   "itemGroup.tolaserblade.general": "ToLaserBlade",
   "upgrade.tolaserblade.fireproof": "HEAT RESISTANT 8000"
 }

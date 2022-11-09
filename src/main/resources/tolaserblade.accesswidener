@@ -3,3 +3,7 @@ accessWidener v1 named
 # Using in DispenseLBSwordBehavior for Laser Furnace
 accessible field net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity litTime I
 accessible field net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity litDuration I
+
+# Using in LBBlueprintItem for Laser Blade Blueprint
+accessible field net/minecraft/world/item/Item craftingRemainingItem Lnet/minecraft/world/item/Item;
+mutable field net/minecraft/world/item/Item craftingRemainingItem Lnet/minecraft/world/item/Item;

@@ -1,5 +1,8 @@
 package com.github.iunius118.tolaserblade.client;
 
+import com.github.iunius118.tolaserblade.client.color.item.LBCasingItemColor;
+import com.github.iunius118.tolaserblade.client.color.item.LBEmitterItemColor;
+import com.github.iunius118.tolaserblade.client.color.item.LBMediumItemColor;
 import com.github.iunius118.tolaserblade.client.color.item.LBSwordItemColor;
 import com.github.iunius118.tolaserblade.client.particle.LaserTrapParticle;
 import com.github.iunius118.tolaserblade.client.renderer.item.LBSwordItemRenderer;
@@ -14,8 +17,13 @@ import net.minecraft.core.Direction;
 
 public class ClientRegister {
     public static void registerColorProvider() {
+        // Laser Blades
         ColorProviderRegistry.ITEM.register(new LBSwordItemColor(), ModItems.LASER_BLADE);
         ColorProviderRegistry.ITEM.register(new LBSwordItemColor(), ModItems.LASER_BLADE_FP);
+        // Laser Blade Parts
+        ColorProviderRegistry.ITEM.register(new LBMediumItemColor(), ModItems.LB_MEDIUM);
+        ColorProviderRegistry.ITEM.register(new LBEmitterItemColor(), ModItems.LB_EMITTER);
+        ColorProviderRegistry.ITEM.register(new LBCasingItemColor(), ModItems.LB_CASING);
     }
 
     public static void registerResourceProvider() {

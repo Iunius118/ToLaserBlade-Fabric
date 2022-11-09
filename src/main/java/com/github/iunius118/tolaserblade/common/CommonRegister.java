@@ -31,8 +31,16 @@ public class CommonRegister {
     }
 
     public static void registerItems() {
+        // Laser Blades
         Registry.register(Registry.ITEM, new ResourceLocation(ToLaserBlade.MOD_ID, "laser_blade"), ModItems.LASER_BLADE);
         Registry.register(Registry.ITEM, new ResourceLocation(ToLaserBlade.MOD_ID, "laser_blade_fp"), ModItems.LASER_BLADE_FP);
+        // Blueprint
+        Registry.register(Registry.ITEM, new ResourceLocation(ToLaserBlade.MOD_ID, "lb_blueprint"), ModItems.LB_BLUEPRINT);
+        // Laser Blade parts
+        Registry.register(Registry.ITEM, new ResourceLocation(ToLaserBlade.MOD_ID, "lb_battery"), ModItems.LB_BATTERY);
+        Registry.register(Registry.ITEM, new ResourceLocation(ToLaserBlade.MOD_ID, "lb_medium"), ModItems.LB_MEDIUM);
+        Registry.register(Registry.ITEM, new ResourceLocation(ToLaserBlade.MOD_ID, "lb_emitter"), ModItems.LB_EMITTER);
+        Registry.register(Registry.ITEM, new ResourceLocation(ToLaserBlade.MOD_ID, "lb_casing"), ModItems.LB_CASING);
     }
 
     public static void registerItemGroups() {

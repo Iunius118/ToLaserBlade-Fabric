@@ -10,8 +10,8 @@ public class LBSwordItemColor implements ItemColor {
 
         return switch (tintIndex) {
             case 0 -> laserBladeColor.gripColor | 0xFF000000;
-            case 1 -> laserBladeColor.simpleOuterColor | 0xFF000000;
-            case 2 -> laserBladeColor.simpleInnerColor | 0xFF000000;
+            case 1 -> laserBladeColor.simpleOuterColor;
+            case 2 -> laserBladeColor.simpleInnerColor;
             default -> 0xFFFFFFFF;
         };
     }

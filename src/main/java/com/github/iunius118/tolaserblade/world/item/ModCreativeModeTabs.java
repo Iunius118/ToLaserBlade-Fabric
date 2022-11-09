@@ -13,7 +13,12 @@ import java.util.stream.Stream;
 public class ModCreativeModeTabs {
     private static final List<ItemStack> generalItems = Stream.of(
             ModItems.LASER_BLADE,
-            ModItems.LASER_BLADE_FP
+            ModItems.LASER_BLADE_FP,
+            ModItems.LB_BLUEPRINT,
+            ModItems.LB_BATTERY,
+            ModItems.LB_MEDIUM,
+            ModItems.LB_EMITTER,
+            ModItems.LB_CASING
     ).map(ItemStack::new).toList();
 
     public static final CreativeModeTab TAB_LASER_BLADE = new FabricItemGroup(new ResourceLocation(ToLaserBlade.MOD_ID, "general")) {

@@ -27,7 +27,7 @@ public class LBSwordItem extends SwordItem implements LaserBladeItemBase {
 
     private final Tier tier;
 
-    public static final FabricItemSettings properties = (FabricItemSettings) new FabricItemSettings()
+    public static final FabricItemSettings properties = new FabricItemSettings()
             .customDamage(new LaserBladeCustomDamageHandler())
             .equipmentSlot(new LaserBladeEquipmentSlotProvider());
 
