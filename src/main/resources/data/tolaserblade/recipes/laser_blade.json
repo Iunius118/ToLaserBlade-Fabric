@@ -1,25 +1,22 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "group": "tolaserblade:laser_blade",
-  "pattern": [
-    " id",
-    "igi",
-    "ri "
-  ],
-  "key": {
-    "i": {
-      "tag": "c:iron_ingots"
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tolaserblade:lb_battery"
     },
-    "d": {
-      "tag": "c:diamonds"
+    {
+      "item": "tolaserblade:lb_medium"
     },
-    "g": {
-      "tag": "c:glowstone_dusts"
+    {
+      "item": "tolaserblade:lb_emitter"
     },
-    "r": {
-      "tag": "c:redstone_dusts"
+    {
+      "item": "tolaserblade:lb_casing"
+    },
+    {
+      "item": "tolaserblade:lb_blueprint"
     }
-  },
+  ],
   "result": {
     "item": "tolaserblade:laser_blade"
   }
