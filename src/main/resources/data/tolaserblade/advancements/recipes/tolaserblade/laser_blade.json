@@ -2,8 +2,13 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "tolaserblade:laser_blade",
-      "tolaserblade:laser_blade_2"
+      "tolaserblade:lb_blueprint",
+      "tolaserblade:lb_battery",
+      "tolaserblade:lb_medium",
+      "tolaserblade:lb_medium_2",
+      "tolaserblade:lb_emitter",
+      "tolaserblade:lb_casing",
+      "tolaserblade:laser_blade"
     ]
   },
   "criteria": {
