@@ -20,7 +20,7 @@ public class LaserBladeItemColor {
     public final int simpleOuterColor;
 
     public LaserBladeItemColor(ItemStack itemStack) {
-        if (itemStack == null || itemStack.isEmpty()) {
+        if (itemStack == null || itemStack.isEmpty() || itemStack.getTag() == null) {
             isBroken = false;
 
             gripColor = -1;
@@ -31,16 +31,17 @@ public class LaserBladeItemColor {
             isInnerSubColor = false;
             simpleInnerColor = -1;
 
-            rawOuterColor = -1;
-            outerColor = -1;
+            int red = LaserBladeColor.RED.getBladeColor();
+            rawOuterColor = red;
+            outerColor = red;
             isOuterSubColor = false;
-            simpleOuterColor = -1;
+            simpleOuterColor = red;
 
             return;
         }
 
         // var item = itemStack.getItem();
-        // isBroken = (item instanceof LBBrokenItem|| item instanceof LBBrandNewItem);
+        // isBroken = (item instanceof LBBrokenItem || item instanceof LBBrandNewItem);
         isBroken = false;
 
         LaserBladeVisual visual = LaserBlade.visualOf(itemStack);
