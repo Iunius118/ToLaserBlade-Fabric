@@ -3,7 +3,6 @@ package com.github.iunius118.tolaserblade.world.item;
 import com.github.iunius118.tolaserblade.ToLaserBlade;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
@@ -21,17 +20,12 @@ public class ModCreativeModeTabs {
             ModItems.LB_CASING
     ).map(ItemStack::new).toList();
 
-    public static final CreativeModeTab TAB_LASER_BLADE = new FabricItemGroup(new ResourceLocation(ToLaserBlade.MOD_ID, "general")) {
-        @Override
-        public ItemStack makeIcon() {
-            return LaserBladeItemStack.ICON.getCopy();
-        }
-
-        @Override
-        protected void generateDisplayItems(FeatureFlagSet featureFlagSet, Output output, boolean bl) {
-            output.acceptAll(generalItems);
-        }
-    };
+    public static final CreativeModeTab TAB_LASER_BLADE = FabricItemGroup.builder(new ResourceLocation(ToLaserBlade.MOD_ID, "general"))
+            .icon(LaserBladeItemStack.ICON::getCopy)
+            .displayItems((featureFlagSet, output, operatorEnabled) -> {
+                output.acceptAll(generalItems);
+            })
+            .build();
 
     public static void initModCreativeModeTabs() {}
 }

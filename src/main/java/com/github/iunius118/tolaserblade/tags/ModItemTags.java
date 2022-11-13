@@ -2,7 +2,7 @@ package com.github.iunius118.tolaserblade.tags;
 
 import com.github.iunius118.tolaserblade.ToLaserBlade;
 import com.github.iunius118.tolaserblade.core.laserblade.upgrade.UpgradeID;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -25,7 +25,7 @@ public class ModItemTags {
     public static final TagKey<Item> CASING_REPAIR = makeWrapperTag("casing_repair");
 
     private static TagKey<Item> makeWrapperTag(ResourceLocation id) {
-        return TagKey.create(Registry.ITEM_REGISTRY, id);
+        return TagKey.create(Registries.ITEM, id);
     }
 
     private static TagKey<Item> makeWrapperTag(String id) {
