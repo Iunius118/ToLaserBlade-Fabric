@@ -4,6 +4,11 @@
 
 ## [Unreleased]
 
+## [22w45a-0.7.0.2-beta]
+### Fixed
+- Remove common item tags already defined in Fabric API.
+- Recipe advancements of laser blade parts.
+
 ## [22w45a-0.7.0.1-beta]
 ### Added
 - New items: Laser Blade Blueprint, LB Energy Cell, Laser Medium, Laser Blade Emitter, and Laser Blade Casing.
