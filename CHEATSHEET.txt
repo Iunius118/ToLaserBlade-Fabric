@@ -5,54 +5,36 @@ ToLaserBlade-Fabric v0.7.0.1
 ### Laser Blade Blueprint
 - ID: `tolaserblade:lb_blueprint`
 - This item will remain on the crafting grid
-
-Crafting Table:
-
-- R = Redstone; B = Blue Dye; S = Stick; P = Paper
-  - R, B, R;
-  - S, P, S; -> Laser Blade Blueprint
+- Crafting on Crafting Table:
+  1. | Redstone | Blue Dye | Redstone |
+  2. | Stick    | Paper    | Stick    |
 
 ### LB Energy Cell
 - ID: `tolaserblade:lb_battery`
-
-Crafting Table:
-
-- B = Laser Blade Blueprint; I = Iron Ingot; R = Redstone
-  - B;
-  - I;
-  - R; -> LB Energy Cell
+- Crafting on Crafting Table:
+  1. | Laser Blade Blueprint |
+  2. | Iron Ingot            |
+  3. | Redstone              |
 
 ### Laser Medium
 - ID: `tolaserblade:lb_medium`
-
-Crafting Table:
-
-- B = Laser Blade Blueprint; G = Glowstone Dust
-  - B;
-  - G; -> Laser Medium
-- B = Laser Blade Blueprint; D = Diamond
-  - B;
-  - D; -> Laser Medium
+- Crafting on Crafting Table:
+  1. | Laser Blade Blueprint     |
+  2. | Glowstone Dust or Diamond |
 
 ### Laser Blade Emitter
 - ID: `tolaserblade:lb_emitter`
-
-Crafting Table:
-
-- B = Laser Blade Blueprint; D = Diamond; I = Iron Ingot
-  - B;
-  - D;
-  - I; -> Laser Blade Emitter
+- Crafting on Crafting Table:
+  1. | Laser Blade Blueprint |
+  2. | Diamond               |
+  3. | Iron Ingot            |
 
 ### Laser Blade Casing
 - ID: `tolaserblade:lb_casing`
-
-Crafting Table:
-
-- B = Laser Blade Blueprint; I = Iron Ingot
-  - B;
-  - I;
-  - I; -> Laser Blade Casing
+- Crafting on Crafting Table:
+  1. | Laser Blade Blueprint |
+  2. | Iron Ingot            |
+  3. | Iron Ingot            |
 
 ### Laser Blade
 - ID: `tolaserblade:laser_blade`
@@ -63,10 +45,7 @@ Crafting Table:
 - Enchanting: Available on Enchanting Table, Anvil, or Smithing Table
 - Mining speed: 12
 - Mining level: 3
-
-Crafting Table:
-
-- Ingredients (shapeless recipe)
+- Crafting on Crafting Table (shapeless recipe):
   - Laser Blade Blueprint
   - LB Energy Cell
   - Laser Medium
@@ -77,17 +56,18 @@ Crafting Table:
 - ID: `tolaserblade:laser_blade_fp`
 - Basic attack damage: 8
 - Mining level: 4
-- Recipe: See Upgrading Laser Blades
+- Upgrading on Smithing Table:
+  - Laser Blade + Netherite Ingot
 
 ## Features
 ### Changing Laser Blade colors
 Smithing Table:
 
-- Outer Blade: Laser Blade + Stained Glass
+- Outer blade: Laser Blade + Stained Glass
 - Inner blade: Laser Blade + Stained Glass Pane
 - Grip: Laser Blade + Carpet
-- Switching Blend Mode of Outer Blade: Laser Blade + Tinted Glass
-- Switching Blend Mode of Inner Blade: Laser Blade + Block of Amethyst
+- Switching blend mode of outer blade: Laser Blade + Tinted Glass
+- Switching blend mode of inner blade: Laser Blade + Block of Amethyst
 
 ### Changing Laser Blade Shape
 Smithing Table:
@@ -100,8 +80,8 @@ Smithing Table:
 ### Upgrading Laser Blades
 Smithing Table:
 
-- Attack Speed (up to 4.0): Laser Blade + Gold Ingot
-- Attack Damage (up to 8): Laser Blade + Block of Diamond
+- Attack speed (up to 4.0): Laser Blade + Gold Ingot
+- Attack damage (up to 8): Laser Blade + Block of Diamond
 - Light Element: Laser Blade + Glowstone
 - Silk Touch: Laser Blade + Prismarine Crystals / Amethyst Shard / Echo Shard
 - Looting: Laser Blade + Nautilus Shell / Block of Emerald

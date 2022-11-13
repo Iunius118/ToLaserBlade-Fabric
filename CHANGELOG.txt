@@ -4,6 +4,17 @@
 
 ## [Unreleased]
 
+## [22w45a-0.7.0.1-beta]
+### Added
+- New items: Laser Blade Blueprint, LB Energy Cell, Laser Medium, Laser Blade Emitter, and Laser Blade Casing.
+- Recipes for new items.
+- Advancements for recipes.
+
+### Changed
+- Update to Minecraft 22w45a (1.19.3-snapshot).
+- Require Fabric API 0.66.2+1.19.3+.
+- Laser Blade recipe to use blueprint and parts.
+
 ## [22w44a-0.7.0.0-beta]
 ### Added
 - Upgrade recipe of Looting enchantment: Laser Blade + Nautilus Shell/Block of Emerald.
