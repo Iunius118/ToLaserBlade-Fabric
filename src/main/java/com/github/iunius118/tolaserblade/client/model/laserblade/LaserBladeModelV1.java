@@ -38,10 +38,12 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
     private final List<ModelObject> modelObjects = new ArrayList<>();
     private final String name;
     private final int id;
+    private final Vector3f guiResize;
 
-    private LaserBladeModelV1(String modelName, int modelID) {
+    private LaserBladeModelV1(String modelName, int modelID, Vector3f resizeInGUI) {
         name = modelName;
         id = modelID;
+        guiResize = resizeInGUI;
     }
 
     @Override
@@ -53,6 +55,14 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
     public void render(ItemStack itemStack, ItemTransforms.TransformType mode, PoseStack matrices, MultiBufferSource vertexConsumers, int light, int overlay) {
         LaserBladeItemColor color = new LaserBladeItemColor(itemStack);
         int pushCount = 0;
+
+        if (guiResize != null && (mode == ItemTransforms.TransformType.GUI || mode == ItemTransforms.TransformType.FIXED)) {
+            // Adjust model size and position to GUI or item frame
+            // scale(guiResize.x) -> translate(guiResize.y, guiResize.z)
+            matrices.translate(0, guiResize.y(), guiResize.z());
+            float size = guiResize.x();
+            matrices.scale(size, size, size);
+        }
 
         for (ModelObject modelObject : modelObjects) {
             if (!modelObject.isVisible(color))
@@ -99,6 +109,12 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
         if (jsonModel == null || jsonModel.id < 0)
             return null;
 
+        Vector3f resizeInGUI = null;
+
+        if (jsonModel.guiResize != null) {
+            resizeInGUI = getVector3fFromArray(jsonModel.guiResize);
+        }
+
         List<int[]> faces = new ArrayList<>();
 
         for (int fi = 0; fi < jsonModel.faces.size(); fi++) {
@@ -128,7 +144,7 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
             normals.add(getVector3fFromArray(normal));
         }
 
-        LaserBladeModelV1 modelV1 = new LaserBladeModelV1(name, jsonModel.id);
+        LaserBladeModelV1 modelV1 = new LaserBladeModelV1(name, jsonModel.id, resizeInGUI);
 
         for (int oi = 0; oi < jsonModel.objects.size(); oi++) {
             var jsonModelObject = jsonModel.objects.get(oi);
@@ -359,6 +375,8 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
         public int id = -1;
         @SerializedName("renderer_id")
         public int rendererID = 0;
+        @SerializedName("gui_resize")
+        public float[] guiResize = null;
         public List<JsonModelObject> objects = Collections.emptyList();
         public List<int[]> faces = Collections.emptyList();
         public List<float[]> vertices = Collections.emptyList();
