@@ -17,7 +17,7 @@ public class LaserBladeModelManager {
     private static final Logger LOGGER = LogManager.getFormatterLogger(ToLaserBlade.MOD_NAME + ".LaserBladeModelManager");
     private static LaserBladeModelManager instance;
     private final Map<Integer, LaserBladeModel> models;
-    private LaserBladeModel defaultModel = null;
+    private final LaserBladeModel defaultModel;
 
     public static LaserBladeModelManager renewInstance() {
         instance = new LaserBladeModelManager();
@@ -32,7 +32,7 @@ public class LaserBladeModelManager {
         models = new HashMap<>();
         ResourceManager resourceManager = Minecraft.getInstance().getResourceManager();
 
-        // Search json files from resource packs
+        // Search resource packs for .json files
         Map<ResourceLocation, Resource> resourceMap = resourceManager.listResources(
                 "models/item/laser_blade", resourceLocation -> {
                     String namespace = resourceLocation.getNamespace();
@@ -41,10 +41,12 @@ public class LaserBladeModelManager {
                 }
         );
 
-        // Parse and Register models
+        // Parse .json files and Register models
         resourceMap.forEach((location, resource) -> {
             LaserBladeModel model = LaserBladeJsonModelLoader.parse(location.toString(), resource);
-            if (model != null) {models.put(model.getID(), model);}
+            if (model != null) {
+                models.put(model.getID(), model);
+            }
         });
 
         defaultModel = models.get(0);
@@ -68,5 +70,4 @@ public class LaserBladeModelManager {
             return modelManager.defaultModel;
         }
     }
-
 }
