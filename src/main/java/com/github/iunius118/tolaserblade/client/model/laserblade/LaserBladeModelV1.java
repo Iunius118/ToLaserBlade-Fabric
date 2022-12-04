@@ -18,11 +18,11 @@ import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.ItemStack;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.Reader;
 import java.util.ArrayList;
@@ -34,7 +34,9 @@ import java.util.function.Predicate;
 
 public class LaserBladeModelV1 extends SimpleLaserBladeModel {
     private static final ResourceLocation TEXTURE = new ResourceLocation(ToLaserBlade.MOD_ID, "textures/item/laser_blade_3d.png");
-    private static final Logger LOGGER = LogManager.getFormatterLogger(ToLaserBlade.MOD_NAME + ".LaserBladeModelVersion1");
+    private static final Logger LOGGER = LoggerFactory.getLogger(ToLaserBlade.MOD_NAME + ".LaserBladeModelVersion1");
+    private static String MODEL_TYPE = "tolaserblade:model_v1";
+
     private final List<ModelObject> modelObjects = new ArrayList<>();
     private final String name;
     private final int id;
@@ -99,7 +101,7 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
             Gson gson = (new GsonBuilder()).create();
             return GsonHelper.fromJson(gson, reader, JsonModel.class);
         } catch(JsonParseException e) {
-            LOGGER.warn("Failed to load model: " + name + "\n" + e);
+            LOGGER.warn("Failed to load model: {}\n{}", name, e);
         }
 
         return null;
@@ -121,7 +123,7 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
             int[] face = jsonModel.faces.get(fi);
 
             if (face.length != 12) {
-                LOGGER.warn("Incorrect face: " + name + ":faces/" + fi);
+                LOGGER.warn("Incorrect face: {}:faces/{}", name, fi);
                 return null;
             }
 
@@ -304,7 +306,7 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
             final int size = object.size;
 
             if (from < 0 || size < 0 || faces.size() < from + size) {
-                LOGGER.warn("Incorrect range specified: " + objectName);
+                LOGGER.warn("Incorrect range specified: {}", objectName);
                 return;
             }
 
@@ -338,7 +340,7 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
         }
 
         private void warnIndexOutOfBounds(String objectName, int faceIndex, int elementIndex) {
-            LOGGER.warn("Index is out of bounds: " + objectName + "faces/" + faceIndex + "/" + elementIndex);
+            LOGGER.warn("Index is out of bounds: {}faces/{}/{}" + objectName, faceIndex, elementIndex);
         }
 
         public boolean isFunction() {

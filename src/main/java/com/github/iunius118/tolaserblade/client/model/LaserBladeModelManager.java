@@ -7,14 +7,14 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class LaserBladeModelManager {
-    private static final Logger LOGGER = LogManager.getFormatterLogger(ToLaserBlade.MOD_NAME + ".LaserBladeModelManager");
+    private static final Logger LOGGER = LoggerFactory.getLogger(ToLaserBlade.MOD_NAME + ".LaserBladeModelManager");
     private static LaserBladeModelManager instance;
     private final Map<Integer, LaserBladeModel> models;
     private final LaserBladeModel defaultModel;
@@ -50,13 +50,12 @@ public class LaserBladeModelManager {
         });
 
         defaultModel = models.get(0);
-
         int size = models.size();
 
         if (size == 1) {
             LOGGER.info("1 model has been loaded as a laser blade model");
         } else {
-            LOGGER.info(size + " models have been loaded as laser blade models");
+            LOGGER.info("{} models have been loaded as laser blade models", size);
         }
     }
 
