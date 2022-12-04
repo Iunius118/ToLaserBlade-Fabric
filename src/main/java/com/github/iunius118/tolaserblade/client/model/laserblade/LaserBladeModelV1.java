@@ -108,8 +108,9 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
     }
 
     private static LaserBladeModel getLaserBladeModel(String name, JsonModel jsonModel) {
-        if (jsonModel == null || jsonModel.id < 0)
+        if (jsonModel == null || !MODEL_TYPE.equals(jsonModel.type) || jsonModel.id < 0) {
             return null;
+        }
 
         Vector3f resizeInGUI = null;
 
