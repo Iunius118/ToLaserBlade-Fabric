@@ -12,6 +12,7 @@ import com.google.gson.annotations.SerializedName;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.Util;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
@@ -35,7 +36,7 @@ import java.util.function.Predicate;
 public class LaserBladeModelV1 extends SimpleLaserBladeModel {
     private static final ResourceLocation TEXTURE = new ResourceLocation(ToLaserBlade.MOD_ID, "textures/item/laser_blade_3d.png");
     private static final Logger LOGGER = LoggerFactory.getLogger(ToLaserBlade.MOD_NAME + ".LaserBladeModelVersion1");
-    private static String MODEL_TYPE = "tolaserblade:model_v1";
+    private static final String MODEL_TYPE = "tolaserblade:model_v1";
 
     private final List<ModelObject> modelObjects = new ArrayList<>();
     private final String name;
@@ -72,7 +73,7 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
 
             if (modelObject.isFunction()) {
                 // Function
-                pushCount += modelObject.callFunction(matrices);
+                pushCount = modelObject.callFunction(matrices, pushCount);
                 continue;
             }
 
@@ -181,16 +182,31 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
     }
 
     public static class ModelObject {
-        private final static Function<PoseStack, Integer> FN_NOP = m -> 0;
-        private final static Function<PoseStack, Integer> FN_ROTATE = m -> {
-            float angle = Util.getMillis() % 250L * 1.44F;
+        private final static BiFunction<PoseStack, Integer, Integer> FN_NOP = (m, i) -> i;
+        private final static BiFunction<PoseStack, Integer, Integer> FN_ROTATE = (m, i) -> {
+            var minecraft = Minecraft.getInstance();
+            var integratedServer = minecraft.getSingleplayerServer();
+            float angle;
+
+            // Calculate rotation angle
+            if (minecraft.isPaused() && integratedServer != null) {
+                // When the game is paused, rotating parts are fixed at certain angle
+                angle = integratedServer.getTickCount() % 5 * 72;
+            } else {
+                angle = Util.getMillis() % 250L * 1.44F;
+            }
+
             m.pushPose();
             m.mulPoseMatrix(new Matrix4f().rotate((float) Math.toRadians(angle), 0.0f, 1.0f, 0.0f));
-            return 1;
+            return i + 1;
         };
-        private final static Function<PoseStack, Integer> FN_POP_POSE = m -> {
-            m.popPose();
-            return -1;
+        private final static BiFunction<PoseStack, Integer, Integer> FN_POP_POSE = (m, i) -> {
+            if (i > 0) {
+                m.popPose();
+                return i - 1;
+            } else {
+                return 0;
+            }
         };
 
         private final static Predicate<LaserBladeItemColor> IS_ANY_STATE = itemColor -> true;
@@ -216,7 +232,7 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
         private final static Vector2f FIXED_UV = new Vector2f(0, 0);
 
         private boolean isFunction = false;
-        private Function<PoseStack, Integer> fnCallFunction = FN_NOP;
+        private BiFunction<PoseStack, Integer, Integer> fnCallFunction = FN_NOP;
         private Predicate<LaserBladeItemColor> fnIsVisible = IS_ANY_STATE;
         private BiFunction<SimpleLaserBladeModel, LaserBladeItemColor, RenderType> fnGetRenderType = GET_DEFAULT_RENDERER;
         private Function<LaserBladeItemColor, Integer> fnGetPartColor = GET_DEFAULT_COLOR;
@@ -348,8 +364,8 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
             return isFunction;
         }
 
-        public int callFunction(PoseStack poseStack) {
-            return fnCallFunction.apply(poseStack);
+        public int callFunction(PoseStack poseStack, int stackIndex) {
+            return fnCallFunction.apply(poseStack, stackIndex);
         }
 
         public boolean isVisible(LaserBladeItemColor itemColor) {
