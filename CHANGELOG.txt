@@ -4,6 +4,17 @@
 
 ## [Unreleased]
 
+## [1.19.3-rc1-0.7.0.3-beta]
+### Fixed
+- Laser blade json model functions: `rotate`, `pop_pose`.
+- Laser blade models with mod included.
+
+### Changed
+- Update to Minecraft 1.19.3-rc1.
+- Require Fabric API 0.68.1+1.19.3+.
+- Require Cloth Config 9.0.93+.
+- Add `gui_resize` to laser blade json model.
+
 ## [22w45a-0.7.0.2-beta]
 ### Fixed
 - Remove common item tags already defined in Fabric API.
