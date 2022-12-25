@@ -228,6 +228,7 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
             if (isFunction) {
                 switch (object.name) {
                     case "rotate" -> fnCallFunction = FunctionsV1.FN_ROTATE;
+                    case "shield" -> fnCallFunction = FunctionsV1.FN_SHIELD;
                     case "pop_pose" -> fnCallFunction = FunctionsV1.FN_POP_POSE;
                     default -> fnCallFunction = FunctionsV1.FN_NOP;
                 }
