@@ -49,6 +49,10 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
         guiResize = resizeInGUI;
     }
 
+    public static void resetRenderTypes() {
+        resetRenderTypes(TEXTURE);
+    }
+
     @Override
     public int getID() {
         return id;
@@ -85,11 +89,6 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
         for (int i = pushCount; i > 0; i--) {
             matrices.popPose();
         }
-    }
-
-    @Override
-    public ResourceLocation getTexture() {
-        return TEXTURE;
     }
 
     public static LaserBladeModel parseModel(String name, Reader reader) {

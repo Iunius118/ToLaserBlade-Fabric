@@ -16,7 +16,9 @@ public class LaserBladeModelProvider implements ModelResourceProvider {
     public @Nullable UnbakedModel loadModelResource(ResourceLocation resourceId, ModelProviderContext context) throws ModelProviderException {
         if (resourceId.equals(LB_SWORD_MODEL)) {
             // Load/Reload laser blade json models
-            LaserBladeModelManager.renewInstance();
+            var modelManager = LaserBladeModelManager.getInstance();
+            modelManager.reload();
+
             return new LBSwordItemModel();
         } else if (resourceId.equals(LB_SWORD_FP_MODEL)) {
             return new LBSwordItemModel();
