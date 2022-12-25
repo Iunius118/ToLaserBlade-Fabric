@@ -3,70 +3,124 @@ package com.github.iunius118.tolaserblade.client.model;
 import com.github.iunius118.tolaserblade.ToLaserBlade;
 import com.github.iunius118.tolaserblade.api.client.model.LaserBladeModel;
 import com.github.iunius118.tolaserblade.client.model.laserblade.LaserBladeJsonModelLoader;
+import com.github.iunius118.tolaserblade.client.model.laserblade.v1.LaserBladeModelV1;
+import com.github.iunius118.tolaserblade.core.laserblade.LaserBlade;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.world.item.ItemStack;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 public class LaserBladeModelManager {
     private static final Logger LOGGER = LoggerFactory.getLogger(ToLaserBlade.MOD_NAME + ".LaserBladeModelManager");
-    private static LaserBladeModelManager instance;
-    private final Map<Integer, LaserBladeModel> models;
-    private final LaserBladeModel defaultModel;
+    private static final String MODEL_DIR = "models/item/laser_blade";
+    private static final LaserBladeModelManager INSTANCE = new LaserBladeModelManager();
 
-    public static LaserBladeModelManager renewInstance() {
-        instance = new LaserBladeModelManager();
-        return instance;
-    }
+    private Map<Integer, LaserBladeModel> models = Collections.emptyMap();
+    private LaserBladeModel defaultModel;
+
+    private LaserBladeModelManager() {}
 
     public static LaserBladeModelManager getInstance() {
-        return instance != null ? instance : renewInstance();
+        return INSTANCE;
     }
 
-    private LaserBladeModelManager() {
-        models = new HashMap<>();
+    public void reload() {
+        // Load models
+        models = parseJsonModels();
+
+        // Set default model
+        defaultModel = models.get(0);
+
+        // Reset render types
+        LaserBladeModelV1.resetRenderTypes();
+    }
+
+    public void logLoadedModelCount() {
+        int count = models.size();
+
+        if (count == 1) {
+            LOGGER.info("1 model has been loaded as a laser blade model");
+        } else {
+            LOGGER.info("{} models have been loaded as laser blade models", count);
+        }
+    }
+
+    private Map<Integer, LaserBladeModel> parseJsonModels() {
+        Map<ResourceLocation, Resource> resourceMap = findJsonFiles();
+        Map<Integer, LaserBladeModel> jsonModels = new HashMap<>();
+
+        resourceMap.forEach((location, resource) -> {
+            LaserBladeModel model = LaserBladeJsonModelLoader.parse(location.toString(), resource);
+            if (model != null) {
+                jsonModels.put(model.getID(), model);
+            }
+        });
+
+        return jsonModels;
+    }
+
+    private Map<ResourceLocation, Resource> findJsonFiles() {
         ResourceManager resourceManager = Minecraft.getInstance().getResourceManager();
 
         // Search resource packs for .json files
-        Map<ResourceLocation, Resource> resourceMap = resourceManager.listResources(
-                "models/item/laser_blade", resourceLocation -> {
+        return resourceManager.listResources(
+                MODEL_DIR, resourceLocation -> {
                     String namespace = resourceLocation.getNamespace();
                     String path = resourceLocation.getPath();
                     return namespace.equals(ToLaserBlade.MOD_ID) && path.endsWith(".json");
                 }
         );
-
-        // Parse .json files and Register models
-        resourceMap.forEach((location, resource) -> {
-            LaserBladeModel model = LaserBladeJsonModelLoader.parse(location.toString(), resource);
-            if (model != null) {
-                models.put(model.getID(), model);
-            }
-        });
-
-        defaultModel = models.get(0);
-        int size = models.size();
-
-        if (size == 1) {
-            LOGGER.info("1 model has been loaded as a laser blade model");
-        } else {
-            LOGGER.info("{} models have been loaded as laser blade models", size);
-        }
     }
 
-    public static LaserBladeModel getModel(int modelID) {
-        var modelManager = getInstance();
-        LaserBladeModel model = modelManager.models.get(modelID);
+    public void addModel(LaserBladeModel model) {
+        if (model == null) {
+            ToLaserBlade.LOGGER.warn("[ToLaserBlade] Attempted to add null as Laser Blade model.");
+            return;
+        }
+
+        int index = model.getID();
+
+        if (index < 0) {
+            ToLaserBlade.LOGGER.warn("[ToLaserBlade] Attempted to add a model to invalid index {}.", index);
+            return;
+        }
+
+        if (models.containsKey(index)) {
+            ToLaserBlade.LOGGER.info("[ToLaserBlade] Laser Blade model #{} already exists. It will be overwritten.", index);
+        }
+
+        models.put(index, model);
+    }
+
+    public LaserBladeModel getModel() {
+        return defaultModel;
+    }
+
+    public LaserBladeModel getModel(ItemStack itemStack) {
+        int modelType = LaserBlade.visualOf(itemStack).getModelType();
+        LaserBladeModel model = getModel(modelType);
 
         if (model != null) {
             return model;
         } else {
-            return modelManager.defaultModel;
+            return defaultModel;
+        }
+    }
+
+    public LaserBladeModel getModel(int modelID) {
+        LaserBladeModel model = models.get(modelID);
+
+        if (model != null) {
+            return model;
+        } else {
+            return defaultModel;
         }
     }
 }

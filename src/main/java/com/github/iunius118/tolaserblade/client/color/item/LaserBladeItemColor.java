@@ -20,7 +20,7 @@ public class LaserBladeItemColor {
     public final int simpleOuterColor;
 
     public LaserBladeItemColor(ItemStack itemStack) {
-        if (itemStack == null || itemStack.isEmpty() || itemStack.getTag() == null) {
+        if (itemStack == null || itemStack.isEmpty()) {
             isBroken = false;
 
             gripColor = -1;
@@ -31,11 +31,10 @@ public class LaserBladeItemColor {
             isInnerSubColor = false;
             simpleInnerColor = -1;
 
-            int red = LaserBladeColor.RED.getBladeColor();
-            rawOuterColor = red;
-            outerColor = red;
+            rawOuterColor = -1;
+            outerColor = -1;
             isOuterSubColor = false;
-            simpleOuterColor = red;
+            simpleOuterColor = -1;
 
             return;
         }
