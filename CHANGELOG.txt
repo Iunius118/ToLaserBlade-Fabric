@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+## [1.18.2-0.6.0.4]
+### Added
+- Client-side config item `useOriginalShaderProgram` to `tolaserblade.toml`. If you have trouble when using shader mod, try setting this to `false`.
+
 ## [1.18.2-0.6.0.0]
 ### Added
 - Config file (tolaserblade.toml).
