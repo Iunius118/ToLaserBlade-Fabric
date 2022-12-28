@@ -1,10 +1,12 @@
 package com.github.iunius118.tolaserblade.client.renderer;
 
 import com.github.iunius118.tolaserblade.ToLaserBlade;
+import com.github.iunius118.tolaserblade.integration.autoconfig.ModConfig;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
+import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ShaderInstance;
@@ -19,7 +21,7 @@ public class LaserBladeRenderType extends RenderType {
     public static final String UNLIT_SHADER_INSTANCE_NAME = "rendertype_laser_blade_unlit";
 
     private static ShaderInstance laserBladeUnlitShader;
-    private static final ShaderStateShard LASER_BLADE_UNLIT_SHADER_STATE = new ShaderStateShard(() -> laserBladeUnlitShader);
+    private static final ShaderStateShard LASER_BLADE_UNLIT_SHADER_STATE = getUnlitShader();
 
     public LaserBladeRenderType(String string, VertexFormat vertexFormat, VertexFormat.Mode mode, int i, boolean bl, boolean bl2, Runnable runnable, Runnable runnable2) {
         super(string, vertexFormat, mode, i, bl, bl2, runnable, runnable2);
@@ -30,6 +32,18 @@ public class LaserBladeRenderType extends RenderType {
             laserBladeUnlitShader = shader;
         }
 
+    }
+
+    private static ShaderStateShard getUnlitShader() {
+        ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+
+        // Select shader program
+        if (config.canUseOriginalShaderProgram()) {
+            return new ShaderStateShard(() -> laserBladeUnlitShader);
+        } else {
+            // Temporarily set beacon beam shader from vanilla shaders
+            return RENDERTYPE_BEACON_BEAM_SHADER;
+        }
     }
 
     public static CompositeState getHiltRenderState(ResourceLocation texture) {
@@ -98,7 +112,7 @@ public class LaserBladeRenderType extends RenderType {
         return Optional.empty();
     }
 
-    public static Method createRenderTypeMethod = getCreateRenderTypeMethod();
+    private static Method createRenderTypeMethod = getCreateRenderTypeMethod();
 
     @Nullable
     public static Method getCreateRenderTypeMethod() {

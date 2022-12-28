@@ -9,6 +9,7 @@ public class ModConfig implements ConfigData {
     boolean enableLaserTrap = true;
     boolean canLaserTrapAttackPlayer = true;
     boolean canLaserTrapHeatUpFurnace = true;
+    ClientConfig client = new ClientConfig();
 
     public boolean enableLaserTrap() {
         return enableLaserTrap;
@@ -20,5 +21,13 @@ public class ModConfig implements ConfigData {
 
     public boolean canLaserTrapHeatUpFurnace() {
         return canLaserTrapHeatUpFurnace;
+    }
+
+    public boolean canUseOriginalShaderProgram() {
+        return client.useOriginalShaderProgram;
+    }
+
+    private class ClientConfig {
+        boolean useOriginalShaderProgram = true;
     }
 }
