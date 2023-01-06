@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+## [1.19.3-0.7.0.4]
+### Changed
+- Require Fabric API 0.72.0+1.19.3+.
+
 ## [1.19.3-0.7.0.4-beta.1]
 ### Added
 - New function `shield` to laser blade json model.
