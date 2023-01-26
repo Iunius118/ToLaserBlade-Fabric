@@ -3,6 +3,8 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+### Added
+- Add laser blades of extra shapes to mod creative mode tab.
 
 ## [1.19.3-0.7.0.4]
 ### Changed
