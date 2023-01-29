@@ -9,5 +9,8 @@
   "item.tolaserblade.lb_emitter": "レーザーブレイド放射器",
   "item.tolaserblade.lb_medium": "レーザー媒質",
   "itemGroup.tolaserblade.general": "ToLaserBlade",
+  "tooltip.tolaserblade.model": "モデル%s",
+  "upgrade.tolaserblade.attackDamage": "レーザー出力 %s",
+  "upgrade.tolaserblade.attackSpeed": "充電効率 %s",
   "upgrade.tolaserblade.fireproof": "耐熱強化 8000"
 }

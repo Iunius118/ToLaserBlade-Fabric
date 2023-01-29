@@ -4,6 +4,11 @@
 
 ## [Unreleased]
 
+## [1.19.3-0.7.1.0]
+### Added
+- Laser blades of additional shapes to creative mode tab.
+- Model information to item tooltip of laser blade.
+
 ## [1.19.3-0.7.0.4]
 ### Changed
 - Require Fabric API 0.72.0+1.19.3+.

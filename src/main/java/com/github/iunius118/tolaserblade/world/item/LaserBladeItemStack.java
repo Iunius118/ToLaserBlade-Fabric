@@ -35,4 +35,12 @@ public enum LaserBladeItemStack {
         visual.write(stack.getOrCreateTag());
         return stack;
     }
+
+    public static ItemStack getModelChangedStack(int type, boolean isFireproof) {
+        ItemStack stack = new ItemStack(isFireproof ? ModItems.LASER_BLADE_FP : ModItems.LASER_BLADE);
+        LaserBladeVisual visual = LaserBlade.visualOf(stack);
+        visual.setModelType(type);
+        visual.write(stack.getOrCreateTag());
+        return stack;
+    }
 }

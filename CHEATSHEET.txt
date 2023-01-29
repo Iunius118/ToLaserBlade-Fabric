@@ -1,5 +1,5 @@
 # Cheatsheet
-ToLaserBlade-Fabric v0.7.0.4
+ToLaserBlade-Fabric v0.7.1.0
 
 ## Items
 ### Laser Blade Blueprint
@@ -32,9 +32,9 @@ ToLaserBlade-Fabric v0.7.0.4
 ### Laser Blade Casing
 - ID: `tolaserblade:lb_casing`
 - Crafting on Crafting Table: B = Laser Blade Blueprint; I = Iron Ingot
-  1. B;
-  2. I;
-  3. I;
+  - B;
+  - I;
+  - I;
 
 ### Laser Blade
 - ID: `tolaserblade:laser_blade`

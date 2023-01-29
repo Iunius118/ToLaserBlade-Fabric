@@ -1,7 +1,10 @@
 package com.github.iunius118.tolaserblade.world.item;
 
 import com.github.iunius118.tolaserblade.ToLaserBlade;
+import com.github.iunius118.tolaserblade.client.model.LaserBladeModelManager;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -27,5 +30,18 @@ public class ModCreativeModeTabs {
             })
             .build();
 
-    public static void initModCreativeModeTabs() {}
+    public static void modifyEntries(FabricItemGroupEntries content) {
+        // Register model-changed laser blades to mod creative mode tab
+        List<Integer> modelTypes = LaserBladeModelManager.getInstance().getModels().keySet().stream().sorted().toList();
+        for (int modelType : modelTypes) {
+            if (modelType != 0) {
+                ItemStack laserBlade = LaserBladeItemStack.getModelChangedStack(modelType, false);
+                content.accept(laserBlade);
+            }
+        }
+    }
+
+    public static void initModCreativeModeTabs() {
+        ItemGroupEvents.modifyEntriesEvent(ModCreativeModeTabs.TAB_LASER_BLADE).register(ModCreativeModeTabs::modifyEntries);
+    }
 }

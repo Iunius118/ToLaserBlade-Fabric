@@ -9,5 +9,8 @@
   "item.tolaserblade.lb_emitter": "Laser Blade Emitter",
   "item.tolaserblade.lb_medium": "Laser Medium",
   "itemGroup.tolaserblade.general": "ToLaserBlade",
+  "tooltip.tolaserblade.model": "Model %s",
+  "upgrade.tolaserblade.attackDamage": "Laser Power %s",
+  "upgrade.tolaserblade.attackSpeed": "Recharge %s",
   "upgrade.tolaserblade.fireproof": "耐高温 8000"
 }
