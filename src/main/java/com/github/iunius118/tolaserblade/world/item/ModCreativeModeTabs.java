@@ -25,9 +25,7 @@ public class ModCreativeModeTabs {
 
     public static final CreativeModeTab TAB_LASER_BLADE = FabricItemGroup.builder(new ResourceLocation(ToLaserBlade.MOD_ID, "general"))
             .icon(LaserBladeItemStack.ICON::getCopy)
-            .displayItems((featureFlagSet, output, operatorEnabled) -> {
-                output.acceptAll(generalItems);
-            })
+            .displayItems((params, output) -> output.acceptAll(generalItems))
             .build();
 
     public static void modifyEntries(FabricItemGroupEntries content) {

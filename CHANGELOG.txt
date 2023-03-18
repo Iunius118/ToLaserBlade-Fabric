@@ -4,6 +4,15 @@
 
 ## [Unreleased]
 
+## [1.19.4-0.8.0.0]
+### Changed
+- Update to Minecraft 1.19.4.
+- Require Fabric API 0.75.3+1.19.4+.
+- Require Cloth Config 10.0.96+.
+
+### Fixed
+- LaserBladeModel in ToLaserBlade API.
+
 ## [1.19.3-0.7.1.0]
 ### Added
 - Laser blades of additional shapes to creative mode tab.
