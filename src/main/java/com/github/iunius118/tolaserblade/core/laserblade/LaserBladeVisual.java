@@ -1,8 +1,8 @@
 package com.github.iunius118.tolaserblade.core.laserblade;
 
-import net.fabricmc.fabric.api.util.NbtType;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
@@ -89,7 +89,7 @@ public record LaserBladeVisual(ModelType modelType, Coloring coloring) {
         private static final String KEY_TYPE = "type";
 
         public ModelType(CompoundTag compoundTag) {
-            if (compoundTag.contains(KEY_TYPE, NbtType.INT)) {
+            if (compoundTag.contains(KEY_TYPE, Tag.TAG_INT)) {
                 type = compoundTag.getInt(KEY_TYPE);
             }
         }
@@ -97,7 +97,7 @@ public record LaserBladeVisual(ModelType modelType, Coloring coloring) {
         public void write(CompoundTag compoundTag) {
             if (type >= 0) {
                 compoundTag.putInt(KEY_TYPE, type);
-            } else if (compoundTag.contains(KEY_TYPE, NbtType.INT)) {
+            } else if (compoundTag.contains(KEY_TYPE, Tag.TAG_INT)) {
                 compoundTag.remove(KEY_TYPE);
             }
         }
@@ -160,7 +160,7 @@ public record LaserBladeVisual(ModelType modelType, Coloring coloring) {
         public PartColor(CompoundTag compoundTag, String colorKey, String subKey, int defaultColor) {
             color = defaultColor;
 
-            if (colorKey != null && compoundTag.contains(colorKey, NbtType.INT)) {
+            if (colorKey != null && compoundTag.contains(colorKey, Tag.TAG_INT)) {
                 color = compoundTag.getInt(colorKey);
             }
 
