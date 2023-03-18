@@ -5,12 +5,12 @@ import com.github.iunius118.tolaserblade.client.model.LaserBladeModelManager;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
 public class LBSwordItemRenderer implements BuiltinItemRendererRegistry.DynamicItemRenderer {
     @Override
-    public void render(ItemStack itemStack, ItemTransforms.TransformType mode, PoseStack matrices, MultiBufferSource vertexConsumers, int light, int overlay) {
+    public void render(ItemStack itemStack, ItemDisplayContext mode, PoseStack matrices, MultiBufferSource vertexConsumers, int light, int overlay) {
         var modelManager = LaserBladeModelManager.getInstance();
         LaserBladeModel model = modelManager.getModel(itemStack);
 
