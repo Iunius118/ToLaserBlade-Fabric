@@ -13,7 +13,8 @@ public class LaserBladeModelProvider implements ModelResourceProvider {
     public static final ResourceLocation LB_SWORD_FP_MODEL = new ResourceLocation("tolaserblade:item/laser_blade_fp");
 
     @Override
-    public @Nullable UnbakedModel loadModelResource(ResourceLocation resourceId, ModelProviderContext context) throws ModelProviderException {
+    @Nullable
+    public UnbakedModel loadModelResource(ResourceLocation resourceId, ModelProviderContext context) throws ModelProviderException {
         if (resourceId.equals(LB_SWORD_MODEL)) {
             // Load/Reload laser blade json models
             var modelManager = LaserBladeModelManager.getInstance();
