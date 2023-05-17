@@ -1,7 +1,7 @@
 package com.github.iunius118.tolaserblade.client.model;
 
 import com.github.iunius118.tolaserblade.ToLaserBlade;
-import com.github.iunius118.tolaserblade.api.client.event.ToLaserBladeClientEvent;
+import com.github.iunius118.tolaserblade.api.client.event.LaserBladeModelRegistrationCallback;
 import com.github.iunius118.tolaserblade.api.client.model.LaserBladeModel;
 import com.github.iunius118.tolaserblade.client.model.laserblade.LaserBladeJsonModelLoader;
 import com.github.iunius118.tolaserblade.client.model.laserblade.v1.LaserBladeModelV1;
@@ -38,8 +38,8 @@ public class LaserBladeModelManager {
         // Clear model cache
         models = new HashMap<>();
 
-        // Fire RegisterModel event to add models
-        ToLaserBladeClientEvent.REGISTER_MODEL.invoker().registerModels(models -> models.forEach(this::addModel));
+        // Fire ModelRegistration event to add models
+        LaserBladeModelRegistrationCallback.EVENT.invoker().register(models -> models.forEach(this::addModel));
 
         // Set default model
         defaultModel = models.get(0);
