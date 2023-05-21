@@ -4,6 +4,15 @@
 
 ## [Unreleased]
 
+## [1.19.4-0.8.1.0]
+### Added
+- LaserBladeModelRegistrationCallback to ToLaserBlade API.
+- LaserBladeState to ToLaserBlade API.
+
+### Changed
+- Require Fabric API 0.81.1+1.19.4+.
+- Update ToLaserBladeAPI.
+
 ## [1.19.4-0.8.0.0]
 ### Changed
 - Update to Minecraft 1.19.4.
