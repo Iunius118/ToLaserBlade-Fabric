@@ -22,8 +22,8 @@ public abstract class MixinItemStack {
         if (stack.getOrCreateTag().contains("AttributeModifiers", 9)) return;
 
         // Return attribute modifiers to which Laser Blade upgrade was applied
-        var attackPerformance = LaserBlade.performanceOf(stack).getAttackPerformance();
-        Multimap<Attribute, AttributeModifier> attributeModifiers = lbSwordItem.getAttributeModifiers(attackPerformance.damage, attackPerformance.speed);
+        var laserBlade = LaserBlade.of(stack);
+        Multimap<Attribute, AttributeModifier> attributeModifiers = lbSwordItem.getAttributeModifiers(laserBlade.getDamage(), laserBlade.getSpeed());
         cir.setReturnValue(attributeModifiers);
         cir.cancel();
     }

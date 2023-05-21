@@ -3,7 +3,6 @@ package com.github.iunius118.tolaserblade.world.item;
 import com.github.iunius118.tolaserblade.common.util.ModSoundEvents;
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBlade;
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeTextKey;
-import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeVisual;
 import com.github.iunius118.tolaserblade.core.laserblade.upgrade.Upgrade;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -26,24 +25,23 @@ public class LaserBladeItemUtil {
     }
 
     public static void addLaserBladeInformation(ItemStack itemStack, @Nullable Level level, List<Component> list, TooltipFlag flag, Upgrade.Type upgradeType) {
-        LaserBlade laserBlade = LaserBlade.of(itemStack);
         boolean isFireResistant = itemStack.getItem().isFireResistant();
+        var laserBlade = LaserBlade.of(itemStack);
 
         if (isFireResistant) {
             list.add(LaserBladeTextKey.KEY_TOOLTIP_FIRE_RESISTANT.translate().withStyle(ChatFormatting.GOLD));
         }
 
         switch (upgradeType) {
-            case BATTERY -> addAttackSpeed(list, laserBlade.getAttackPerformance().speed);
-            case MEDIUM -> addAttackDamage(list, laserBlade.getAttackPerformance().damage);
+            case BATTERY -> addAttackSpeed(list, laserBlade.getSpeed());
+            case MEDIUM -> addAttackDamage(list, laserBlade.getDamage());
             case CASING, OTHER -> addModelType(list, laserBlade);
             default -> {}
         }
     }
 
     private static void addModelType(List<Component> tooltip, LaserBlade laserBlade) {
-        LaserBladeVisual visual = laserBlade.getVisual();
-        int modelType = visual.getModelType();
+        int modelType = laserBlade.getType();
 
         if (modelType >= 0) {
             tooltip.add(LaserBladeTextKey.KEY_TOOLTIP_MODEL.translate(modelType).withStyle(ChatFormatting.DARK_GRAY));
