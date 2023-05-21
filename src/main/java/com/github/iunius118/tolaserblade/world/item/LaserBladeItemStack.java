@@ -29,18 +29,13 @@ public enum LaserBladeItemStack {
 
     private static ItemStack getIconStack() {
         ItemStack stack = new ItemStack(ModItems.LASER_BLADE);
-        LaserBladeVisual visual = LaserBlade.visualOf(stack);
-        LaserBladeVisual.PartColor gripColor = visual.getGripColor();
-        gripColor.color = LaserBladeColor.LIGHT_GRAY.getGripColor();
-        visual.write(stack.getOrCreateTag());
+        LaserBladeVisual.Writer.of(stack).writeGripColor(LaserBladeColor.LIGHT_GRAY.getGripColor());
         return stack;
     }
 
     public static ItemStack getModelChangedStack(int type, boolean isFireproof) {
         ItemStack stack = new ItemStack(isFireproof ? ModItems.LASER_BLADE_FP : ModItems.LASER_BLADE);
-        LaserBladeVisual visual = LaserBlade.visualOf(stack);
-        visual.setModelType(type);
-        visual.write(stack.getOrCreateTag());
+        LaserBlade.Writer.of(stack).writeType(type);
         return stack;
     }
 }

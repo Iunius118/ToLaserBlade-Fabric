@@ -119,8 +119,8 @@ public class LaserBladeModelManager {
     }
 
     public LaserBladeModel getModel(ItemStack itemStack) {
-        int modelType = LaserBlade.visualOf(itemStack).getModelType();
-        LaserBladeModel model = getModel(modelType);
+        int type = LaserBlade.of(itemStack).getType();
+        LaserBladeModel model = getModel(type);
 
         if (model != null) {
             return model;
