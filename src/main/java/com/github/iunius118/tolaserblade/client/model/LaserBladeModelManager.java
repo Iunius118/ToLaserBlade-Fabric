@@ -6,6 +6,8 @@ import com.github.iunius118.tolaserblade.api.client.model.LaserBladeModel;
 import com.github.iunius118.tolaserblade.client.model.laserblade.LaserBladeJsonModelLoader;
 import com.github.iunius118.tolaserblade.client.model.laserblade.v1.LaserBladeModelV1;
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBlade;
+import net.fabricmc.fabric.api.event.Event;
+import net.fabricmc.fabric.api.event.EventFactory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
@@ -17,6 +19,13 @@ import org.slf4j.LoggerFactory;
 import java.util.*;
 
 public class LaserBladeModelManager {
+    public static Event<LaserBladeModelRegistrationCallback> MODEL_REGISTRATION_EVENT = EventFactory.createArrayBacked(LaserBladeModelRegistrationCallback.class,
+            (listeners) -> (register) -> {
+                for (LaserBladeModelRegistrationCallback listener : listeners) {
+                    listener.register(register);
+                }
+            });
+
     private static final Logger LOGGER = LoggerFactory.getLogger(ToLaserBlade.MOD_NAME + ".LaserBladeModelManager");
     private static final String MODEL_DIR = "models/item/laser_blade";
     private static final LaserBladeModelManager INSTANCE = new LaserBladeModelManager();
@@ -39,7 +48,7 @@ public class LaserBladeModelManager {
         models = new HashMap<>();
 
         // Fire ModelRegistration event to add models
-        LaserBladeModelRegistrationCallback.EVENT.invoker().register(models -> models.forEach(this::addModel));
+        MODEL_REGISTRATION_EVENT.invoker().register(models -> models.forEach(this::addModel));
 
         // Set default model
         defaultModel = models.get(0);

@@ -2,8 +2,6 @@ package com.github.iunius118.tolaserblade.api.client.event;
 
 import com.github.iunius118.tolaserblade.api.ToLaserBladeAPI;
 import com.github.iunius118.tolaserblade.api.client.model.LaserBladeModel;
-import net.fabricmc.fabric.api.event.Event;
-import net.fabricmc.fabric.api.event.EventFactory;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -14,16 +12,6 @@ import java.util.function.Consumer;
  */
 @FunctionalInterface
 public interface LaserBladeModelRegistrationCallback {
-    /**
-     * Use {@link ToLaserBladeAPI#registerModelRegistrationListener} to register instances.
-     */
-    Event<LaserBladeModelRegistrationCallback> EVENT = EventFactory.createArrayBacked(LaserBladeModelRegistrationCallback.class,
-            (listeners) -> (register) -> {
-                for (LaserBladeModelRegistrationCallback listener : listeners) {
-                    listener.register(register);
-                }
-            });
-
     /**
      * Called to register laser blade models to ToLaserBlade.
      * @see ToLaserBladeAPI#registerModelRegistrationListener
