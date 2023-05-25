@@ -11,8 +11,6 @@ import net.minecraft.world.level.biome.Biomes;
 
 public class LaserBladeVisual {
     public static final int MODEL_TYPE_DEFAULT = LaserBlade.TYPE_DEFAULT;
-    public static final String KEY_ATK = "ATK";
-    public static final String KEY_SPD = "SPD";
     public static final String KEY_MODEL_TYPE = LaserBlade.KEY_TYPE;
     public static final String KEY_INNER_COLOR = "colorC";
     public static final String KEY_IS_INNER_SUB_COLOR = "isSubC";
