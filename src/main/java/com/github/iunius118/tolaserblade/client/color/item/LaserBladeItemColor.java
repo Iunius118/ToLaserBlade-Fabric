@@ -76,7 +76,7 @@ public class LaserBladeItemColor {
 
         if (player != null) {
             float partialTick = minecraft.getFrameTime();
-            var level = player.level;
+            var level = player.level();
             int tick1 = (int)(level.getGameTime() % 30);
             int tick2 = tick1 % 10;
             int colorElement;

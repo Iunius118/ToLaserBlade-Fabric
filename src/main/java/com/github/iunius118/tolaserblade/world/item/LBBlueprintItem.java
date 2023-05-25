@@ -14,6 +14,4 @@ public class LBBlueprintItem extends Item {
         lbBlueprintItem.craftingRemainingItem = lbBlueprintItem;
         return lbBlueprintItem;
     }
-
-
 }

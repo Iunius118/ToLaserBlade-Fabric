@@ -25,7 +25,7 @@ public class MixinLivingEntity {
         if (!(itemStack.getItem() instanceof LBSwordItem lbSwordItem)) return;
         // When laser blade swung
 
-        var level = livingEntity.level;
+        var level = livingEntity.level();
 
         if (!level.isClientSide && livingEntity instanceof Player player && !player.swinging) {
             // Server side
