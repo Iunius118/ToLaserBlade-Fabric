@@ -2,9 +2,13 @@ package com.github.iunius118.tolaserblade.world.item;
 
 import com.github.iunius118.tolaserblade.ToLaserBlade;
 import com.github.iunius118.tolaserblade.client.model.LaserBladeModelManager;
+import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeTextKey;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -23,12 +27,13 @@ public class ModCreativeModeTabs {
             ModItems.LB_CASING
     ).map(ItemStack::new).toList();
 
-    public static final CreativeModeTab TAB_LASER_BLADE = FabricItemGroup.builder(new ResourceLocation(ToLaserBlade.MOD_ID, "general"))
+    public static final CreativeModeTab TAB_LASER_BLADE = FabricItemGroup.builder()
+            .title(LaserBladeTextKey.KEY_ITEM_GROUP_GENERAL.translate())
             .icon(LaserBladeItemStack.ICON::getCopy)
             .displayItems((params, output) -> output.acceptAll(generalItems))
             .build();
 
-    public static void modifyEntries(FabricItemGroupEntries content) {
+    private static void modifyEntries(FabricItemGroupEntries content) {
         // Register model-changed laser blades to mod creative mode tab
         List<Integer> modelTypes = LaserBladeModelManager.getInstance().getModels().keySet().stream().sorted().toList();
         for (int modelType : modelTypes) {
@@ -40,6 +45,8 @@ public class ModCreativeModeTabs {
     }
 
     public static void initModCreativeModeTabs() {
-        ItemGroupEvents.modifyEntriesEvent(ModCreativeModeTabs.TAB_LASER_BLADE).register(ModCreativeModeTabs::modifyEntries);
+        ResourceKey<CreativeModeTab> resourceKey = ResourceKey.create(BuiltInRegistries.CREATIVE_MODE_TAB.key(), new ResourceLocation(ToLaserBlade.MOD_ID, "general"));
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, resourceKey, TAB_LASER_BLADE);
+        ItemGroupEvents.modifyEntriesEvent(resourceKey).register(ModCreativeModeTabs::modifyEntries);
     }
 }
