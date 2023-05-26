@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(LivingEntity.class)
 public class MixinLivingEntity {
 
-    @Inject(method = "swing(Lnet/minecraft/world/InteractionHand;Z)V", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "swing(Lnet/minecraft/world/InteractionHand;Z)V", at = @At("HEAD"))
     private void onSwing(InteractionHand interactionHand, boolean bl, CallbackInfo ci) {
         var livingEntity = (LivingEntity) (Object) this;
         var itemStack = (livingEntity).getItemInHand(interactionHand);
