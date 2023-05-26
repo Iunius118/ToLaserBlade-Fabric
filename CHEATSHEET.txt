@@ -1,5 +1,5 @@
 # Cheatsheet
-ToLaserBlade-Fabric v0.8.0.0
+ToLaserBlade-Fabric v1.0.0.0-beta.1
 
 ## Items
 ### Laser Blade Blueprint
@@ -63,29 +63,29 @@ ToLaserBlade-Fabric v0.8.0.0
 ### Changing Laser Blade colors
 Smithing Table:
 
-- Outer blade: Laser Blade + Stained Glass
-- Inner blade: Laser Blade + Stained Glass Pane
-- Grip: Laser Blade + Carpet
-- Switching blend mode of outer blade: Laser Blade + Tinted Glass
-- Switching blend mode of inner blade: Laser Blade + Block of Amethyst
+- Outer blade: Laser Blade Blueprint + Laser Blade + Stained Glass
+- Inner blade: Laser Blade Blueprint + Laser Blade + Stained Glass Pane
+- Grip: Laser Blade Blueprint + Laser Blade + Carpet
+- Switching blend mode of outer blade: Laser Blade Blueprint + Laser Blade + Tinted Glass
+- Switching blend mode of inner blade: Laser Blade Blueprint + Laser Blade + Block of Amethyst
 
 ### Changing Laser Blade Shape
 Smithing Table:
 
-- Type 0 (Standard): Laser Blade + Glass
-- Type 1: Laser Blade + Sand
-- Type 2: Laser Blade + Sandstone
-- Type 526: Laser Blade + Dirt
+- Type 0 (Standard): Laser Blade Blueprint + Laser Blade + Glass
+- Type 1: Laser Blade Blueprint + Laser Blade + Sand
+- Type 2: Laser Blade Blueprint + Laser Blade + Sandstone
+- Type 526: Laser Blade Blueprint + Laser Blade + Dirt
 
 ### Upgrading Laser Blades
 Smithing Table:
 
-- Attack speed (up to 4.0): Laser Blade + Gold Ingot
-- Attack damage (up to 8): Laser Blade + Block of Diamond
-- Light Element: Laser Blade + Glowstone
-- Silk Touch: Laser Blade + Prismarine Crystals / Amethyst Shard / Echo Shard
-- Looting: Laser Blade + Nautilus Shell / Block of Emerald
-- Fireproof: Laser Blade + Netherite Ingot
+- Attack speed (up to 4.0): Laser Blade Blueprint + Laser Blade + Gold Ingot
+- Attack damage (up to 8): Laser Blade Blueprint + Laser Blade + Block of Diamond
+- Light Element: Laser Blade Blueprint + Laser Blade + Glowstone
+- Silk Touch: Laser Blade Blueprint + Laser Blade + Prismarine Crystals / Amethyst Shard / Echo Shard
+- Looting: Laser Blade Blueprint + Laser Blade + Nautilus Shell / Block of Emerald
+- Fireproof: Laser Blade Blueprint + Laser Blade + Netherite Ingot
 
 ### Enchantment: Light Element
 - ID: `tolaserblade:light_element`
