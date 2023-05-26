@@ -1,13 +1,16 @@
 {
   "type": "tolaserblade:color",
-  "base": {
-    "item": "tolaserblade:laser_blade_fp"
-  },
   "addition": {
     "item": "light_gray_stained_glass"
   },
+  "base": {
+    "item": "tolaserblade:laser_blade_fp"
+  },
   "result": {
-    "part": "outer_blade",
-    "color": -5592406
+    "color": -5592406,
+    "part": "outer_blade"
+  },
+  "template": {
+    "item": "tolaserblade:lb_blueprint"
   }
 }

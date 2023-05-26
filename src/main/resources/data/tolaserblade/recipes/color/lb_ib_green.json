@@ -1,13 +1,16 @@
 {
   "type": "tolaserblade:color",
-  "base": {
-    "item": "tolaserblade:laser_blade"
-  },
   "addition": {
     "item": "green_stained_glass_pane"
   },
+  "base": {
+    "item": "tolaserblade:laser_blade"
+  },
   "result": {
-    "part": "inner_blade",
-    "color": -8323328
+    "color": -8323328,
+    "part": "inner_blade"
+  },
+  "template": {
+    "item": "tolaserblade:lb_blueprint"
   }
 }

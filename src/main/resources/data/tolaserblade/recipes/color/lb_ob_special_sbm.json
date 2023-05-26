@@ -1,13 +1,16 @@
 {
   "type": "tolaserblade:color",
+  "addition": {
+    "item": "minecraft:tinted_glass"
+  },
   "base": {
     "item": "tolaserblade:laser_blade"
   },
-  "addition": {
-    "item": "tinted_glass"
-  },
   "result": {
-    "part": "outer_blade",
-    "color": 16843009
+    "color": 16843009,
+    "part": "outer_blade"
+  },
+  "template": {
+    "item": "tolaserblade:lb_blueprint"
   }
 }

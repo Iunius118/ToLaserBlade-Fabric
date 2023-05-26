@@ -4,9 +4,12 @@
     "item": "minecraft:dirt"
   },
   "base": {
-    "item": "tolaserblade:laser_blade"
+    "item": "tolaserblade:laser_blade_fp"
   },
   "result": {
     "model_type": 526
+  },
+  "template": {
+    "item": "tolaserblade:lb_blueprint"
   }
 }

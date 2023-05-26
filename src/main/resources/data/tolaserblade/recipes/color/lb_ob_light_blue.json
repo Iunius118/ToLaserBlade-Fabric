@@ -1,13 +1,16 @@
 {
   "type": "tolaserblade:color",
-  "base": {
-    "item": "tolaserblade:laser_blade"
-  },
   "addition": {
     "item": "light_blue_stained_glass"
   },
+  "base": {
+    "item": "tolaserblade:laser_blade"
+  },
   "result": {
-    "part": "outer_blade",
-    "color": -16733441
+    "color": -16733441,
+    "part": "outer_blade"
+  },
+  "template": {
+    "item": "tolaserblade:lb_blueprint"
   }
 }

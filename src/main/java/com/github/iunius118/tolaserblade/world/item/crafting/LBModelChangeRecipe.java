@@ -42,7 +42,7 @@ public class LBModelChangeRecipe extends SmithingTransformRecipe {
     @Override
     public boolean matches(Container container, Level level) {
         if (super.matches(container, level)) {
-            ItemStack baseStack = container.getItem(0);
+            ItemStack baseStack = container.getItem(1);
             int baseType = LaserBlade.of(baseStack).getType();
             return type >= 0 && baseType != type;
         }
@@ -52,7 +52,7 @@ public class LBModelChangeRecipe extends SmithingTransformRecipe {
 
     @Override
     public ItemStack assemble(Container container, RegistryAccess registryAccess) {
-        ItemStack baseStack = container.getItem(0);
+        ItemStack baseStack = container.getItem(1);
         ItemStack itemstack = baseStack.copy();
         return getResult(itemstack);
     }
