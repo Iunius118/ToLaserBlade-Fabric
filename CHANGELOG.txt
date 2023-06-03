@@ -3,6 +3,8 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+### Added
+- French (fr_fr) translation (thanks to Calvineries).
 
 ## [1.20-pre6-1.0.0.0-beta.1]
 ### Changed
