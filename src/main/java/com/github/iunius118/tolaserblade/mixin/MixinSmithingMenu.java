@@ -21,7 +21,7 @@ public abstract class MixinSmithingMenu extends ItemCombinerMenu {
     @Inject(method = "shrinkStackInSlot(I)V", at = @At("HEAD"), cancellable = true)
     private void onShrinkStack(int slot, CallbackInfo ci) {
         // When a laser blade blueprint is in the template slot, it is not consumed.
-        if (slot == 0 && super.inputSlots.getItem(slot).is(ModItems.LB_BLUEPRINT)) {
+        if (slot == SmithingMenu.TEMPLATE_SLOT && super.inputSlots.getItem(slot).is(ModItems.LB_BLUEPRINT)) {
             ci.cancel();
         }
     }
