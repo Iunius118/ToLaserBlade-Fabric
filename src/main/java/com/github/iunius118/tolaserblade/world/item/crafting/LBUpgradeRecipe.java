@@ -14,6 +14,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.Container;
+import net.minecraft.world.inventory.SmithingMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -48,19 +49,19 @@ public class LBUpgradeRecipe extends SmithingTransformRecipe {
 
     @Override
     public boolean matches(Container container, Level level) {
-        if (super.matches(container, level)) {
-            ItemStack baseStack = container.getItem(1);
-            ItemStack additionalStack = container.getItem(2);
-            Upgrade upgrade = getUpgrade();
-            return upgrade.canApply(baseStack, additionalStack);
+        if (!super.matches(container, level)) {
+            return false;
         }
 
-        return false;
+        ItemStack baseStack = container.getItem(SmithingMenu.BASE_SLOT);
+        ItemStack additionalStack = container.getItem(SmithingMenu.ADDITIONAL_SLOT);
+        Upgrade upgrade = getUpgrade();
+        return upgrade.canApply(baseStack, additionalStack);
     }
 
     @Override
     public ItemStack assemble(Container container, RegistryAccess registryAccess) {
-        ItemStack baseStack = container.getItem(1);
+        ItemStack baseStack = container.getItem(SmithingMenu.BASE_SLOT);
         ItemStack itemstack = baseStack.copy();
         return getUpgradingResult(itemstack);
     }
@@ -82,7 +83,9 @@ public class LBUpgradeRecipe extends SmithingTransformRecipe {
 
     @Override
     public ItemStack getResultItem(RegistryAccess registryAccess) {
-        if (sample != null) return sample;
+        if (sample != null) {
+            return sample;
+        }
 
         ItemStack output = super.getResultItem(registryAccess);
         sample = output.copy();
