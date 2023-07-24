@@ -19,6 +19,9 @@
 
   "environment": "*",
   "entrypoints": {
+    "fabric-datagen": [
+      "com.github.iunius118.tolaserblade.data.DataGeneration"
+    ],
     "main": [
       "com.github.iunius118.tolaserblade.ToLaserBlade"
     ],
