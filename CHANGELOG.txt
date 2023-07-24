@@ -4,6 +4,13 @@
 
 ## [Unreleased]
 
+## [2.0.0]
+### Changed
+- Update to Minecraft 1.20.1.
+- Require Fabric API 0.86.0+.
+- Require Cloth Config 11.1.106+.
+- Version scheme.
+
 ## [1.20-1.0.0.0]
 ### Added
 - French (fr_fr) translation (thanks to Calvineries).
