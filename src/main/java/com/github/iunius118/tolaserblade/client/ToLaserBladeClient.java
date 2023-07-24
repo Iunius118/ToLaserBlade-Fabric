@@ -8,7 +8,7 @@ public class ToLaserBladeClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ClientRegister.registerColorProvider();
-        ClientRegister.registerResourceProvider();
+        ClientRegister.registerModelLoadingPlugin();
         ClientRegister.registerItemRenderer();
         ClientRegister.registerParticleProviders();
 

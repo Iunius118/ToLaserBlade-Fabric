@@ -6,10 +6,10 @@ import com.github.iunius118.tolaserblade.client.color.item.LBMediumItemColor;
 import com.github.iunius118.tolaserblade.client.color.item.LBSwordItemColor;
 import com.github.iunius118.tolaserblade.client.particle.LaserTrapParticle;
 import com.github.iunius118.tolaserblade.client.renderer.item.LBSwordItemRenderer;
-import com.github.iunius118.tolaserblade.client.renderer.item.model.LaserBladeModelProvider;
+import com.github.iunius118.tolaserblade.client.renderer.item.model.LaserBladeModelLoadingPlugin;
 import com.github.iunius118.tolaserblade.core.particle.ModParticleTypes;
 import com.github.iunius118.tolaserblade.world.item.ModItems;
-import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
+import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
@@ -26,8 +26,8 @@ public class ClientRegister {
         ColorProviderRegistry.ITEM.register(new LBCasingItemColor(), ModItems.LB_CASING);
     }
 
-    public static void registerResourceProvider() {
-        ModelLoadingRegistry.INSTANCE.registerResourceProvider(rm -> new LaserBladeModelProvider());
+    public static void registerModelLoadingPlugin() {
+        ModelLoadingPlugin.register(new LaserBladeModelLoadingPlugin());
     }
 
     public static void registerItemRenderer() {
