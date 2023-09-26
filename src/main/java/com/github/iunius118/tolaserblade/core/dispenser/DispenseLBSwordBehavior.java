@@ -4,8 +4,8 @@ import com.github.iunius118.tolaserblade.common.util.LaserTrapPlayer;
 import com.github.iunius118.tolaserblade.integration.autoconfig.ModConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.BlockSource;
 import net.minecraft.core.Direction;
+import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.server.level.ServerLevel;
@@ -28,9 +28,9 @@ public class DispenseLBSwordBehavior implements DispenseItemBehavior {
             return DEFAULT_ITEM_BEHAVIOR.dispense(blockSource, itemStack);
         }
 
-        var serverLevel = blockSource.getLevel();
-        var pos = blockSource.getPos();
-        var dir = blockSource.getBlockState().getValue(DispenserBlock.FACING);
+        var serverLevel = blockSource.level();
+        var pos = blockSource.pos();
+        var dir = blockSource.state().getValue(DispenserBlock.FACING);
         var targetBlockEntity = serverLevel.getBlockEntity(pos.relative(dir));
 
         if (config.canLaserTrapHeatUpFurnace() &&
