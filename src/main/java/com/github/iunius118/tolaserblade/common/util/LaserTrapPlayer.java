@@ -5,9 +5,11 @@ import com.github.iunius118.tolaserblade.core.particle.ModParticleTypes;
 import com.github.iunius118.tolaserblade.integration.autoconfig.ModConfig;
 import com.mojang.authlib.GameProfile;
 import me.shedaniel.autoconfig.AutoConfig;
+import net.fabricmc.fabric.api.entity.FakePlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -22,15 +24,25 @@ import net.minecraft.world.phys.Vec3;
 import java.util.List;
 import java.util.UUID;
 
-public class LaserTrapPlayer extends FakePlayer {
+public class LaserTrapPlayer {
     private static final GameProfile PROFILE = new GameProfile(UUID.fromString("2BDD19A3-9616-417A-8797-EE805F5FF9E3"), "[LaserBlade]");
+    private final ServerPlayer fakePlayer;
 
-    private LaserTrapPlayer(ServerLevel serverLevel) {
-        super(serverLevel, PROFILE);
+    private LaserTrapPlayer(ServerPlayer fakePlayerIn) {
+        fakePlayer = fakePlayerIn;
+    }
+
+    public static LaserTrapPlayer get(ServerLevel serverLevel, BlockPos trapPos, ItemStack itemStackHeld) {
+        final var laserTrapPlayer = new LaserTrapPlayer(FakePlayer.get(serverLevel, PROFILE));
+
+        //final var laserTrapPlayer = new LaserTrapPlayer(serverLevel);
+        laserTrapPlayer.fakePlayer.setPos(trapPos.getX() + 0.5D, trapPos.getY(), trapPos.getZ() + 0.5D);
+        laserTrapPlayer.initInventory(itemStackHeld.copy());
+        return laserTrapPlayer;
     }
 
     public void initInventory(ItemStack currentStack) {
-        final var inventory = this.getInventory();
+        final var inventory = fakePlayer.getInventory();
         inventory.clearContent();
 
         // Set given item stack in main hand
@@ -38,31 +50,24 @@ public class LaserTrapPlayer extends FakePlayer {
         inventory.setItem(0, currentStack);
 
         // Apply attack damage from main hand item
-        getAttributes().addTransientAttributeModifiers(currentStack.getAttributeModifiers(EquipmentSlot.MAINHAND));
-    }
-
-    public static LaserTrapPlayer get(ServerLevel serverLevel, BlockPos trapPos, ItemStack itemStackHeld) {
-        final var laserTrapPlayer = new LaserTrapPlayer(serverLevel);
-        laserTrapPlayer.setPos(trapPos.getX() + 0.5D, trapPos.getY(), trapPos.getZ() + 0.5D);
-        laserTrapPlayer.initInventory(itemStackHeld.copy());
-        return laserTrapPlayer;
+        fakePlayer.getAttributes().addTransientAttributeModifiers(currentStack.getAttributeModifiers(EquipmentSlot.MAINHAND));
     }
 
     public void attackEntities(Direction dir) {
-        BlockPos trapPos = blockPosition();
+        BlockPos trapPos = fakePlayer.blockPosition();
         BlockPos targetPos = trapPos.relative(dir);
         AABB aabb = new AABB(targetPos).inflate(0.5D);
-        List<Entity> targetEntities = level().getEntities((Entity) null, aabb, this::canHitEntity);
+        List<Entity> targetEntities = fakePlayer.level().getEntities((Entity) null, aabb, this::canHitEntity);
 
-        float attackDamage = (float) getAttribute(Attributes.ATTACK_DAMAGE).getValue();
-        int fireLevel = EnchantmentHelper.getFireAspect(this);
-        ItemStack itemStack = getMainHandItem();
+        float attackDamage = (float) fakePlayer.getAttribute(Attributes.ATTACK_DAMAGE).getValue();
+        int fireLevel = EnchantmentHelper.getFireAspect(fakePlayer);
+        ItemStack itemStack = fakePlayer.getMainHandItem();
 
         for (var targetEntity : targetEntities) {
             float totalDamage = attackDamage + getDamageBonus(itemStack, targetEntity);
             if (canBurn(targetEntity, fireLevel)) targetEntity.setSecondsOnFire(Math.min(fireLevel, 1));
-            targetEntity.hurt(damageSources().playerAttack(this), totalDamage);
-            EnchantmentHelper.doPostDamageEffects(this, targetEntity);
+            targetEntity.hurt(fakePlayer.damageSources().playerAttack(fakePlayer), totalDamage);
+            EnchantmentHelper.doPostDamageEffects(fakePlayer, targetEntity);
         }
 
         spawnParticle(dir, targetPos, itemStack);
@@ -92,7 +97,7 @@ public class LaserTrapPlayer extends FakePlayer {
     }
 
     private void spawnParticle(Direction dir, BlockPos effectPos, ItemStack itemStack) {
-        if (!(level() instanceof ServerLevel serverLevel)) return;
+        if (!(fakePlayer.level() instanceof ServerLevel serverLevel)) return;
 
         var laserTrapParticleType = ModParticleTypes.getLaserTrapParticleType(dir.getAxis());
         var vecPos = new Vec3(effectPos.getX(), effectPos.getY(), effectPos.getZ()).add(0.5, 0.5, 0.5);
@@ -100,5 +105,9 @@ public class LaserTrapPlayer extends FakePlayer {
         int outerColor = visual.getOuterColor();
         var color4F = Color4F.of((visual.isOuterSubColor() ? ~outerColor : outerColor) | 0xFF000000);
         serverLevel.sendParticles(laserTrapParticleType, vecPos.x, vecPos.y, vecPos.z, 0, color4F.r(), color4F.g(), color4F.b(), 1);
+    }
+
+    public void remove() {
+        fakePlayer.remove(Entity.RemovalReason.DISCARDED);
     }
 }

@@ -9,7 +9,6 @@ import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractFurnaceBlock;
@@ -64,6 +63,6 @@ public class DispenseLBSwordBehavior implements DispenseItemBehavior {
     private void attackEntities(ServerLevel serverLevel, BlockPos trapPos, Direction dir, ItemStack stack) {
         var laserTrapPlayer = LaserTrapPlayer.get(serverLevel, trapPos, stack);
         laserTrapPlayer.attackEntities(dir);
-        laserTrapPlayer.remove(Entity.RemovalReason.DISCARDED);
+        laserTrapPlayer.remove();
     }
 }
