@@ -36,8 +36,6 @@ public class ModConfig implements ConfigData {
         return client.useOriginalShaderProgram;
     }
 
-    private class ClientConfig {
-        boolean useOriginalShaderProgram = true;
     public List<Item> getLaserBladeItems() {
         return getLaserBladeItemIDs().stream()
                 .map(BuiltInRegistries.ITEM::get)
@@ -68,6 +66,7 @@ public class ModConfig implements ConfigData {
     }
 
     static class ClientConfig {
+        boolean useOriginalShaderProgram = false;
         String[] laserBlades = {"tolaserblade:laser_blade","tolaserblade:laser_blade_fp"};
     }
 }
