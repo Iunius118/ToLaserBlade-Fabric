@@ -3,6 +3,8 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+### Changed
+- Require Fabric Loader 0.14.23+ and Fabric API 0.90.0+.
 
 ## [3.0.0]
 ### Changed
