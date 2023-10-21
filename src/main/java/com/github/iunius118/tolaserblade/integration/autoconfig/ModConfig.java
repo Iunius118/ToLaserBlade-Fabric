@@ -50,16 +50,16 @@ public class ModConfig implements ConfigData {
 
     private List<ResourceLocation> getLaserBladeItemIDs(){
         return Stream.of(client.laserBlades)
-                .map(this::getIDs)
+                .map(this::getResourceLocation)
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .filter(BuiltInRegistries.ITEM::containsKey)
                 .toList();
     }
 
-    private Optional<ResourceLocation> getIDs(String string){
+    private Optional<ResourceLocation> getResourceLocation(String string){
         try {
-            return Optional.of(new ResourceLocation(string.trim()));
+            return Optional.of(new ResourceLocation(string));
         } catch (ResourceLocationException e) {
             return Optional.empty();
         }
