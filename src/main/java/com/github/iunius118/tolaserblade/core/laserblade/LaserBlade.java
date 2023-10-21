@@ -101,8 +101,9 @@ public class LaserBlade {
             return this;
         }
 
+        @Deprecated
         public Writer writeType(int type) {
-            tag.putFloat(KEY_TYPE, Math.max(type, 0));
+            tag.putInt(KEY_TYPE, Math.max(type, 0));
             return this;
         }
     }
