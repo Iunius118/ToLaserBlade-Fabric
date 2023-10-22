@@ -1,5 +1,5 @@
 # Cheatsheet
-ToLaserBlade-Fabric v3.0.0
+ToLaserBlade-Fabric v3.1.0
 
 ## Items
 ### Laser Blade Blueprint
@@ -123,9 +123,10 @@ In multiplayer mode, server-side config will be used.
   - Whether to allow laser trap to light furnace. This is only valid when `enableLaserTrap` is `true`
 
 ### `[client]`
-- `useOriginalShaderProgram` (boolean, default value is `true`)
+- `useOriginalShaderProgram` (boolean, default value is `false`)
   - Whether to use original shader program to render blade of laser blade
-  - If you have trouble when using shader mod, try setting this to `false`
+- `laserBlades` (array of strings, default value is `["tolaserblade:laser_blade", "tolaserblade:laser_blade_fp"]`)
+  - IDs of items to which laser blade model applies
 
 ## Related Mod
 ### ToLaserBlade-ExtraModels

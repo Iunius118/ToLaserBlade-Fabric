@@ -3,8 +3,10 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+
+## [3.1.0]
 ### Added
-- New client config item `laserBlades` to specify laser blade items for renderer.
+- New client config item `laserBlades` to specify items to which laser blade model applies.
 
 ### Changed
 - Require Fabric Loader 0.14.23+ and Fabric API 0.90.0+.
