@@ -6,15 +6,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.ItemDisplayContext;
 import org.joml.Matrix4f;
 
-public class FunctionsV1 {
-    // Functions
-    @FunctionalInterface
-    public interface ObjectFunction {
-        int invoke(LaserBladeModelV1.RenderingContext context, int pushCount);
-    }
+class ModelObjectFunctions {
+    private ModelObjectFunctions() {}
 
-    public final static ObjectFunction FN_NOP = (args, i) -> i;
-    public final static ObjectFunction FN_ROTATE = (args, i) -> {
+    // Functions
+    public final static ModelObject.ModelObjectFunction FN_NOP = (args, i) -> i;
+    public final static ModelObject.ModelObjectFunction FN_ROTATE = (args, i) -> {
         var minecraft = Minecraft.getInstance();
         var integratedServer = minecraft.getSingleplayerServer();
         float angle;
@@ -32,13 +29,13 @@ public class FunctionsV1 {
         matrices.mulPoseMatrix(new Matrix4f().rotate((float) Math.toRadians(angle), 0.0f, 1.0f, 0.0f));
         return i + 1;
     };
-    public final static ObjectFunction FN_SHIELD = (args, i) -> {
+    public final static ModelObject.ModelObjectFunction FN_SHIELD = (args, i) -> {
         PoseStack matrices = args.matrices();
         matrices.pushPose();
         transformShield(args.mode(), matrices);
         return i + 1;
     };
-    public final static ObjectFunction FN_POP_POSE = (args, i) -> {
+    public final static ModelObject.ModelObjectFunction FN_POP_POSE = (args, i) -> {
         if (i > 0) {
             args.matrices().popPose();
             return i - 1;
