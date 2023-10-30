@@ -20,8 +20,8 @@ class ModelParser {
 
     private ModelParser() {}
 
-    public static LaserBladeModel parse(String modelName, Reader recsourceReader) {
-        JsonModelV1 jsonModel = parseModelFromJson(modelName, recsourceReader);
+    public static LaserBladeModel parse(String modelName, Reader resourceReader) {
+        JsonModelV1 jsonModel = parseModelFromJson(modelName, resourceReader);
         return createLaserBladeModel(modelName, jsonModel);
     }
 
@@ -29,7 +29,7 @@ class ModelParser {
         try {
             Gson gson = (new GsonBuilder()).create();
             return GsonHelper.fromJson(gson, reader, JsonModelV1.class);
-        } catch(JsonParseException e) {
+        } catch (JsonParseException e) {
             LOGGER.warn("Failed to load model: {}\n{}", modelName, e);
         }
 
@@ -63,7 +63,6 @@ class ModelParser {
         List<Vector3f> vertices = new ArrayList<>();
         List<Vector4f> colors = new ArrayList<>();
         List<Vector3f> normals = new ArrayList<>();
-        List<ModelObject> modelObjectList = new ArrayList<>();
 
         for (float[] vertex : jsonModel.vertices) {
             vertices.add(getVector3fFromArray(vertex));
@@ -76,6 +75,8 @@ class ModelParser {
         for (float[] normal : jsonModel.normals) {
             normals.add(getVector3fFromArray(normal));
         }
+
+        List<ModelObject> modelObjectList = new ArrayList<>();
 
         for (int oi = 0; oi < jsonModel.objects.size(); oi++) {
             var jsonModelObject = jsonModel.objects.get(oi);

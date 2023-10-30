@@ -24,8 +24,8 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
     private final int id;
     private final Vector3f guiResize;
 
-    public static LaserBladeModel parseModel(String modelName, Reader recsourceReader) {
-        return ModelParser.parse(modelName, recsourceReader);
+    public static LaserBladeModel parseModel(String modelName, Reader resourceReader) {
+        return ModelParser.parse(modelName, resourceReader);
     }
 
     public static void resetRenderTypes() {
@@ -46,9 +46,9 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
 
     @Override
     public void render(ItemStack itemStack, ItemDisplayContext mode, PoseStack matrices, MultiBufferSource vertexConsumers, int light, int overlay) {
-         if (guiResize != null && (mode == ItemDisplayContext.GUI || mode == ItemDisplayContext.FIXED)) {
+        if (guiResize != null && (mode == ItemDisplayContext.GUI || mode == ItemDisplayContext.FIXED)) {
             // Adjust model size and position in GUI or item frame
-            // scale(guiResize.x) -> translate(guiResize.y, guiResize.z)
+            // scale(guiResize.x), and then translate(guiResize.y, guiResize.z)
             matrices.translate(0, guiResize.y(), guiResize.z());
             float size = guiResize.x();
             matrices.scale(size, size, size);
@@ -58,6 +58,7 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
         var renderingContext = new ModelObject.RenderingContext(itemStack, mode, matrices);
         int pushCount = 0;
 
+        // Process each object
         for (ModelObject modelObject : modelObjects) {
             if (!modelObject.isAvailable(laserBladeItemColor.isBroken))
                 continue;
