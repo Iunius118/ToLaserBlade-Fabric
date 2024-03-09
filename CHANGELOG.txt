@@ -3,8 +3,11 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+
+## [3.1.1]
 ### Fixed
-- Loading and rendering of laser blade models.
+- Improve laser blade model no. 2.
+- Improve loading and rendering of laser blade models.
 
 ## [3.1.0]
 ### Added
