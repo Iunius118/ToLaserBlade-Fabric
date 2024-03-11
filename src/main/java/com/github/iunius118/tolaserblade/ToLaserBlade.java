@@ -2,6 +2,7 @@ package com.github.iunius118.tolaserblade;
 
 import com.github.iunius118.tolaserblade.common.CommonRegister;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,5 +23,9 @@ public class ToLaserBlade implements ModInitializer {
         CommonRegister.registerDispenseItemBehaviors();
         CommonRegister.registerParticleTypes();
         CommonRegister.registerSoundEvents();
+    }
+    
+    public static ResourceLocation makeId(String name) {
+        return new ResourceLocation(MOD_ID, name);
     }
 }

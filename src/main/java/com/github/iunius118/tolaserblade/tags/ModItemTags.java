@@ -29,7 +29,7 @@ public class ModItemTags {
     }
 
     private static TagKey<Item> makeWrapperTag(String id) {
-        return makeWrapperTag(new ResourceLocation(ToLaserBlade.MOD_ID, id));
+        return makeWrapperTag(ToLaserBlade.makeId(id));
     }
 
     private static TagKey<Item> makeWrapperTag(UpgradeID upgradeID) {
