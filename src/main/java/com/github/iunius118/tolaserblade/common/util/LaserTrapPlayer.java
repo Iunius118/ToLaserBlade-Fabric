@@ -75,7 +75,13 @@ public class LaserTrapPlayer {
 
         for (var targetEntity : targetEntities) {
             float totalDamage = attackDamage + getDamageBonus(itemStack, targetEntity);
-            if (canBurn(targetEntity, fireLevel)) targetEntity.setSecondsOnFire(Math.min(fireLevel, 1));
+
+            if (canBurn(targetEntity, fireLevel)) {
+                int remainingFireTicks = Math.max(targetEntity.getRemainingFireTicks(), 0);
+                targetEntity.setRemainingFireTicks(Math.min(fireLevel, 1) + remainingFireTicks);
+                targetEntity.setSharedFlagOnFire(true);
+            }
+            
             targetEntity.hurt(fakePlayer.damageSources().playerAttack(fakePlayer), totalDamage);
             EnchantmentHelper.doPostDamageEffects(fakePlayer, targetEntity);
         }
@@ -96,7 +102,7 @@ public class LaserTrapPlayer {
 
     private float getDamageBonus(ItemStack itemStack, Entity entity) {
         if (entity instanceof LivingEntity livingEntity) {
-            return EnchantmentHelper.getDamageBonus(itemStack, livingEntity.getMobType());
+            return EnchantmentHelper.getDamageBonus(itemStack, livingEntity.getType());
         } else {
             return 0;
         }

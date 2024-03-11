@@ -23,12 +23,12 @@ public class UpgradeManager {
         // 2. Add item-tag to ModItemTags and TLBItemTagsProvider(Forge)
         // 3. Add upgrader class
         // 4. Add upgrade here
-        registerEnchantment(UpgradeID.EFFICIENCY_UPGRADE, ModItemTags.EFFICIENCY_UPGRADE, Enchantments.BLOCK_EFFICIENCY);
+        registerEnchantment(UpgradeID.EFFICIENCY_UPGRADE, ModItemTags.EFFICIENCY_UPGRADE, Enchantments.EFFICIENCY);
         registerEnchantment(UpgradeID.LIGHT_ELEMENT_UPGRADE, ModItemTags.LIGHT_ELEMENT_UPGRADE, ModEnchantments.LIGHT_ELEMENT);
         registerEnchantment(UpgradeID.FIRE_ASPECT_UPGRADE, ModItemTags.FIRE_ASPECT_UPGRADE, Enchantments.FIRE_ASPECT);
         registerEnchantment(UpgradeID.SWEEPING_EDGE_UPGRADE, ModItemTags.SWEEPING_EDGE_UPGRADE, Enchantments.SWEEPING_EDGE);
         registerEnchantment(UpgradeID.SILK_TOUCH_UPGRADE, ModItemTags.SILK_TOUCH_UPGRADE, Enchantments.SILK_TOUCH);
-        registerEnchantment(UpgradeID.LOOTING_UPGRADE, ModItemTags.LOOTING_UPGRADE, Enchantments.MOB_LOOTING);
+        registerEnchantment(UpgradeID.LOOTING_UPGRADE, ModItemTags.LOOTING_UPGRADE, Enchantments.LOOTING);
         registerEnchantment(UpgradeID.MENDING_UPGRADE, ModItemTags.MENDING_UPGRADE, Enchantments.MENDING);
 
         register(UpgradeID.EFFICIENCY_REMOVER, ModItemTags.EFFICIENCY_REMOVER, new RemoveEfficiencyUpgrader());

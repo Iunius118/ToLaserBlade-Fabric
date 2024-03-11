@@ -1,19 +1,23 @@
 package com.github.iunius118.tolaserblade.world.item.enchantment;
 
 import com.github.iunius118.tolaserblade.world.item.LaserBladeItemBase;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.DamageEnchantment;
 import net.minecraft.world.item.enchantment.Enchantment;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class LightElementEnchantment extends DamageEnchantment {
     private static final int MAX_LEVEL = 10;
 
     public LightElementEnchantment() {
-        super(Enchantment.Rarity.UNCOMMON, 1, EquipmentSlot.MAINHAND);
+        super(Enchantment.Rarity.UNCOMMON, 1, 11, 20, Optional.empty(), EquipmentSlot.MAINHAND);
     }
 
     @Override
@@ -22,12 +26,12 @@ public class LightElementEnchantment extends DamageEnchantment {
     }
 
     @Override
-    public float getDamageBonus(int level, MobType mobType) {
-        if (mobType == MobType.UNDEAD || mobType == MobType.ILLAGER) {
-            return (float)level * 2.4F;
+    public float getDamageBonus(int level, @Nullable EntityType<?> entityType) {
+        if (entityType != null && (entityType.is(EntityTypeTags.UNDEAD) || entityType.is(EntityTypeTags.ILLAGER))) {
+            return (float) level * 2.4F;
         }
 
-        return (float)level * 0.4F;
+        return (float) level * 0.4F;
     }
 
     @Override
@@ -47,6 +51,5 @@ public class LightElementEnchantment extends DamageEnchantment {
 
     @Override
     public void doPostAttack(LivingEntity user, Entity target, int level) {
-
     }
 }
