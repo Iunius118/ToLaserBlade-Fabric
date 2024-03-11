@@ -9,9 +9,10 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.SmithingMenu;
@@ -123,6 +124,7 @@ public class LBUpgradeRecipe extends SmithingTransformRecipe {
                         Ingredient.CODEC.fieldOf("addition").forGetter(lBModelChangeRecipe -> lBModelChangeRecipe.addition),
                         ResourceLocation.CODEC.fieldOf("type").codec().fieldOf("result").forGetter(lBModelChangeRecipe -> lBModelChangeRecipe.upgradeId)
                 ).apply(instance, LBUpgradeRecipe::new));
+        public static final StreamCodec<RegistryFriendlyByteBuf, LBUpgradeRecipe> STREAM_CODEC = StreamCodec.of(LBUpgradeRecipe.Serializer::toNetwork, LBUpgradeRecipe.Serializer::fromNetwork);
 
         @Override
         public Codec<LBUpgradeRecipe> codec() {
@@ -130,20 +132,24 @@ public class LBUpgradeRecipe extends SmithingTransformRecipe {
         }
 
         @Override
-        public LBUpgradeRecipe fromNetwork(FriendlyByteBuf buffer) {
-            Ingredient template = Ingredient.fromNetwork(buffer);
-            Ingredient base = Ingredient.fromNetwork(buffer);
-            Ingredient addition = Ingredient.fromNetwork(buffer);
-            ResourceLocation upgradeId = buffer.readResourceLocation();
+        public StreamCodec<RegistryFriendlyByteBuf, LBUpgradeRecipe> streamCodec() {
+            return STREAM_CODEC;
+        }
+
+
+        private static LBUpgradeRecipe fromNetwork(RegistryFriendlyByteBuf buf) {
+            Ingredient template = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
+            Ingredient base = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
+            Ingredient addition = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
+            ResourceLocation upgradeId = buf.readResourceLocation();
             return new LBUpgradeRecipe(template, base, addition, upgradeId);
         }
 
-        @Override
-        public void toNetwork(FriendlyByteBuf buffer, LBUpgradeRecipe recipe) {
-            recipe.template.toNetwork(buffer);
-            recipe.base.toNetwork(buffer);
-            recipe.addition.toNetwork(buffer);
-            buffer.writeResourceLocation(recipe.upgradeId);
+        private static void toNetwork(RegistryFriendlyByteBuf buf, LBUpgradeRecipe recipe) {
+            Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.template);
+            Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.base);
+            Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.addition);
+            buf.writeResourceLocation(recipe.upgradeId);
         }
     }
 }

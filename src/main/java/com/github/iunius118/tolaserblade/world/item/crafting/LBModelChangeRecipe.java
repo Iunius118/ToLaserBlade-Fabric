@@ -5,7 +5,8 @@ import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeDataWriter;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.SmithingMenu;
 import net.minecraft.world.item.ItemStack;
@@ -92,6 +93,7 @@ public class LBModelChangeRecipe extends SmithingTransformRecipe {
                         Ingredient.CODEC.fieldOf("addition").forGetter(lBModelChangeRecipe -> lBModelChangeRecipe.addition),
                         Codec.INT.fieldOf("model_type").codec().fieldOf("result").forGetter(lBModelChangeRecipe -> lBModelChangeRecipe.type)
                 ).apply(instance, LBModelChangeRecipe::new));
+        public static final StreamCodec<RegistryFriendlyByteBuf, LBModelChangeRecipe> STREAM_CODEC = StreamCodec.of(LBModelChangeRecipe.Serializer::toNetwork, LBModelChangeRecipe.Serializer::fromNetwork);
 
         @Override
         public Codec<LBModelChangeRecipe> codec() {
@@ -99,20 +101,23 @@ public class LBModelChangeRecipe extends SmithingTransformRecipe {
         }
 
         @Override
-        public LBModelChangeRecipe fromNetwork(FriendlyByteBuf buffer) {
-            Ingredient template = Ingredient.fromNetwork(buffer);
-            Ingredient base = Ingredient.fromNetwork(buffer);
-            Ingredient addition = Ingredient.fromNetwork(buffer);
-            int type = buffer.readInt();
+        public StreamCodec<RegistryFriendlyByteBuf, LBModelChangeRecipe> streamCodec() {
+            return STREAM_CODEC;
+        }
+
+        private static LBModelChangeRecipe fromNetwork(RegistryFriendlyByteBuf buf) {
+            Ingredient template = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
+            Ingredient base = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
+            Ingredient addition = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
+            int type = buf.readInt();
             return new LBModelChangeRecipe(template, base, addition, type);
         }
 
-        @Override
-        public void toNetwork(FriendlyByteBuf buffer, LBModelChangeRecipe recipe) {
-            recipe.template.toNetwork(buffer);
-            recipe.base.toNetwork(buffer);
-            recipe.addition.toNetwork(buffer);
-            buffer.writeInt(recipe.type);
+        private static void toNetwork(RegistryFriendlyByteBuf buf, LBModelChangeRecipe recipe) {
+            Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.template);
+            Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.base);
+            Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.addition);
+            buf.writeInt(recipe.type);
         }
     }
 }

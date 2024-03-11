@@ -8,7 +8,8 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.SmithingMenu;
 import net.minecraft.world.item.ItemStack;
@@ -135,6 +136,7 @@ public class LBColorRecipe extends SmithingTransformRecipe {
                                 .fieldOf("result").forGetter(lBColorRecipe -> new Pair<>(lBColorRecipe.part.getPartName(), lBColorRecipe.color))
                 ).apply(instance, (template, base, addition, result) ->
                         new LBColorRecipe(template, base, addition, LaserBladeColorPart.byPartName(result.getFirst()), result.getSecond())));
+        public static final StreamCodec<RegistryFriendlyByteBuf, LBColorRecipe> STREAM_CODEC = StreamCodec.of(LBColorRecipe.Serializer::toNetwork, LBColorRecipe.Serializer::fromNetwork);
 
         @Override
         public Codec<LBColorRecipe> codec() {
@@ -142,24 +144,26 @@ public class LBColorRecipe extends SmithingTransformRecipe {
         }
 
         @Override
-        public LBColorRecipe fromNetwork(FriendlyByteBuf buffer) {
-            Ingredient template = Ingredient.fromNetwork(buffer);
-            Ingredient base = Ingredient.fromNetwork(buffer);
-            Ingredient addition = Ingredient.fromNetwork(buffer);
-            LaserBladeColorPart colorPart = LaserBladeColorPart.byIndex(buffer.readInt());
-            int color = buffer.readInt();
+        public StreamCodec<RegistryFriendlyByteBuf, LBColorRecipe> streamCodec() {
+            return STREAM_CODEC;
+        }
+
+        private static LBColorRecipe fromNetwork(RegistryFriendlyByteBuf buf) {
+            Ingredient template = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
+            Ingredient base = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
+            Ingredient addition = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
+            LaserBladeColorPart colorPart = LaserBladeColorPart.byIndex(buf.readInt());
+            int color = buf.readInt();
             return new LBColorRecipe(template, base, addition, colorPart, color);
         }
 
-        @Override
-        public void toNetwork(FriendlyByteBuf buffer, LBColorRecipe recipe) {
+        private static void toNetwork(RegistryFriendlyByteBuf buf, LBColorRecipe recipe) {
             LaserBladeColorPart part = recipe.part;
-
-            recipe.template.toNetwork(buffer);
-            recipe.base.toNetwork(buffer);
-            recipe.addition.toNetwork(buffer);
-            buffer.writeInt(part.getIndex());
-            buffer.writeInt(recipe.color);
+            Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.template);
+            Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.base);
+            Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.addition);
+            buf.writeInt(part.getIndex());
+            buf.writeInt(recipe.color);
         }
     }
 }
