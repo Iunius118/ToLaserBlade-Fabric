@@ -4,6 +4,25 @@
 
 ## [Unreleased]
 
+## [4.0.0-alpha.1]
+- Require Minecraft 24w10a+ (1.20.5-shapshot).
+- Require Fabric Loader 0.15.7+ and Fabric API 0.96.8+1.20.5.
+- Require Cloth Config 14.0.122+.
+
+### Added
+- Add `tolaserblade:laser_blade` data component type.
+
+### Changed
+- Port to Minecraft 24w10a (1.20.5-shapshot).
+
+## [3.1.2]
+- Require Minecraft 1.20.2-1.20.4.
+- Require Fabric Loader 0.14.23+ and Fabric API.
+- Require Cloth Config.
+
+### Fixed
+- Fix server crash caused by config.
+
 ## [3.1.1]
 ### Fixed
 - Improve laser blade model no. 2.

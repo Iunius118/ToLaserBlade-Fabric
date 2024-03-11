@@ -1,6 +1,6 @@
 # ToLaserBlade-Fabric
 
-ToLaserBlade-Fabric for 1.20.2+.
+ToLaserBlade-Fabric for 1.20.5.
 
 ## Requirements
 

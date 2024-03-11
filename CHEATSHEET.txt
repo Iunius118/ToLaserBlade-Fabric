@@ -1,5 +1,5 @@
 # Cheatsheet
-ToLaserBlade-Fabric v3.1.0
+ToLaserBlade-Fabric v4.0.0
 
 ## Items
 ### Laser Blade Blueprint
