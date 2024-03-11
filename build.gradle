@@ -1,14 +1,14 @@
 plugins {
-    id 'fabric-loom' version '1.0-SNAPSHOT'
+    id 'fabric-loom' version '1.5-SNAPSHOT'
     id 'maven-publish'
 }
 
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
+version = minecraft_version + '-' + mod_version
+group = maven_group
 
-archivesBaseName = project.archives_base_name
-version = project.minecraft_version + '-' + project.mod_version
-group = project.maven_group
+base {
+    archivesName = archives_base_name
+}
 
 repositories {
     // Cloth Config
@@ -16,6 +16,23 @@ repositories {
 
     // Mod Menu
     maven { url "https://maven.terraformersmc.com/releases/" }
+}
+
+loom {
+    // splitEnvironmentSourceSets()
+
+    accessWidenerPath = file("src/main/resources/tolaserblade.accesswidener")
+
+    mods {
+        "tolaserblade" {
+            sourceSet sourceSets.main
+            // sourceSet sourceSets.client
+        }
+    }
+}
+
+fabricApi {
+    configureDataGeneration()
 }
 
 dependencies {
@@ -37,34 +54,6 @@ dependencies {
     modApi("com.terraformersmc:modmenu:${project.mod_menu_version}")
 }
 
-loom {
-    accessWidenerPath = file("src/main/resources/tolaserblade.accesswidener")
-
-    runs {
-        // This adds a new gradle task that runs the datagen API: "gradlew runDatagenClient"
-        datagenClient {
-            inherit client
-            name "Data Generation"
-            vmArg "-Dfabric-api.datagen"
-            vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
-            vmArg "-Dfabric-api.datagen.modid=${mod_id}"
-
-            runDir "build/datagen"
-        }
-    }
-}
-
-sourceSets {
-    main {
-        resources {
-            // Adds the generated files into the jar you distribute to players.
-            srcDirs += [
-                    'src/main/generated'
-            ]
-        }
-    }
-}
-
 processResources {
     inputs.property "version", mod_version
 
@@ -74,39 +63,31 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    it.options.encoding = "UTF-8"
-
-    // Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
     it.options.release = 17
+    it.options.encoding = 'UTF-8'
 }
 
 java {
-    // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-    // if it is present.
-    // If you remove this line, sources will not be generated.
-    withSourcesJar()
+    // withSourcesJar()
+
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 jar {
     from("CHANGELOG.txt", "CHEATSHEET.txt", "CREDITS.txt")
 }
 
-// configure the maven publication
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            // add all the jars that should be included when publishing to maven
-            artifact(remapJar) {
-                builtBy remapJar
-            }
-            artifact(sourcesJar) {
-                builtBy remapSourcesJar
-            }
+            from components.java
         }
     }
+
     repositories {
         maven {
-            url "file:///${project.projectDir}/mcmodsrepo"
+            url "file://${project.projectDir}/mcmodsrepo"
         }
     }
 }
