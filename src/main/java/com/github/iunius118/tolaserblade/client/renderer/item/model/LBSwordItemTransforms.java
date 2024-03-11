@@ -1,8 +1,8 @@
 package com.github.iunius118.tolaserblade.client.renderer.item.model;
 
-import org.joml.Vector3f;
 import net.minecraft.client.renderer.block.model.ItemTransform;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
+import org.joml.Vector3f;
 
 public enum LBSwordItemTransforms {
     ITEM_TRANSFORMS(new ItemTransforms(

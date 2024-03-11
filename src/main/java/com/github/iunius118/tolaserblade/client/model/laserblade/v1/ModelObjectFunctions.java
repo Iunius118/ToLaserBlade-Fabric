@@ -26,7 +26,7 @@ class ModelObjectFunctions {
 
         PoseStack matrices = args.matrices();
         matrices.pushPose();
-        matrices.mulPoseMatrix(new Matrix4f().rotate((float) Math.toRadians(angle), 0.0f, 1.0f, 0.0f));
+        matrices.mulPose(new Matrix4f().rotate((float) Math.toRadians(angle), 0.0f, 1.0f, 0.0f));
         return i + 1;
     };
     public final static ModelObject.ModelObjectFunction FN_SHIELD = (args, i) -> {
@@ -55,10 +55,10 @@ class ModelObjectFunctions {
 
     private static void transformShield(ItemDisplayContext mode, PoseStack matrices) {
         switch (mode) {
-            case FIRST_PERSON_RIGHT_HAND -> matrices.mulPoseMatrix(FP_RIGHT_HAND_TRANSFORMATION);
-            case FIRST_PERSON_LEFT_HAND -> matrices.mulPoseMatrix(FP_LEFT_HAND_TRANSFORMATION);
-            case THIRD_PERSON_LEFT_HAND -> matrices.mulPoseMatrix(TP_LEFT_HAND_TRANSFORMATION);
-            case GUI, FIXED -> matrices.mulPoseMatrix(GUI_TRANSFORMATION);
+            case FIRST_PERSON_RIGHT_HAND -> matrices.mulPose(FP_RIGHT_HAND_TRANSFORMATION);
+            case FIRST_PERSON_LEFT_HAND -> matrices.mulPose(FP_LEFT_HAND_TRANSFORMATION);
+            case THIRD_PERSON_LEFT_HAND -> matrices.mulPose(TP_LEFT_HAND_TRANSFORMATION);
+            case GUI, FIXED -> matrices.mulPose(GUI_TRANSFORMATION);
         }
     }
 }

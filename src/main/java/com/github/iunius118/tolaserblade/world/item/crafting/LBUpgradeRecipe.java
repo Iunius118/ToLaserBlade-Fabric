@@ -8,7 +8,7 @@ import com.github.iunius118.tolaserblade.core.laserblade.upgrade.UpgradeResult;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -101,8 +101,7 @@ public class LBUpgradeRecipe extends SmithingTransformRecipe {
             // Set hint of removing Efficiency to item-stack's display name
             MutableComponent componentContents = LaserBladeTextKey.KEY_TOOLTIP_REMOVE.translate(Component.translatable("enchantment.minecraft.efficiency"));
             MutableComponent info = Component.literal(componentContents.getString());
-            CompoundTag nbt = sample.getOrCreateTagElement("display");
-            nbt.putString("Name", Component.Serializer.toJson(info));
+            sample.set(DataComponents.CUSTOM_NAME, info);
         } else {
             // Apply upgrade to sample item
             sample = getUpgradingResult(output);

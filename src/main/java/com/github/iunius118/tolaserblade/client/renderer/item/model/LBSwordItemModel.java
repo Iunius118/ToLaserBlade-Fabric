@@ -1,6 +1,5 @@
 package com.github.iunius118.tolaserblade.client.renderer.item.model;
 
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.ItemOverrides;
@@ -19,7 +18,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 import java.util.function.Function;
 
 public class LBSwordItemModel implements UnbakedModel, BakedModel {
