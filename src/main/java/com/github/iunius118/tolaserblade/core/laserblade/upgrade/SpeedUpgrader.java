@@ -1,6 +1,7 @@
 package com.github.iunius118.tolaserblade.core.laserblade.upgrade;
 
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBlade;
+import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeDataWriter;
 import net.minecraft.world.item.ItemStack;
 
 public class SpeedUpgrader implements Upgrader {
@@ -17,7 +18,7 @@ public class SpeedUpgrader implements Upgrader {
 
         if (LaserBlade.canUpgradeSpeed(speed)) {
             float newSpeed = speed + 0.4F;
-            LaserBlade.Writer.of(base).writeSpeed(newSpeed);
+            LaserBladeDataWriter.of(base).speed(newSpeed).write();
             cost += getCost(newSpeed);
         }
 

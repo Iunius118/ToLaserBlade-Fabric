@@ -1,6 +1,7 @@
 package com.github.iunius118.tolaserblade.core.laserblade.upgrade;
 
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBlade;
+import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeDataWriter;
 import net.minecraft.world.item.ItemStack;
 
 public class DamageUpgrader implements Upgrader {
@@ -17,7 +18,7 @@ public class DamageUpgrader implements Upgrader {
 
         if (LaserBlade.canUpgradeDamage(damage)) {
             float newDamage = damage + 1.0F;
-            LaserBlade.Writer.of(base).writeDamage(newDamage);
+            LaserBladeDataWriter.of(base).damage(newDamage).write();
             cost += getCost(newDamage);
         }
 

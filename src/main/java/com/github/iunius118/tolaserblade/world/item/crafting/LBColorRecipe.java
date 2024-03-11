@@ -2,6 +2,7 @@ package com.github.iunius118.tolaserblade.world.item.crafting;
 
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeColor;
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeColorPart;
+import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeDataWriter;
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeVisual;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
@@ -94,25 +95,25 @@ public class LBColorRecipe extends SmithingTransformRecipe {
     }
 
     private ItemStack getColoringResult(ItemStack input) {
-        var writer = LaserBladeVisual.Writer.of(input);
+        var writer = LaserBladeDataWriter.of(input);
 
         switch (part) {
             case INNER_BLADE -> {
                 if (isSwitchingBlendModeColor()) {
-                    writer.switchIsInnerSubColor();
+                    writer.switchIsInnerSubColor().write();
                 } else {
-                    writer.writeInnerColor(color);
+                    writer.innerColor(color).write();
                 }
             }
             case OUTER_BLADE -> {
                 if (isSwitchingBlendModeColor()) {
-                    writer.switchIsOuterSubColor();
+                    writer.switchIsOuterSubColor().write();
                 } else {
-                    writer.writeOuterColor(color);
+                    writer.outerColor(color).write();
                 }
             }
             default -> {
-                writer.writeGripColor(color);
+                writer.gripColor(color).write();
             }
         }
 
