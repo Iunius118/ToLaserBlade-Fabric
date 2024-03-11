@@ -4,7 +4,6 @@ import com.github.iunius118.tolaserblade.ToLaserBlade;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import net.minecraft.ResourceLocationException;
-import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -42,13 +41,7 @@ public class ModConfig implements ConfigData {
                 .toList();
     }
 
-    public List<ResourceLocation> getLaserBladeModelLocations() {
-        return getLaserBladeItemIDs().stream()
-                .map(id -> (ResourceLocation) new ModelResourceLocation(id, "inventory"))
-                .toList();
-    }
-
-    private List<ResourceLocation> getLaserBladeItemIDs(){
+    public List<ResourceLocation> getLaserBladeItemIDs(){
         return Stream.of(client.laserBlades)
                 .map(this::getResourceLocation)
                 .filter(Optional::isPresent)
