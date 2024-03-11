@@ -14,6 +14,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -50,7 +52,15 @@ public class LaserTrapPlayer {
         inventory.setItem(0, currentStack);
 
         // Apply attack damage from main hand item
-        fakePlayer.getAttributes().addTransientAttributeModifiers(currentStack.getAttributeModifiers(EquipmentSlot.MAINHAND));
+        AttributeMap attributeMap = fakePlayer.getAttributes();
+        currentStack.forEachModifier(EquipmentSlot.MAINHAND, (holder, attributeModifier) -> {
+            AttributeInstance attributeInstance = attributeMap.getInstance(holder);
+            
+            if (attributeInstance != null) {
+                attributeInstance.removeModifier(attributeModifier.id());
+                attributeInstance.addTransientModifier(attributeModifier);
+            }
+        });
     }
 
     public void attackEntities(Direction dir) {
