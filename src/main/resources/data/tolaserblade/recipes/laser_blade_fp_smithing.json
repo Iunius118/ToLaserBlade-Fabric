@@ -7,7 +7,8 @@
     "tag": "c:netherite_ingots"
   },
   "result": {
-    "item": "tolaserblade:laser_blade_fp"
+    "count": 1,
+    "id": "tolaserblade:laser_blade_fp"
   },
   "template": {
     "item": "tolaserblade:lb_blueprint"
