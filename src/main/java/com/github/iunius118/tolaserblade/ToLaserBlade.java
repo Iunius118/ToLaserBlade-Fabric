@@ -23,6 +23,7 @@ public class ToLaserBlade implements ModInitializer {
         CommonRegister.registerDispenseItemBehaviors();
         CommonRegister.registerParticleTypes();
         CommonRegister.registerSoundEvents();
+        CommonRegister.registerDataComponentTypes();
     }
     
     public static ResourceLocation makeId(String name) {

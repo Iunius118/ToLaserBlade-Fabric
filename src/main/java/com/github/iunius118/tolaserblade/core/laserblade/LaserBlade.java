@@ -1,9 +1,12 @@
 package com.github.iunius118.tolaserblade.core.laserblade;
 
 import com.github.iunius118.tolaserblade.api.core.laserblade.LaserBladeState;
+import com.github.iunius118.tolaserblade.core.ModDataComponents;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 
 public class LaserBlade {
     public static final float MOD_ATK_MIN = 0.0F;
@@ -21,8 +24,18 @@ public class LaserBlade {
     private final CompoundTag tag;
 
     public LaserBlade(ItemStack itemStack) {
-        // Read only, don't create any tag
-        tag = itemStack.getTag();
+        CustomData customData = itemStack.get(ModDataComponents.LASER_BLADE);
+        
+        if (customData == null) {
+            customData = itemStack.get(DataComponents.CUSTOM_DATA);
+        }
+        
+        if (customData == null) {
+            tag = null;
+        } else {
+            // Read only, don't create any tag
+            tag = customData.copyTag();
+        }
     }
 
     public static LaserBlade of(ItemStack itemStack) {
@@ -78,33 +91,5 @@ public class LaserBlade {
         LaserBladeState.Part grip = new LaserBladeState.Part(visual.gripColorExists(), visual.getGripColor(), false);
 
         return new LaserBladeState(getDamage(), getSpeed(), getType(), inner, outer, grip);
-    }
-
-    public static class Writer {
-        private final CompoundTag tag;
-
-        private Writer(CompoundTag tag) {
-            this.tag = tag;
-        }
-
-        public static Writer of(ItemStack itemStack) {
-            return new Writer(itemStack.getOrCreateTag());
-        }
-
-        public Writer writeDamage(float damage) {
-            tag.putFloat(KEY_ATK, Mth.clamp(damage, MOD_ATK_MIN, MOD_ATK_MAX));
-            return this;
-        }
-
-        public Writer writeSpeed(float speed) {
-            tag.putFloat(KEY_SPD, Mth.clamp(speed, MOD_SPD_MIN, MOD_SPD_MAX));
-            return this;
-        }
-
-        @Deprecated
-        public Writer writeType(int type) {
-            tag.putInt(KEY_TYPE, Math.max(type, 0));
-            return this;
-        }
     }
 }
