@@ -1,7 +1,6 @@
 package com.github.iunius118.tolaserblade.world.item;
 
 import com.github.iunius118.tolaserblade.core.laserblade.upgrade.Upgrade;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -15,7 +14,7 @@ public class LBPartItem extends Item implements LaserBladeItemBase {
     public final Upgrade.Type upgradeType;
 
     public LBPartItem(Upgrade.Type type, boolean isFireResistant) {
-        super(LaserBladeItemBase.setFireResistant(new FabricItemSettings(), isFireResistant));
+        super(LaserBladeItemBase.setFireResistant(new Item.Properties(), isFireResistant));
         upgradeType = type;
     }
 
