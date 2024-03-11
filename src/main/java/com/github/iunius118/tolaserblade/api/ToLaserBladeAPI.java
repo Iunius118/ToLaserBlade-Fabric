@@ -20,6 +20,7 @@ public class ToLaserBladeAPI {
      *     register.accept(laserBladeModels);
      * });
      * }</pre>
+     *
      * @param listener An instance of LaserBladeModelRegistrationCallback.
      */
     public static void registerModelRegistrationListener(LaserBladeModelRegistrationCallback listener) {
@@ -28,6 +29,7 @@ public class ToLaserBladeAPI {
 
     /**
      * Get the state of a laser blade.
+     *
      * @param itemStack Item stack of a laser blade.
      * @return State of the laser blade.
      */

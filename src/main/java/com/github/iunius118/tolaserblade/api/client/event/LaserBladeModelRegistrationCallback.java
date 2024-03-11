@@ -14,8 +14,9 @@ import java.util.function.Consumer;
 public interface LaserBladeModelRegistrationCallback {
     /**
      * Called to register laser blade models to ToLaserBlade.
-     * @see ToLaserBladeAPI#registerModelRegistrationListener
+     *
      * @param register Laser blade model register
+     * @see ToLaserBladeAPI#registerModelRegistrationListener
      */
     void register(Consumer<List<LaserBladeModel>> register);
 }
