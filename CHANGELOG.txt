@@ -4,6 +4,14 @@
 
 ## [Unreleased]
 
+## [3.1.2]
+- Require Minecraft 1.20.2-1.20.4.
+- Require Fabric Loader 0.14.23+ and Fabric API.
+- Require Cloth Config.
+
+### Fixed
+- Fix server crash caused by config.
+
 ## [3.1.1]
 ### Fixed
 - Improve laser blade model no. 2.
