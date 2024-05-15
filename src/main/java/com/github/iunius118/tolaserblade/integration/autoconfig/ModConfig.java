@@ -31,10 +31,6 @@ public class ModConfig implements ConfigData {
         return canLaserTrapHeatUpFurnace;
     }
 
-    public boolean canUseOriginalShaderProgram() {
-        return client.useOriginalShaderProgram;
-    }
-
     public List<Item> getLaserBladeItems() {
         return getLaserBladeItemIDs().stream()
                 .map(BuiltInRegistries.ITEM::get)
@@ -59,7 +55,6 @@ public class ModConfig implements ConfigData {
     }
 
     static class ClientConfig {
-        boolean useOriginalShaderProgram = false;
-        String[] laserBlades = {"tolaserblade:laser_blade","tolaserblade:laser_blade_fp"};
+        String[] laserBlades = {"tolaserblade:laser_blade", "tolaserblade:laser_blade_fp"};
     }
 }
