@@ -2,7 +2,7 @@ package com.github.iunius118.tolaserblade.common;
 
 import com.github.iunius118.tolaserblade.ToLaserBlade;
 import com.github.iunius118.tolaserblade.common.util.ModSoundEvents;
-import com.github.iunius118.tolaserblade.core.ModDataComponents;
+import com.github.iunius118.tolaserblade.core.component.ModDataComponents;
 import com.github.iunius118.tolaserblade.core.dispenser.DispenseLBSwordBehavior;
 import com.github.iunius118.tolaserblade.core.particle.ModParticleTypes;
 import com.github.iunius118.tolaserblade.integration.autoconfig.ModConfig;
@@ -69,7 +69,9 @@ public class CommonRegister {
     }
 
     public static void registerDataComponentTypes() {
-        Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, ToLaserBlade.makeId("laser_blade"), ModDataComponents.LASER_BLADE);
+        Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, ToLaserBlade.makeId("lb_atk"), ModDataComponents.LASER_BLADE_ATTACK);
+        Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, ToLaserBlade.makeId("lb_spd"), ModDataComponents.LASER_BLADE_SPEED);
+        Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, ToLaserBlade.makeId("lb_mdl"), ModDataComponents.LASER_BLADE_MODEL);
     }
 
     private CommonRegister() {}
