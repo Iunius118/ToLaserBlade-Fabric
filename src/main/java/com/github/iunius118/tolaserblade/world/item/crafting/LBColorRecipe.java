@@ -1,14 +1,15 @@
 package com.github.iunius118.tolaserblade.world.item.crafting;
 
+import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeAppearance;
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeColor;
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeColorPart;
-import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeDataWriter;
-import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeVisual;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.SmithingMenu;
@@ -52,17 +53,17 @@ public class LBColorRecipe extends SmithingTransformRecipe {
         }
 
         ItemStack baseStack = container.getItem(SmithingMenu.BASE_SLOT);
-        var visual = LaserBladeVisual.of(baseStack);
+        var appearance = LaserBladeAppearance.of(baseStack);
 
         switch (part) {
             case INNER_BLADE -> {
-                return (visual.getInnerColor() != color) || isSwitchingBlendModeColor();
+                return (appearance.getInnerColor() != color) || isSwitchingBlendModeColor();
             }
             case OUTER_BLADE -> {
-                return (visual.getOuterColor() != color) || isSwitchingBlendModeColor();
+                return (appearance.getOuterColor() != color) || isSwitchingBlendModeColor();
             }
             default -> {
-                return visual.getGripColor() != color;
+                return appearance.getGripColor() != color;
             }
         }
     }
@@ -72,19 +73,19 @@ public class LBColorRecipe extends SmithingTransformRecipe {
     }
 
     @Override
-    public ItemStack assemble(Container container, RegistryAccess registryAccess) {
+    public ItemStack assemble(Container container, HolderLookup.Provider provider) {
         ItemStack baseStack = container.getItem(SmithingMenu.BASE_SLOT);
         ItemStack itemstack = baseStack.copy();
         return getColoringResult(itemstack);
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess) {
+    public ItemStack getResultItem(HolderLookup.Provider provider) {
         if (sample != null) {
             return sample;
         }
 
-        ItemStack output = super.getResultItem(registryAccess);
+        ItemStack output = super.getResultItem(provider);
 
         if (output.isEmpty()) {
             sample = ItemStack.EMPTY;
@@ -96,28 +97,29 @@ public class LBColorRecipe extends SmithingTransformRecipe {
     }
 
     private ItemStack getColoringResult(ItemStack input) {
-        var writer = LaserBladeDataWriter.of(input);
+        var appearance = LaserBladeAppearance.of(input);
 
         switch (part) {
             case INNER_BLADE -> {
                 if (isSwitchingBlendModeColor()) {
-                    writer.switchIsInnerSubColor().write();
+                    appearance.switchInnerSubColor();
                 } else {
-                    writer.innerColor(color).write();
+                    appearance.setInnerColor(color);
                 }
             }
             case OUTER_BLADE -> {
                 if (isSwitchingBlendModeColor()) {
-                    writer.switchIsOuterSubColor().write();
+                    appearance.switchOuterSubColor();
                 } else {
-                    writer.outerColor(color).write();
+                    appearance.setOuterColor(color);
                 }
             }
             default -> {
-                writer.gripColor(color).write();
+                appearance.setGripColor(color);
             }
         }
 
+        appearance.writeTo(input);
         return input;
     }
 
@@ -127,7 +129,7 @@ public class LBColorRecipe extends SmithingTransformRecipe {
     }
 
     public static class Serializer implements RecipeSerializer<LBColorRecipe> {
-        private static final Codec<LBColorRecipe> CODEC = RecordCodecBuilder.create(
+        private static final MapCodec<LBColorRecipe> CODEC = RecordCodecBuilder.mapCodec(
                 (instance) -> instance.group(
                         Ingredient.CODEC.fieldOf("template").forGetter(lBColorRecipe -> lBColorRecipe.template),
                         Ingredient.CODEC.fieldOf("base").forGetter(lBColorRecipe -> lBColorRecipe.base),
@@ -135,11 +137,14 @@ public class LBColorRecipe extends SmithingTransformRecipe {
                         Codec.pair(Codec.STRING.fieldOf("part").codec(), Codec.INT.fieldOf("color").codec())
                                 .fieldOf("result").forGetter(lBColorRecipe -> new Pair<>(lBColorRecipe.part.getPartName(), lBColorRecipe.color))
                 ).apply(instance, (template, base, addition, result) ->
-                        new LBColorRecipe(template, base, addition, LaserBladeColorPart.byPartName(result.getFirst()), result.getSecond())));
-        public static final StreamCodec<RegistryFriendlyByteBuf, LBColorRecipe> STREAM_CODEC = StreamCodec.of(LBColorRecipe.Serializer::toNetwork, LBColorRecipe.Serializer::fromNetwork);
+                        new LBColorRecipe(template, base, addition, LaserBladeColorPart.byPartName(result.getFirst()), result.getSecond()))
+        );
+        private static final StreamCodec<RegistryFriendlyByteBuf, LBColorRecipe> STREAM_CODEC = StreamCodec.of(
+                LBColorRecipe.Serializer::toNetwork, LBColorRecipe.Serializer::fromNetwork
+        );
 
         @Override
-        public Codec<LBColorRecipe> codec() {
+        public MapCodec<LBColorRecipe> codec() {
             return CODEC;
         }
 
@@ -148,22 +153,21 @@ public class LBColorRecipe extends SmithingTransformRecipe {
             return STREAM_CODEC;
         }
 
-        private static LBColorRecipe fromNetwork(RegistryFriendlyByteBuf buf) {
-            Ingredient template = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
-            Ingredient base = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
-            Ingredient addition = Ingredient.CONTENTS_STREAM_CODEC.decode(buf);
-            LaserBladeColorPart colorPart = LaserBladeColorPart.byIndex(buf.readInt());
-            int color = buf.readInt();
+        private static LBColorRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
+            Ingredient template = Ingredient.CONTENTS_STREAM_CODEC.decode(buffer);
+            Ingredient base = Ingredient.CONTENTS_STREAM_CODEC.decode(buffer);
+            Ingredient addition = Ingredient.CONTENTS_STREAM_CODEC.decode(buffer);
+            var colorPart = LaserBladeColorPart.byIndex(ByteBufCodecs.INT.decode(buffer));
+            int color = ByteBufCodecs.INT.decode(buffer);
             return new LBColorRecipe(template, base, addition, colorPart, color);
         }
 
-        private static void toNetwork(RegistryFriendlyByteBuf buf, LBColorRecipe recipe) {
-            LaserBladeColorPart part = recipe.part;
-            Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.template);
-            Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.base);
-            Ingredient.CONTENTS_STREAM_CODEC.encode(buf, recipe.addition);
-            buf.writeInt(part.getIndex());
-            buf.writeInt(recipe.color);
+        private static void toNetwork(RegistryFriendlyByteBuf buffer, LBColorRecipe recipe) {
+            Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.template);
+            Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.base);
+            Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.addition);
+            ByteBufCodecs.INT.encode(buffer, recipe.part.getIndex());
+            ByteBufCodecs.INT.encode(buffer, recipe.color);
         }
     }
 }
