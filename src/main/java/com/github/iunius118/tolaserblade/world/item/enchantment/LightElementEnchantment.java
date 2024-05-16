@@ -1,7 +1,11 @@
 package com.github.iunius118.tolaserblade.world.item.enchantment;
 
+import com.github.iunius118.tolaserblade.ToLaserBlade;
+import com.github.iunius118.tolaserblade.tags.ModEntityTypeTags;
 import com.github.iunius118.tolaserblade.world.item.LaserBladeItemBase;
-import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -14,20 +18,19 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 
 public class LightElementEnchantment extends DamageEnchantment {
+    public static final ResourceLocation ID = ToLaserBlade.makeId("light_element");
     private static final int MAX_LEVEL = 10;
+    private static final Enchantment.EnchantmentDefinition DEFINITION = Enchantment.definition(ItemTags.WEAPON_ENCHANTABLE, ItemTags.SWORD_ENCHANTABLE, 5, MAX_LEVEL, Enchantment.dynamicCost(5, 8), Enchantment.dynamicCost(25, 8), 2, EquipmentSlot.MAINHAND);
+
+    private static final TagKey<EntityType<?>> TARGETS = ModEntityTypeTags.SENSITIVE_TO_LIGHT_ELEMENT;
 
     public LightElementEnchantment() {
-        super(Enchantment.Rarity.UNCOMMON, 1, 11, 20, Optional.empty(), EquipmentSlot.MAINHAND);
-    }
-
-    @Override
-    public int getMaxLevel() {
-        return MAX_LEVEL;
+        super(DEFINITION, Optional.ofNullable(TARGETS));
     }
 
     @Override
     public float getDamageBonus(int level, @Nullable EntityType<?> entityType) {
-        if (entityType != null && (entityType.is(EntityTypeTags.UNDEAD) || entityType.is(EntityTypeTags.ILLAGER))) {
+        if (entityType != null && entityType.is(TARGETS)) {
             return (float) level * 2.4F;
         }
 
