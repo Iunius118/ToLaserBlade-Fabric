@@ -1,6 +1,6 @@
 package com.github.iunius118.tolaserblade.common.util;
 
-import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeVisual;
+import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeAppearance;
 import com.github.iunius118.tolaserblade.core.particle.ModParticleTypes;
 import com.github.iunius118.tolaserblade.integration.autoconfig.ModConfig;
 import com.mojang.authlib.GameProfile;
@@ -115,12 +115,24 @@ public class LaserTrapPlayer {
     private void spawnParticle(Direction dir, BlockPos effectPos, ItemStack itemStack) {
         if (!(fakePlayer.level() instanceof ServerLevel serverLevel)) return;
 
+        // Create laser trap particle
         var laserTrapParticleType = ModParticleTypes.getLaserTrapParticleType(dir.getAxis());
         var vecPos = new Vec3(effectPos.getX(), effectPos.getY(), effectPos.getZ()).add(0.5, 0.5, 0.5);
-        var visual = LaserBladeVisual.of(itemStack);
-        int outerColor = visual.getOuterColor();
-        var color4F = Color4F.of((visual.isOuterSubColor() ? ~outerColor : outerColor) | 0xFF000000);
-        serverLevel.sendParticles(laserTrapParticleType, vecPos.x, vecPos.y, vecPos.z, 0, color4F.r(), color4F.g(), color4F.b(), 1);
+        var color = getParticleColor(itemStack);
+        // Spawn particle
+        serverLevel.sendParticles(laserTrapParticleType, vecPos.x, vecPos.y, vecPos.z, 0, color.r(), color.g(), color.b(), 1);
+    }
+
+    private Color4F getParticleColor(ItemStack itemStack) {
+        // Get laser beam color from laser blade
+        var appearance = LaserBladeAppearance.of(itemStack);
+        int outerColor = appearance.getOuterColor();
+
+        if (appearance.isOuterSubColor()) {
+            outerColor = ~outerColor;
+        }
+
+        return Color4F.of(outerColor | 0xFF000000);
     }
 
     public void remove() {
