@@ -11,8 +11,9 @@ public class ToLaserBladeAPI {
     /**
      * Register an instance of {@link LaserBladeModelRegistrationCallback} to the Event.
      * Call on client side only.
+     * <p>
      * The following code is an example of usage.
-     *
+     * </p>
      * <pre>{@code
      * ToLaserBladeAPI.registerModelRegistrationListener(register -> {
      *     List<LaserBladeModel> laserBladeModels = loadMyLaserBladeModels();
@@ -20,7 +21,6 @@ public class ToLaserBladeAPI {
      *     register.accept(laserBladeModels);
      * });
      * }</pre>
-     *
      * @param listener An instance of LaserBladeModelRegistrationCallback.
      */
     public static void registerModelRegistrationListener(LaserBladeModelRegistrationCallback listener) {
@@ -29,7 +29,6 @@ public class ToLaserBladeAPI {
 
     /**
      * Get the state of a laser blade.
-     *
      * @param itemStack Item stack of a laser blade.
      * @return State of the laser blade.
      */
