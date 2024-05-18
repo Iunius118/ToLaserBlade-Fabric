@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tolaserblade:lb_medium",
+  "key": {
+    "#": {
+      "item": "tolaserblade:lb_blueprint"
+    },
+    "g": {
+      "tag": "c:dusts/glowstone"
+    }
+  },
+  "pattern": [
+    "#",
+    "g"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tolaserblade:lb_medium"
+  }
+}

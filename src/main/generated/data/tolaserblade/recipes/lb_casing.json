@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tolaserblade:lb_casing",
+  "key": {
+    "#": {
+      "item": "tolaserblade:lb_blueprint"
+    },
+    "i": {
+      "tag": "c:ingots/iron"
+    }
+  },
+  "pattern": [
+    "#",
+    "i",
+    "i"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tolaserblade:lb_casing"
+  }
+}

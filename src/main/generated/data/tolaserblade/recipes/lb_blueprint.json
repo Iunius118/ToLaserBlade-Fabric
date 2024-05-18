@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tolaserblade:lb_blueprint",
+  "key": {
+    "b": {
+      "tag": "c:dyes/blue"
+    },
+    "p": {
+      "item": "minecraft:paper"
+    },
+    "r": {
+      "tag": "c:dusts/redstone"
+    },
+    "s": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    "rbr",
+    "sps"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tolaserblade:lb_blueprint"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "tag": "c:ingots/netherite"
+  },
+  "base": {
+    "item": "tolaserblade:laser_blade"
+  },
+  "result": {
+    "count": 1,
+    "id": "tolaserblade:laser_blade_fp"
+  },
+  "template": {
+    "item": "tolaserblade:lb_blueprint"
+  }
+}
