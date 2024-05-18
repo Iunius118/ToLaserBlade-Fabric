@@ -107,7 +107,7 @@ You can add audio files that will be played when laser blades are swung.
 - `(resource_pack_root_dir)/assets/tolaserblade/sounds/item/laser_blade/swing.ogg`
 - `(resource_pack_root_dir)/assets/tolaserblade/sounds/item/laser_blade_fp/swing.ogg`
 
-## Config
+## Configurations
 `(game_dir)/config/tolaserblade.toml`
 
 If you change the config, you will need to restart the game.
@@ -125,6 +125,46 @@ In multiplayer mode, server-side config will be used.
 ### `[client]`
 - `laserBlades` (array of strings, default value is `["tolaserblade:laser_blade", "tolaserblade:laser_blade_fp"]`)
   - IDs of items to which laser blade model applies
+
+## Data Components
+Data components for laser blade data
+
+For example:
+```
+/give @p tolaserblade:laser_blade[tolaserblade:lb_atk=8.0f,tolaserblade:lb_spd=1.2f,tolaserblade:lb_mdl={type:2,parts:{grip:{color:-12103854,is_sub:0b},in:{color:-1,is_sub:1b},out:{color:-1,is_sub:0b}}}]
+```
+
+### Attack Damage
+ID: `tolaserblade:lb_atk`
+Value: Float value between 0 and 8
+
+### Attack Speed
+ID: `tolaserblade:lb_spd`
+Value: Float value between 0 and 1.2
+
+### Model and Color
+ID: `tolaserblade:lb_mdl`
+Value:
+
+```
+{
+  type: <integer model_type>,
+  parts: {
+    grip: {
+      color: <integer grip_color_in_argb_32>,
+      is_sub: 0b
+    },
+    in: {
+      color: <integer inner_blade_color_in_argb_32>,
+      is_sub: <byte (boolean) is_inner_blade_subtractive_color>
+    },
+    out: {
+      color: <integer outer_blade_color_in_argb_32>,
+      is_sub: <byte (boolean) is_outer_blade_subtractive_color>
+    }
+  }
+}
+```
 
 ## Related Mod
 ### ToLaserBlade-ExtraModels

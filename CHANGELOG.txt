@@ -3,6 +3,9 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+
+## [4.0.0]
+- CAUTION: Item data migration is only possible from 3.1.2 or older versions, not from 4.0.0-alpha versions.
 - Require Minecraft 1.20.6.
 - Require Fabric Loader 0.15.10+ and Fabric API 0.98.0+1.20.6.
 - Require Cloth Config 14.0.126+.
