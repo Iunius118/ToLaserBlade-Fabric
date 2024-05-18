@@ -3,6 +3,21 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+- Require Minecraft 1.20.6.
+- Require Fabric Loader 0.15.10+ and Fabric API 0.98.0+1.20.6.
+- Require Cloth Config 14.0.126+.
+
+### Added
+- Data component types: `tolaserblade:lb_atk`, `tolaserblade:lb_spd`, and `tolaserblade:lb_mdl`.
+- Entity type tag `tolaserblade:sensitive_to_light_element` for Light Element enchantment.
+
+### Changed
+- Port to 1.20.6.
+
+### Removed
+- Additional shader for laser blade.
+- Config item `useOriginalShaderProgram`.
+- Data component type `tolaserblade:laser_blade`.
 
 ## [4.0.0-alpha.1]
 - Require Minecraft 24w10a+ (1.20.5-shapshot).

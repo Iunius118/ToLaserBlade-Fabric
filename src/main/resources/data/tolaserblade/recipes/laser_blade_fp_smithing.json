@@ -4,7 +4,7 @@
     "item": "tolaserblade:laser_blade"
   },
   "addition": {
-    "tag": "c:netherite_ingots"
+    "item": "minecraft:netherite_ingot"
   },
   "result": {
     "count": 1,

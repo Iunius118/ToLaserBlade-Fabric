@@ -1,21 +1,22 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "b",
-    "i",
-    "r"
-  ],
+  "category": "misc",
   "key": {
-    "b": {
+    "#": {
       "item": "tolaserblade:lb_blueprint"
     },
     "i": {
-      "tag": "c:iron_ingots"
+      "tag": "c:ingots/iron"
     },
     "r": {
-      "tag": "c:redstone_dusts"
+      "tag": "c:dusts/redstone"
     }
   },
+  "pattern": [
+    "#",
+    "i",
+    "r"
+  ],
   "result": {
     "count": 1,
     "id": "tolaserblade:lb_battery"

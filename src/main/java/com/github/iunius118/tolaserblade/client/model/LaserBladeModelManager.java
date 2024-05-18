@@ -5,7 +5,7 @@ import com.github.iunius118.tolaserblade.api.client.event.LaserBladeModelRegistr
 import com.github.iunius118.tolaserblade.api.client.model.LaserBladeModel;
 import com.github.iunius118.tolaserblade.client.model.laserblade.LaserBladeJsonModelLoader;
 import com.github.iunius118.tolaserblade.client.model.laserblade.v1.LaserBladeModelV1;
-import com.github.iunius118.tolaserblade.core.laserblade.LaserBlade;
+import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeAppearance;
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
 import net.minecraft.client.Minecraft;
@@ -119,7 +119,7 @@ public class LaserBladeModelManager {
     }
 
     public LaserBladeModel getModel(ItemStack itemStack) {
-        int type = LaserBlade.of(itemStack).getType();
+        int type = LaserBladeAppearance.of(itemStack).getType();
         LaserBladeModel model = getModel(type);
 
         if (model != null) {

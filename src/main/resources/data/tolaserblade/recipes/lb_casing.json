@@ -10,7 +10,7 @@
       "item": "tolaserblade:lb_blueprint"
     },
     "i": {
-      "tag": "c:iron_ingots"
+      "tag": "c:ingots/iron"
     }
   },
   "result": {

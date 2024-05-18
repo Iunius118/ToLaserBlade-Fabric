@@ -1,6 +1,6 @@
 {
   "replace": false,
   "values": [
-    "#c:redstone_dusts"
+    "#c:dusts/redstone"
   ]
 }

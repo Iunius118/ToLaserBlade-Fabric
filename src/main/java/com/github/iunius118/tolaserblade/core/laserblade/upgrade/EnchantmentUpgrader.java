@@ -41,15 +41,14 @@ public class EnchantmentUpgrader implements Upgrader {
     }
 
     private boolean isCompatibleWith(Enchantment e1, Enchantment e2) {
-        return e1.isCompatibleWith(e2) ||
-                (e1 == Enchantments.SILK_TOUCH && e2 == Enchantments.LOOTING) || (e1 == Enchantments.LOOTING && e2 == Enchantments.SILK_TOUCH);
-                // Allow Laser Blade to have Silk Touch and Looting together
+        // Allow Laser Blade to have Silk Touch and Looting together
+        return e1.isCompatibleWith(e2)
+                || (e1 == Enchantments.SILK_TOUCH && e2 == Enchantments.LOOTING)
+                || (e1 == Enchantments.LOOTING && e2 == Enchantments.SILK_TOUCH);
     }
 
     private int getCost(int newLevel) {
-        Enchantment.Rarity rarity = enchantment.getRarity();
-        int rate = (!(rarity == Enchantment.Rarity.RARE || rarity == Enchantment.Rarity.VERY_RARE)) ? 1
-                : (rarity == Enchantment.Rarity.RARE) ? 2 : 4;  // Half rate (same as enchanted book)
+        int rate = Math.max(enchantment.getAnvilCost() / 2, 1);
         return Math.max(rate * newLevel, 1);
     }
 }

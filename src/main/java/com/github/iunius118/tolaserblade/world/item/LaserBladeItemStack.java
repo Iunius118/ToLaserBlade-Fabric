@@ -1,7 +1,7 @@
 package com.github.iunius118.tolaserblade.world.item;
 
+import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeAppearance;
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeColor;
-import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeDataWriter;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.function.Supplier;
@@ -27,14 +27,14 @@ public enum LaserBladeItemStack {
     }
 
     private static ItemStack getIconStack() {
-        ItemStack stack = new ItemStack(ModItems.LASER_BLADE);
-        LaserBladeDataWriter.of(stack).gripColor(LaserBladeColor.LIGHT_GRAY.getGripColor()).write();
+        var stack = new ItemStack(ModItems.LASER_BLADE);
+        new LaserBladeAppearance().setGripColor(LaserBladeColor.LIGHT_GRAY.getGripColor()).writeTo(stack);
         return stack;
     }
 
     public static ItemStack getModelChangedStack(int type, boolean isFireproof) {
-        ItemStack stack = new ItemStack(isFireproof ? ModItems.LASER_BLADE_FP : ModItems.LASER_BLADE);
-        LaserBladeDataWriter.of(stack).modelType(type).write();
+        var stack = new ItemStack(isFireproof ? ModItems.LASER_BLADE_FP : ModItems.LASER_BLADE);
+        LaserBladeAppearance.of().setType(type).writeTo(stack);
         return stack;
     }
 }

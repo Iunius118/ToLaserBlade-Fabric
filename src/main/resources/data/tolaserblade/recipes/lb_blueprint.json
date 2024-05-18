@@ -6,13 +6,13 @@
   ],
   "key": {
     "r": {
-      "tag": "c:redstone_dusts"
+      "tag": "c:dusts/redstone"
     },
     "b": {
-      "item": "minecraft:blue_dye"
+      "tag": "c:dyes/blue"
     },
     "s": {
-      "item": "minecraft:stick"
+      "tag": "c:rods/wooden"
     },
     "p": {
       "item": "minecraft:paper"

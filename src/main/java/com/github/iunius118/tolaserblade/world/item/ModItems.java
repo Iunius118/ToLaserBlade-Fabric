@@ -5,8 +5,8 @@ import net.minecraft.world.item.Item;
 
 public class ModItems {
     // Laser Blades
-    public static final LBSwordItem LASER_BLADE = LBSwordItem.creatLBSwordItem(false);
-    public static final LBSwordItem LASER_BLADE_FP = LBSwordItem.creatLBSwordItem(true);
+    public static final LBSwordItem LASER_BLADE = new LBSwordItem(false);
+    public static final LBSwordItem LASER_BLADE_FP = new LBSwordItem(true);
     // Blueprint
     public static final Item LB_BLUEPRINT = LBBlueprintItem.getInstance();
     // Laser Blade parts

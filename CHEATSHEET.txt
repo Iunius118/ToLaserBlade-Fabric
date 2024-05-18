@@ -123,8 +123,6 @@ In multiplayer mode, server-side config will be used.
   - Whether to allow laser trap to light furnace. This is only valid when `enableLaserTrap` is `true`
 
 ### `[client]`
-- `useOriginalShaderProgram` (boolean, default value is `false`)
-  - Whether to use original shader program to render blade of laser blade
 - `laserBlades` (array of strings, default value is `["tolaserblade:laser_blade", "tolaserblade:laser_blade_fp"]`)
   - IDs of items to which laser blade model applies
 

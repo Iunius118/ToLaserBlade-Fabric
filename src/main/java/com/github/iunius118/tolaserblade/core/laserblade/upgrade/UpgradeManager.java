@@ -33,7 +33,7 @@ public class UpgradeManager {
 
         register(UpgradeID.EFFICIENCY_REMOVER, ModItemTags.EFFICIENCY_REMOVER, new RemoveEfficiencyUpgrader());
 
-        register(UpgradeID.ATTACK_DAMAGE_UPGRADE, ModItemTags.ATTACK_DAMAGE_UPGRADE, new DamageUpgrader());
+        register(UpgradeID.ATTACK_DAMAGE_UPGRADE, ModItemTags.ATTACK_DAMAGE_UPGRADE, new AttackUpgrader());
         register(UpgradeID.ATTACK_SPEED_UPGRADE, ModItemTags.ATTACK_SPEED_UPGRADE, new SpeedUpgrader());
     }
 

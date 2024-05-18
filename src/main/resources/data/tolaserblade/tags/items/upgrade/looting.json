@@ -2,6 +2,6 @@
   "replace": false,
   "values": [
     "minecraft:nautilus_shell",
-    "minecraft:emerald_block"
+    "#c:storage_blocks/emerald"
   ]
 }

@@ -10,10 +10,10 @@
       "item": "tolaserblade:lb_blueprint"
     },
     "d": {
-      "tag": "c:diamonds"
+      "tag": "c:gems/diamond"
     },
     "i": {
-      "tag": "c:iron_ingots"
+      "tag": "c:ingots/iron"
     }
   },
   "result": {
