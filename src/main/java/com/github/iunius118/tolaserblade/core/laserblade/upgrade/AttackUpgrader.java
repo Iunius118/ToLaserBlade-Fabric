@@ -18,6 +18,7 @@ public class AttackUpgrader implements Upgrader {
         if (LaserBlade.canUpgradeAttack(attack)) {
             attack += 1.0F;
             LaserBlade.setAttack(base, attack);
+            LaserBlade.updateItemAttributeModifiers(base);
             cost += getCost(attack);
         }
 
