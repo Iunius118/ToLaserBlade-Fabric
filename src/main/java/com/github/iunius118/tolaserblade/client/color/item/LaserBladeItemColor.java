@@ -63,7 +63,7 @@ public class LaserBladeItemColor {
     }
 
     public int checkGamingColor(int color) {
-        if (color == LaserBladeColor.SPECIAL_GAMING.getBladeColor()) {
+        if (color == LaserBladeColor.SPECIAL_GAMING.getOuterColor()) {
             return getGamingColor();
         }
 

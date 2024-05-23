@@ -18,8 +18,8 @@ public class LaserBladeAppearance {
     private static final String KEY_GRIP = "grip";
 
     private int type = LaserBlade.TYPE_DEFAULT;;
-    private int outerColor = LaserBladeColor.RED.getBladeColor();;
-    private int innerColor = LaserBladeColor.WHITE.getBladeColor();;
+    private int outerColor = LaserBladeColor.RED.getOuterColor();;
+    private int innerColor = LaserBladeColor.WHITE.getInnerColor();;
     private int gripColor = LaserBladeColor.WHITE.getGripColor();;
     private boolean isOuterSubColor = false;
     private boolean isInnerSubColor = false;
@@ -127,6 +127,15 @@ public class LaserBladeAppearance {
         return this;
     }
 
+    public LaserBladeAppearance setColor(LaserBladeColor color) {
+        this.outerColor = color.getOuterColor();
+        this.innerColor = color.getInnerColor();
+        this.gripColor = color.getGripColor();
+        this.isOuterSubColor = color.isOuterSubColor();
+        this.isInnerSubColor = color.isInnerSubColor();
+        return this;
+    }
+
     public LaserBladeAppearance setColorsByBiome(Level level, Holder<Biome> biomeHolder) {
         ResourceKey<Level> dimension = level.dimension();
 
@@ -155,45 +164,28 @@ public class LaserBladeAppearance {
     }
 
     private void setColorsByNetherBiome(Level level, Holder<Biome> biomeHolder) {
-        outerColor = LaserBladeColor.WHITE.getBladeColor();
-
         if (compareBiomes(biomeHolder, Biomes.SOUL_SAND_VALLEY) || compareBiomes(biomeHolder, Biomes.WARPED_FOREST)) {
-            isOuterSubColor = true;
+            setColor(LaserBladeColor.BIOME_NETHER_B);
         } else {
-            isInnerSubColor = true;
+            setColor(LaserBladeColor.BIOME_NETHER_A);
         }
     }
 
     private void setColorsByEndBiome(Level level, Holder<Biome> biomeHolder) {
-        outerColor = LaserBladeColor.WHITE.getBladeColor();
-        isOuterSubColor = isInnerSubColor = true;
+        setColor(LaserBladeColor.BIOME_END);
     }
 
     private void setColorsByOverWorldBiome(Level level, Holder<Biome> biomeHolder) {
         if (compareBiomes(biomeHolder, Biomes.DEEP_DARK)) {
             // Deep dark biome
-            setDeepDarkColors();
+            setColor(LaserBladeColor.BIOME_DEEP_DARK);
         } else if (compareBiomes(biomeHolder, Biomes.CHERRY_GROVE)) {
             // Cherry grove biome
-            setCherryGroveColors();
+            setColor(LaserBladeColor.BIOME_CHERRY_GROVE);
         } else {
             float temp = biomeHolder.value().getBaseTemperature();
-            outerColor = LaserBladeColor.getColorByTemperature(temp).getBladeColor();
+            outerColor = LaserBladeColor.getColorByTemperature(temp).getOuterColor();
         }
-    }
-
-    private void setDeepDarkColors() {
-        outerColor = LaserBladeColor.CYAN.getBladeColor();
-        innerColor = 0xFFFADCD7;    // Sculk's deep dark blue (negative)
-        isInnerSubColor = true;
-        gripColor = 0xFF052328;     // Sculk's deep dark blue
-        type = 2;
-    }
-
-    private void setCherryGroveColors() {
-        outerColor = LaserBladeColor.PINK.getBladeColor();
-        innerColor = 0xFFFADCF0;    // Cherry blossom's light pink
-        gripColor = 0xFF4B2D3C;     // Cherry log's dark brown
     }
 
     private boolean compareBiomes(Holder<Biome> biomeHolder, ResourceKey<Biome> biomeKey) {
