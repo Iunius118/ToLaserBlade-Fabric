@@ -15,8 +15,8 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 import java.util.Objects;
 
 public class LaserBlade {
-    public static final float DEFAULT_ATK = 3F;
-    public static final float DEFAULT_SPD = -1.2F;
+    public static final float BASE_ATTACK = 3F;
+    public static final float BASE_SPEED  = -1.2F;
     public static final float MOD_ATK_MIN = 0.0F;
     public static final float MOD_ATK_MAX = 2040.0F;
     public static final float MOD_ATK_GIFT = 3.0F;
@@ -24,7 +24,7 @@ public class LaserBlade {
     public static final float MOD_CRITICAL_BONUS_VS_WITHER = 0.5F;
     public static final float MOD_SPD_MIN = 0.0F;
     public static final float MOD_SPD_MAX = 1.2F;
-    public static final int TYPE_DEFAULT = 0;
+    public static final int TYPE_DEFAULT  = 0;
 
     private LaserBlade() { }
 
@@ -63,14 +63,17 @@ public class LaserBlade {
     }
 
     public static void updateItemAttributeModifiers(ItemStack itemStack) {
-        float attackDamage = LaserBlade.getAttack(itemStack) + DEFAULT_ATK;
-        float attackSpeed = LaserBlade.getSpeed(itemStack) + DEFAULT_SPD;
+        // Attack damage and speed from item compounds and base value
+        float attackDamage = LaserBlade.getAttack(itemStack) + BASE_ATTACK;
+        float attackSpeed  = LaserBlade.getSpeed(itemStack) + BASE_SPEED;
         Item item = itemStack.getItem();
 
         if (item instanceof TieredItem tieredItem) {
+            // Add tier attack damage
             attackDamage += tieredItem.getTier().getAttackDamageBonus();
         }
 
+        // Update item attribute modifiers
         var itemAttributeModifiers = createAttributes(attackDamage, attackSpeed);
         itemStack.set(DataComponents.ATTRIBUTE_MODIFIERS, itemAttributeModifiers);
     }
@@ -92,16 +95,14 @@ public class LaserBlade {
 
     public static LaserBladeState getState(ItemStack itemStack) {
         float attack = getAttack(itemStack);
-        float speed = getSpeed(itemStack);
+        float speed  = getSpeed(itemStack);
         var appearance = LaserBladeAppearance.of(itemStack);
         int type = appearance.getType();
-        LaserBladeStateImpl.PartImpl outer = new LaserBladeStateImpl.PartImpl(true, appearance.getOuterColor(), appearance.isOuterSubColor());
-        LaserBladeStateImpl.PartImpl inner = new LaserBladeStateImpl.PartImpl(true, appearance.getInnerColor(), appearance.isInnerSubColor());
-        LaserBladeStateImpl.PartImpl grip = new LaserBladeStateImpl.PartImpl(true, appearance.getGripColor(), false);
+        LaserBladeState.Part outer = appearance.getOuter();
+        LaserBladeState.Part inner = appearance.getInner();
+        LaserBladeState.Part grip  = appearance.getGrip();
         return new LaserBladeStateImpl(attack, speed, type, outer, inner, grip);
     }
 
-    public record LaserBladeStateImpl(float attack, float speed, int modelType, Part outer, Part inner, Part grip) implements LaserBladeState {
-        public record PartImpl(boolean exists, int color, boolean isSubtractiveColor) implements Part { }
-    }
+    public record LaserBladeStateImpl(float attack, float speed, int modelType, Part outer, Part inner, Part grip) implements LaserBladeState { }
 }

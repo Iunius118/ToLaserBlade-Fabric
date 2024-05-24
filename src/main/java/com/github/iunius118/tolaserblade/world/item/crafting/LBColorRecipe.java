@@ -119,7 +119,7 @@ public class LBColorRecipe extends SmithingTransformRecipe {
             }
         }
 
-        appearance.writeTo(input);
+        appearance.setTo(input);
         return input;
     }
 

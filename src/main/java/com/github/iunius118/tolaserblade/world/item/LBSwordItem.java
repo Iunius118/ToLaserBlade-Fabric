@@ -20,7 +20,7 @@ public class LBSwordItem extends SwordItem implements LaserBladeItemBase {
     public LBSwordItem( boolean isFireResistant) {
         super(ModItemTiers.getLBSwordTier(isFireResistant),
                 LaserBladeItemBase.setFireResistant(new Item.Properties(), isFireResistant)
-                        .attributes(SwordItem.createAttributes(ModItemTiers.getLBSwordTier(isFireResistant), 3, LaserBlade.DEFAULT_SPD)));
+                        .attributes(SwordItem.createAttributes(ModItemTiers.getLBSwordTier(isFireResistant), 3, LaserBlade.BASE_SPEED)));
     }
 
     @Override
