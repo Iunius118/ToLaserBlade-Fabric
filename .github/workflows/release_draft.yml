@@ -1,13 +1,11 @@
-# Automatically build the project and run any configured tests for every push
-# and submitted pull request. This can help catch issues that only occur on
-# certain platforms or Java versions, and provides a first line of defence
-# against bad commits.
-
-name: build
-on: [pull_request, push]
+name: release_draft
+on:
+  push:
+    tags:
+      - 'v*'
 
 jobs:
-  build:
+  release_draft:
     strategy:
       matrix:
         # Use these Java versions
@@ -32,10 +30,12 @@ jobs:
         run: chmod +x ./gradlew
       - name: build
         run: ./gradlew build
-      - name: capture build artifacts
+      - name: create release
         # Only upload artifacts built from latest java on one OS
         if: ${{ runner.os == 'Linux' && matrix.java == '16' }}
-        uses: actions/upload-artifact@v4
+        uses: softprops/action-gh-release@v2
         with:
-          name: Artifacts
-          path: build/libs/
+          draft: true
+          files: build/libs/*.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
