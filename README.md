@@ -12,4 +12,4 @@ Simple sword with a laser blade for Minecraft with Fabric
 
 ## License
 
-- MIT License
+This project is licensed under the MIT license.
