@@ -14,7 +14,7 @@
     "issues": "https://github.com/Iunius118/ToLaserBlade-Fabric/issues"
   },
 
-  "license": "All rights reserved",
+  "license": "MIT License",
   "icon": "assets/tolaserblade/tolaserblade_logo.png",
 
   "environment": "*",
