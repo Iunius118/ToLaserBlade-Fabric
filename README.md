@@ -8,7 +8,6 @@ ToLaserBlade-Fabric for 1.20.6.
 - Fabric API
 - Cloth Config API
 
-## Licenses
+## License
 
-- MIT License
-- [LICENSE.txt](./src/main/resources/LICENSE.txt) in `src/main/resources/` only applies to the .jar files built from this source
+Licensed under the MIT License.
