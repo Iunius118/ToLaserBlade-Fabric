@@ -4,6 +4,11 @@
 
 ## [Unreleased]
 
+## [1.19-0.6.3.0]
+### Changed
+- Switch license to MIT.
+- Improve laser blade model.
+
 ## [1.19-0.6.2.0]
 ### Added
 - Client-side config (`[client]`) to `tolaserblade.toml`.
