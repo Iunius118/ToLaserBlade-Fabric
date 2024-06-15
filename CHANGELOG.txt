@@ -4,6 +4,11 @@
 
 ## [Unreleased]
 
+## [1.19.4-0.8.2.0]
+### Changed
+- Switch license to MIT.
+- Improve laser blade model no. 2.
+
 ## [1.19.4-0.8.1.0]
 ### Added
 - LaserBladeModelRegistrationCallback to ToLaserBlade API.

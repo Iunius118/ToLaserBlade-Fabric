@@ -1,8 +1,9 @@
 # Credits
-## Author
-ToLaserBlade (Fabric)
-Copyright (c) 2016 Iunius118
-https://github.com/Iunius118/ToLaserBlade-Fabric
+## ToLaserBlade (Fabric)
+[ToLaserBlade-Fabric](https://github.com/Iunius118/ToLaserBlade-Fabric)
 
-## Contributors
+### Author
+- Iunius118
+
+### Contributors
 - tankyap (zh_cn translation)
