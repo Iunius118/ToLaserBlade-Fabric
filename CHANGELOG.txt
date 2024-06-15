@@ -4,10 +4,14 @@
 
 ## [Unreleased]
 
+## [3.2.0]
+### Changed
+- Switch license to MIT.
+
 ## [3.1.2]
 - Require Minecraft 1.20.2-1.20.4.
 - Require Fabric Loader 0.14.23+ and Fabric API.
-- Require Cloth Config.
+- Require Cloth Config API.
 
 ### Fixed
 - Fix server crash caused by config.
