@@ -5,7 +5,6 @@ import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeAppearance;
 import com.github.iunius118.tolaserblade.core.laserblade.upgrade.Upgrade;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -42,10 +41,7 @@ public class LBSwordItem extends SwordItem implements LaserBladeItemBase {
 
     @Override
     public boolean mineBlock(ItemStack itemStack, Level level, BlockState blockState, BlockPos blockPos, LivingEntity livingEntity) {
-        if (blockState.getDestroySpeed(level, blockPos) != 0.0F) {
-            itemStack.hurtAndBreak(1, livingEntity, EquipmentSlot.MAINHAND);
-        }
-
+        // Does not hurt and break
         return true;
     }
 
