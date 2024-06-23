@@ -1,4 +1,4 @@
-// 1.20.6	2024-05-18T20:02:33.8683643	ToLaserBlade/Recipes
+// 1.20.6	2024-06-23T22:24:31.6630267	ToLaserBlade/Recipes
 37fe8b0ac3135a43f54158cbc7e5c7937b01016e data\tolaserblade\recipes\color\lbf_ib_light_gray.json
 7d97aba9308a51ca4ef84db234a94b0285db8044 data\tolaserblade\advancements\recipes\tools\color\lb_ob_brown.json
 93e2f467a5b7d8ca4af3dd2e9ec60170bb59ac96 data\tolaserblade\advancements\recipes\tools\color\lb_ob_light_gray.json
@@ -71,8 +71,8 @@ f8263cefc8231e73eb5d57bc05c45441dbdc5832 data\tolaserblade\recipes\color\lb_gr_o
 0ff694e960b9294e38ec6fcb03c01793e0032052 data\tolaserblade\advancements\recipes\tools\color\lbf_gr_cyan.json
 1024fd14221e90af1ddee7fa3aa8c3f74bb58e78 data\tolaserblade\advancements\recipes\tools\upgrade\lbf_slt.json
 8c100b13423d1c231ba6a2b0623c695f0b50ad18 data\tolaserblade\advancements\recipes\tools\color\lb_ib_gray.json
-11d46a6fe78d1d4e6e1c5f2e3b7e21d79c21b59e data\tolaserblade\advancements\recipes\tools\upgrade\lb_asp.json
 1fe58271a823b5e7138b9ca5b9a391949375de1d data\tolaserblade\recipes\upgrade\lb_lte.json
+11d46a6fe78d1d4e6e1c5f2e3b7e21d79c21b59e data\tolaserblade\advancements\recipes\tools\upgrade\lb_asp.json
 56649444338b1a8b36c436a327ef5b0616d545c1 data\tolaserblade\advancements\recipes\tools\color\lb_ob_red.json
 ce1683d38467bb54fb4209f02fa606c251be3e3e data\tolaserblade\advancements\recipes\tools\color\lbf_ob_purple.json
 99631739b11a89d6f9a21d6fd45750226037d489 data\tolaserblade\recipes\color\lbf_gr_blue.json

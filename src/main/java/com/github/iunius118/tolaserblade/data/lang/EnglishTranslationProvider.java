@@ -35,7 +35,7 @@ public class EnglishTranslationProvider extends FabricLanguageProvider {
 
         // Enchantments
         addEnchantment(translationBuilder, ModEnchantments.LIGHT_ELEMENT, "Light Element",
-                "Increases the damage of the Laser Blade, and deals additional damage to undead mobs and illagers.");
+                "Increases damage from Laser Blade, and deals additional damage to undead mobs and illagers.");
 
         // Item tooltip
         translationBuilder.add(LaserBladeTextKey.KEY_TOOLTIP_MODEL.getKey(), "Model %s");
