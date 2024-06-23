@@ -6,7 +6,6 @@ import com.google.common.collect.Multimap;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -55,10 +54,7 @@ public class LBSwordItem extends SwordItem implements LaserBladeItemBase {
 
     @Override
     public boolean mineBlock(ItemStack itemStack, Level level, BlockState blockState, BlockPos blockPos, LivingEntity livingEntity) {
-        if (blockState.getDestroySpeed(level, blockPos) != 0.0F) {
-            itemStack.hurtAndBreak(1, livingEntity, living -> living.broadcastBreakEvent(EquipmentSlot.MAINHAND));
-        }
-
+        // Does not hurt and break
         return true;
     }
 
