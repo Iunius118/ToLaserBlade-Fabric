@@ -146,6 +146,11 @@ public class TLBRecipeProvider extends FabricRecipeProvider {
                 LBUpgradeRecipeBuilder.upgradeRecipe(template, Ingredient.of(ModItems.LASER_BLADE), upgrade.getIngredient(), RecipeCategory.TOOLS, id)
                         .unlockedBy("has_laser_blade", has(ModItems.LASER_BLADE))
                         .save(consumer, ToLaserBlade.MOD_ID + ":upgrade/lb_" + upgrade.shortName());
+
+                // if (upgrade == UpgradeManager.getUpgrade(UpgradeID.FIREPROOF_UPGRADE)) {    // Forge
+                //      return; // Fireproof upgrade is only available for not fireproof laser blade
+                // }
+
                 LBUpgradeRecipeBuilder.upgradeRecipe(template, Ingredient.of(ModItems.LASER_BLADE_FP), upgrade.getIngredient(), RecipeCategory.TOOLS, id)
                         .unlockedBy("has_laser_blade_fp", has(ModItems.LASER_BLADE_FP))
                         .save(consumer, ToLaserBlade.MOD_ID + ":upgrade/lbf_" + upgrade.shortName());
