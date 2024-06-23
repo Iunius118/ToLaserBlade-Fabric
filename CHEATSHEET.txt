@@ -93,7 +93,7 @@ Smithing Table:
 - Max level: 10
 - Incompatible with Sharpness, Smite, and Bane of Arthropods
 
-Light element increases the damage of the laser blade, and deals additional damage to undead mobs and illagers.
+Light element increases damage from Laser Blade, and deals additional damage to undead mobs and illagers.
 
 ### Laser Trap
 When you put a laser blade in a dispenser and activate it, you can attack the mobs (of course, players included) in front of the dispenser with the laser blade.
