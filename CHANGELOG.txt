@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+## [1.17.1-0.4.5.1]
+### Fixed
+- Laser blades are no longer damaged by mining.
+
 ## [1.17.1-0.4.5.0]
 ### Changed
 - Switch license to MIT.
