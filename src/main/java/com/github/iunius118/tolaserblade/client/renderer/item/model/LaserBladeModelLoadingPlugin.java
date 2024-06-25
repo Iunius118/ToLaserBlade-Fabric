@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class LaserBladeModelLoadingPlugin implements ModelLoadingPlugin {
-    private static List<ResourceLocation> laserBladeModelLocations = Collections.emptyList();
+    private static List<ModelResourceLocation> laserBladeModelLocations = Collections.emptyList();
 
     @Override
     public void onInitializeModelLoader(Context pluginContext) {
@@ -25,21 +25,32 @@ public class LaserBladeModelLoadingPlugin implements ModelLoadingPlugin {
         pluginContext.modifyModelOnLoad().register(ModelModifier.OVERRIDE_PHASE, this::modifyModelOnLoad);
     }
 
-    private List<ResourceLocation> getLaserBladeModelLocations() {
+    private List<ModelResourceLocation> getLaserBladeModelLocations() {
         ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
         return getLaserBladeModelLocations(config.getLaserBladeItemIDs());
     }
 
-    private List<ResourceLocation> getLaserBladeModelLocations(List<ResourceLocation> laserBladeItemIds) {
+    private List<ModelResourceLocation> getLaserBladeModelLocations(List<ResourceLocation> laserBladeItemIds) {
         return laserBladeItemIds.stream()
-                .map(id -> (ResourceLocation) new ModelResourceLocation(id, "inventory"))
+                .map(this::addItemPrefix)
+                .map(ModelResourceLocation::inventory)
                 .toList();
     }
 
-    private UnbakedModel modifyModelOnLoad(UnbakedModel model, ModelModifier.OnLoad.Context context) {
-        ResourceLocation resourceId = context.id();
+    private ResourceLocation addItemPrefix(ResourceLocation id) {
+        String path = id.getPath();
 
-        if (laserBladeModelLocations.contains(resourceId)) {
+        if (!path.startsWith("item/")) {
+            return ResourceLocation.fromNamespaceAndPath(id.getNamespace(), "item/" + path);
+        }
+
+        return id;
+    }
+
+    private UnbakedModel modifyModelOnLoad(UnbakedModel model, ModelModifier.OnLoad.Context context) {
+        var location = ModelResourceLocation.inventory(context.resourceId());
+
+        if (laserBladeModelLocations.contains(location)) {
             return new LBSwordItemModel();
         }
 
