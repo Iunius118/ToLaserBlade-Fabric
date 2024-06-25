@@ -1,6 +1,6 @@
 # ToLaserBlade-Fabric
 
-ToLaserBlade-Fabric for 1.20.6.
+ToLaserBlade-Fabric for 1.21.
 
 ## Requirements
 
@@ -10,4 +10,4 @@ ToLaserBlade-Fabric for 1.20.6.
 
 ## License
 
-Licensed under the MIT License.
+Licensed under the MIT license.
