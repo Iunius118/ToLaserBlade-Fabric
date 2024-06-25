@@ -48,7 +48,7 @@ public class ModConfig implements ConfigData {
 
     private Optional<ResourceLocation> getResourceLocation(String string){
         try {
-            return Optional.of(new ResourceLocation(string));
+            return Optional.ofNullable(ResourceLocation.tryParse(string));
         } catch (ResourceLocationException e) {
             return Optional.empty();
         }

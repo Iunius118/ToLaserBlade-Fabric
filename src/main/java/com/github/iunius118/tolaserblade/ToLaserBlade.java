@@ -27,6 +27,6 @@ public class ToLaserBlade implements ModInitializer {
     }
     
     public static ResourceLocation makeId(String name) {
-        return new ResourceLocation(MOD_ID, name);
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
     }
 }
