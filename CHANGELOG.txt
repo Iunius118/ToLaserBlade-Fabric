@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+## [4.1.2]
+### Fixed
+- Laser blades are no longer damaged when they hurt mobs.
+
 ## [4.1.1]
 ### Fixed
 - Laser blades are no longer damaged by mining.
