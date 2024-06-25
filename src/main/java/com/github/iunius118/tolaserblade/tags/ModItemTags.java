@@ -24,6 +24,8 @@ public class ModItemTags {
 
     public static final TagKey<Item> CASING_REPAIR = makeWrapperTag("casing_repair");
 
+    public static final TagKey<Item> ENCHANTABLE_LIGHT_ELEMENT = makeWrapperTag("enchantable/light_element");
+
     private static TagKey<Item> makeWrapperTag(ResourceLocation id) {
         return TagKey.create(Registries.ITEM, id);
     }

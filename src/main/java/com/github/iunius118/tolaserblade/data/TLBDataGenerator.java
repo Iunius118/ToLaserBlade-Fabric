@@ -9,7 +9,9 @@ public class TLBDataGenerator implements DataGeneratorEntrypoint {
         var pack = fabricDataGenerator.createPack();
 
         pack.addProvider(TLBRecipeProvider::new);
+        pack.addProvider(TLBEnchantmentProvider::new);
         pack.addProvider(TLBItemTagsProvider::new);
+        pack.addProvider(TLBEnchantmentTagsProvider::new);
         pack.addProvider(TLBEntityTypeTagsProvider::new);
         TLBLanguageProvider.addProviders(pack);
     }

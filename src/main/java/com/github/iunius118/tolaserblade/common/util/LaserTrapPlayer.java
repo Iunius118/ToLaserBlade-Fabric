@@ -8,11 +8,11 @@ import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.api.entity.FakePlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
@@ -20,6 +20,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
@@ -67,14 +68,16 @@ public class LaserTrapPlayer {
         BlockPos trapPos = fakePlayer.blockPosition();
         BlockPos targetPos = trapPos.relative(dir);
         AABB aabb = new AABB(targetPos).inflate(0.5D);
-        List<Entity> targetEntities = fakePlayer.level().getEntities((Entity) null, aabb, this::canHitEntity);
+        ServerLevel level = fakePlayer.serverLevel();
+        List<Entity> targetEntities = level.getEntities((Entity) null, aabb, this::canHitEntity);
 
         float attackDamage = (float) fakePlayer.getAttribute(Attributes.ATTACK_DAMAGE).getValue();
-        int fireLevel = EnchantmentHelper.getFireAspect(fakePlayer);
+        var fireAspect = level.holderLookup(Registries.ENCHANTMENT).getOrThrow(Enchantments.FIRE_ASPECT);
+        int fireLevel = EnchantmentHelper.getEnchantmentLevel(fireAspect, fakePlayer);
         ItemStack itemStack = fakePlayer.getMainHandItem();
 
         for (var targetEntity : targetEntities) {
-            float totalDamage = attackDamage + getDamageBonus(itemStack, targetEntity);
+            float totalDamage = EnchantmentHelper.modifyDamage(level, itemStack, targetEntity, fakePlayer.damageSources().playerAttack(fakePlayer), attackDamage);
 
             if (canBurn(targetEntity, fireLevel)) {
                 int remainingFireTicks = Math.max(targetEntity.getRemainingFireTicks(), 0);
@@ -83,7 +86,6 @@ public class LaserTrapPlayer {
             }
             
             targetEntity.hurt(fakePlayer.damageSources().playerAttack(fakePlayer), totalDamage);
-            EnchantmentHelper.doPostDamageEffects(fakePlayer, targetEntity);
         }
 
         spawnParticle(dir, targetPos, itemStack);
@@ -97,14 +99,6 @@ public class LaserTrapPlayer {
             return canAttackPlayers || !(entity instanceof Player);
         } else {
             return false;
-        }
-    }
-
-    private float getDamageBonus(ItemStack itemStack, Entity entity) {
-        if (entity instanceof LivingEntity livingEntity) {
-            return EnchantmentHelper.getDamageBonus(itemStack, livingEntity.getType());
-        } else {
-            return 0;
         }
     }
 

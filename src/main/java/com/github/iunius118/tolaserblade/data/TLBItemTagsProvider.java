@@ -1,6 +1,7 @@
 package com.github.iunius118.tolaserblade.data;
 
 import com.github.iunius118.tolaserblade.tags.ModItemTags;
+import com.github.iunius118.tolaserblade.world.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
@@ -27,5 +28,6 @@ public class TLBItemTagsProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ModItemTags.LOOTING_UPGRADE).add(Items.NAUTILUS_SHELL).forceAddTag(ConventionalItemTags.STORAGE_BLOCKS_EMERALD);
         getOrCreateTagBuilder(ModItemTags.MENDING_UPGRADE).add(Items.NETHER_STAR, Items.DRAGON_HEAD, Items.TOTEM_OF_UNDYING);
         getOrCreateTagBuilder(ModItemTags.CASING_REPAIR).forceAddTag(ConventionalItemTags.IRON_INGOTS);
+        getOrCreateTagBuilder(ModItemTags.ENCHANTABLE_LIGHT_ELEMENT).add(ModItems.LASER_BLADE, ModItems.LASER_BLADE_FP, ModItems.LB_MEDIUM);
     }
 }

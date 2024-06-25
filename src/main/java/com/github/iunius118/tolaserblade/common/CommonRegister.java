@@ -9,7 +9,6 @@ import com.github.iunius118.tolaserblade.integration.autoconfig.ModConfig;
 import com.github.iunius118.tolaserblade.world.item.ModCreativeModeTabs;
 import com.github.iunius118.tolaserblade.world.item.ModItems;
 import com.github.iunius118.tolaserblade.world.item.crafting.ModRecipeSerializers;
-import com.github.iunius118.tolaserblade.world.item.enchantment.ModEnchantments;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.minecraft.core.Registry;
@@ -22,16 +21,25 @@ public class CommonRegister {
     }
 
     public static void registerEventListeners() {
-
     }
 
-    public static void registerRecipeSerializers() {
+    public static void registerGameObjects() {
+        CommonRegister.registerRecipeSerializers();
+        CommonRegister.registerItems();
+        CommonRegister.registerItemGroups();
+        CommonRegister.registerDispenseItemBehaviors();
+        CommonRegister.registerParticleTypes();
+        CommonRegister.registerSoundEvents();
+        CommonRegister.registerDataComponentTypes();
+    }
+
+    private static void registerRecipeSerializers() {
         Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, ToLaserBlade.makeId("color"), ModRecipeSerializers.COLOR);
         Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, ToLaserBlade.makeId("upgrade"), ModRecipeSerializers.UPGRADE);
         Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, ToLaserBlade.makeId("model_change"), ModRecipeSerializers.MODEL_CHANGE);
     }
 
-    public static void registerItems() {
+    private static void registerItems() {
         // Laser Blades
         Registry.register(BuiltInRegistries.ITEM, ToLaserBlade.makeId("laser_blade"), ModItems.LASER_BLADE);
         Registry.register(BuiltInRegistries.ITEM, ToLaserBlade.makeId("laser_blade_fp"), ModItems.LASER_BLADE_FP);
@@ -44,31 +52,27 @@ public class CommonRegister {
         Registry.register(BuiltInRegistries.ITEM, ToLaserBlade.makeId("lb_casing"), ModItems.LB_CASING);
     }
 
-    public static void registerItemGroups() {
+    private static void registerItemGroups() {
         ModCreativeModeTabs.initModCreativeModeTabs();
     }
 
-    public static void registerEnchantments() {
-        Registry.register(BuiltInRegistries.ENCHANTMENT, ToLaserBlade.makeId("light_element"), ModEnchantments.LIGHT_ELEMENT);
-    }
-
-    public static void registerDispenseItemBehaviors() {
+    private static void registerDispenseItemBehaviors() {
         DispenserBlock.registerBehavior(ModItems.LASER_BLADE, new DispenseLBSwordBehavior());
         DispenserBlock.registerBehavior(ModItems.LASER_BLADE_FP, new DispenseLBSwordBehavior());
     }
 
-    public static void registerParticleTypes() {
+    private static void registerParticleTypes() {
         Registry.register(BuiltInRegistries.PARTICLE_TYPE, ToLaserBlade.makeId("laser_trap_x"), ModParticleTypes.LASER_TRAP_X);
         Registry.register(BuiltInRegistries.PARTICLE_TYPE, ToLaserBlade.makeId("laser_trap_y"), ModParticleTypes.LASER_TRAP_Y);
         Registry.register(BuiltInRegistries.PARTICLE_TYPE, ToLaserBlade.makeId("laser_trap_z"), ModParticleTypes.LASER_TRAP_Z);
     }
 
-    public static void registerSoundEvents() {
+    private static void registerSoundEvents() {
         Registry.register(BuiltInRegistries.SOUND_EVENT, ToLaserBlade.makeId("item_laser_blade_swing"), ModSoundEvents.ITEM_LASER_BLADE_SWING);
         Registry.register(BuiltInRegistries.SOUND_EVENT, ToLaserBlade.makeId("item_laser_blade_fp_swing"), ModSoundEvents.ITEM_LASER_BLADE_FP_SWING);
     }
 
-    public static void registerDataComponentTypes() {
+    private static void registerDataComponentTypes() {
         Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, ToLaserBlade.makeId("lb_atk"), ModDataComponents.LASER_BLADE_ATTACK);
         Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, ToLaserBlade.makeId("lb_spd"), ModDataComponents.LASER_BLADE_SPEED);
         Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, ToLaserBlade.makeId("lb_mdl"), ModDataComponents.LASER_BLADE_MODEL);

@@ -8,8 +8,9 @@ import com.github.iunius118.tolaserblade.world.item.ModItems;
 import com.github.iunius118.tolaserblade.world.item.enchantment.ModEnchantments;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.minecraft.Util;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.enchantment.Enchantment;
 
 import java.util.concurrent.CompletableFuture;
@@ -58,14 +59,15 @@ public class EnglishTranslationProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItemTags.LOOTING_UPGRADE, "Ingredients to Upgrade Looting of Laser Blade");
         translationBuilder.add(ModItemTags.MENDING_UPGRADE, "Ingredients to Upgrade Mending of Laser Blade");
         translationBuilder.add(ModItemTags.CASING_REPAIR, "Ingredients to Repair Casing of Laser Blade");
+        translationBuilder.add(ModItemTags.ENCHANTABLE_LIGHT_ELEMENT, "Enchantable Light Element");
     }
 
-    public void addEnchantment(TranslationBuilder translationBuilder, Enchantment enchantment, String name, String description) {
+    public void addEnchantment(TranslationBuilder translationBuilder, ResourceKey<Enchantment> enchantment, String name, String description) {
         // Register enchantment name
-        translationBuilder.add(enchantment, name);
+        String id = Util.makeDescriptionId("enchantment", enchantment.location());
+        translationBuilder.add(id, name);
 
         // Support for Enchantment Descriptions mod
-        String id = BuiltInRegistries.ENCHANTMENT.getKey(enchantment).toString().replace(':', '.');
-        translationBuilder.add("enchantment." + id + ".desc", description);
+        translationBuilder.add(id + ".desc", description);
     }
 }

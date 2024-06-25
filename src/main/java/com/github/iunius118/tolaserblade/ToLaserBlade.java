@@ -16,14 +16,7 @@ public class ToLaserBlade implements ModInitializer {
     public void onInitialize() {
         CommonRegister.registerConfig();
         CommonRegister.registerEventListeners();
-        CommonRegister.registerRecipeSerializers();
-        CommonRegister.registerItems();
-        CommonRegister.registerItemGroups();
-        CommonRegister.registerEnchantments();
-        CommonRegister.registerDispenseItemBehaviors();
-        CommonRegister.registerParticleTypes();
-        CommonRegister.registerSoundEvents();
-        CommonRegister.registerDataComponentTypes();
+        CommonRegister.registerGameObjects();
     }
     
     public static ResourceLocation makeId(String name) {
