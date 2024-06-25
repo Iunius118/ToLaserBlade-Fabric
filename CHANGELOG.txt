@@ -4,6 +4,18 @@
 
 ## [Unreleased]
 
+## [5.0.0]
+- Require Minecraft 1.21.
+- Require Fabric Loader 0.15.11 and Fabric API 0.100.3+1.21.
+- Require Cloth Config 15.0.127.
+
+### Changed
+- Port to 1.21.
+
+## [4.1.2]
+### Fixed
+- Laser blades are no longer damaged when they hurt mobs.
+
 ## [4.1.1]
 ### Fixed
 - Laser blades are no longer damaged by mining.
