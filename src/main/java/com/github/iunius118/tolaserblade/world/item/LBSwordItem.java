@@ -46,6 +46,11 @@ public class LBSwordItem extends SwordItem implements LaserBladeItemBase {
     }
 
     @Override
+    public void postHurtEnemy(ItemStack itemStack, LivingEntity livingEntity, LivingEntity livingEntity2) {
+        // Does not hurt and break
+    }
+
+    @Override
     public boolean isCorrectToolForDrops(ItemStack itemStack, BlockState blockState) {
         return true;
     }
