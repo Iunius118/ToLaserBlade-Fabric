@@ -16,7 +16,7 @@
     "sources": "https://github.com/Iunius118/ToLaserBlade-Fabric",
     "issues": "https://github.com/Iunius118/ToLaserBlade-Fabric/issues"
   },
-  "license": "MIT License",
+  "license": "MIT license",
   "icon": "assets/tolaserblade/tolaserblade_logo.png",
   "environment": "*",
   "entrypoints": {
@@ -36,7 +36,7 @@
   "accessWidener": "tolaserblade.accesswidener",
   "depends": {
     "fabricloader": ">=0.15.10",
-    "minecraft": "~1.20.6",
+    "minecraft": "~1.21",
     "java": ">=21",
     "fabric-api": "*",
     "cloth-config": "*"
