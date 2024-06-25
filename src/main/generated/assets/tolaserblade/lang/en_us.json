@@ -11,6 +11,7 @@
   "itemGroup.tolaserblade.general": "ToLaserBlade",
   "tag.entity_type.tolaserblade.sensitive_to_light_element": "Sensitive to Light Element",
   "tag.item.tolaserblade.casing_repair": "Ingredients to Repair Casing of Laser Blade",
+  "tag.item.tolaserblade.enchantable.light_element": "Enchantable Light Element",
   "tag.item.tolaserblade.upgrade.attack": "Ingredients to Upgrade Attack Damage of Laser Blade",
   "tag.item.tolaserblade.upgrade.efficiency": "Ingredients to Upgrade Efficiency of Laser Blade",
   "tag.item.tolaserblade.upgrade.efficiency_remover": "Ingredients to Remove Efficiency from Laser Blade",
