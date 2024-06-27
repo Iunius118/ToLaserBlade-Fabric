@@ -1,4 +1,4 @@
-// 1.21	2024-06-25T23:31:15.5150982	ToLaserBlade/Recipes
+// 1.21	2024-06-27T23:11:21.6844324	ToLaserBlade/Recipes
 2f2d8716084470b7ebec2ede12302e3cf5e4a695 data\tolaserblade\advancement\recipes\tools\color\lb_ob_green.json
 452fcfb3c309acb48fa5fc8118ee26c36e8fde00 data\tolaserblade\advancement\recipes\tools\color\lbf_gr_white.json
 347164fd9e55397284143106baca59cf37aedba8 data\tolaserblade\advancement\recipes\tools\color\lb_ob_black.json
@@ -98,8 +98,8 @@ f14367b2b96a14d3417b9e6c6e0b13903a385fee data\tolaserblade\recipe\upgrade\lb_ltn
 b95febe13b558ef84619f573738d10581387b983 data\tolaserblade\recipe\color\lb_ob_brown.json
 634017b0e6e8d0a0a374d83d1d24ccbc038ce2e2 data\tolaserblade\recipe\color\lbf_ib_yellow.json
 9071a7a61d1dd2d7138af38380202ca8ee5f764f data\tolaserblade\advancement\recipes\tools\color\lbf_ob_special_sbm.json
-5f6bee137dae6a4542e4349683ae19b70e818791 data\tolaserblade\advancement\recipes\tools\laser_blade.json
 9feff81797b93b543a61c4b9fa6d6c9a2fc9c4a7 data\tolaserblade\recipe\color\lbf_ib_light_blue.json
+5f6bee137dae6a4542e4349683ae19b70e818791 data\tolaserblade\advancement\recipes\tools\laser_blade.json
 0d329f87c54de5cad848107c69b4efd3da3f0b0e data\tolaserblade\recipe\color\lb_ob_special_sbm.json
 1a7b46f13427ab0fcf8d40b433b4328d70187b18 data\tolaserblade\advancement\recipes\tools\color\lbf_ib_brown.json
 8a22e1768c78e1bad5a34ece99f5d1b729159466 data\tolaserblade\recipe\model\lbf_1.json
@@ -147,8 +147,8 @@ bde0f1f289fd00d804e774fab9cd271224ae4cbc data\tolaserblade\advancement\recipes\t
 4766d124c0aa1811a9811a5cedac5cb4ac592caf data\tolaserblade\recipe\color\lbf_gr_light_gray.json
 d3907457a34551dba4c497a80958209e3d040db7 data\tolaserblade\advancement\recipes\tools\color\lb_ib_white.json
 a9ac8b756f528d3e652044a79bcbc6dcb6514201 data\tolaserblade\advancement\recipes\tools\color\lb_ob_blue.json
-8306ac63b3ddfef7750ae6d6e48e8c22de1f51d9 data\tolaserblade\advancement\recipes\tools\model\lbf_1.json
 424d75066976dd7165a4c47e2e756317107241ef data\tolaserblade\recipe\model\lb_2.json
+8306ac63b3ddfef7750ae6d6e48e8c22de1f51d9 data\tolaserblade\advancement\recipes\tools\model\lbf_1.json
 5729b7cc416bc35f28b788d6d01f56d355fbddd9 data\tolaserblade\advancement\recipes\tools\color\lbf_gr_black.json
 fe604b631590be00613c1a4395a63ce28a19c466 data\tolaserblade\advancement\recipes\tools\color\lb_ib_magenta.json
 a17a8c23f68f85d4a37bdd4c763f6c4474a4c4d3 data\tolaserblade\recipe\color\lb_ib_magenta.json

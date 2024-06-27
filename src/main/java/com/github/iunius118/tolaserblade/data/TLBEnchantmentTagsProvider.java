@@ -15,7 +15,7 @@ public class TLBEnchantmentTagsProvider extends FabricTagProvider.EnchantmentTag
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        getOrCreateTagBuilder(EnchantmentTags.DAMAGE_EXCLUSIVE).addOptional(ModEnchantments.LIGHT_ELEMENT);
-        getOrCreateTagBuilder(EnchantmentTags.TOOLTIP_ORDER).addOptional(ModEnchantments.LIGHT_ELEMENT);
+        getOrCreateTagBuilder(EnchantmentTags.DAMAGE_EXCLUSIVE).add(ModEnchantments.LIGHT_ELEMENT);
+        getOrCreateTagBuilder(EnchantmentTags.TOOLTIP_ORDER).add(ModEnchantments.LIGHT_ELEMENT);
     }
 }

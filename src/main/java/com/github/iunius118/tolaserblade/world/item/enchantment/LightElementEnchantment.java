@@ -4,6 +4,7 @@ import com.github.iunius118.tolaserblade.ToLaserBlade;
 import com.github.iunius118.tolaserblade.tags.ModEntityTypeTags;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.EntityTypePredicate;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -12,6 +13,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 import net.minecraft.world.item.enchantment.LevelBasedValue;
@@ -27,19 +29,20 @@ public class LightElementEnchantment  {
     private static final TagKey<EntityType<?>> TARGETS = ModEntityTypeTags.SENSITIVE_TO_LIGHT_ELEMENT;
 
     public static Enchantment get(HolderLookup.Provider provider) {
-        var itemRegistryLookup = provider.lookupOrThrow(Registries.ITEM);
-        var enchantmentRegistryLookup = provider.lookupOrThrow(Registries.ENCHANTMENT);
+        return get(provider.lookupOrThrow(Registries.ITEM), provider.lookupOrThrow(Registries.ENCHANTMENT));
+    }
 
+    public static Enchantment get(HolderGetter<Item> ItemHolderGetter, HolderGetter<Enchantment> EnchantmentHolderGetter) {
         return Enchantment
                 .enchantment(
                         Enchantment.definition(
-                                itemRegistryLookup.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
-                                itemRegistryLookup.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                                ItemHolderGetter.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
+                                ItemHolderGetter.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
                                 5,
                                 MAX_LEVEL,
                                 Enchantment.dynamicCost(5, 8), Enchantment.dynamicCost(25, 8), 2,
                                 EquipmentSlotGroup.MAINHAND))
-                .exclusiveWith(enchantmentRegistryLookup.getOrThrow(EnchantmentTags.DAMAGE_EXCLUSIVE))
+                .exclusiveWith(EnchantmentHolderGetter.getOrThrow(EnchantmentTags.DAMAGE_EXCLUSIVE))
                 .withEffect(
                         EnchantmentEffectComponents.DAMAGE,
                         new AddValue(LevelBasedValue.perLevel(BASE_DAMAGE_PER_LEVEL)))
