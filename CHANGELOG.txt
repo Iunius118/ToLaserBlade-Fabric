@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+## [5.0.1]
+### Fixed
+- Fix enchantment upgrade sometimes causing crash.
+
 ## [5.0.0]
 - Require Minecraft 1.21.
 - Require Fabric Loader 0.15.11 and Fabric API 0.100.3+1.21.
