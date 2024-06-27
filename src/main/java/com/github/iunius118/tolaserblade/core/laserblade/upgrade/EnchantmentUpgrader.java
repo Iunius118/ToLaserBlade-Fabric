@@ -38,7 +38,7 @@ public class EnchantmentUpgrader implements Upgrader {
         var optionalHolder = provider.lookupOrThrow(Registries.ENCHANTMENT).get(enchantment);
 
         if (optionalHolder.isEmpty()) {
-            UpgradeResult.of(base, baseCost);
+            return UpgradeResult.of(base, baseCost);
         }
 
         Holder.Reference<Enchantment> enchantmentHolder = optionalHolder.get();
