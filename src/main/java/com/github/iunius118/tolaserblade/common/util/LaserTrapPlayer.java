@@ -80,9 +80,7 @@ public class LaserTrapPlayer {
             float totalDamage = EnchantmentHelper.modifyDamage(level, itemStack, targetEntity, fakePlayer.damageSources().playerAttack(fakePlayer), attackDamage);
 
             if (canBurn(targetEntity, fireLevel)) {
-                int remainingFireTicks = Math.max(targetEntity.getRemainingFireTicks(), 0);
-                targetEntity.setRemainingFireTicks(Math.min(fireLevel, 1) + remainingFireTicks);
-                targetEntity.setSharedFlagOnFire(true);
+                targetEntity.igniteForSeconds(Math.min(fireLevel, 1));
             }
             
             targetEntity.hurt(fakePlayer.damageSources().playerAttack(fakePlayer), totalDamage);
