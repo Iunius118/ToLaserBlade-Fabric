@@ -71,9 +71,9 @@ public class LaserTrapPlayer {
         ServerLevel level = fakePlayer.serverLevel();
         List<Entity> targetEntities = level.getEntities((Entity) null, aabb, this::canHitEntity);
 
-        float attackDamage = (float) fakePlayer.getAttribute(Attributes.ATTACK_DAMAGE).getValue();
-        var fireAspect = level.holderLookup(Registries.ENCHANTMENT).getOrThrow(Enchantments.FIRE_ASPECT);
-        int fireLevel = EnchantmentHelper.getEnchantmentLevel(fireAspect, fakePlayer);
+        float attackDamage = (float) fakePlayer.getAttributeValue(Attributes.ATTACK_DAMAGE);
+        var fireAspect = level.holderLookup(Registries.ENCHANTMENT).get(Enchantments.FIRE_ASPECT);
+        int fireLevel = fireAspect.map(e -> EnchantmentHelper.getEnchantmentLevel(e, fakePlayer)).orElse(0);
         ItemStack itemStack = fakePlayer.getMainHandItem();
 
         for (var targetEntity : targetEntities) {
