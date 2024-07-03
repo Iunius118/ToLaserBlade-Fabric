@@ -3,6 +3,8 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+
+## [5.0.2]
 ### Fixed
 - Fix laser trap so that Fire Aspect can ignite mobs.
 
