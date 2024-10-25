@@ -1,13 +1,12 @@
 package com.github.iunius118.tolaserblade.client.renderer.item.model;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.BakedOverrides;
 import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.*;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.item.ItemStack;
@@ -15,7 +14,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
@@ -24,6 +22,7 @@ public class LBSwordItemModel implements UnbakedModel, BakedModel {
     public ItemStack itemStack = ItemStack.EMPTY;
     public HumanoidArm mainArm = HumanoidArm.RIGHT;
     public boolean isBlocking = false;
+    private final BakedOverrides bakedOverrides = new LBSwordBakedOverrides(this);
 
     public LBSwordItemModel handleItemOverride(ItemStack itemStackIn, HumanoidArm mainArmIn, boolean isBlockingIn) {
         // Override model for rendering
@@ -37,15 +36,10 @@ public class LBSwordItemModel implements UnbakedModel, BakedModel {
     /* UnbakedModel */
 
     @Override
-    public Collection<ResourceLocation> getDependencies() {
-        return Collections.emptySet();
+    public void resolveDependencies(Resolver resolver) {
+
     }
 
-    @Override
-    public void resolveParents(Function<ResourceLocation, UnbakedModel> function) {
-    }
-
-    @Nullable
     @Override
     public BakedModel bake(ModelBaker modelBaker, Function<Material, TextureAtlasSprite> function, ModelState modelState) {
         return this;
@@ -80,7 +74,7 @@ public class LBSwordItemModel implements UnbakedModel, BakedModel {
 
     @Override
     public TextureAtlasSprite getParticleIcon() {
-        return Minecraft.getInstance().getItemRenderer().getItemModelShaper().getItemModel(Items.IRON_INGOT).getParticleIcon();
+        return Minecraft.getInstance().getItemRenderer().getModel(new ItemStack(Items.IRON_INGOT), null, null, 0).getParticleIcon();
     }
 
     @Override
@@ -94,10 +88,8 @@ public class LBSwordItemModel implements UnbakedModel, BakedModel {
         }
     }
 
-    private static final ItemOverrides ITEM_OVERRIDES = new LBSwordItemOverrides();
-
     @Override
-    public ItemOverrides getOverrides() {
-        return ITEM_OVERRIDES;
+    public BakedOverrides overrides() {
+        return bakedOverrides;
     }
 }

@@ -16,7 +16,7 @@ public class LaserBladeModelLoadingPlugin implements ModelLoadingPlugin {
     private static List<ModelResourceLocation> laserBladeModelLocations = Collections.emptyList();
 
     @Override
-    public void onInitializeModelLoader(Context pluginContext) {
+    public void initialize(Context pluginContext) {
         // Load/Reload laser blade json models
         var modelManager = LaserBladeModelManager.getInstance();
         modelManager.reload();
