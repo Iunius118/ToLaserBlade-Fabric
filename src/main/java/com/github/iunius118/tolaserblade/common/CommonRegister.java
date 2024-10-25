@@ -40,16 +40,7 @@ public class CommonRegister {
     }
 
     private static void registerItems() {
-        // Laser Blades
-        Registry.register(BuiltInRegistries.ITEM, ToLaserBlade.makeId("laser_blade"), ModItems.LASER_BLADE);
-        Registry.register(BuiltInRegistries.ITEM, ToLaserBlade.makeId("laser_blade_fp"), ModItems.LASER_BLADE_FP);
-        // Blueprint
-        Registry.register(BuiltInRegistries.ITEM, ToLaserBlade.makeId("lb_blueprint"), ModItems.LB_BLUEPRINT);
-        // Laser Blade parts
-        Registry.register(BuiltInRegistries.ITEM, ToLaserBlade.makeId("lb_battery"), ModItems.LB_BATTERY);
-        Registry.register(BuiltInRegistries.ITEM, ToLaserBlade.makeId("lb_medium"), ModItems.LB_MEDIUM);
-        Registry.register(BuiltInRegistries.ITEM, ToLaserBlade.makeId("lb_emitter"), ModItems.LB_EMITTER);
-        Registry.register(BuiltInRegistries.ITEM, ToLaserBlade.makeId("lb_casing"), ModItems.LB_CASING);
+        ModItems.register();
     }
 
     private static void registerItemGroups() {
