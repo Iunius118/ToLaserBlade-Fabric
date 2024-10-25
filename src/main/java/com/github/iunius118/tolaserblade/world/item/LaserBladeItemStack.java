@@ -32,8 +32,8 @@ public enum LaserBladeItemStack {
         return stack;
     }
 
-    public static ItemStack getModelChangedStack(int type, boolean isFireproof) {
-        var stack = new ItemStack(isFireproof ? ModItems.LASER_BLADE_FP : ModItems.LASER_BLADE);
+    public static ItemStack getModelChangedStack(int type, boolean isFireResistant) {
+        var stack = new ItemStack(isFireResistant ? ModItems.LASER_BLADE_FP : ModItems.LASER_BLADE);
         LaserBladeAppearance.of().setType(type).setTo(stack);
         return stack;
     }

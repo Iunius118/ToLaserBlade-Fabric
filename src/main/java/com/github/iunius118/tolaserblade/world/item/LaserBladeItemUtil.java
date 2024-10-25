@@ -10,6 +10,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -21,16 +22,19 @@ import net.minecraft.world.phys.Vec3;
 import java.util.List;
 
 public class LaserBladeItemUtil {
-    public static void playSwingSound(Level level, LivingEntity entity, boolean isFireResistant) {
-        SoundEvent soundEvent = isFireResistant ? ModSoundEvents.ITEM_LASER_BLADE_FP_SWING : ModSoundEvents.ITEM_LASER_BLADE_SWING;
+    public static boolean isFireResistant(ItemStack itemStack) {
+        var damageResistant = itemStack.get(DataComponents.DAMAGE_RESISTANT);
+        return (damageResistant != null) && (damageResistant.types() == DamageTypeTags.IS_FIRE);
+    }
+
+    public static void playSwingSound(Level level, LivingEntity entity, ItemStack itemStack) {
+        SoundEvent soundEvent = isFireResistant(itemStack) ? ModSoundEvents.ITEM_LASER_BLADE_FP_SWING : ModSoundEvents.ITEM_LASER_BLADE_SWING;
         Vec3 pos = entity.position().add(0, entity.getEyeHeight(), 0).add(entity.getLookAngle());
         level.playSound(null, pos.x, pos.y, pos.z, soundEvent, SoundSource.PLAYERS, 0.5F, 1.0F);
     }
 
     public static void addLaserBladeInformation(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag flag, Upgrade.Type upgradeType) {
-        boolean isFireResistant = itemStack.has(DataComponents.FIRE_RESISTANT);
-
-        if (isFireResistant) {
+        if (isFireResistant(itemStack)) {
             tooltip.add(LaserBladeTextKey.KEY_TOOLTIP_FIREPROOF.translate().withStyle(ChatFormatting.GOLD));
         }
 

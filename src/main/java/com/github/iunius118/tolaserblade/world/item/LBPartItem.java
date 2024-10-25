@@ -11,13 +11,9 @@ import java.util.List;
 public class LBPartItem extends Item implements LaserBladeItemBase {
     public final Upgrade.Type upgradeType;
 
-    public LBPartItem(Upgrade.Type type, boolean isFireResistant) {
-        super(LaserBladeItemBase.setFireResistant(new Item.Properties(), isFireResistant));
+    public LBPartItem(Item.Properties properties, Upgrade.Type type) {
+        super(properties);
         upgradeType = type;
-    }
-
-    public LBPartItem(Upgrade.Type type) {
-        this(type, false);
     }
 
     @Override
