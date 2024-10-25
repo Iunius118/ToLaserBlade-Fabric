@@ -8,6 +8,7 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 
@@ -16,7 +17,7 @@ public class TLBDataGenerator implements DataGeneratorEntrypoint {
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         var pack = fabricDataGenerator.createPack();
 
-        pack.addProvider(TLBRecipeProvider::new);
+        pack.addProvider(TLBRecipeProvider.Runner::new);
         pack.addProvider(TLBEnchantmentProvider::new);
         pack.addProvider(TLBItemTagsProvider::new);
         pack.addProvider(TLBEnchantmentTagsProvider::new);
@@ -32,6 +33,7 @@ public class TLBDataGenerator implements DataGeneratorEntrypoint {
     private void bootstrapEnchantmentDataRegistry(BootstrapContext<Enchantment> bootstrapContext) {
         HolderGetter<Item> itemHolderGetter = bootstrapContext.lookup(Registries.ITEM);
         HolderGetter<Enchantment> enchantmentHolderGetter = bootstrapContext.lookup(Registries.ENCHANTMENT);
-        bootstrapContext.register(ModEnchantments.LIGHT_ELEMENT, LightElementEnchantment.get(itemHolderGetter, enchantmentHolderGetter));
+        HolderGetter<EntityType<?>> entityTypeHolderGetter = bootstrapContext.lookup(Registries.ENTITY_TYPE);
+        bootstrapContext.register(ModEnchantments.LIGHT_ELEMENT, LightElementEnchantment.get(itemHolderGetter, enchantmentHolderGetter, entityTypeHolderGetter));
     }
 }
