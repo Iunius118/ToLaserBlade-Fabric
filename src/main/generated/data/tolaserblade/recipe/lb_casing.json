@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "tolaserblade:lb_casing",
   "key": {
-    "#": {
-      "item": "tolaserblade:lb_blueprint"
-    },
-    "i": {
-      "tag": "c:ingots/iron"
-    }
+    "#": "tolaserblade:lb_blueprint",
+    "i": "#c:ingots/iron"
   },
   "pattern": [
     "#",

@@ -3,18 +3,10 @@
   "category": "misc",
   "group": "tolaserblade:lb_blueprint",
   "key": {
-    "b": {
-      "tag": "c:dyes/blue"
-    },
-    "p": {
-      "item": "minecraft:paper"
-    },
-    "r": {
-      "tag": "c:dusts/redstone"
-    },
-    "s": {
-      "tag": "c:rods/wooden"
-    }
+    "b": "#c:dyes/blue",
+    "p": "minecraft:paper",
+    "r": "#c:dusts/redstone",
+    "s": "#c:rods/wooden"
   },
   "pattern": [
     "rbr",

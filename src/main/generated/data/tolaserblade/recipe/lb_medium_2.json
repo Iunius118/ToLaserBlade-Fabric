@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "tolaserblade:lb_medium",
   "key": {
-    "#": {
-      "item": "tolaserblade:lb_blueprint"
-    },
-    "d": {
-      "tag": "c:gems/diamond"
-    }
+    "#": "tolaserblade:lb_blueprint",
+    "d": "#c:gems/diamond"
   },
   "pattern": [
     "#",

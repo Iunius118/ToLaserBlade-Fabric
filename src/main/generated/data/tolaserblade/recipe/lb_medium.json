@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "tolaserblade:lb_medium",
   "key": {
-    "#": {
-      "item": "tolaserblade:lb_blueprint"
-    },
-    "g": {
-      "tag": "c:dusts/glowstone"
-    }
+    "#": "tolaserblade:lb_blueprint",
+    "g": "#c:dusts/glowstone"
   },
   "pattern": [
     "#",
