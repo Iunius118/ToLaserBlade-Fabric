@@ -82,8 +82,8 @@ public class LaserTrapPlayer {
             if (canBurn(targetEntity, fireLevel)) {
                 targetEntity.igniteForSeconds(Math.min(fireLevel, 1));
             }
-            
-            targetEntity.hurt(fakePlayer.damageSources().playerAttack(fakePlayer), totalDamage);
+
+            targetEntity.hurtServer(level, fakePlayer.damageSources().playerAttack(fakePlayer), totalDamage);
         }
 
         spawnParticle(dir, targetPos, itemStack);
