@@ -1,13 +1,13 @@
 plugins {
-    id 'fabric-loom' version '1.7-SNAPSHOT'
+    id 'fabric-loom' version '1.8-SNAPSHOT'
     id 'maven-publish'
 }
 
-version = minecraft_version + '-' + mod_version
-group = maven_group
+version = project.minecraft_version + '-' + project.mod_version
+group = project.maven_group
 
 base {
-    archivesName = archives_base_name
+    archivesName = project.archives_base_name
 }
 
 repositories {
@@ -38,10 +38,12 @@ fabricApi {
 dependencies {
     // To change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    // mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
+    // Fabric API. This is technically optional, but you probably want it anyway.
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
@@ -55,10 +57,10 @@ dependencies {
 }
 
 processResources {
-    inputs.property "version", mod_version
+    inputs.property "version", project.version
 
     filesMatching("fabric.mod.json") {
-        expand "version": mod_version
+        expand "version": project.version
     }
 }
 
@@ -78,9 +80,11 @@ jar {
     from("LICENSE", "CHANGELOG.txt", "CHEATSHEET.txt", "CREDITS.txt")
 }
 
+// configure the maven publication
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        create("mavenJava", MavenPublication) {
+            artifactId = project.archives_base_name
             from components.java
         }
     }
