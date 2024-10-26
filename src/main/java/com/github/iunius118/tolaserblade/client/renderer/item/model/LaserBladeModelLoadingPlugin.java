@@ -9,11 +9,10 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.client.resources.model.UnbakedModel;
 import net.minecraft.resources.ResourceLocation;
 
-import java.util.Collections;
 import java.util.List;
 
 public class LaserBladeModelLoadingPlugin implements ModelLoadingPlugin {
-    private static List<ModelResourceLocation> laserBladeModelLocations = Collections.emptyList();
+    private static List<ModelResourceLocation> laserBladeModelLocations = List.of();
 
     @Override
     public void initialize(Context pluginContext) {

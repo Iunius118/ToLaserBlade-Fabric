@@ -8,13 +8,13 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Collections;
+import java.util.List;
 
 public class LBSwordBakedOverrides extends BakedOverrides {
     private final LBSwordItemModel lbSwordItemModel;
 
     public LBSwordBakedOverrides(LBSwordItemModel lbSwordItemModel) {
-        super(null, Collections.emptyList());
+        super(null, List.of());
         this.lbSwordItemModel = lbSwordItemModel;
     }
 
