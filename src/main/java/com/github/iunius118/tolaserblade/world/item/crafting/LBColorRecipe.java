@@ -90,6 +90,11 @@ public class LBColorRecipe extends LBSmithingRecipe {
     }
 
     @Override
+    protected ItemStack getDisplayResult(ItemStack result) {
+        return getColoringResult(result.copy());
+    }
+
+    @Override
     public RecipeSerializer<LBColorRecipe> getSerializer() {
         return ModRecipeSerializers.COLOR;
     }

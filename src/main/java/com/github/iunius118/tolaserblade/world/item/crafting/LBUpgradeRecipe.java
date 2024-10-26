@@ -1,12 +1,17 @@
 package com.github.iunius118.tolaserblade.world.item.crafting;
 
+import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeTextKey;
 import com.github.iunius118.tolaserblade.core.laserblade.upgrade.Upgrade;
+import com.github.iunius118.tolaserblade.core.laserblade.upgrade.UpgradeID;
 import com.github.iunius118.tolaserblade.core.laserblade.upgrade.UpgradeManager;
 import com.github.iunius118.tolaserblade.core.laserblade.upgrade.UpgradeResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -59,6 +64,23 @@ public class LBUpgradeRecipe extends LBSmithingRecipe {
 
         upgrade = UpgradeManager.getUpgrade(upgradeId);
         return upgrade;
+    }
+
+    @Override
+    protected ItemStack getDisplayResult(ItemStack result) {
+        ResourceLocation efficiencyRemover = UpgradeID.EFFICIENCY_REMOVER.getID();
+        ItemStack copied = result.copy();
+
+        if (upgradeId.equals(efficiencyRemover)) {
+            // Set hint of removing Efficiency to item-stack's display name
+            MutableComponent componentContents = LaserBladeTextKey.KEY_TOOLTIP_REMOVE.translate(Component.translatable("enchantment.minecraft.efficiency"));
+            MutableComponent info = Component.literal(componentContents.getString());
+            copied.set(DataComponents.CUSTOM_NAME, info);
+            return copied;
+        } else {
+            // For other upgrades, return result without applying upgrade temporarily
+            return copied;
+        }
     }
 
     @Override

@@ -48,6 +48,11 @@ public class LBModelChangeRecipe extends LBSmithingRecipe {
     }
 
     @Override
+    protected ItemStack getDisplayResult(ItemStack result) {
+        return getResult(result.copy());
+    }
+
+    @Override
     public RecipeSerializer<LBModelChangeRecipe> getSerializer() {
         return ModRecipeSerializers.MODEL_CHANGE;
     }

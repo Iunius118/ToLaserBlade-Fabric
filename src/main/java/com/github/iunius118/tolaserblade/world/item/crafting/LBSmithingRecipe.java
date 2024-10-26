@@ -73,9 +73,11 @@ public abstract class LBSmithingRecipe implements SmithingRecipe {
                         Ingredient.optionalIngredientToDisplay(template),
                         Ingredient.optionalIngredientToDisplay(base),
                         Ingredient.optionalIngredientToDisplay(addition),
-                        new SlotDisplay.ItemStackSlotDisplay(result),
+                        new SlotDisplay.ItemStackSlotDisplay(getDisplayResult(result)),
                         new SlotDisplay.ItemSlotDisplay(Items.SMITHING_TABLE)
                 )
         );
     }
+
+    protected abstract ItemStack getDisplayResult(ItemStack result);
 }
