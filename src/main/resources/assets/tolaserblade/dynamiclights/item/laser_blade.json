@@ -1,4 +1,6 @@
 {
-  "item": "tolaserblade:laser_blade",
+  "match": {
+    "items": "tolaserblade:laser_blade"
+  },
   "luminance": 15
 }
