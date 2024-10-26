@@ -3,14 +3,14 @@ package com.github.iunius118.tolaserblade.world.item;
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBlade;
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeAppearance;
 import com.github.iunius118.tolaserblade.core.laserblade.upgrade.Upgrade;
+import com.github.iunius118.tolaserblade.mixin.ItemAccessor;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -19,6 +19,14 @@ import java.util.List;
 public class LBSwordItem extends SwordItem implements LaserBladeItemBase {
     public LBSwordItem(Properties properties, boolean isFireResistant) {
         super(ModToolMaterials.getLBSwordMaterial(isFireResistant), LaserBlade.BASE_ATTACK, LaserBlade.BASE_SPEED, properties);
+        overwriteToolComponent(ModToolMaterials.getLBSwordMaterial(isFireResistant));
+    }
+
+    private void overwriteToolComponent(ToolMaterial toolMaterial) {
+        DataComponentMap.Builder builder = DataComponentMap.builder().addAll(this.components());
+        var tool = new Tool(List.of(), toolMaterial.speed(), 1);
+        builder.set(DataComponents.TOOL, tool);
+        ((ItemAccessor) this).setComponents(builder.build());
     }
 
     @Override

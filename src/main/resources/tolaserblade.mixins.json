@@ -3,6 +3,7 @@
   "package": "com.github.iunius118.tolaserblade.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "ItemAccessor",
     "MixinLivingEntity",
     "MixinSmithingMenu"
   ],
