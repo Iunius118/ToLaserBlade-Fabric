@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+## [5.0.3]
+### Fixed
+- Support LambDynamicLights 3.
+
 ## [5.0.2]
 ### Fixed
 - Fix laser trap so that Fire Aspect can ignite mobs.
