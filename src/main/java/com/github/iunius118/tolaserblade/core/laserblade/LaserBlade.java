@@ -2,9 +2,9 @@ package com.github.iunius118.tolaserblade.core.laserblade;
 
 import com.github.iunius118.tolaserblade.api.core.laserblade.LaserBladeState;
 import com.github.iunius118.tolaserblade.core.component.ModDataComponents;
+import com.github.iunius118.tolaserblade.world.item.LaserBladeItemUtil;
 import com.github.iunius118.tolaserblade.world.item.ModToolMaterials;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -69,8 +69,7 @@ public class LaserBlade {
         float attackSpeed  = LaserBlade.getSpeed(itemStack) + BASE_SPEED;
 
         // Add attack damage bonus to attack damage
-        var damageResistant = itemStack.get(DataComponents.DAMAGE_RESISTANT);
-        boolean isFireResistant = (damageResistant != null) && (damageResistant.types() == DamageTypeTags.IS_FIRE);
+        boolean isFireResistant = LaserBladeItemUtil.isFireResistant(itemStack);
         attackDamage += ModToolMaterials.getLBSwordMaterial(isFireResistant).attackDamageBonus();
 
         // Update item attribute modifiers
