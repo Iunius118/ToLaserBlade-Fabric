@@ -4,6 +4,21 @@
 
 ## [Unreleased]
 
+## [7.0.0]
+- Require Minecraft 1.21.4.
+- Require Fabric Loader 0.16.9 and Fabric API 0.112.2+1.21.4.
+- Require Cloth Config 17.0.144.
+
+### Added
+- Add special model type `tolaserblade:laser_blade` to render laser blade items.
+- Add tint source type `tolaserblade:laser_blade` to tint laser blade part items.
+
+### Changed
+- Port to 1.21.4.
+
+### Removed
+- Remove `laserBlades` from configuration file.
+
 ## [6.0.0]
 - Require Minecraft 1.21.3.
 - Require Fabric Loader 0.16.7 and Fabric API 0.106.1+1.21.3.

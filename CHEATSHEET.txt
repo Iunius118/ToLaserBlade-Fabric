@@ -1,5 +1,5 @@
 # Cheatsheet
-ToLaserBlade-Fabric v6.0.0
+ToLaserBlade-Fabric v7.0.0
 
 ## Items
 ### Laser Blade Blueprint
@@ -121,10 +121,6 @@ In multiplayer mode, server-side config will be used.
   - Whether to allow laser trap to attack player. This is only valid when `enableLaserTrap` is `true`
 - `canLaserTrapHeatUpFurnace` (boolean, default value is `true`)
   - Whether to allow laser trap to light furnace. This is only valid when `enableLaserTrap` is `true`
-
-### `[client]`
-- `laserBlades` (array of strings, default value is `["tolaserblade:laser_blade", "tolaserblade:laser_blade_fp"]`)
-  - IDs of items to which laser blade model applies
 
 ### Data Components
 Item components for laser blade items
