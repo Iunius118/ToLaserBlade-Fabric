@@ -1,0 +1,9 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "tolaserblade:item/laser_blade_fp",
+    "model": {
+      "type": "tolaserblade:laser_blade"
+    }
+  }
+}
