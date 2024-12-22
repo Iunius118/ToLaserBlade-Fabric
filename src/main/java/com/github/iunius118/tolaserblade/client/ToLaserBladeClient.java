@@ -9,7 +9,7 @@ public class ToLaserBladeClient implements ClientModInitializer {
     public void onInitializeClient() {
         ClientRegister.registerTintSources();
         ClientRegister.registerModelLoadingPlugin();
-        ClientRegister.registerItemRenderer();
+        ClientRegister.registerSpecialModelRenderers();
         ClientRegister.registerParticleProviders();
 
         // Register event listener to register laser blade models

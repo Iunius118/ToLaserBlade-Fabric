@@ -3,21 +3,14 @@ package com.github.iunius118.tolaserblade.client;
 import com.github.iunius118.tolaserblade.ToLaserBlade;
 import com.github.iunius118.tolaserblade.client.color.item.LaserBladeTintSource;
 import com.github.iunius118.tolaserblade.client.particle.LaserTrapParticle;
-import com.github.iunius118.tolaserblade.client.renderer.item.LBSwordItemRenderer;
+import com.github.iunius118.tolaserblade.client.renderer.item.LBSwordSpecialRenderer;
 import com.github.iunius118.tolaserblade.client.renderer.item.model.LaserBladeModelLoadingPlugin;
 import com.github.iunius118.tolaserblade.core.particle.ModParticleTypes;
-import com.github.iunius118.tolaserblade.integration.autoconfig.ModConfig;
-import com.github.iunius118.tolaserblade.world.item.ModItems;
-import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.color.item.ItemTintSources;
+import net.minecraft.client.renderer.special.SpecialModelRenderers;
 import net.minecraft.core.Direction;
-import net.minecraft.world.item.Item;
-
-import java.util.List;
 
 public class ClientRegister {
     public static void registerTintSources() {
@@ -28,10 +21,8 @@ public class ClientRegister {
         ModelLoadingPlugin.register(new LaserBladeModelLoadingPlugin());
     }
 
-    public static void registerItemRenderer() {
-        ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-        List<Item> laserBladeItems = config.getLaserBladeItems();
-        laserBladeItems.forEach(item -> BuiltinItemRendererRegistry.INSTANCE.register(item, new LBSwordItemRenderer()));
+    public static void registerSpecialModelRenderers() {
+        SpecialModelRenderers.ID_MAPPER.put(ToLaserBlade.makeId("laser_blade"), LBSwordSpecialRenderer.Unbaked.MAP_CODEC);
     }
 
     public static void registerParticleProviders() {
