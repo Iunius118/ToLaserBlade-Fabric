@@ -43,12 +43,12 @@ public class DispenseLBSwordBehavior implements DispenseItemBehavior {
     }
 
     private void lightFurnace(AbstractFurnaceBlockEntity furnace, ItemStack stack) {
-        if (furnace.litTime < LASER_BURN_TIME + 1) {
-            boolean isNotLit = furnace.litTime < 1;
+        if (furnace.litTimeRemaining < LASER_BURN_TIME + 1) {
+            boolean isNotLit = furnace.litTimeRemaining < 1;
 
             // Set burnTime to 200 (10 seconds)
-            furnace.litTime = LASER_BURN_TIME + 1;
-            furnace.litDuration = LASER_BURN_TIME;
+            furnace.litTimeRemaining = LASER_BURN_TIME + 1;
+            furnace.litTotalTime = LASER_BURN_TIME;
             furnace.setChanged();
 
             if (isNotLit) {
