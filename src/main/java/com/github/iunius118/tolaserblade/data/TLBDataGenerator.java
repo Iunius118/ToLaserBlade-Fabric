@@ -22,6 +22,7 @@ public class TLBDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(TLBItemTagsProvider::new);
         pack.addProvider(TLBEnchantmentTagsProvider::new);
         pack.addProvider(TLBEntityTypeTagsProvider::new);
+        pack.addProvider(TLBModelProvider::new);
         TLBLanguageProvider.addProviders(pack);
     }
 
