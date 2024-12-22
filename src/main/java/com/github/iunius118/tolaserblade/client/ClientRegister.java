@@ -1,9 +1,7 @@
 package com.github.iunius118.tolaserblade.client;
 
-import com.github.iunius118.tolaserblade.client.color.item.LBCasingItemColor;
-import com.github.iunius118.tolaserblade.client.color.item.LBEmitterItemColor;
-import com.github.iunius118.tolaserblade.client.color.item.LBMediumItemColor;
-import com.github.iunius118.tolaserblade.client.color.item.LBSwordItemColor;
+import com.github.iunius118.tolaserblade.ToLaserBlade;
+import com.github.iunius118.tolaserblade.client.color.item.LaserBladeTintSource;
 import com.github.iunius118.tolaserblade.client.particle.LaserTrapParticle;
 import com.github.iunius118.tolaserblade.client.renderer.item.LBSwordItemRenderer;
 import com.github.iunius118.tolaserblade.client.renderer.item.model.LaserBladeModelLoadingPlugin;
@@ -15,20 +13,15 @@ import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.minecraft.client.color.item.ItemTintSources;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.Item;
 
 import java.util.List;
 
 public class ClientRegister {
-    public static void registerColorProvider() {
-        // Laser Blades
-        ColorProviderRegistry.ITEM.register(new LBSwordItemColor(), ModItems.LASER_BLADE);
-        ColorProviderRegistry.ITEM.register(new LBSwordItemColor(), ModItems.LASER_BLADE_FP);
-        // Laser Blade Parts
-        ColorProviderRegistry.ITEM.register(new LBMediumItemColor(), ModItems.LB_MEDIUM);
-        ColorProviderRegistry.ITEM.register(new LBEmitterItemColor(), ModItems.LB_EMITTER);
-        ColorProviderRegistry.ITEM.register(new LBCasingItemColor(), ModItems.LB_CASING);
+    public static void registerTintSources() {
+        ItemTintSources.ID_MAPPER.put(ToLaserBlade.makeId("laser_blade"), LaserBladeTintSource.MAP_CODEC);
     }
 
     public static void registerModelLoadingPlugin() {

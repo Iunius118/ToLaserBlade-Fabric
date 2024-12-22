@@ -7,7 +7,7 @@ import net.fabricmc.api.ClientModInitializer;
 public class ToLaserBladeClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        ClientRegister.registerColorProvider();
+        ClientRegister.registerTintSources();
         ClientRegister.registerModelLoadingPlugin();
         ClientRegister.registerItemRenderer();
         ClientRegister.registerParticleProviders();
