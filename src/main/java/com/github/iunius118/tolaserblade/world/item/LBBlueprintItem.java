@@ -1,10 +1,11 @@
 package com.github.iunius118.tolaserblade.world.item;
 
+import com.github.iunius118.tolaserblade.mixin.ItemAccessor;
 import net.minecraft.world.item.Item;
 
 public class LBBlueprintItem extends Item {
     public LBBlueprintItem(Properties properties) {
         super(properties);
-        this.craftingRemainingItem = this;
+        ((ItemAccessor) this).setCraftingRemainingItem(this);
     }
 }

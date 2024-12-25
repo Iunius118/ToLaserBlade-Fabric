@@ -33,7 +33,6 @@
   "mixins": [
     "tolaserblade.mixins.json"
   ],
-  "accessWidener": "tolaserblade.accesswidener",
   "depends": {
     "fabricloader": ">=0.16.7",
     "minecraft": "~1.21.4",

@@ -11,4 +11,8 @@ public interface ItemAccessor {
     @Accessor
     @Mutable
     void setComponents(DataComponentMap components);
+
+    @Accessor
+    @Mutable
+    void setCraftingRemainingItem(Item item);
 }

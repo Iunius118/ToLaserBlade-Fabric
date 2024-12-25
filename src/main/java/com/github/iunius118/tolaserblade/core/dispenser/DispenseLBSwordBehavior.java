@@ -2,6 +2,7 @@ package com.github.iunius118.tolaserblade.core.dispenser;
 
 import com.github.iunius118.tolaserblade.common.util.LaserTrapPlayer;
 import com.github.iunius118.tolaserblade.integration.autoconfig.ModConfig;
+import com.github.iunius118.tolaserblade.mixin.AbstractFurnaceBlockEntityAccessor;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -43,12 +44,15 @@ public class DispenseLBSwordBehavior implements DispenseItemBehavior {
     }
 
     private void lightFurnace(AbstractFurnaceBlockEntity furnace, ItemStack stack) {
-        if (furnace.litTimeRemaining < LASER_BURN_TIME + 1) {
-            boolean isNotLit = furnace.litTimeRemaining < 1;
+        var furnaceAccessor = (AbstractFurnaceBlockEntityAccessor) furnace;
+        final int litTimeRemaining = furnaceAccessor.getLitTimeRemaining();
+
+        if (litTimeRemaining < LASER_BURN_TIME + 1) {
+            boolean isNotLit = litTimeRemaining < 1;
 
             // Set burnTime to 200 (10 seconds)
-            furnace.litTimeRemaining = LASER_BURN_TIME + 1;
-            furnace.litTotalTime = LASER_BURN_TIME;
+            furnaceAccessor.setLitTimeRemaining(LASER_BURN_TIME + 1);
+            furnaceAccessor.setLitTotalTime(LASER_BURN_TIME);
             furnace.setChanged();
 
             if (isNotLit) {
