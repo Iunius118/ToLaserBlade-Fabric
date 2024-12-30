@@ -47,6 +47,7 @@ public class LaserTrapParticle extends Particle {
     @Override
     public void render(VertexConsumer vertexConsumer, Camera camera, float f) {}
 
+    @Override
     public void renderCustom(PoseStack poseStack, MultiBufferSource multiBufferSource, Camera camera, float f) {
         VertexConsumer buffer = multiBufferSource.getBuffer(RenderType.debugQuads());
         renderQuad(buffer, camera, vertices[1], vertices[3], vertices[2], vertices[0]);
