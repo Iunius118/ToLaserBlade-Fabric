@@ -4,6 +4,12 @@ Simple sword with a laser blade for Minecraft with Fabric
 
 [![ToLaserBlade (Fabric) - CurseForge](./docs/media/tolaserblade-fabric_cf_badge.svg)](https://www.curseforge.com/minecraft/mc-mods/tolaserblade-fabric)
 
+|Status|Version|
+|:----:|:------|
+|Active|1.21.4 |
+
+The Fabric versions of ToLaserBlade are positioned as experimental and always support only the most current version at the time.
+
 ## Requirements
 
 - Fabric Loader
