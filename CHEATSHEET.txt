@@ -102,10 +102,19 @@ When you put a laser blade in a dispenser and activate it, you can attack the mo
 When a laser trap is fired at a furnace, it will light the furnace.
 
 ### Laser Blade Sound Events
-You can add audio files that will be played when laser blades are swung.
+You can add audio files that will be played when a laser blade is swung.
 
 - `(resource_pack_root_dir)/assets/tolaserblade/sounds/item/laser_blade/swing.ogg`
 - `(resource_pack_root_dir)/assets/tolaserblade/sounds/item/laser_blade_fp/swing.ogg`
+
+You can add audio files that will be played when a laser blade hit an entity.
+
+- `(resource_pack_root_dir)/assets/tolaserblade/sounds/item/laser_blade/hit.ogg`
+- `(resource_pack_root_dir)/assets/tolaserblade/sounds/item/laser_blade_fp/hit.ogg`
+
+You can add audio files that will be played when a laser trap is activated.
+
+- `(resource_pack_root_dir)/assets/tolaserblade/sounds/item/laser_trap/activate.ogg`
 
 ## Configurations
 `(game_dir)/config/tolaserblade.toml`

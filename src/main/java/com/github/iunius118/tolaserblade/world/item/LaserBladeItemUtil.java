@@ -8,16 +8,21 @@ import com.github.iunius118.tolaserblade.core.laserblade.upgrade.Upgrade;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -28,9 +33,27 @@ public class LaserBladeItemUtil {
     }
 
     public static void playSwingSound(Level level, LivingEntity entity, ItemStack itemStack) {
-        SoundEvent soundEvent = isFireResistant(itemStack) ? ModSoundEvents.ITEM_LASER_BLADE_FP_SWING : ModSoundEvents.ITEM_LASER_BLADE_SWING;
+        var soundEvent = isFireResistant(itemStack) ? ModSoundEvents.ITEM_LASER_BLADE_FP_SWING : ModSoundEvents.ITEM_LASER_BLADE_SWING;
         Vec3 pos = entity.position().add(0, entity.getEyeHeight(), 0).add(entity.getLookAngle());
         level.playSound(null, pos.x, pos.y, pos.z, soundEvent, SoundSource.PLAYERS, 0.5F, 1.0F);
+    }
+
+    public static void playHitSound(Level level, Entity target, ItemStack itemStack) {
+        var soundEvent = isFireResistant(itemStack) ? ModSoundEvents.ITEM_LASER_BLADE_FP_HIT : ModSoundEvents.ITEM_LASER_BLADE_HIT;
+        Vec3 pos = target.position().add(0, target.getEyeHeight(), 0);
+        level.playSound(null, pos.x, pos.y, pos.z, soundEvent, SoundSource.AMBIENT, 1.0F, 1.0F);
+    }
+
+    public static InteractionResult onPlayerAttackEntity(Player player, Level level, InteractionHand hand, Entity target, @Nullable EntityHitResult hitResult) {
+        if (!level.isClientSide() && !player.isSpectator() && target != null) {
+            var itemStack = player.getItemInHand(hand);
+
+            if (itemStack.getItem() instanceof LBSwordItem) {
+                playHitSound(level, target, itemStack);
+            }
+        }
+
+        return InteractionResult.PASS;
     }
 
     public static void addLaserBladeInformation(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag flag, Upgrade.Type upgradeType) {

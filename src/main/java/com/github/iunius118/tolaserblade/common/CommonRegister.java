@@ -6,11 +6,13 @@ import com.github.iunius118.tolaserblade.core.component.ModDataComponents;
 import com.github.iunius118.tolaserblade.core.dispenser.DispenseLBSwordBehavior;
 import com.github.iunius118.tolaserblade.core.particle.ModParticleTypes;
 import com.github.iunius118.tolaserblade.integration.autoconfig.ModConfig;
+import com.github.iunius118.tolaserblade.world.item.LaserBladeItemUtil;
 import com.github.iunius118.tolaserblade.world.item.ModCreativeModeTabs;
 import com.github.iunius118.tolaserblade.world.item.ModItems;
 import com.github.iunius118.tolaserblade.world.item.crafting.ModRecipeSerializers;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
+import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.DispenserBlock;
@@ -21,6 +23,7 @@ public class CommonRegister {
     }
 
     public static void registerEventListeners() {
+        AttackEntityCallback.EVENT.register(LaserBladeItemUtil::onPlayerAttackEntity);
     }
 
     public static void registerGameObjects() {
@@ -61,6 +64,9 @@ public class CommonRegister {
     private static void registerSoundEvents() {
         Registry.register(BuiltInRegistries.SOUND_EVENT, ToLaserBlade.makeId("item_laser_blade_swing"), ModSoundEvents.ITEM_LASER_BLADE_SWING);
         Registry.register(BuiltInRegistries.SOUND_EVENT, ToLaserBlade.makeId("item_laser_blade_fp_swing"), ModSoundEvents.ITEM_LASER_BLADE_FP_SWING);
+        Registry.register(BuiltInRegistries.SOUND_EVENT, ToLaserBlade.makeId("item_laser_blade_hit"), ModSoundEvents.ITEM_LASER_BLADE_HIT);
+        Registry.register(BuiltInRegistries.SOUND_EVENT, ToLaserBlade.makeId("item_laser_blade_fp_hit"), ModSoundEvents.ITEM_LASER_BLADE_FP_HIT);
+        Registry.register(BuiltInRegistries.SOUND_EVENT, ToLaserBlade.makeId("item_laser_trap_activate"), ModSoundEvents.ITEM_LASER_TRAP_ACTIVATE);
     }
 
     private static void registerDataComponentTypes() {
