@@ -10,6 +10,9 @@
 ### Changed
 - Require Fabric Loader 0.16.10 and Fabric API 0.116.0+1.21.4.
 
+### Fixed
+- Allow laser blade to perform sweep attack.
+
 ## [7.0.0]
 - Require Minecraft 1.21.4.
 - Require Fabric Loader 0.16.9 and Fabric API 0.112.2+1.21.4.
