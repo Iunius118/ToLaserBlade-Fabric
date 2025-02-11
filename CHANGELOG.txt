@@ -3,6 +3,8 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+### Changed
+- Require Fabric Loader 0.16.10 and Fabric API 0.116.0+1.21.4.
 
 ## [7.0.0]
 - Require Minecraft 1.21.4.
