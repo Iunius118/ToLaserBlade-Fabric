@@ -3,8 +3,10 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+
+## [7.1.0]
 ### Added
-- Laser blade sound events:
+- New sound events:
   `tolaserblade:item.laser_blade.hit`, `tolaserblade:item.laser_blade_fp.hit`, and `tolaserblade:item.laser_trap.activate`.
 
 ### Changed
