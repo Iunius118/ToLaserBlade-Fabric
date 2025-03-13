@@ -24,6 +24,7 @@ public class TLBDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(TLBEntityTypeTagsProvider::new);
         pack.addProvider(TLBModelProvider::new);
         TLBLanguageProvider.addProviders(pack);
+        TLBSampleSoundPackProvider.addProviders(fabricDataGenerator);
     }
 
     @Override
