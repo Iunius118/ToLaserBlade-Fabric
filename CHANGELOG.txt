@@ -3,6 +3,8 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+### Changed
+- Adjust sound effects of laser blade.
 
 ## [7.1.0]
 ### Added
