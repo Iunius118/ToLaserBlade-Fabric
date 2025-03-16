@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+## [7.2.1]
+### Fixed
+- Modify default `assets/tolaserblade/sounds.json` to replace sound definitions.
+
 ## [7.2.0]
 ### Changed
 - Adjust sound effects of laser blade.
