@@ -4,6 +4,14 @@
 
 ## [Unreleased]
 
+## [8.0.0-beta.1]
+- Require Minecraft 1.21.5.
+- Require Fabric Loader 0.16.13 and Fabric API 0.121.0+1.21.5.
+- Require Cloth Config 18.0.145.
+
+### Changed
+- Port to 1.21.5.
+
 ## [7.2.1]
 ### Fixed
 - Modify default `assets/tolaserblade/sounds.json` to replace sound definitions.
