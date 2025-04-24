@@ -1,4 +1,4 @@
-// 1.21.4	-999999999-01-01T00:00:00	ToLaserBlade/TLBRecipeProvider
+// 1.21.5	-999999999-01-01T00:00:00	ToLaserBlade/TLBRecipeProvider
 dfe81a3ac1efaac52a01684831bc6bad9347c41e data/tolaserblade/advancement/recipes/misc/lb_battery.json
 a0169187733d34591f494038f1ff5e33518a0c9d data/tolaserblade/advancement/recipes/misc/lb_blueprint.json
 1b6e403cff389816bed8ebc025c6c8cee05574e5 data/tolaserblade/advancement/recipes/misc/lb_casing.json
@@ -229,8 +229,8 @@ e0c59062b11fb6109cfe61a8d97ed84334182c89 data/tolaserblade/recipe/color/lbf_ob_r
 5a888aeacdb972209d17b1a5085d94ae0058db03 data/tolaserblade/recipe/color/lbf_ob_special_sbm.json
 a81192bedba9cdc2f1b271eda9889b31bf5c0382 data/tolaserblade/recipe/color/lbf_ob_white.json
 3d7579d1a40243921d6d451ac300b111721c44d8 data/tolaserblade/recipe/color/lbf_ob_yellow.json
-94103066e89e901b056ba397a1dbad1922a988ec data/tolaserblade/recipe/laser_blade.json
-ec5a1fe6b801bf9584fa603f6c60962bc89a3b86 data/tolaserblade/recipe/laser_blade_fp_smithing.json
+6a0e7344e13e4b7ea61f7406464ad7e7f0913b10 data/tolaserblade/recipe/laser_blade.json
+535a04b6a65281c731825131cb100aed3195576f data/tolaserblade/recipe/laser_blade_fp_smithing.json
 5764cbe1ada898e1532969c1037d3577855744b8 data/tolaserblade/recipe/lb_battery.json
 6f4b83db88f16b32b42d89d2d89bcd658d2e36ec data/tolaserblade/recipe/lb_blueprint.json
 7478c3bfd12840d00fbc526ddeb2186fc08bb7ad data/tolaserblade/recipe/lb_casing.json
