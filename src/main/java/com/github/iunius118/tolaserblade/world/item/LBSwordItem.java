@@ -19,15 +19,18 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
 
-public class LBSwordItem extends SwordItem implements LaserBladeItemBase {
+public class LBSwordItem extends Item implements LaserBladeItemBase {
     public LBSwordItem(Properties properties, boolean isFireResistant) {
-        super(ModToolMaterials.getLBSwordMaterial(isFireResistant), LaserBlade.BASE_ATTACK, LaserBlade.BASE_SPEED, properties);
+        super(properties);
+        // Apply sword properties
+        ModToolMaterials.getLBSwordMaterial(isFireResistant).applySwordProperties(properties, LaserBlade.BASE_ATTACK, LaserBlade.BASE_SPEED);
+        // ... and overwrite the tool component
         overwriteToolComponent(ModToolMaterials.getLBSwordMaterial(isFireResistant));
     }
 
     private void overwriteToolComponent(ToolMaterial toolMaterial) {
         DataComponentMap.Builder builder = DataComponentMap.builder().addAll(this.components());
-        var tool = new Tool(List.of(), toolMaterial.speed(), 1);
+        var tool = new Tool(List.of(), toolMaterial.speed(), 1, false);
         builder.set(DataComponents.TOOL, tool);
         ((ItemAccessor) this).setComponents(builder.build());
     }
