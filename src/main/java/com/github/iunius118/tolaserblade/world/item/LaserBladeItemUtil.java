@@ -24,6 +24,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LaserBladeItemUtil {
@@ -57,16 +58,22 @@ public class LaserBladeItemUtil {
     }
 
     public static void addLaserBladeInformation(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag flag, Upgrade.Type upgradeType) {
+        // List of components to add to the item tooltip
+        ArrayList<Component> myTooltip = new ArrayList<>();
+
         if (isFireResistant(itemStack)) {
-            tooltip.add(LaserBladeTextKey.KEY_TOOLTIP_FIREPROOF.translate().withStyle(ChatFormatting.GOLD));
+            myTooltip.add(LaserBladeTextKey.KEY_TOOLTIP_FIREPROOF.translate().withStyle(ChatFormatting.GOLD));
         }
 
         switch (upgradeType) {
-            case BATTERY -> addAttackSpeed(tooltip, LaserBlade.getSpeed(itemStack));
-            case MEDIUM -> addAttackDamage(tooltip, LaserBlade.getAttack(itemStack));
-            case CASING, OTHER -> addModelType(tooltip, itemStack);
+            case BATTERY -> addAttackSpeed(myTooltip, LaserBlade.getSpeed(itemStack));
+            case MEDIUM -> addAttackDamage(myTooltip, LaserBlade.getAttack(itemStack));
+            case CASING, OTHER -> addModelType(myTooltip, itemStack);
             default -> {}
         }
+
+        // Add the list to the item tooltip
+        tooltip.addAll(1, myTooltip);
     }
 
     private static void addModelType(List<Component> tooltip, ItemStack itemStack) {
