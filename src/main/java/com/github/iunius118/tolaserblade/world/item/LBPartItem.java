@@ -22,8 +22,7 @@ public class LBPartItem extends Item implements LaserBladeItemBase {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag flag) {
-        super.appendHoverText(itemStack, tooltipContext, tooltip, flag);
+    public void appendTooltip(ItemStack itemStack, Item.TooltipContext tooltipContext, TooltipFlag flag, List<Component> tooltip) {
         LaserBladeItemUtil.addLaserBladeInformation(itemStack, tooltipContext, tooltip, flag, upgradeType);
     }
 }

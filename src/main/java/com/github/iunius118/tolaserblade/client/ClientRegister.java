@@ -7,6 +7,8 @@ import com.github.iunius118.tolaserblade.client.renderer.item.LBSwordSpecialRend
 import com.github.iunius118.tolaserblade.client.renderer.item.model.LaserBladeModelLoadingPlugin;
 import com.github.iunius118.tolaserblade.core.particle.ModParticleTypes;
 import com.github.iunius118.tolaserblade.data.TLBSampleSoundPackProvider;
+import com.github.iunius118.tolaserblade.world.item.LaserBladeItemBase;
+import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.loader.api.FabricLoader;
@@ -39,6 +41,14 @@ public class ClientRegister {
     public static void registerResourcePacks() {
         Optional<ModContainer> container = FabricLoader.getInstance().getModContainer(ToLaserBlade.MOD_ID);
         container.ifPresent(TLBSampleSoundPackProvider::addResourcePack);
+    }
+
+    public static void registerItemTooltip() {
+        ItemTooltipCallback.EVENT.register((itemStack, tooltipContext, tooltipType, list) -> {
+            if (itemStack.getItem() instanceof LaserBladeItemBase item) {
+                item.appendTooltip(itemStack, tooltipContext, tooltipType, list);
+            }
+        });
     }
 
     private ClientRegister() {}

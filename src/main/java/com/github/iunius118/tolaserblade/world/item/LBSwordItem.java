@@ -9,7 +9,10 @@ import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -64,8 +67,7 @@ public class LBSwordItem extends SwordItem implements LaserBladeItemBase {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemStack, Item.TooltipContext tooltipContext, List<Component> tooltip, TooltipFlag flag) {
-        super.appendHoverText(itemStack, tooltipContext, tooltip, flag);
+    public void appendTooltip(ItemStack itemStack, Item.TooltipContext tooltipContext, TooltipFlag flag, List<Component> tooltip) {
         LaserBladeItemUtil.addLaserBladeInformation(itemStack, tooltipContext, tooltip, flag, Upgrade.Type.OTHER);
     }
 }
