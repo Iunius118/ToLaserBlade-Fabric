@@ -62,11 +62,7 @@ public class CommonRegister {
     }
 
     private static void registerSoundEvents() {
-        Registry.register(BuiltInRegistries.SOUND_EVENT, ToLaserBlade.makeId("item_laser_blade_swing"), ModSoundEvents.ITEM_LASER_BLADE_SWING);
-        Registry.register(BuiltInRegistries.SOUND_EVENT, ToLaserBlade.makeId("item_laser_blade_fp_swing"), ModSoundEvents.ITEM_LASER_BLADE_FP_SWING);
-        Registry.register(BuiltInRegistries.SOUND_EVENT, ToLaserBlade.makeId("item_laser_blade_hit"), ModSoundEvents.ITEM_LASER_BLADE_HIT);
-        Registry.register(BuiltInRegistries.SOUND_EVENT, ToLaserBlade.makeId("item_laser_blade_fp_hit"), ModSoundEvents.ITEM_LASER_BLADE_FP_HIT);
-        Registry.register(BuiltInRegistries.SOUND_EVENT, ToLaserBlade.makeId("item_laser_trap_activate"), ModSoundEvents.ITEM_LASER_TRAP_ACTIVATE);
+        ModSoundEvents.register();
     }
 
     private static void registerDataComponentTypes() {

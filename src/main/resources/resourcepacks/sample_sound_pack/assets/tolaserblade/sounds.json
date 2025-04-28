@@ -1,4 +1,26 @@
 {
+  "item.laser_blade.block": {
+    "replace": true,
+    "sounds": [
+      "tolaserblade:item/laser_blade/block",
+      {
+        "name": "tolaserblade:item/laser_blade/block",
+        "pitch": 1.025
+      },
+      {
+        "name": "tolaserblade:item/laser_blade/block",
+        "pitch": 1.05
+      },
+      {
+        "name": "tolaserblade:item/laser_blade/block",
+        "pitch": 1.075
+      },
+      {
+        "name": "tolaserblade:item/laser_blade/block",
+        "pitch": 1.1
+      }
+    ]
+  },
   "item.laser_blade.hit": {
     "replace": true,
     "sounds": [
@@ -39,6 +61,28 @@
       },
       {
         "name": "tolaserblade:item/laser_blade/swing",
+        "pitch": 1.1
+      }
+    ]
+  },
+  "item.laser_blade_fp.block": {
+    "replace": true,
+    "sounds": [
+      "tolaserblade:item/laser_blade_fp/block",
+      {
+        "name": "tolaserblade:item/laser_blade_fp/block",
+        "pitch": 1.025
+      },
+      {
+        "name": "tolaserblade:item/laser_blade_fp/block",
+        "pitch": 1.05
+      },
+      {
+        "name": "tolaserblade:item/laser_blade_fp/block",
+        "pitch": 1.075
+      },
+      {
+        "name": "tolaserblade:item/laser_blade_fp/block",
         "pitch": 1.1
       }
     ]
