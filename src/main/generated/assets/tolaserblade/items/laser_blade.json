@@ -1,9 +1,36 @@
 {
   "model": {
-    "type": "minecraft:special",
-    "base": "tolaserblade:item/laser_blade",
-    "model": {
-      "type": "tolaserblade:laser_blade"
-    }
+    "type": "minecraft:condition",
+    "on_false": {
+      "type": "minecraft:special",
+      "base": "tolaserblade:item/laser_blade",
+      "model": {
+        "type": "tolaserblade:laser_blade"
+      }
+    },
+    "on_true": {
+      "type": "minecraft:select",
+      "cases": [
+        {
+          "model": {
+            "type": "minecraft:special",
+            "base": "tolaserblade:item/laser_blade_blocking_left",
+            "model": {
+              "type": "tolaserblade:laser_blade"
+            }
+          },
+          "when": "left"
+        }
+      ],
+      "fallback": {
+        "type": "minecraft:special",
+        "base": "tolaserblade:item/laser_blade_blocking_right",
+        "model": {
+          "type": "tolaserblade:laser_blade"
+        }
+      },
+      "property": "minecraft:main_hand"
+    },
+    "property": "tolaserblade:blocking"
   }
 }

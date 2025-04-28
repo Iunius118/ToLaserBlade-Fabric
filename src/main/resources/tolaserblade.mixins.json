@@ -9,6 +9,7 @@
     "MixinSmithingMenu"
   ],
   "client": [
+    "MixinItemInHandRenderer"
   ],
   "injectors": {
     "defaultRequire": 1

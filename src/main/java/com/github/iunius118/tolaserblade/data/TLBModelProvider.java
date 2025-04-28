@@ -4,6 +4,7 @@ import com.github.iunius118.tolaserblade.ToLaserBlade;
 import com.github.iunius118.tolaserblade.client.color.item.LaserBladeTintSource;
 import com.github.iunius118.tolaserblade.client.renderer.item.LBSwordSpecialRenderer;
 import com.github.iunius118.tolaserblade.client.renderer.item.model.LBSwordItemTransforms;
+import com.github.iunius118.tolaserblade.client.renderer.item.properties.Blocking;
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeColorPart;
 import com.github.iunius118.tolaserblade.world.item.ModItems;
 import com.google.gson.Gson;
@@ -16,7 +17,10 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.model.ItemTransform;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
+import net.minecraft.client.renderer.item.ItemModel;
+import net.minecraft.client.renderer.item.properties.select.MainHand;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import org.joml.Vector3fc;
@@ -39,12 +43,12 @@ public class TLBModelProvider extends FabricModelProvider {
         final var itemModelOutput = itemModelGenerator.itemModelOutput;
         final var modelOutput = itemModelGenerator.modelOutput;
 
-        itemModelOutput.accept(ModItems.LASER_BLADE,
-                ItemModelUtils.specialModel(createLBSwordModel(ModItems.LASER_BLADE, modelOutput), new LBSwordSpecialRenderer.Unbaked()));
+        // Laser Blades
+        ItemModel.Unbaked lbSwordModel = generateLBSwordModel(ModItems.LASER_BLADE, modelOutput);
+        itemModelOutput.accept(ModItems.LASER_BLADE, lbSwordModel);
+        itemModelOutput.accept(ModItems.LASER_BLADE_FP, lbSwordModel);
 
-        itemModelOutput.accept(ModItems.LASER_BLADE_FP,
-                ItemModelUtils.specialModel(createLBSwordModel(ModItems.LASER_BLADE_FP, modelOutput), new LBSwordSpecialRenderer.Unbaked()));
-
+        // Laser Blade Parts
         itemModelOutput.accept(ModItems.LB_BLUEPRINT,
                 ItemModelUtils.plainModel(ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(ModItems.LB_BLUEPRINT),
                         TextureMapping.layer0(ToLaserBlade.makeId("item/parts/lb_blueprint")), modelOutput)));
@@ -69,9 +73,21 @@ public class TLBModelProvider extends FabricModelProvider {
                         new LaserBladeTintSource(LaserBladeColorPart.GRIP)));
     }
 
-    private ResourceLocation createLBSwordModel(Item item, BiConsumer<ResourceLocation, ModelInstance> modelOutput) {
-        ResourceLocation location = ModelLocationUtils.getModelLocation(item, "");
-        modelOutput.accept(location, () -> (new Gson()).toJsonTree(new LBSwordModel(ResourceLocation.withDefaultNamespace("item/iron_ingot"), LBSwordItemTransforms.ITEM_TRANSFORMS.get())));
+    private ItemModel.Unbaked generateLBSwordModel(Item item, BiConsumer<ResourceLocation, ModelInstance> modelOutput) {
+        ItemModel.Unbaked blockingLeft = ItemModelUtils.specialModel(createLBSwordModel(ModelLocationUtils.getModelLocation(item, "_blocking_left"),
+                LBSwordItemTransforms.BLOCKING_LEFT_ITEM_TRANSFORMS, modelOutput), new LBSwordSpecialRenderer.Unbaked());
+        ItemModel.Unbaked blockingRight = ItemModelUtils.specialModel(createLBSwordModel(ModelLocationUtils.getModelLocation(item, "_blocking_right"),
+                LBSwordItemTransforms.BLOCKING_RIGHT_ITEM_TRANSFORMS, modelOutput), new LBSwordSpecialRenderer.Unbaked());
+
+        ItemModel.Unbaked blockingModel = ItemModelUtils.select(new MainHand(), blockingRight, ItemModelUtils.when(HumanoidArm.LEFT, blockingLeft));
+        ItemModel.Unbaked defaultModel = ItemModelUtils.specialModel(createLBSwordModel(ModelLocationUtils.getModelLocation(item, ""),
+                LBSwordItemTransforms.ITEM_TRANSFORMS, modelOutput), new LBSwordSpecialRenderer.Unbaked());
+
+        return ItemModelUtils.conditional(new Blocking(), blockingModel, defaultModel);
+    }
+
+    private ResourceLocation createLBSwordModel(ResourceLocation location, LBSwordItemTransforms transforms, BiConsumer<ResourceLocation, ModelInstance> modelOutput) {
+        modelOutput.accept(location, () -> (new Gson()).toJsonTree(new LBSwordModel(ResourceLocation.withDefaultNamespace("item/iron_ingot"), transforms.get())));
         return location;
     }
 
