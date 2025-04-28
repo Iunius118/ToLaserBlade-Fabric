@@ -11,9 +11,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.Tool;
+import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -22,17 +22,19 @@ import java.util.List;
 
 public class LBSwordItem extends Item implements LaserBladeItemBase {
     public LBSwordItem(Properties properties, boolean isFireResistant) {
-        super(properties);
         // Apply sword properties
-        ModToolMaterials.getLBSwordMaterial(isFireResistant).applySwordProperties(properties, LaserBlade.BASE_ATTACK, LaserBlade.BASE_SPEED);
+        super(ModToolMaterials.getLBSwordMaterial(isFireResistant).applySwordProperties(properties, LaserBlade.BASE_ATTACK, LaserBlade.BASE_SPEED));
         // ... and overwrite the tool component
-        overwriteToolComponent(ModToolMaterials.getLBSwordMaterial(isFireResistant));
+        overwriteToolComponent(isFireResistant);
     }
 
-    private void overwriteToolComponent(ToolMaterial toolMaterial) {
+    private void overwriteToolComponent(boolean isFireResistant) {
         DataComponentMap.Builder builder = DataComponentMap.builder().addAll(this.components());
-        var tool = new Tool(List.of(), toolMaterial.speed(), 1, false);
-        builder.set(DataComponents.TOOL, tool);
+        float speed = ModToolMaterials.getLBSwordMaterial(isFireResistant).speed();
+        builder.set(DataComponents.TOOL, new Tool(List.of(), speed, 1, false));
+        builder.set(DataComponents.WEAPON, new Weapon(0));
+        // Debug: add BLOCKS_ATTACKS data component to laser blade
+        // builder.set(DataComponents.BLOCKS_ATTACKS, LaserBladeBlocking.getBlocksAttackComponent(isFireResistant));
         ((ItemAccessor) this).setComponents(builder.build());
     }
 
