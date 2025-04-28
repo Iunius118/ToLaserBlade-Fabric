@@ -112,6 +112,10 @@ Sound events fired when a laser blade is hit:
 - `tolaserblade:item.laser_blade.hit` - `assets/tolaserblade/sounds/item/laser_blade/hit.ogg`
 - `tolaserblade:item.laser_blade_fp.hit` - `assets/tolaserblade/sounds/item/laser_blade_fp/hit.ogg`
 
+Sound events for use with `blocks_attacks` component:
+- `tolaserblade:item.laser_blade.block` - `assets/tolaserblade/sounds/item/laser_blade/block.ogg`
+- `tolaserblade:item.laser_blade_fp.block` - `assets/tolaserblade/sounds/item/laser_blade_fp/block.ogg`
+
 Sound event fired when a laser trap is activated:
 - `tolaserblade:item.laser_trap.activate` - `assets/tolaserblade/sounds/item/laser_trap/activate.ogg`
 

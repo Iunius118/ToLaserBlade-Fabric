@@ -4,6 +4,19 @@
 
 ## [Unreleased]
 
+## [8.0.0-beta.2]
+### Added
+- Add boolean property `tolaserblade:blocking` to represent condition of laser blades.
+- New sound events for use with `blocks_attacks` component:
+  `tolaserblade:item.laser_blade.block` and `tolaserblade:item.laser_blade_fp.block`.
+
+### Changed
+- Change laser blade model and rendering to match `blocks_attacks` component.
+
+### Fixed
+- Fix subtractive rendering of laser blade.
+- Fix laser blade item properties.
+
 ## [8.0.0-beta.1]
 - Require Minecraft 1.21.5.
 - Require Fabric Loader 0.16.13 and Fabric API 0.121.0+1.21.5.
