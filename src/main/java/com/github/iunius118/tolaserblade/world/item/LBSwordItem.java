@@ -17,6 +17,7 @@ import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LBSwordItem extends Item implements LaserBladeItemBase {
@@ -71,6 +72,8 @@ public class LBSwordItem extends Item implements LaserBladeItemBase {
 
     @Override
     public void appendTooltip(ItemStack itemStack, Item.TooltipContext tooltipContext, TooltipFlag flag, List<Component> tooltip) {
-        LaserBladeItemUtil.addLaserBladeInformation(itemStack, tooltipContext, tooltip, flag, Upgrade.Type.OTHER);
+        ArrayList<Component> myTooltip = new ArrayList<>();
+        LaserBladeItemUtil.addLaserBladeInformation(itemStack, tooltipContext, myTooltip, flag, Upgrade.Type.OTHER);
+        tooltip.addAll(1, myTooltip);
     }
 }
