@@ -84,7 +84,7 @@ public class LaserBladeRenderType {
                         .setOverlayState(RenderType.OVERLAY)
                         .setOutputState(MAIN_TARGET_SUB)
                         .createCompositeState(true);
-                return RenderType.create(name, 1536, true, true, LaserBladePipelines.ADD, compositeState);
+                return RenderType.create(name, 1536, true, false, LaserBladePipelines.ADD, compositeState);
             }
     );
 
