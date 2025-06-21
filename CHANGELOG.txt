@@ -4,6 +4,15 @@
 
 ## [Unreleased]
 
+## [9.0.0]
+- Require Minecraft 1.21.6.
+- Require Fabric Loader 0.16.14 and Fabric API 0.127.1+1.21.6.
+- Require Cloth Config 19.0.147.
+
+### Changed
+- Port to 1.21.6.
+- Change rendering of laser blades in GUI.
+
 ## [8.0.0]
 ### Changed
 - Release version 8.0.0.
