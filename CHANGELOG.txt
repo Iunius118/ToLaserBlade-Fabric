@@ -7,7 +7,7 @@
 ## [9.0.0]
 - Require Minecraft 1.21.6.
 - Require Fabric Loader 0.16.14 and Fabric API 0.127.1+1.21.6.
-- Require Cloth Config 19.0.147.
+- Require Cloth Config API 19.0.147.
 
 ### Changed
 - Port to 1.21.6.
@@ -33,7 +33,7 @@
 ## [8.0.0-beta.1]
 - Require Minecraft 1.21.5.
 - Require Fabric Loader 0.16.13 and Fabric API 0.121.0+1.21.5.
-- Require Cloth Config 18.0.145.
+- Require Cloth Config API 18.0.145.
 
 ### Changed
 - Port to 1.21.5.
@@ -60,7 +60,7 @@
 ## [7.0.0]
 - Require Minecraft 1.21.4.
 - Require Fabric Loader 0.16.9 and Fabric API 0.112.2+1.21.4.
-- Require Cloth Config 17.0.144.
+- Require Cloth Config API 17.0.144.
 
 ### Added
 - Add special model type `tolaserblade:laser_blade` to render laser blade items.
@@ -75,7 +75,7 @@
 ## [6.0.0]
 - Require Minecraft 1.21.3.
 - Require Fabric Loader 0.16.7 and Fabric API 0.106.1+1.21.3.
-- Require Cloth Config 16.0.141.
+- Require Cloth Config API 16.0.141.
 
 ### Changed
 - Port to 1.21.3.
@@ -95,7 +95,7 @@
 ## [5.0.0]
 - Require Minecraft 1.21.
 - Require Fabric Loader 0.15.11 and Fabric API 0.100.3+1.21.
-- Require Cloth Config 15.0.127.
+- Require Cloth Config API 15.0.127.
 
 ### Changed
 - Port to 1.21.
@@ -116,7 +116,7 @@
 - CAUTION: Item data migration is only possible from 3.1.2 or older versions, not from 4.0.0-alpha versions.
 - Require Minecraft 1.20.6.
 - Require Fabric Loader 0.15.10+ and Fabric API 0.98.0+1.20.6.
-- Require Cloth Config 14.0.126+.
+- Require Cloth Config API 14.0.126+.
 
 ### Added
 - Data component types: `tolaserblade:lb_atk`, `tolaserblade:lb_spd`, and `tolaserblade:lb_mdl`.
@@ -133,7 +133,7 @@
 ## [4.0.0-alpha.1]
 - Require Minecraft 24w10a+ (1.20.5-shapshot).
 - Require Fabric Loader 0.15.7+ and Fabric API 0.96.8+1.20.5.
-- Require Cloth Config 14.0.122+.
+- Require Cloth Config API 14.0.122+.
 
 ### Added
 - Add `tolaserblade:laser_blade` data component type.
@@ -144,7 +144,7 @@
 ## [3.1.2]
 - Require Minecraft 1.20.2-1.20.4.
 - Require Fabric Loader 0.14.23+ and Fabric API.
-- Require Cloth Config.
+- Require Cloth Config API.
 
 ### Fixed
 - Fix server crash caused by config.
@@ -166,13 +166,13 @@
 ### Changed
 - Update to Minecraft 1.20.2.
 - Require Fabric Loader 0.14.22+ and Fabric API 0.89.2+.
-- Require Cloth Config 12.0.109+.
+- Require Cloth Config API 12.0.109+.
 
 ## [2.0.0]
 ### Changed
 - Update to Minecraft 1.20.1.
 - Require Fabric API 0.86.0+.
-- Require Cloth Config 11.1.106+.
+- Require Cloth Config API 11.1.106+.
 - Version scheme.
 
 ## [1.20-1.0.0.0]
@@ -189,7 +189,7 @@
 - Update to Minecraft 1.20-pre6.
 - Require Fabric Loader 0.14.20+.
 - Require Fabric API 0.82.1+1.20+.
-- Require Cloth Config 11.0.97+.
+- Require Cloth Config API 11.0.97+.
 - All smithing recipes require Laser Blade Blueprint as template.
 
 ## [1.19.4-0.8.1.0]
@@ -205,7 +205,7 @@
 ### Changed
 - Update to Minecraft 1.19.4.
 - Require Fabric API 0.75.3+1.19.4+.
-- Require Cloth Config 10.0.96+.
+- Require Cloth Config API 10.0.96+.
 
 ### Fixed
 - LaserBladeModel in ToLaserBlade API.
@@ -226,7 +226,7 @@
 ### Changed
 - Update to Minecraft 1.19.3.
 - Require Fabric API 0.69.1+1.19.3+.
-- Require Cloth Config 9.0.94+.
+- Require Cloth Config API 9.0.94+.
 - ToLaserBlade API and laser blade model interface.
 
 ### Fixed
@@ -236,7 +236,7 @@
 ### Changed
 - Update to Minecraft 1.19.3-rc1.
 - Require Fabric API 0.68.1+1.19.3+.
-- Require Cloth Config 9.0.93+.
+- Require Cloth Config API 9.0.93+.
 - Add `gui_resize` to laser blade json model.
 
 ### Fixed
@@ -270,7 +270,7 @@
 - Update to Minecraft 22w44a (1.19.3-snapshot).
 - Require Fabric Loader 0.14.10+.
 - Require Fabric API 0.65.3+1.19.3+.
-- Require Cloth Config 9.0.92+.
+- Require Cloth Config API 9.0.92+.
 - Attack damage upgrade recipe consumes Block of Diamond now.
 
 ## [1.19-0.6.2.0]
@@ -281,7 +281,7 @@
 ### Changed
 - Require Fabric Loader 0.14.8+.
 - Compatible with Fabric API 0.58.0.
-- Compatible with Cloth Config 7.0.73.
+- Compatible with Cloth Config API 7.0.73.
 
 ## [1.19-0.6.1.0]
 ### Changed
@@ -296,13 +296,13 @@
 ## [1.19-pre1-0.6.0.2]
 ### Changed
 - Update to Minecraft 1.19-pre1.
-- Require Fabric Loader 0.14.6+, Fabric API 0.53.0+, and Cloth Config 7.0.65+.
+- Require Fabric Loader 0.14.6+, Fabric API 0.53.0+, and Cloth Config API 7.0.65+.
 - Refactor laser blade upgrade.
 
 ## [22w17a-0.6.0.1]
 ### Changed
 - Update to Minecraft 22w17a (1.19-snapshot).
-- Require Fabric Loader 0.14.3+, Fabric API 0.51.3+, and Cloth Config 7.0.61+.
+- Require Fabric Loader 0.14.3+, Fabric API 0.51.3+, and Cloth Config API 7.0.61+.
 
 ## [1.18.2-0.6.0.0]
 ### Added
@@ -312,7 +312,7 @@
   - canLaserTrapHeatUpFurnace: allow laser trap to light furnace.
 
 ### Changed
-- Require Cloth Config.
+- Require Cloth Config API.
 - Update Fabric API to 0.51.0.
 
 ## [1.18.2-0.5.0.0]
