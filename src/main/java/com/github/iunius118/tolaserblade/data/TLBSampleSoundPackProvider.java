@@ -25,7 +25,7 @@ public class TLBSampleSoundPackProvider {
     public static void addProviders(final FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack builtinResourcePack = fabricDataGenerator.createBuiltinResourcePack(PACK_ID);
 
-        var packMetadataSection = new PackMetadataSection(Component.literal(PACK_DESCRIPTION), DetectedVersion.BUILT_IN.getPackVersion(PackType.CLIENT_RESOURCES), Optional.empty());
+        var packMetadataSection = new PackMetadataSection(Component.literal(PACK_DESCRIPTION), DetectedVersion.BUILT_IN.packVersion(PackType.CLIENT_RESOURCES), Optional.empty());
         var provider = (FabricDataGenerator.Pack.Factory<PackMetadataGenerator>) o -> new PackMetadataGenerator(o).add(PackMetadataSection.TYPE, packMetadataSection);
         builtinResourcePack.addProvider(provider);
     }

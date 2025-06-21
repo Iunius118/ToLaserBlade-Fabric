@@ -15,6 +15,6 @@ public class TLBEntityTypeTagsProvider extends FabricTagProvider.EntityTypeTagPr
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        getOrCreateTagBuilder(ModEntityTypeTags.SENSITIVE_TO_LIGHT_ELEMENT).forceAddTag(EntityTypeTags.UNDEAD).forceAddTag(EntityTypeTags.ILLAGER);
+        valueLookupBuilder(ModEntityTypeTags.SENSITIVE_TO_LIGHT_ELEMENT).forceAddTag(EntityTypeTags.UNDEAD).forceAddTag(EntityTypeTags.ILLAGER);
     }
 }

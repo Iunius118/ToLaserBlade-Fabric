@@ -18,19 +18,19 @@ public class TLBItemTagsProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider arg) {
-        getOrCreateTagBuilder(ItemTags.SWORDS).add(ModItems.LASER_BLADE, ModItems.LASER_BLADE_FP);
+        valueLookupBuilder(ItemTags.SWORDS).add(ModItems.LASER_BLADE, ModItems.LASER_BLADE_FP);
 
-        getOrCreateTagBuilder(ModItemTags.ATTACK_SPEED_UPGRADE).forceAddTag(ConventionalItemTags.GOLD_INGOTS);
-        getOrCreateTagBuilder(ModItemTags.EFFICIENCY_UPGRADE).forceAddTag(ConventionalItemTags.STORAGE_BLOCKS_REDSTONE);
-        getOrCreateTagBuilder(ModItemTags.EFFICIENCY_REMOVER).forceAddTag(ConventionalItemTags.REDSTONE_DUSTS);
-        getOrCreateTagBuilder(ModItemTags.ATTACK_DAMAGE_UPGRADE).forceAddTag(ConventionalItemTags.STORAGE_BLOCKS_DIAMOND);
-        getOrCreateTagBuilder(ModItemTags.LIGHT_ELEMENT_UPGRADE).add(Items.GLOWSTONE);
-        getOrCreateTagBuilder(ModItemTags.FIRE_ASPECT_UPGRADE).forceAddTag(ConventionalItemTags.BLAZE_RODS);
-        getOrCreateTagBuilder(ModItemTags.SWEEPING_EDGE_UPGRADE).add(Items.ENDER_EYE);
-        getOrCreateTagBuilder(ModItemTags.SILK_TOUCH_UPGRADE).forceAddTag(ConventionalItemTags.PRISMARINE_GEMS).forceAddTag(ConventionalItemTags.AMETHYST_GEMS).add(Items.ECHO_SHARD);
-        getOrCreateTagBuilder(ModItemTags.LOOTING_UPGRADE).add(Items.NAUTILUS_SHELL).forceAddTag(ConventionalItemTags.STORAGE_BLOCKS_EMERALD);
-        getOrCreateTagBuilder(ModItemTags.MENDING_UPGRADE).add(Items.NETHER_STAR, Items.DRAGON_HEAD, Items.TOTEM_OF_UNDYING);
-        getOrCreateTagBuilder(ModItemTags.CASING_REPAIR).forceAddTag(ConventionalItemTags.IRON_INGOTS);
-        getOrCreateTagBuilder(ModItemTags.ENCHANTABLE_LIGHT_ELEMENT).add(ModItems.LASER_BLADE, ModItems.LASER_BLADE_FP, ModItems.LB_MEDIUM);
+        valueLookupBuilder(ModItemTags.ATTACK_SPEED_UPGRADE).forceAddTag(ConventionalItemTags.GOLD_INGOTS);
+        valueLookupBuilder(ModItemTags.EFFICIENCY_UPGRADE).forceAddTag(ConventionalItemTags.STORAGE_BLOCKS_REDSTONE);
+        valueLookupBuilder(ModItemTags.EFFICIENCY_REMOVER).forceAddTag(ConventionalItemTags.REDSTONE_DUSTS);
+        valueLookupBuilder(ModItemTags.ATTACK_DAMAGE_UPGRADE).forceAddTag(ConventionalItemTags.STORAGE_BLOCKS_DIAMOND);
+        valueLookupBuilder(ModItemTags.LIGHT_ELEMENT_UPGRADE).add(Items.GLOWSTONE);
+        valueLookupBuilder(ModItemTags.FIRE_ASPECT_UPGRADE).forceAddTag(ConventionalItemTags.BLAZE_RODS);
+        valueLookupBuilder(ModItemTags.SWEEPING_EDGE_UPGRADE).add(Items.ENDER_EYE);
+        valueLookupBuilder(ModItemTags.SILK_TOUCH_UPGRADE).forceAddTag(ConventionalItemTags.PRISMARINE_GEMS).forceAddTag(ConventionalItemTags.AMETHYST_GEMS).add(Items.ECHO_SHARD);
+        valueLookupBuilder(ModItemTags.LOOTING_UPGRADE).add(Items.NAUTILUS_SHELL).forceAddTag(ConventionalItemTags.STORAGE_BLOCKS_EMERALD);
+        valueLookupBuilder(ModItemTags.MENDING_UPGRADE).add(Items.NETHER_STAR, Items.DRAGON_HEAD, Items.TOTEM_OF_UNDYING);
+        valueLookupBuilder(ModItemTags.CASING_REPAIR).forceAddTag(ConventionalItemTags.IRON_INGOTS);
+        valueLookupBuilder(ModItemTags.ENCHANTABLE_LIGHT_ELEMENT).add(ModItems.LASER_BLADE, ModItems.LASER_BLADE_FP, ModItems.LB_MEDIUM);
     }
 }
