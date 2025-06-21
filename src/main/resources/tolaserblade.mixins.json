@@ -5,11 +5,11 @@
   "mixins": [
     "AbstractFurnaceBlockEntityAccessor",
     "ItemAccessor",
-    "MixinLivingEntity",
-    "MixinSmithingMenu"
+    "LivingEntityMixin",
+    "SmithingMenuMixin"
   ],
   "client": [
-    "MixinItemInHandRenderer"
+    "client.ItemInHandRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

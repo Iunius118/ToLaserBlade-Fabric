@@ -1,4 +1,4 @@
-package com.github.iunius118.tolaserblade.mixin;
+package com.github.iunius118.tolaserblade.mixin.client;
 
 import com.github.iunius118.tolaserblade.world.item.LBSwordItem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ItemInHandRenderer.class)
-public abstract class MixinItemInHandRenderer {
+public abstract class ItemInHandRendererMixin {
     @Shadow
     public abstract void renderItem(LivingEntity livingEntity, ItemStack itemStack, ItemDisplayContext itemDisplayContext,
                                     PoseStack poseStack, MultiBufferSource multiBufferSource, int i);
