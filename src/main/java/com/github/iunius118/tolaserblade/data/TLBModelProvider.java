@@ -6,6 +6,7 @@ import com.github.iunius118.tolaserblade.client.renderer.item.LBSwordSpecialRend
 import com.github.iunius118.tolaserblade.client.renderer.item.model.LBSwordItemTransforms;
 import com.github.iunius118.tolaserblade.client.renderer.item.properties.Blocking;
 import com.github.iunius118.tolaserblade.core.laserblade.LaserBladeColorPart;
+import com.github.iunius118.tolaserblade.mixin.client.ItemInfoCollectorInvoker;
 import com.github.iunius118.tolaserblade.world.item.ModItems;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
@@ -17,6 +18,7 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.block.model.ItemTransform;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
+import net.minecraft.client.renderer.item.ClientItem;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.properties.select.MainHand;
 import net.minecraft.resources.ResourceLocation;
@@ -41,12 +43,13 @@ public class TLBModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
         final var itemModelOutput = itemModelGenerator.itemModelOutput;
+        final var itemInfoCollector = (ItemInfoCollectorInvoker) itemModelOutput;
         final var modelOutput = itemModelGenerator.modelOutput;
 
         // Laser Blades
         ItemModel.Unbaked lbSwordModel = generateLBSwordModel(ModItems.LASER_BLADE, modelOutput);
-        itemModelOutput.accept(ModItems.LASER_BLADE, lbSwordModel);
-        itemModelOutput.accept(ModItems.LASER_BLADE_FP, lbSwordModel);
+        itemInfoCollector.invokeRegister(ModItems.LASER_BLADE, new ClientItem(lbSwordModel, new ClientItem.Properties(true, true)));
+        itemInfoCollector.invokeRegister(ModItems.LASER_BLADE_FP, new ClientItem(lbSwordModel, new ClientItem.Properties(true, true)));
 
         // Laser Blade Parts
         itemModelOutput.accept(ModItems.LB_BLUEPRINT,

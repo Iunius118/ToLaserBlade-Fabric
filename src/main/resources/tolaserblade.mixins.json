@@ -9,6 +9,7 @@
     "SmithingMenuMixin"
   ],
   "client": [
+    "client.ItemInfoCollectorInvoker",
     "client.ItemInHandRendererMixin"
   ],
   "injectors": {

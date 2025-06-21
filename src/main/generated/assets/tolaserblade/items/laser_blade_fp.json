@@ -32,5 +32,6 @@
       "property": "minecraft:main_hand"
     },
     "property": "tolaserblade:blocking"
-  }
+  },
+  "oversized_in_gui": true
 }
