@@ -1,9 +1,9 @@
 package com.github.iunius118.tolaserblade.core.dispenser;
 
+import com.github.iunius118.tolaserblade.ToLaserBlade;
 import com.github.iunius118.tolaserblade.common.util.LaserTrapPlayer;
-import com.github.iunius118.tolaserblade.integration.autoconfig.ModConfig;
+import com.github.iunius118.tolaserblade.config.TLBServerConfig;
 import com.github.iunius118.tolaserblade.mixin.AbstractFurnaceBlockEntityAccessor;
-import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.dispenser.BlockSource;
@@ -22,7 +22,7 @@ public class DispenseLBSwordBehavior implements DispenseItemBehavior {
 
     @Override
     public ItemStack dispense(BlockSource blockSource, ItemStack itemStack) {
-        ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+        TLBServerConfig config = ToLaserBlade.serverConfig;
 
         if (!config.isLaserTrapEnabled()) {
             return DEFAULT_ITEM_BEHAVIOR.dispense(blockSource, itemStack);

@@ -1,5 +1,5 @@
 # Cheatsheet
-ToLaserBlade-Fabric v9.0.0
+ToLaserBlade-Fabric v9.1.0
 
 ## Items
 ### Laser Blade Blueprint
@@ -127,6 +127,14 @@ If you change the config, you will need to restart the game.
 ### (Common)
 In multiplayer mode, server-side config will be used.
 
+- `laserBladeBaseDamage` (float, 0.0-2046.0, default value is `6.0`)
+  - Base attack damage of laser blades
+- `laserBladeBaseSpeed` (float, 0.8-2.8, default value is `2.8`)
+  - Base attack speed of laser blades
+- `maxAttackDamageUpgradeCount` (integer, 0-2047, default value is `8`)
+  - Maximum count of attack damage upgrades that can be applied to a laser blade
+- `attackDamageUpgradeMultiplier` (integer, 1-2048, default value is `1`)
+  - Damage multiplier of attack damage upgrade
 - `enableLaserTrap` (boolean, default value is `true`)
   - Enable to attack entities with the laser blade in a dispenser when the dispenser is activated
 - `canLaserTrapAttackPlayer` (boolean, default value is `true`)

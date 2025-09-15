@@ -3,6 +3,16 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+### Added
+- Add configuration options to `tolaserblade.toml`:
+  - `laserBladeBaseDamage` (float, 0.0-2046.0, default value is `6.0`).
+  - `laserBladeBaseSpeed` (float, 0.8-2.8, default value is `2.8`).
+  - `maxAttackDamageUpgradeCount` (integer, 0-2047, default value is `8`).
+  - `attackDamageUpgradeMultiplier` (integer, 1-2048, default value is `1`).
+
+### Changed
+- Make base attack damage and base attack speed of laser blades configurable.
+- Make maximum count and damage multiplier of attack damage upgrade configurable.
 
 ## [9.0.0]
 - Require Minecraft 1.21.6.
