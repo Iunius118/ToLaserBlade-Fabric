@@ -3,6 +3,8 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+
+## [9.1.0]
 ### Added
 - Add configuration options to `tolaserblade.toml`:
   - `laserBladeBaseDamage` (float, 0.0-2046.0, default value is `6.0`).
