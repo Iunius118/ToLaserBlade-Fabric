@@ -32,7 +32,7 @@ public class ClientRegister {
             // Handle the received packet
             // Apply server-side config to client
             ToLaserBlade.serverConfig = packet.serverConfig();
-            ToLaserBlade.LOGGER.info("Received SyncConfigS2CPayload from server: {}", ToLaserBlade.serverConfig);
+            ToLaserBlade.LOGGER.info("[ToLaserBlade] Received server-side config (SyncConfigS2CPayload) from server: {}", ToLaserBlade.serverConfig);
 
             // Respond back to the server that the config task is complete
             context.responseSender().sendPacket(SyncConfigCompleteC2SPayload.INSTANCE);

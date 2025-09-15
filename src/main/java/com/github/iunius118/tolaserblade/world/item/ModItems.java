@@ -34,6 +34,6 @@ public final class ModItems {
     }
 
     public static void register() {
-        ToLaserBlade.LOGGER.debug("Register mod items");
+        ToLaserBlade.LOGGER.debug("[ToLaserBlade] Register mod items");
     }
 }

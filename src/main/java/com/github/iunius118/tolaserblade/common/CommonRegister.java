@@ -43,7 +43,7 @@ public class CommonRegister {
                 config.updateServerConfig();
                 // Add a config task to send server config to client
                 handler.addTask(new SyncConfigTask(ToLaserBlade.serverConfig));
-                ToLaserBlade.LOGGER.info("Add SyncConfigTask to ServerConfigurationPacketListener");
+                ToLaserBlade.LOGGER.debug("[ToLaserBlade] Add SyncConfigTask to ServerConfigurationPacketListener");
             } else {
                 // Disconnect the client if it cannot handle config task
                 handler.disconnect(Component.literal("ToLaserBlade sync config packet is not supported by client"));
@@ -53,7 +53,7 @@ public class CommonRegister {
         // Register receiver to handle completion notification from client and complete the config task
         ServerConfigurationNetworking.registerGlobalReceiver(SyncConfigCompleteC2SPayload.TYPE, (packet, context) -> {
             context.networkHandler().completeTask(SyncConfigTask.TYPE);
-            ToLaserBlade.LOGGER.info("Received SyncConfigCompleteC2SPayload from client");
+            ToLaserBlade.LOGGER.debug("[ToLaserBlade] Received SyncConfigCompleteC2SPayload from client");
         });
     }
 

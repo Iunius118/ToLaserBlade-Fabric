@@ -16,7 +16,7 @@ public record SyncConfigTask(TLBServerConfig serverConfig) implements Configurat
         // Send the server-side config to the client
         var payload = new SyncConfigS2CPayload(serverConfig);
         consumer.accept(ServerConfigurationNetworking.createS2CPacket(payload));
-        ToLaserBlade.LOGGER.info("Send SyncConfigS2CPayload to client: {}", serverConfig);
+        ToLaserBlade.LOGGER.debug("[ToLaserBlade] Send SyncConfigS2CPayload to client: {}", serverConfig);
     }
 
     @Override

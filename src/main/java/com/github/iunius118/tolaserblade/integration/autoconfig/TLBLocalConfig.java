@@ -23,7 +23,7 @@ public class TLBLocalConfig implements ConfigData {
         correctValues();
         // Update server config used in-game
         updateServerConfig();
-        ToLaserBlade.LOGGER.info("Loaded local config: {}", ToLaserBlade.serverConfig);
+        ToLaserBlade.LOGGER.info("[ToLaserBlade] Loaded local server config: {}", ToLaserBlade.serverConfig);
     }
 
     private void correctValues() {
