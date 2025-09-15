@@ -16,6 +16,7 @@ public class ToLaserBlade implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        CommonRegister.registerNetworking();
         CommonRegister.registerConfig();
         CommonRegister.registerEventListeners();
         CommonRegister.registerGameObjects();
