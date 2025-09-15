@@ -36,21 +36,21 @@ public class CommonRegister {
 
         // Register event to add config task to send server config to client
         ServerConfigurationConnectionEvents.CONFIGURE.register((handler, server) -> {
-            if (ServerConfigurationNetworking.isReconfiguring(handler)) {
-                ToLaserBlade.LOGGER.info("Reconfiguring client");
-            }
-
             if (ServerConfigurationNetworking.canSend(handler, SyncConfigS2CPayload.TYPE)) {
-                // Add a config task if the client can receive the config packet
+                // The client can handle config task
+                // Update server config from local config before sending to client
+                TLBLocalConfig config = AutoConfig.getConfigHolder(TLBLocalConfig.class).getConfig();
+                config.updateServerConfig();
+                // Add a config task to send server config to client
                 handler.addTask(new SyncConfigTask(ToLaserBlade.serverConfig));
                 ToLaserBlade.LOGGER.info("Add SyncConfigTask to ServerConfigurationPacketListener");
             } else {
-                // You can opt to disconnect the client if it cannot handle the config task
+                // Disconnect the client if it cannot handle config task
                 handler.disconnect(Component.literal("ToLaserBlade sync config packet is not supported by client"));
             }
         });
 
-        // Register receiver to handle the completion notification from client and complete the config task
+        // Register receiver to handle completion notification from client and complete the config task
         ServerConfigurationNetworking.registerGlobalReceiver(SyncConfigCompleteC2SPayload.TYPE, (packet, context) -> {
             context.networkHandler().completeTask(SyncConfigTask.TYPE);
             ToLaserBlade.LOGGER.info("Received SyncConfigCompleteC2SPayload from client");

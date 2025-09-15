@@ -33,7 +33,7 @@ public class TLBLocalConfig implements ConfigData {
         attackDamageUpgradeMultiplier = Mth.clamp(attackDamageUpgradeMultiplier, 1, 2048);
     }
 
-    private void updateServerConfig() {
+    public void updateServerConfig() {
         ToLaserBlade.serverConfig = new TLBServerConfig(
                 calcAttackDamageModifier(laserBladeBaseDamage),
                 calcAttackSpeedModifier(laserBladeBaseSpeed),
