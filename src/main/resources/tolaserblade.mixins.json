@@ -5,6 +5,7 @@
   "mixins": [
     "AbstractFurnaceBlockEntityAccessor",
     "ItemAccessor",
+    "ItemStackMixin",
     "LivingEntityMixin",
     "SmithingMenuMixin"
   ],

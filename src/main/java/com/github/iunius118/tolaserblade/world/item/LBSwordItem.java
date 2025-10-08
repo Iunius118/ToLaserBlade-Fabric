@@ -8,6 +8,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -16,6 +19,7 @@ import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +33,7 @@ public class LBSwordItem extends Item implements LaserBladeItemBase {
     }
 
     private void overwriteToolComponent(boolean isFireResistant) {
+        // DefaultItemComponentEvents should be used instead
         DataComponentMap.Builder builder = DataComponentMap.builder().addAll(this.components());
         float speed = ModToolMaterials.getLBSwordMaterial(isFireResistant).speed();
         builder.set(DataComponents.TOOL, new Tool(List.of(), speed, 1, false));
@@ -39,15 +44,24 @@ public class LBSwordItem extends Item implements LaserBladeItemBase {
     }
 
     @Override
-    public void verifyComponentsAfterLoad(ItemStack stack) {
-        LaserBlade.updateItemAttributeModifiers(stack);
-        LaserBladeAppearance.of(stack);
-    }
-
-    @Override
     public boolean canUpgrade(Upgrade.Type type) {
         // Allow all upgrades
         return true;
+    }
+
+    @Override
+    public void inventoryTick(ItemStack itemStack, ServerLevel serverLevel, Entity entity, @Nullable EquipmentSlot equipmentSlot) {
+        if (!itemStack.has(DataComponents.ATTRIBUTE_MODIFIERS)) {
+            LBSwordItem.updateItemAttributeModifiers(itemStack);
+        }
+    }
+
+    public static void updateItemAttributeModifiers(ItemStack itemStack) {
+        if (itemStack.getItem() instanceof LBSwordItem) {
+            // Update attribute modifiers if not present
+            LaserBlade.updateItemAttributeModifiers(itemStack);
+            LaserBladeAppearance.of(itemStack);
+        }
     }
 
     @Override
