@@ -12,8 +12,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
 
-import java.util.Optional;
-
 public class TLBSampleSoundPackProvider {
     public final static String PACK_PATH = "sample_sound_pack";
     public final static ResourceLocation PACK_ID = ToLaserBlade.makeId(PACK_PATH);
@@ -25,8 +23,8 @@ public class TLBSampleSoundPackProvider {
     public static void addProviders(final FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack builtinResourcePack = fabricDataGenerator.createBuiltinResourcePack(PACK_ID);
 
-        var packMetadataSection = new PackMetadataSection(Component.literal(PACK_DESCRIPTION), DetectedVersion.BUILT_IN.packVersion(PackType.CLIENT_RESOURCES), Optional.empty());
-        var provider = (FabricDataGenerator.Pack.Factory<PackMetadataGenerator>) o -> new PackMetadataGenerator(o).add(PackMetadataSection.TYPE, packMetadataSection);
+        var packMetadataSection = new PackMetadataSection(Component.literal(PACK_DESCRIPTION), DetectedVersion.BUILT_IN.packVersion(PackType.CLIENT_RESOURCES).minorRange());
+        var provider = (FabricDataGenerator.Pack.Factory<PackMetadataGenerator>) o -> new PackMetadataGenerator(o).add(PackMetadataSection.CLIENT_TYPE, packMetadataSection);
         builtinResourcePack.addProvider(provider);
     }
 

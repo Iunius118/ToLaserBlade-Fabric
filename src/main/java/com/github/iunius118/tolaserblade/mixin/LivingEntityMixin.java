@@ -24,7 +24,7 @@ public class LivingEntityMixin {
     private void onEntitySwing(LivingEntity livingEntity, ItemStack itemStack) {
         var level = livingEntity.level();
 
-        if (!level.isClientSide
+        if (!level.isClientSide()
                 && itemStack.getItem() instanceof LBSwordItem
                 && !livingEntity.swinging) {
             // Server side
