@@ -4,7 +4,7 @@ import com.github.iunius118.tolaserblade.world.item.LBSwordItem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.ItemInHandRenderer;
-import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,13 +20,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class ItemInHandRendererMixin {
     @Shadow
     public abstract void renderItem(LivingEntity livingEntity, ItemStack itemStack, ItemDisplayContext itemDisplayContext,
-                                    PoseStack poseStack, MultiBufferSource multiBufferSource, int i);
+                                    PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int i);
 
     @Inject(method = "renderArmWithItem(Lnet/minecraft/client/player/AbstractClientPlayer;FFLnet/minecraft/world/InteractionHand;F" +
-            "Lnet/minecraft/world/item/ItemStack;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",
+            "Lnet/minecraft/world/item/ItemStack;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;I)V",
             at = @At("HEAD"), cancellable = true)
     private void onRenderArmWithItem(AbstractClientPlayer player, float partialTicks, float pitch, InteractionHand hand, float swingProgress,
-            ItemStack stack, float equippedProgress, PoseStack poseStack, MultiBufferSource buffer, int combinedLight, CallbackInfo ci
+            ItemStack stack, float equippedProgress, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int combinedLight, CallbackInfo ci
     ) {
         if (!player.isScoping()) {
             if (!stack.isEmpty() && stack.getItem() instanceof LBSwordItem) {
@@ -44,7 +44,7 @@ public abstract class ItemInHandRendererMixin {
                     // Render the laser blade item in the player's hand
                     renderItem(player, stack,
                             isRightArm ? ItemDisplayContext.FIRST_PERSON_RIGHT_HAND : ItemDisplayContext.FIRST_PERSON_LEFT_HAND,
-                            poseStack, buffer, combinedLight);
+                            poseStack, submitNodeCollector, combinedLight);
 
                     poseStack.popPose();
 
