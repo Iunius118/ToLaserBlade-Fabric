@@ -7,6 +7,9 @@
 - Require Fabric Loader 0.17.2 and Fabric API 0.134.0+1.21.9.
 - Require Cloth Config API 20.0.148.
 
+### Changed
+- Update laser blade model API.
+
 ## [9.1.0]
 ### Added
 - Add configuration options to `tolaserblade.toml`:
