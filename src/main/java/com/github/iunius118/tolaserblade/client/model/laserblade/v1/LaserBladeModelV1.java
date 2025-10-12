@@ -45,7 +45,7 @@ public class LaserBladeModelV1 extends SimpleLaserBladeModel {
     }
 
     @Override
-    public void render(ItemStack itemStack, ItemDisplayContext mode, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int light, int overlay) {
+    public void submit(ItemStack itemStack, ItemDisplayContext mode, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int light, int overlay) {
         boolean isGUI = (mode == ItemDisplayContext.GUI);
 
         if (guiResize != null && (isGUI || mode == ItemDisplayContext.FIXED || mode == ItemDisplayContext.ON_SHELF)) {

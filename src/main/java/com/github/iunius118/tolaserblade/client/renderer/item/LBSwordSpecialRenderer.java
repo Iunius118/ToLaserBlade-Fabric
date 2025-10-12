@@ -25,7 +25,7 @@ public class LBSwordSpecialRenderer implements SpecialModelRenderer<ItemStack> {
 
         if (model != null) {
             poseStack.pushPose();
-            model.render(stack, itemDisplayContext, poseStack, submitNodeCollector, light, overlay);
+            model.submit(stack, itemDisplayContext, poseStack, submitNodeCollector, light, overlay);
             poseStack.popPose();
         }
     }

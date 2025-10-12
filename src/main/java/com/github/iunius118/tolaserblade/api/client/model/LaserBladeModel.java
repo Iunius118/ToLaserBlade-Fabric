@@ -30,5 +30,5 @@ public interface LaserBladeModel {
      * @param light               Brightness.
      * @param overlay             Overlaid color.
      */
-    void render(ItemStack itemStack, ItemDisplayContext mode, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int light, int overlay);
+    void submit(ItemStack itemStack, ItemDisplayContext mode, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int light, int overlay);
 }

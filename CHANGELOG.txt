@@ -3,6 +3,8 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+### Changed
+- Rename render method to submit in LaserBladeModel.
 
 ## [10.0.0]
 - Require Minecraft 1.21.9.
