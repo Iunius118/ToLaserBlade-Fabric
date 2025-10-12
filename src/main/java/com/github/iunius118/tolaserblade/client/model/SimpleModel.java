@@ -9,18 +9,7 @@ import org.joml.Vector4f;
 import java.util.List;
 
 public class SimpleModel {
-    public static class SimpleVertex {
-        public final Vector3f pos;
-        public final Vector4f color;
-        public final Vector2f uv;
-        public final Vector3f normal;
-
-        public SimpleVertex(Vector3f posXYZ, Vector4f colorRGBA, Vector2f texUV, Vector3f normalXYZ) {
-            pos = posXYZ;
-            color = colorRGBA;
-            uv = texUV;
-            normal = normalXYZ;
-        }
+    public record SimpleVertex(Vector3f pos, Vector4f color, Vector2f uv, Vector3f normal) {
     }
 
     public static class SimpleQuad {
