@@ -15,7 +15,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.phys.Vec3;
 
 @Environment(EnvType.CLIENT)
-public class LaserTrapParticle extends Particle {   // TODO: Fix, reference to ElderGuardianParticle
+public class LaserTrapParticle extends Particle {
     public static final RenderType RENDER_TYPE = RenderType.beaconBeam(LaserTrapParticleModel.TEXTURE_LOCATION, true);
     public static final ParticleRenderType PARTICLE_RENDER_TYPE = new ParticleRenderType(ToLaserBlade.makeId("laser_trap").toString());
     public static final LaserTrapParticleModel MODEL_X = new LaserTrapParticleModel(Direction.Axis.X);

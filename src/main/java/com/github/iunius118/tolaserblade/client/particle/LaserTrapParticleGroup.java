@@ -19,6 +19,7 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
+@Environment(EnvType.CLIENT)
 public class LaserTrapParticleGroup extends ParticleGroup<LaserTrapParticle> {
     public LaserTrapParticleGroup(ParticleEngine particleEngine) {
         super(particleEngine);

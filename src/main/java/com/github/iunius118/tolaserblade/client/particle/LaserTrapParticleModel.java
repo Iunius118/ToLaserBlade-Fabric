@@ -1,6 +1,8 @@
 package com.github.iunius118.tolaserblade.client.particle;
 
 import com.github.iunius118.tolaserblade.ToLaserBlade;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -13,6 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 
 import java.util.function.Function;
 
+@Environment(EnvType.CLIENT)
 public class LaserTrapParticleModel extends Model.Simple {
     public static final ResourceLocation TEXTURE_LOCATION = ToLaserBlade.makeId("textures/particle/laser_trap.png");
 
