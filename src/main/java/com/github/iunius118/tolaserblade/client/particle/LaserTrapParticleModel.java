@@ -1,6 +1,7 @@
 package com.github.iunius118.tolaserblade.client.particle;
 
 import com.github.iunius118.tolaserblade.ToLaserBlade;
+import com.github.iunius118.tolaserblade.client.renderer.LaserBladeRenderType;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.Model;
@@ -18,13 +19,18 @@ import java.util.function.Function;
 @Environment(EnvType.CLIENT)
 public class LaserTrapParticleModel extends Model.Simple {
     public static final ResourceLocation TEXTURE_LOCATION = ToLaserBlade.makeId("textures/particle/laser_trap.png");
+    public static final RenderType RENDER_TYPE = LaserBladeRenderType.getUnlitRenderType(ToLaserBlade.MOD_ID + ":laser_trap", TEXTURE_LOCATION);
 
     public LaserTrapParticleModel(Direction.Axis axis) {
-        this(createModelPart(axis), texture -> RenderType.beaconBeam(texture, true));
+        this(createModelPart(axis), texture -> RENDER_TYPE);
     }
 
     public LaserTrapParticleModel(ModelPart modelPart, Function<ResourceLocation, RenderType> function) {
         super(modelPart, function);
+    }
+
+    public RenderType renderType() {
+        return RENDER_TYPE;
     }
 
     public static ModelPart createModelPart(Direction.Axis axis) {
