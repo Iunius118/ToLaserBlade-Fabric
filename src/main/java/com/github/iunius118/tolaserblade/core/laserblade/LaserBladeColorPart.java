@@ -1,6 +1,6 @@
 package com.github.iunius118.tolaserblade.core.laserblade;
 
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 public enum LaserBladeColorPart {
     INNER_BLADE(0, "inner_blade", "ib"),

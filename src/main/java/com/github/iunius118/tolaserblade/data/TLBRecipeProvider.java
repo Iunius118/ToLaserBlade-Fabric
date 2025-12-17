@@ -17,7 +17,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -44,7 +44,7 @@ public class TLBRecipeProvider extends RecipeProvider {
 
         // Laser Blade Blueprint
         ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, ModItems.LB_BLUEPRINT)
-                .group(getItemId(ModItems.LB_BLUEPRINT).toString())
+                .group(getItemId(ModItems.LB_BLUEPRINT))
                 .pattern("rbr")
                 .pattern("sps")
                 .define('r', ConventionalItemTags.REDSTONE_DUSTS)
@@ -56,7 +56,7 @@ public class TLBRecipeProvider extends RecipeProvider {
 
         // LB Energy Cell
         ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, ModItems.LB_BATTERY)
-                .group(getItemId(ModItems.LB_BATTERY).toString())
+                .group(getItemId(ModItems.LB_BATTERY))
                 .pattern("#")
                 .pattern("i")
                 .pattern("r")
@@ -68,7 +68,7 @@ public class TLBRecipeProvider extends RecipeProvider {
 
         // Laser Medium
         ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, ModItems.LB_MEDIUM)
-                .group(getItemId(ModItems.LB_MEDIUM).toString())
+                .group(getItemId(ModItems.LB_MEDIUM))
                 .pattern("#")
                 .pattern("g")
                 .define('#', ModItems.LB_BLUEPRINT)
@@ -77,7 +77,7 @@ public class TLBRecipeProvider extends RecipeProvider {
                 .save(output);
 
         ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, ModItems.LB_MEDIUM)
-                .group(getItemId(ModItems.LB_MEDIUM).toString())
+                .group(getItemId(ModItems.LB_MEDIUM))
                 .pattern("#")
                 .pattern("d")
                 .define('#', ModItems.LB_BLUEPRINT)
@@ -87,7 +87,7 @@ public class TLBRecipeProvider extends RecipeProvider {
 
         // Laser Blade Emitter
         ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, ModItems.LB_EMITTER)
-                .group(getItemId(ModItems.LB_EMITTER).toString())
+                .group(getItemId(ModItems.LB_EMITTER))
                 .pattern("#")
                 .pattern("d")
                 .pattern("i")
@@ -99,7 +99,7 @@ public class TLBRecipeProvider extends RecipeProvider {
 
         // Laser Blade Casing
         ShapedRecipeBuilder.shaped(holderGetter, RecipeCategory.MISC, ModItems.LB_CASING)
-                .group(getItemId(ModItems.LB_CASING).toString())
+                .group(getItemId(ModItems.LB_CASING))
                 .pattern("#")
                 .pattern("i")
                 .pattern("i")
@@ -110,7 +110,7 @@ public class TLBRecipeProvider extends RecipeProvider {
 
         // Laser Blade
         ShapelessRecipeBuilder.shapeless(holderGetter, RecipeCategory.TOOLS, ModItems.LASER_BLADE)
-                .group(getItemId(ModItems.LASER_BLADE).toString())
+                .group(getItemId(ModItems.LASER_BLADE))
                 .requires(ModItems.LB_BLUEPRINT)
                 .requires(ModItems.LB_BATTERY)
                 .requires(ModItems.LB_MEDIUM)
@@ -143,8 +143,8 @@ public class TLBRecipeProvider extends RecipeProvider {
     }
 
     private void addUpgradeRecipes(Ingredient template) {
-        Map<ResourceLocation, Upgrade> upgrades = UpgradeManager.getUpgrades();
-        List<ResourceLocation> excludedUpgradeIds = List.of(
+        Map<Identifier, Upgrade> upgrades = UpgradeManager.getUpgrades();
+        List<Identifier> excludedUpgradeIds = List.of(
                 UpgradeID.EFFICIENCY_UPGRADE.getID(),
                 UpgradeID.EFFICIENCY_REMOVER.getID(),
                 UpgradeID.MENDING_UPGRADE.getID()

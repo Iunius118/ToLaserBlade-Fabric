@@ -8,13 +8,13 @@ import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.DetectedVersion;
 import net.minecraft.data.metadata.PackMetadataGenerator;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
 
 public class TLBSampleSoundPackProvider {
     public final static String PACK_PATH = "sample_sound_pack";
-    public final static ResourceLocation PACK_ID = ToLaserBlade.makeId(PACK_PATH);
+    public final static Identifier PACK_ID = ToLaserBlade.makeId(PACK_PATH);
     public final static String PACK_TITLE = "TLB Sample Sound Pack";
     public final static String PACK_DESCRIPTION = "ToLaserBlade - sample sound pack for laser blade";
 

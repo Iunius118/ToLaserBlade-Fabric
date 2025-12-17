@@ -3,7 +3,7 @@ package com.github.iunius118.tolaserblade.tags;
 import com.github.iunius118.tolaserblade.ToLaserBlade;
 import com.github.iunius118.tolaserblade.core.laserblade.upgrade.UpgradeID;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
@@ -26,7 +26,7 @@ public class ModItemTags {
 
     public static final TagKey<Item> ENCHANTABLE_LIGHT_ELEMENT = makeWrapperTag("enchantable/light_element");
 
-    private static TagKey<Item> makeWrapperTag(ResourceLocation id) {
+    private static TagKey<Item> makeWrapperTag(Identifier id) {
         return TagKey.create(Registries.ITEM, id);
     }
 
@@ -35,7 +35,7 @@ public class ModItemTags {
     }
 
     private static TagKey<Item> makeWrapperTag(UpgradeID upgradeID) {
-        ResourceLocation id = upgradeID.getID();
+        Identifier id = upgradeID.getID();
         return makeWrapperTag(id);
     }
 

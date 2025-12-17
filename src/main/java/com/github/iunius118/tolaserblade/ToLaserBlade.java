@@ -3,7 +3,7 @@ package com.github.iunius118.tolaserblade;
 import com.github.iunius118.tolaserblade.common.CommonRegister;
 import com.github.iunius118.tolaserblade.config.TLBServerConfig;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +22,7 @@ public class ToLaserBlade implements ModInitializer {
         CommonRegister.registerGameObjects();
     }
     
-    public static ResourceLocation makeId(String name) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
+    public static Identifier makeId(String name) {
+        return Identifier.fromNamespaceAndPath(MOD_ID, name);
     }
 }

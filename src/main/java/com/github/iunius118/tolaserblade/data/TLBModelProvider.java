@@ -21,7 +21,7 @@ import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.item.ClientItem;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.properties.select.MainHand;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -48,8 +48,8 @@ public class TLBModelProvider extends FabricModelProvider {
 
         // Laser Blades
         ItemModel.Unbaked lbSwordModel = generateLBSwordModel(ModItems.LASER_BLADE, modelOutput);
-        itemInfoCollector.invokeRegister(ModItems.LASER_BLADE, new ClientItem(lbSwordModel, new ClientItem.Properties(true, true)));
-        itemInfoCollector.invokeRegister(ModItems.LASER_BLADE_FP, new ClientItem(lbSwordModel, new ClientItem.Properties(true, true)));
+        itemInfoCollector.invokeRegister(ModItems.LASER_BLADE, new ClientItem(lbSwordModel, new ClientItem.Properties(true, true, 1.0F)));
+        itemInfoCollector.invokeRegister(ModItems.LASER_BLADE_FP, new ClientItem(lbSwordModel, new ClientItem.Properties(true, true, 1.0F)));
 
         // Laser Blade Parts
         itemModelOutput.accept(ModItems.LB_BLUEPRINT,
@@ -76,7 +76,7 @@ public class TLBModelProvider extends FabricModelProvider {
                         new LaserBladeTintSource(LaserBladeColorPart.GRIP)));
     }
 
-    private ItemModel.Unbaked generateLBSwordModel(Item item, BiConsumer<ResourceLocation, ModelInstance> modelOutput) {
+    private ItemModel.Unbaked generateLBSwordModel(Item item, BiConsumer<Identifier, ModelInstance> modelOutput) {
         ItemModel.Unbaked blockingLeft = ItemModelUtils.specialModel(createLBSwordModel(ModelLocationUtils.getModelLocation(item, "_blocking_left"),
                 LBSwordItemTransforms.BLOCKING_LEFT_ITEM_TRANSFORMS, modelOutput), new LBSwordSpecialRenderer.Unbaked());
         ItemModel.Unbaked blockingRight = ItemModelUtils.specialModel(createLBSwordModel(ModelLocationUtils.getModelLocation(item, "_blocking_right"),
@@ -89,8 +89,8 @@ public class TLBModelProvider extends FabricModelProvider {
         return ItemModelUtils.conditional(new Blocking(), blockingModel, defaultModel);
     }
 
-    private ResourceLocation createLBSwordModel(ResourceLocation location, LBSwordItemTransforms transforms, BiConsumer<ResourceLocation, ModelInstance> modelOutput) {
-        modelOutput.accept(location, () -> (new Gson()).toJsonTree(new LBSwordModel(ResourceLocation.withDefaultNamespace("item/iron_ingot"), transforms.get())));
+    private Identifier createLBSwordModel(Identifier location, LBSwordItemTransforms transforms, BiConsumer<Identifier, ModelInstance> modelOutput) {
+        modelOutput.accept(location, () -> (new Gson()).toJsonTree(new LBSwordModel(Identifier.withDefaultNamespace("item/iron_ingot"), transforms.get())));
         return location;
     }
 
@@ -100,7 +100,7 @@ public class TLBModelProvider extends FabricModelProvider {
         public Map<String, String> textures = new HashMap<>();
         public Map<String, Map<String, float[]>> display = new HashMap<>();
 
-        public LBSwordModel(ResourceLocation particle, ItemTransforms itemTransforms) {
+        public LBSwordModel(Identifier particle, ItemTransforms itemTransforms) {
             textures.put("particle", particle.toString());
             Arrays.stream(ItemDisplayContext.values())
                     .forEach(c -> addTransform(c.getSerializedName(), itemTransforms.getTransform(c)));

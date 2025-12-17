@@ -4,7 +4,7 @@ import com.github.iunius118.tolaserblade.ToLaserBlade;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 
 public class ModSoundEvents {
@@ -23,13 +23,13 @@ public class ModSoundEvents {
     //*/
 
     public static SoundEvent register(String name) {
-        ResourceLocation id = ToLaserBlade.makeId(name);
+        Identifier id = ToLaserBlade.makeId(name);
         var soundEvent = SoundEvent.createVariableRangeEvent(id);
         return Registry.register(BuiltInRegistries.SOUND_EVENT, id, soundEvent);
     }
 
     public static Holder.Reference<SoundEvent> registerForHolder(String name) {
-        ResourceLocation id = ToLaserBlade.makeId(name);
+        Identifier id = ToLaserBlade.makeId(name);
         var soundEvent = SoundEvent.createVariableRangeEvent(ToLaserBlade.makeId(name));
         return Registry.registerForHolder(BuiltInRegistries.SOUND_EVENT, id, soundEvent);
     }

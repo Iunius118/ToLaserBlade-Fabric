@@ -5,7 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricCodecDataProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.enchantment.Enchantment;
 
 import java.util.concurrent.CompletableFuture;
@@ -17,7 +17,7 @@ public class TLBEnchantmentProvider extends FabricCodecDataProvider<Enchantment>
     }
 
     @Override
-    protected void configure(BiConsumer<ResourceLocation, Enchantment> provider, HolderLookup.Provider lookup) {
+    protected void configure(BiConsumer<Identifier, Enchantment> provider, HolderLookup.Provider lookup) {
         provider.accept(LightElementEnchantment.ID, LightElementEnchantment.get(lookup));
     }
 

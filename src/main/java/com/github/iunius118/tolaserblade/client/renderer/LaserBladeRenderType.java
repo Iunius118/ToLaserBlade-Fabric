@@ -1,28 +1,28 @@
 package com.github.iunius118.tolaserblade.client.renderer;
 
 import com.github.iunius118.tolaserblade.ToLaserBlade;
-import net.minecraft.Util;
 import net.minecraft.client.renderer.RenderStateShard;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.resources.ResourceLocation;
 import org.lwjgl.opengl.GL14;
+import net.minecraft.client.renderer.rendertype.RenderType;
+import net.minecraft.resources.Identifier;
+import net.minecraft.util.Util;
 
 import java.util.function.BiFunction;
 
 public class LaserBladeRenderType {
-    public static RenderType getHiltRenderType(String name, ResourceLocation texture) {
+    public static RenderType getHiltRenderType(String name, Identifier texture) {
         return TRANSLUCENT.apply(name, texture);
     }
 
-    public static RenderType getUnlitRenderType(String name, ResourceLocation texture) {
+    public static RenderType getUnlitRenderType(String name, Identifier texture) {
         return UNLIT_TRANSLUCENT.apply(name, texture);
     }
 
-    public static RenderType getAddRenderType(String name, ResourceLocation texture) {
+    public static RenderType getAddRenderType(String name, Identifier texture) {
         return ADD.apply(name, texture);
     }
 
-    public static RenderType getSubRenderType(String name, ResourceLocation texture) {
+    public static RenderType getSubRenderType(String name, Identifier texture) {
         return SUB.apply(name, texture);
     }
 

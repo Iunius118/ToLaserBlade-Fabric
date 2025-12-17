@@ -8,9 +8,9 @@ import com.github.iunius118.tolaserblade.world.item.ModItems;
 import com.github.iunius118.tolaserblade.world.item.enchantment.ModEnchantments;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.minecraft.Util;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.Util;
 import net.minecraft.world.item.enchantment.Enchantment;
 
 import java.util.concurrent.CompletableFuture;
@@ -64,7 +64,7 @@ public class EnglishTranslationProvider extends FabricLanguageProvider {
 
     public void addEnchantment(TranslationBuilder translationBuilder, ResourceKey<Enchantment> enchantment, String name, String description) {
         // Register enchantment name
-        String id = Util.makeDescriptionId("enchantment", enchantment.location());
+        String id = Util.makeDescriptionId("enchantment", enchantment.identifier());
         translationBuilder.add(id, name);
 
         // Support for Enchantment Descriptions mod
