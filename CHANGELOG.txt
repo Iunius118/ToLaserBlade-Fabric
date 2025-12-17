@@ -3,12 +3,15 @@
 [Source](https://github.com/Iunius118/ToLaserBlade-Fabric).
 
 ## [Unreleased]
+
+## [11.0.0]
 - Require Minecraft 1.21.11.
 - Require Fabric Loader 0.18.3 and Fabric API 0.140.0+1.21.11.
 - Require Cloth Config API 21.11.151.
 
 ### Changed
-- Rename render method to submit in LaserBladeModel.
+- Port to 1.21.11.
+- Rename `render` method to `submit` in LaserBladeModel.
 
 ### Fixed
 - Fix updating item attribute modifiers of laser blades.
