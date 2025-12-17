@@ -6,7 +6,7 @@ Simple sword with a laser blade for Minecraft with Fabric
 
 |Status|Version|
 |:----:|:------|
-|Active|1.21.9 |
+|Active|1.21.11|
 
 The Fabric versions of ToLaserBlade are positioned as experimental and always support only the most current version at the time.
 
