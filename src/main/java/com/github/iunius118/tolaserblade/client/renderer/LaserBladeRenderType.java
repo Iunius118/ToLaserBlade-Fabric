@@ -1,8 +1,6 @@
 package com.github.iunius118.tolaserblade.client.renderer;
 
-import com.github.iunius118.tolaserblade.ToLaserBlade;
-import net.minecraft.client.renderer.RenderStateShard;
-import org.lwjgl.opengl.GL14;
+import net.minecraft.client.renderer.rendertype.RenderSetup;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Util;
@@ -26,49 +24,44 @@ public class LaserBladeRenderType {
         return SUB.apply(name, texture);
     }
 
-    private static final BiFunction<String, ResourceLocation, RenderType> TRANSLUCENT = Util.memoize(
-            (name, resourceLocation) -> {
-                RenderType.CompositeState compositeState = RenderType.CompositeState.builder()
-                        .setTextureState(new RenderStateShard.TextureStateShard(resourceLocation, false))
-                        .setLightmapState(RenderType.LIGHTMAP)
-                        .setOverlayState(RenderType.OVERLAY)
-                        .createCompositeState(true);
-                return RenderType.create(name, 1536, true, false, LaserBladePipelines.TRANSLUCENT, compositeState);
+    private static final BiFunction<String, Identifier, RenderType> TRANSLUCENT = Util.memoize(
+            (name, identifier) -> {
+                RenderSetup renderSetup = RenderSetup.builder(LaserBladePipelines.TRANSLUCENT)
+                        .withTexture("Sampler0", identifier)
+                        .useLightmap()
+                        .useOverlay()
+                        .createRenderSetup();
+                return RenderType.create(name, renderSetup);
             }
     );
-    private static final BiFunction<String, ResourceLocation, RenderType> UNLIT_TRANSLUCENT = Util.memoize(
-            (name, resourceLocation) -> {
-                RenderType.CompositeState compositeState = RenderType.CompositeState.builder()
-                        .setTextureState(new RenderStateShard.TextureStateShard(resourceLocation, false))
-                        .setLightmapState(RenderType.LIGHTMAP)
-                        .setOverlayState(RenderType.OVERLAY)
-                        .createCompositeState(true);
-                return RenderType.create(name, 1536, true, false, LaserBladePipelines.UNLIT_TRANSLUCENT, compositeState);
+    private static final BiFunction<String, Identifier, RenderType> UNLIT_TRANSLUCENT = Util.memoize(
+            (name, identifier) -> {
+                RenderSetup renderSetup = RenderSetup.builder(LaserBladePipelines.UNLIT_TRANSLUCENT)
+                        .withTexture("Sampler0", identifier)
+                        .useLightmap()
+                        .useOverlay()
+                        .createRenderSetup();
+                return RenderType.create(name, renderSetup);
             }
     );
-    private static final BiFunction<String, ResourceLocation, RenderType> ADD = Util.memoize(
-            (name, resourceLocation) -> {
-                RenderType.CompositeState compositeState = RenderType.CompositeState.builder()
-                        .setTextureState(new RenderStateShard.TextureStateShard(resourceLocation, false))
-                        .setLightmapState(RenderType.LIGHTMAP)
-                        .setOverlayState(RenderType.OVERLAY)
-                        .createCompositeState(true);
-                return RenderType.create(name, 1536, true, false, LaserBladePipelines.ADD, compositeState);
+    private static final BiFunction<String, Identifier, RenderType> ADD = Util.memoize(
+            (name, identifier) -> {
+                RenderSetup renderSetup = RenderSetup.builder(LaserBladePipelines.ADD)
+                        .withTexture("Sampler0", identifier)
+                        .useLightmap()
+                        .useOverlay()
+                        .createRenderSetup();
+                return RenderType.create(name, renderSetup);
             }
     );
-    private static final BiFunction<String, ResourceLocation, RenderType> SUB = Util.memoize(
-            (name, resourceLocation) -> {
-                // Create a custom output state that uses the main target with reverse subtract blend equation
-                RenderStateShard.TexturingStateShard tlbSubColor = new RenderStateShard.TexturingStateShard(ToLaserBlade.MOD_ID + ":lb_sub_color",
-                        () -> GL14.glBlendEquation(GL14.GL_FUNC_REVERSE_SUBTRACT),
-                        () -> GL14.glBlendEquation(GL14.GL_FUNC_ADD));
-                RenderType.CompositeState compositeState = RenderType.CompositeState.builder()
-                        .setTextureState(new RenderStateShard.TextureStateShard(resourceLocation, false))
-                        .setTexturingState(tlbSubColor)
-                        .setLightmapState(RenderType.LIGHTMAP)
-                        .setOverlayState(RenderType.OVERLAY)
-                        .createCompositeState(true);
-                return RenderType.create(name, 1536, true, false, LaserBladePipelines.ADD, compositeState);
+    private static final BiFunction<String, Identifier, RenderType> SUB = Util.memoize(
+            (name, identifier) -> {
+                RenderSetup renderSetup = RenderSetup.builder(LaserBladePipelines.SUB)
+                        .withTexture("Sampler0", identifier)
+                        .useLightmap()
+                        .useOverlay()
+                        .createRenderSetup();
+                return RenderType.create(name, renderSetup);
             }
     );
 
