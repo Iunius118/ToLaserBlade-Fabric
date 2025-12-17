@@ -37,7 +37,7 @@ public class LightElementEnchantment  {
                 .enchantment(
                         Enchantment.definition(
                                 itemHolderGetter.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
-                                itemHolderGetter.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                                itemHolderGetter.getOrThrow(ItemTags.MELEE_WEAPON_ENCHANTABLE),
                                 5,
                                 MAX_LEVEL,
                                 Enchantment.dynamicCost(5, 8), Enchantment.dynamicCost(25, 8), 2,
