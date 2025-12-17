@@ -2,10 +2,10 @@ package com.github.iunius118.tolaserblade.client;
 
 import com.github.iunius118.tolaserblade.ToLaserBlade;
 import com.github.iunius118.tolaserblade.client.color.item.LaserBladeTintSource;
+import com.github.iunius118.tolaserblade.client.model.LaserBladeModelManager;
 import com.github.iunius118.tolaserblade.client.particle.LaserTrapParticle;
 import com.github.iunius118.tolaserblade.client.particle.LaserTrapParticleGroup;
 import com.github.iunius118.tolaserblade.client.renderer.item.LBSwordSpecialRenderer;
-import com.github.iunius118.tolaserblade.client.renderer.item.model.LaserBladeModelLoadingPlugin;
 import com.github.iunius118.tolaserblade.client.renderer.item.properties.Blocking;
 import com.github.iunius118.tolaserblade.core.particle.ModParticleTypes;
 import com.github.iunius118.tolaserblade.data.TLBSampleSoundPackProvider;
@@ -13,16 +13,19 @@ import com.github.iunius118.tolaserblade.network.SyncConfigCompleteC2SPayload;
 import com.github.iunius118.tolaserblade.network.SyncConfigS2CPayload;
 import com.github.iunius118.tolaserblade.world.item.LaserBladeItemBase;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
-import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.networking.v1.ClientConfigurationNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleRendererRegistry;
+import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
+import net.fabricmc.fabric.api.resource.v1.reloader.ResourceReloaderKeys;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.client.color.item.ItemTintSources;
 import net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperties;
 import net.minecraft.client.renderer.special.SpecialModelRenderers;
 import net.minecraft.core.Direction;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 
 import java.util.Optional;
 
@@ -49,8 +52,13 @@ public class ClientRegister {
         ConditionalItemModelProperties.ID_MAPPER.put(ToLaserBlade.makeId("blocking"), Blocking.MAP_CODEC);
     }
 
-    public static void registerModelLoadingPlugin() {
-        ModelLoadingPlugin.register(new LaserBladeModelLoadingPlugin());
+    public static void registerClientReloadListeners() {
+        ResourceLoader resourceLoader = ResourceLoader.get(PackType.CLIENT_RESOURCES);
+
+        resourceLoader.registerReloader(ResourceReloaderKeys.Client.MODELS, (ResourceManagerReloadListener) m -> {
+            // Load/Reload laser blade json models
+            LaserBladeModelManager.getInstance().reload();
+        });
     }
 
     public static void registerSpecialModelRenderers() {

@@ -2,8 +2,8 @@ package com.github.iunius118.tolaserblade.data;
 
 import com.github.iunius118.tolaserblade.ToLaserBlade;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+import net.fabricmc.fabric.api.resource.v1.ResourceLoader;
+import net.fabricmc.fabric.api.resource.v1.pack.PackActivationType;
 import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.DetectedVersion;
 import net.minecraft.data.metadata.PackMetadataGenerator;
@@ -29,6 +29,6 @@ public class TLBSampleSoundPackProvider {
     }
 
     public static void addResourcePack(ModContainer container) {
-        ResourceManagerHelper.registerBuiltinResourcePack(PACK_ID, container, Component.literal(PACK_TITLE), ResourcePackActivationType.NORMAL);
+        ResourceLoader.registerBuiltinPack(PACK_ID, container, Component.literal(PACK_TITLE), PackActivationType.NORMAL);
     }
 }
