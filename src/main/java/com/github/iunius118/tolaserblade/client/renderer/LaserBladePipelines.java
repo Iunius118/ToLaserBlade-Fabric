@@ -30,6 +30,14 @@ public class LaserBladePipelines {
                     .withBlend(BlendFunction.LIGHTNING)
                     .build()
     );
+    public static final RenderPipeline SUB = RenderPipelines.register(
+            RenderPipeline.builder(RenderPipelines.ENTITY_SNIPPET)
+                    .withLocation("pipeline/tlb_sub")
+                    .withShaderDefine("NO_CARDINAL_LIGHTING")
+                    // Use the lightning blend function (additive and alpha)
+                    .withBlend(BlendFunction.LIGHTNING)
+                    .build()
+    );
 
     private LaserBladePipelines() {}
 }

@@ -10,6 +10,7 @@
     "SmithingMenuMixin"
   ],
   "client": [
+    "client.BufferSourceMixin",
     "client.ItemInfoCollectorInvoker",
     "client.ItemInHandRendererMixin"
   ],
