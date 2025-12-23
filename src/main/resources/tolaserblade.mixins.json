@@ -10,9 +10,9 @@
     "SmithingMenuMixin"
   ],
   "client": [
-    "client.BufferSourceMixin",
     "client.ItemInfoCollectorInvoker",
-    "client.ItemInHandRendererMixin"
+    "client.ItemInHandRendererMixin",
+    "client.RenderTypeMixin"
   ],
   "injectors": {
     "defaultRequire": 1
